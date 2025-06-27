@@ -24,11 +24,12 @@ html {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 1;
 }
 
 .strip-logo {
-  height: 50px;
+  height: 80px;
+  width:200px;
 }
 
 .strip-nav {
@@ -78,7 +79,7 @@ header {
   height: 450px;
   transform: translate(-50%, 0%);
   z-index: 0;
-  overflow: hidden;
+  overflow:hidden;
   border-radius: 20px;
   box-shadow: 0 0 30px rgba(229, 214, 221, 1);
 }
