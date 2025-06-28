@@ -1,6 +1,5 @@
 import React from 'react';
 import './HomePage.css';
-
 // Video and Logo
 import videoSrc from '../assets/images/CL.mp4';
 import logo from '../assets/images/CL1.png';

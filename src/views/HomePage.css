@@ -120,17 +120,20 @@ form {
   border-radius: 25px;
   border: 4px solid white;
   padding: 20px;
-  transition: all 1s;
+  transition: all 0.5s ease;
   position: relative;
+  overflow: hidden;
 }
 
 form:hover {
-  width: 400px;
+  width: 500px; 
   cursor: pointer;
 }
 
 form:hover input {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  max-width: 100%;
 }
 
 form:hover .fa {
@@ -144,12 +147,16 @@ input {
   left: 0;
   width: 100%;
   height: 42.5px;
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  max-width: 0;
+  transition: all 0.5s ease;
   font-size: 1em;
   padding: 0 20px;
   border: none;
   border-radius: 20px;
   font-family: 'Poppins', sans-serif;
+  background: white;
 }
 
 .fa {
@@ -160,10 +167,12 @@ input {
   top: 0;
   right: 0;
   border-radius: 50%;
-  color: #572E54;
+  color: white;
+  background-color: #572E54;
   text-align: center;
   font-size: 1.5em;
 }
+
 
 /*  Tag Buttons */
 .tag-buttons-below {
