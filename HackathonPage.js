@@ -1,6 +1,6 @@
 // src/views/HackathonPage.js
 import React from 'react';
-import './HackathonPage.css'; // optional if you want styles
+import './HackathonPage.css'; 
 
 const HackathonPage = () => {
   return (
