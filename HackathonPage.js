@@ -6,7 +6,7 @@ const HackathonPage = () => {
   return (
     <div style={{ padding: '50px' }}>
       <h1>Hackathons</h1>
-      <p>Welcome Hackers...</p>
+      <p>Welcome Pookiess~~</p>
     </div>
   );
 };
