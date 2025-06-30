@@ -19,7 +19,7 @@ import avanyaImg from '../assets/images/avanya.png';
 import mahiraImg from '../assets/images/mahiraa.png';
 import gourikaImg from '../assets/images/gourika1.png';
 
-const HomePage = () => {
+const HomePage = (props) => {
   return (
     <>
       {/* Top Strip */}
@@ -32,8 +32,8 @@ const HomePage = () => {
           <li><a href="#">Mentorship</a></li>
           <li><a href="#">Events</a></li>
           <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Log In</a></li>
-          <li><a href="#" className="signup">Sign Up</a></li>
+          <li><a href="#" onClick={() => props.navigateTo('login')} className="signup">Get Started</a></li>
+
         </ul>
       </div>
 
@@ -74,20 +74,34 @@ const HomePage = () => {
 
         <div className="category-container">
           {[
-            { src: freelanceGif, title: 'Freelance' },
-            { src: mentorshipGif, title: 'Mentorship' },
-            { src: communityGif, title: 'Community' },
-            { src: budgetingGif, title: 'Budgeting' },
-            { src: webinarsGif, title: 'Webinars' },
-            { src: scholarshipGif, title: 'Scholarship' }
-          ].map((item, index) => (
-            <a href="#" className="category-box" key={index}>
-              <div className="category-inner-box">
-                <img src={item.src} alt={item.title} />
-              </div>
-              <span className="category-title">{item.title}</span>
-            </a>
-          ))}
+  { src: freelanceGif, title: 'Freelance' },
+  { src: mentorshipGif, title: 'Mentorship' },
+  { src: communityGif, title: 'Community' },
+  { src: budgetingGif, title: 'Budgeting' },
+  { src: webinarsGif, title: 'Hackathons' },
+  { src: scholarshipGif, title: 'Scholarship' }
+].map((item, index) => {
+  const isHackathon = item.title === 'Hackathons';
+
+  return (
+    <div
+      key={index}
+      className="category-box"
+      onClick={() => {
+        if (isHackathon && props.navigateTo) {
+          props.navigateTo('hackathon');
+        }
+      }}
+      style={{ cursor: isHackathon ? 'pointer' : 'default' }}
+    >
+      <div className="category-inner-box">
+        <img src={item.src} alt={item.title} />
+      </div>
+      <span className="category-title">{item.title}</span>
+    </div>
+  );
+})}
+
         </div>
       </section>
 

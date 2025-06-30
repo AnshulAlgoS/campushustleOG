@@ -16,15 +16,15 @@ html {
 
 .top-strip {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  background-color: #572E54;
-  padding: 10px 40px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #572e54; /* dark lavender */
+  color: white;
   position: fixed;
-  top: 0;
   width: 100%;
-  z-index: 1;
+  top: 0;
+  z-index: 1000;
 }
 
 .strip-logo {

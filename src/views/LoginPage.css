@@ -1,0 +1,37 @@
+.login-container {
+  width: 350px;
+  margin: 80px auto;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.15);
+  background: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.login-container input {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.7rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  background-color: #572e54;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-container .message {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: red;
+  text-align: center;
+}
