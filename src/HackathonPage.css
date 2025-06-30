@@ -1,5 +1,5 @@
 .hackathon-page {
-  background-image: url('../assets/images/bg-1.png');
+  background-image: url('../assets/images/bg-1.png'); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -7,6 +7,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.hackathon-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hack-btn {
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  border: 2px solid white;
+  background-color: transparent;
   color: white;
-  text-align: center;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.hack-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+  color: #fff;
+  backdrop-filter: blur(4px);
 }
