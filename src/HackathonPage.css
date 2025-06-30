@@ -31,27 +31,33 @@
 .hack-btn:hover {
   background-color: rgba(255, 255, 255, 0.1);
   transform: scale(1.05);
-  color: #fff;
+  color: #f7f1f1;
   backdrop-filter: blur(4px);
 }
 
-/* Reuse the styles from HomePage.css if not already present */
+/* Reuse the styles from HomePage.css */
 
 .top-strip {
-  background-color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 32px;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 10;
+
+  background: rgba(255, 255, 255, 0.1);  /* translucent white */
+  backdrop-filter: blur(10px);           /* glass effect */
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
+
 
 .strip-logo {
   height: 48px;
 }
+
 
 .strip-nav {
   list-style: none;
@@ -60,16 +66,20 @@
 }
 
 .strip-nav li a {
-  text-decoration: none;
-  color: #333;
+  color: rgb(255, 255, 255);
   font-weight: 500;
+  text-decoration: none;
 }
 
 .strip-nav li .signup {
-  padding: 6px 14px;
-  border: 2px solid #572E54;
-  border-radius: 6px;
-  color: #572E54;
-  font-weight: bold;
+  border: 2px solid rgb(255, 255, 255);
+  color: white;
   background-color: transparent;
+  border-radius: 6px;
+  padding: 6px 14px;
+}
+
+.strip-nav li a:hover {
+  color: #9c6fab; /* darker lavender zyada visible lgega */
+  transition: color 0.3s ease;
 }
