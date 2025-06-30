@@ -1,12 +1,13 @@
+// src/views/HackathonPage.js
 import React from 'react';
-import './HackathonPage.css'; 
+import './HackathonPage.css';
 
 const HackathonPage = () => {
   return (
     <div className="hackathon-page">
-      <div className="hackathon-content">
-        <h1>Hackathons</h1>
-        <p>Welcome Hackers...</p>
+      <div className="hackathon-buttons">
+        <button className="hack-btn">Organise a Hackathon</button>
+        <button className="hack-btn">Register as a Hacker</button>
       </div>
     </div>
   );
