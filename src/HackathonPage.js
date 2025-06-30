@@ -7,7 +7,8 @@ const HackathonPage = () => {
     <div className="hackathon-page">
       <div className="hackathon-buttons">
         <button className="hack-btn">Organise a Hackathon</button>
-        <button className="hack-btn">Register as a Hacker</button>
+        <button className="hack-btn">Participate as a Hacker</button>
+        <button className="hack-btn">Explore Hackathons</button>
       </div>
     </div>
   );
