@@ -35,3 +35,41 @@
   backdrop-filter: blur(4px);
 }
 
+/* Reuse the styles from HomePage.css if not already present */
+
+.top-strip {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 32px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.strip-logo {
+  height: 48px;
+}
+
+.strip-nav {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.strip-nav li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.strip-nav li .signup {
+  padding: 6px 14px;
+  border: 2px solid #572E54;
+  border-radius: 6px;
+  color: #572E54;
+  font-weight: bold;
+  background-color: transparent;
+}
