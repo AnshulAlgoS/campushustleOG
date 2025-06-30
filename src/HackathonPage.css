@@ -1,85 +1,51 @@
+/* src/views/HackathonPage.css */
+
 .hackathon-page {
-  background-image: url('../assets/images/bg1.jpeg'); 
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../assets/images/bg1.jpeg');
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
-.hackathon-buttons {
+.translucent-strip {
+  background-color: rgba(255, 255, 255, 0.2); /* translucent background */
+  backdrop-filter: blur(10px);
+}
+
+.hackathon-content {
+  margin-top: 180px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 100px);
 }
 
-.hack-btn {
-  padding: 16px 32px;
-  font-size: 18px;
-  font-weight: 600;
-  border: 2px solid white;
-  background-color: transparent;
+.hackathon-btn {
+  padding: 18px 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.08);
   color: white;
   cursor: pointer;
-  border-radius: 12px;
+  backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  width: 300px;
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 0 10px transparent;
 }
 
-.hack-btn:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.hackathon-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
   transform: scale(1.05);
-  color: #f7f1f1;
-  backdrop-filter: blur(4px);
+  box-shadow: inset 0 0 0 2px black;
 }
 
-/* Reuse the styles from HomePage.css */
-
-.top-strip {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 32px;
-
-  background: rgba(255, 255, 255, 0.1);  /* translucent white */
-  backdrop-filter: blur(10px);           /* glass effect */
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-
-.strip-logo {
-  height: 48px;
-}
-
-
-.strip-nav {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-.strip-nav li a {
-  color: rgb(255, 255, 255);
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.strip-nav li .signup {
-  border: 2px solid rgb(255, 255, 255);
-  color: white;
-  background-color: transparent;
-  border-radius: 6px;
-  padding: 6px 14px;
-}
-
-.strip-nav li a:hover {
-  color: #9c6fab; /* darker lavender zyada visible lgega */
-  transition: color 0.3s ease;
-}
