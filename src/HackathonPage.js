@@ -1,4 +1,5 @@
 // src/views/HackathonPage.js
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './HackathonPage.css';
@@ -7,7 +8,7 @@ import logo from '../assets/images/CL1.png';
 const HackathonPage = () => {
   return (
     <div className="hackathon-page">
-      {/* Nav Bar */}
+      {/* Translucent Nav Bar */}
       <div className="top-strip translucent-strip">
         <img src={logo} alt="Campus Link Logo" className="strip-logo" />
         <ul className="strip-nav">
@@ -22,14 +23,17 @@ const HackathonPage = () => {
         </ul>
       </div>
 
-      {/* Buttons Section */}
+      {/* Button Section */}
       <div className="hackathon-content">
         <button className="hackathon-btn">Organise a Hackathon</button>
         <button className="hackathon-btn">Participate as a Hacker</button>
-        <button className="hackathon-btn">Explore Hackathons</button>
+        <Link to="/explore-hackathons" className="hackathon-btn">
+          Explore Hackathons
+        </Link>
       </div>
     </div>
   );
 };
 
 export default HackathonPage;
+
