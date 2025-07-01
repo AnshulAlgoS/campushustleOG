@@ -69,23 +69,38 @@
   box-sizing: border-box;
 }
 
+.hackathon-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);  
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 .hackathon-card {
   background-color: rgba(255, 255, 255, 0.1);
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 20px;
   border-radius: 15px;
-  border: 1px solid white;
+  border: 1px solid rgb(0, 0, 0);
   text-align: center;
   font-weight: bold;
   transition: transform 0.3s ease;
   cursor: pointer;
   backdrop-filter: blur(8px);
+  aspect-ratio: 1 / 1;               
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .hackathon-card:hover {
   transform: scale(1.05);
   background-color: rgba(255, 255, 255, 0.2);
 }
+
 
 /* Modal Styling */
 .modal-overlay {
