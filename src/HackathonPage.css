@@ -1,36 +1,47 @@
 /* src/views/HackathonPage.css */
 
 .hackathon-page {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
-  background-image: url('../assets/images/bg1.png');
+  background-image: url('../assets/images/bg4.jpeg');
   background-size: cover;
   background-position: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 100px;
+  box-sizing: border-box;
+}
+
+/* Full Explore Page Layout */
+.hackathon-list-page {
+  background-image: url('../assets/images/bg1.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding: 100px 40px;
+  box-sizing: border-box;
 }
 
 .translucent-strip {
-  background-color: rgba(255, 255, 255, 0.2); /* translucent background */
+  background-color: rgba(255, 255, 255, 0.2); 
   backdrop-filter: blur(10px);
 }
 
 .hackathon-content {
-  margin-top: 180px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 100px);
+  padding: 40px 0;
 }
 
 .hackathon-btn {
   padding: 18px 50px;
   font-size: 1.1rem;
   font-weight: bold;
-  border: 2px solid black;
+  border: 2px solid white;
   border-radius: 10px;
   background-color: transparent;
   color: white;
@@ -39,13 +50,83 @@
   width: 300px;
   text-align: center;
   box-sizing: border-box;
-  box-shadow: none;
-  backdrop-filter: none;
 }
 
 .hackathon-btn:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* translucent */
+  background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
   transform: scale(1.05);
+  box-shadow: inset 0 0 0 2px black;
 }
 
+.hackathon-card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.hackathon-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid white;
+  text-align: center;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+
+.hackathon-card:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Modal Styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-box {
+  background: white;
+  color: black;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+}
+
+.modal-box h3 {
+  margin-bottom: 10px;
+  color: #5c3c6e;
+}
+
+.modal-box p {
+  margin: 5px 0;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #333;
+}
