@@ -1,0 +1,182 @@
+/* Layout Container */
+.profile-dashboard {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: #f9f9fb;
+  color: #333;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #572e54;
+  color: white;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar .profile-pic {
+  background: white;
+  color: #572e54;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sidebar h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.sidebar p {
+  font-size: 0.85rem;
+  color: #e0e0e0;
+  margin-bottom: 2rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.sidebar li {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.sidebar li:hover,
+.sidebar li.active {
+  background-color: #ffffff22;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+  flex: 1;
+  padding: 2rem 3rem;
+  background-color: #f9f9fb;
+}
+
+.dashboard-content h2 {
+  margin-bottom: 1.5rem;
+  color: #572e54;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: white;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Tags Section */
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.tag {
+  padding: 8px 14px;
+  border: 1px solid #572e54;
+  border-radius: 20px;
+  background: white;
+  color: #572e54;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.tag.selected {
+  background-color: #572e54;
+  color: white;
+}
+
+/* Buttons */
+.form-actions {
+  margin-top: 2rem;
+  display: flex;
+  gap: 15px;
+}
+
+.save-btn,
+.back-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 0.95rem;
+}
+
+.save-btn {
+  background-color: #572e54;
+  color: white;
+}
+
+.save-btn:hover {
+  background-color: #3d1e3a;
+}
+
+.back-btn {
+  background-color: #ddd;
+  color: #333;
+}
+
+.back-btn:hover {
+  background-color: #bbb;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .profile-dashboard {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+
+  .sidebar ul {
+    display: none; /* hide list on small screens */
+  }
+
+  .dashboard-content {
+    padding: 1rem;
+  }
+}
