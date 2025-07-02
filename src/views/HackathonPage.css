@@ -1,0 +1,85 @@
+.hackathon-page {
+  background-image: url('../assets/images/bg1.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hackathon-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+}
+
+.hack-btn {
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  border: 2px solid white;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.hack-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+  color: #f7f1f1;
+  backdrop-filter: blur(4px);
+}
+
+/* Reuse the styles from HomePage.css */
+
+.translucent-strip {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 32px;
+
+  background: rgba(255, 255, 255, 0.1);  /* translucent white */
+  backdrop-filter: blur(10px);           /* glass effect */
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+.strip-logo {
+  height: 48px;
+}
+
+
+.strip-nav {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.strip-nav li a {
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.strip-nav li .signup {
+  border: 2px solid rgb(255, 255, 255);
+  color: white;
+  background-color: transparent;
+  border-radius: 6px;
+  padding: 6px 14px;
+}
+
+.strip-nav li a:hover {
+  color: #9c6fab; /* darker lavender zyada visible lgega */
+  transition: color 0.3s ease;
+}
