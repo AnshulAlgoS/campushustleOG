@@ -20,3 +20,11 @@
 .App-link {
   display: none;
 }
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.auth-modal-overlay {
+  z-index: 1000 !important;
+}
