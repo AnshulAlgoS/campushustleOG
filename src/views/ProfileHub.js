@@ -3,7 +3,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import ProfilePage from './ProfilePage';
 import DashboardPage from './dashboard';
-import './Profilehub.css';
+import './ProfileHub.css';
 
 export default function ProfileHub({ user, onLogout, navigateToHome }) {
   const [activeTab, setActiveTab] = useState('dashboard');
