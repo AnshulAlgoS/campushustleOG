@@ -9,9 +9,7 @@ import HackathonPage from './views/HackathonPage';
 import AuthModal from './components/AuthModal';
 import ProfilePage from './views/ProfilePage';
 import DashboardPage from './views/dashboard';
-import ProfileHub from './views/Profilehub';
-
-// ✅ Actual logic inside component that is inside <Router>
+import ProfileHub from './views/ProfileHub';
 function InnerApp() {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [user, setUser] = useState(null);
@@ -84,8 +82,6 @@ function InnerApp() {
     </>
   );
 }
-
-// ✅ Wrap everything inside <Router>
 export default function App() {
   return (
     <Router>
