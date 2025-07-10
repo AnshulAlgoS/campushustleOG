@@ -159,25 +159,30 @@ body {
   box-shadow: inset 0 0 0 2px black;
 }
 
-/* Hackathon Grid */
 .hackathon-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
   max-width: 1200px;
   margin: 60px auto 0 auto;
   padding: 0 20px;
 }
 
-/* Card */
 .hackathon-card {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255,255,255,0.2);
   border: 1px solid #000;
-  transition: all 0.3s ease;
-  width: 340px;
+  border-radius: 12px;
+  padding: 15px;
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  text-decoration: none;
+  color: #000;
+  transition: all 0.3s ease;
+  width: 100%; /* ensures it fits within the grid column */
 }
+
 
 .hackathon-btn:hover {
   background-color: rgba(255, 255, 255, 0.12);
@@ -218,7 +223,6 @@ body {
   transition: all 0.3s ease;
 }
 
-.hackathon-card:hover {
 .hackathon-card:hover {
   transform: scale(1.05);
   background-color: rgba(255, 255, 255, 0.3);
@@ -269,9 +273,6 @@ body {
 .hackathon-card p:last-child:has(span.red) {
   color: red;
 }
-
-/* Modal (if needed) */
-.modal-overlay {
 /* Text styles */
 .hackathon-card h3 {
   font-size: 1.1rem;
@@ -471,6 +472,7 @@ body {
   padding: 0 20px;
   max-width: 1200px;
   margin: 0 auto 30px;
+}
 .search-input {
   width: 100%;
   max-width: 400px;
