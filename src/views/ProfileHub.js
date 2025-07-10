@@ -37,10 +37,13 @@ export default function ProfileHub({ user, onLogout, navigateToHome }) {
         <p>{user?.email}</p>
         <ul>
           <li>
-            <button onClick={() => setActiveTab('dashboard')} className="sidebar-btn">
+            <button
+              onClick={() => setActiveTab('dashboard')}
+              className={`sidebar-btn ${activeTab === 'dashboard' ? 'active' : ''}`}>
               🏠 Dashboard
             </button>
           </li>
+
           <li>
             <button onClick={() => setActiveTab('profile')} className="sidebar-btn">
               📝 My Profile
@@ -64,7 +67,7 @@ export default function ProfileHub({ user, onLogout, navigateToHome }) {
         {activeTab === 'dashboard' ? (
           <DashboardPage user={user} />
         ) : (
-         <ProfilePage user={user} userProfile={userProfile} />
+          <ProfilePage user={user} userProfile={userProfile} />
         )}
       </main>
     </div>

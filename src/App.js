@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from './firebase';
+import ExploreHackathonsPage from './views/ExploreHackathonsPage';
 
 import HomePage from './views/HomePage';
 import HackathonPage from './views/HackathonPage';
@@ -62,6 +63,8 @@ function InnerApp() {
 
         <Route path="/dashboard" element={<DashboardPage user={user} onNavigate={(page) => navigate(`/${page}`)} />} />
 
+        <Route path="/explore-hackathons" element={<ExploreHackathonsPage />} />
+      
         <Route
           path="/profile-hub"
           element={
@@ -90,4 +93,3 @@ export default function App() {
     </Router>
   );
 }
-
