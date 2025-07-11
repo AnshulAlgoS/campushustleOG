@@ -7,6 +7,7 @@ import { auth } from './firebase';
 // Pages
 import HomePage from './views/HomePage';
 import HackathonPage from './views/HackathonPage';
+import OrganiseHackathon from "./views/OrganiseHackathon";
 import ExploreHackathonsPage from './views/ExploreHackathonsPage';
 import Guidelines from './views/Guidelines';
 import ProfilePage from './views/ProfilePage';
@@ -68,6 +69,7 @@ function InnerApp() {
         <Route path="/about" element={<About />} /> {/* ✅ About page route added */}
         <Route path="/profile" element={<ProfilePage user={user} navigateTo={(page) => navigate(`/${page}`)} handleLogout={handleLogout} />} />
         <Route path="/dashboard" element={<DashboardPage user={user} onNavigate={(page) => navigate(`/${page}`)} />} />
+        <Route path="/organise" element={<OrganiseHackathon />} />
 
         <Route
           path="/profile-hub"
