@@ -1,38 +1,153 @@
-.login-container {
-  width: 350px;
-  margin: 80px auto;
-  margin-top: 300px;
+/* Blur overlay */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(87, 46, 84, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(3px);
+  z-index: 999;
+  padding: 1rem;
+
+  overflow-y: auto;
+  touch-action: manipulation;
+}
+ 
+
+.popup {
+  background: white;
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.15);
-  background: #fff;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
   font-family: 'Poppins', sans-serif;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateZ(0) !important; /* 🛠 magic line */
+  z-index: 9999;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
-.login-container input {
-  width: 100%;
-  margin: 0.5rem 0;
-  padding: 0.7rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
 
-.login-container button {
-  width: 100%;
-  padding: 0.8rem;
-  margin-top: 1rem;
-  background-color: #572e54;
-  color: white;
-  font-weight: bold;
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  background: none;
   border: none;
-  border-radius: 5px;
+  font-size: 10.5rem;
   cursor: pointer;
 }
 
-.login-container .message {
+/* Inputs */
+.popup input {
+  width: 100%;
+  display: block;
+  padding: 0.75rem;
+  opacity: 1;
+  visibility: visible;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  transform: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.popup button {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #572E54;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.popup button:hover {
+  background-color: #40203e;
+}
+
+
+/* Message */
+.message {
   margin-top: 1rem;
   font-weight: bold;
   color: red;
-  text-align: center;
+}
+
+/* Toggle text */
+.switch-text {
+  margin: 0.5rem 0 1rem 0;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.switch-text span {
+  color: #572E54;
+  font-weight: bold;
+  cursor: pointer;
+}
+@media screen and (max-width: 767px) {
+  .popup {
+    width: 90%;
+    padding: 1.5rem;
+    margin: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .popup input {
+    font-size: 0.95rem;
+    padding: 0.7rem;
+  }
+
+  .popup button {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .switch-text, .message {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .popup {
+    width: 90%;
+    padding: 1.5rem;
+    margin: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .popup input {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  .popup button {
+    padding: 0.7rem;
+    font-size: 0.95rem;
+  }
+
+  .message {
+    font-size: 0.9rem;
+  }
 }

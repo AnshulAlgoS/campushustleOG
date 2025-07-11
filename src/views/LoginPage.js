@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
+import './LoginPage.css';
+import { auth, db } from '../firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
-import { auth, db } from '../firebase';
-import './LoginPage.css';
 
-export default function LoginPage({ navigateTo }) {
-  const [isSignUp, setIsSignUp] = useState(false);
+export default function LoginPage({ navigateTo, onClose }) {
+  const [isSignUp, setIsSignUp] = useState(true);
+  const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [fName, setFName] = useState('');
-  const [lName, setLName] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
   const [message, setMessage] = useState('');
 
   const handleAuth = async () => {
-    if (!email || !password || (isSignUp && (!fName || !lName))) {
-      setMessage(' Please fill all required fields.');
+    if (!email || !password || (isSignUp && (!fullName || !repeatPassword))) {
+      setMessage('Please fill all fields.');
+      return;
+    }
+    if (isSignUp && password !== repeatPassword) {
+      setMessage('Passwords do not match.');
       return;
     }
 
@@ -22,11 +26,10 @@ export default function LoginPage({ navigateTo }) {
       if (isSignUp) {
         const res = await createUserWithEmailAndPassword(auth, email, password);
         await setDoc(doc(db, 'users', res.user.uid), {
-          firstName: fName,
-          lastName: lName,
+          fullName,
           email,
         });
-        setMessage('✅ Account created successfully!');
+        setMessage('✅ Account created!');
       } else {
         await signInWithEmailAndPassword(auth, email, password);
         setMessage('✅ Login successful!');
@@ -37,60 +40,72 @@ export default function LoginPage({ navigateTo }) {
         navigateTo('dashboard');
       }, 1500);
     } catch (err) {
-      if (err.code === 'auth/email-already-in-use') setMessage('❌ Email already in use');
-      else if (err.code === 'auth/invalid-email') setMessage('❌ Invalid email');
-      else if (err.code === 'auth/user-not-found') setMessage('❌ User not found');
-      else if (err.code === 'auth/wrong-password') setMessage('❌ Incorrect password');
-      else setMessage(`❌ ${err.message}`);
+      setMessage(`❌ ${err.message}`);
     }
   };
 
   return (
-    <div className="login-container">
-      <h2>{isSignUp ? 'Create Account' : 'Login'}</h2>
+    <div
+      className="overlay"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
+      }}
+    >
 
-      {isSignUp && (
-        <>
+      <div
+        className="popup"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className="close-btn" onClick={onClose}>×</button>
+        <h2>{isSignUp ? 'Register' : 'Login'}</h2>
+        <p className="switch-text">
+          {isSignUp ? 'Already registered?' : "Don't have an account?"}{' '}
+          <span onClick={() => setIsSignUp(!isSignUp)}>
+            {isSignUp ? 'Login here.' : 'Sign up here.'}
+          </span>
+        </p>
+
+        {isSignUp && (
           <input
             type="text"
-            placeholder="First Name"
-            value={fName}
-            onChange={(e) => setFName(e.target.value)}
+            placeholder="eg: Jone Doe"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
           />
+        )}
+
+        <input
+          type="email"
+          placeholder="eg: abc@xyz.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        {isSignUp && (
           <input
-            type="text"
-            placeholder="Last Name"
-            value={lName}
-            onChange={(e) => setLName(e.target.value)}
+            type="password"
+            placeholder="Enter your Password again"
+            value={repeatPassword}
+            onChange={(e) => setRepeatPassword(e.target.value)}
           />
-        </>
-      )}
+        )}
 
-      <input
-        type="email"
-        placeholder="Email Address"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+        <button onClick={handleAuth}>
+          {isSignUp ? 'Sign Up' : 'Sign In'}
+        </button>
 
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-
-      <button onClick={handleAuth}>
-        {isSignUp ? 'Sign Up' : 'Sign In'}
-      </button>
-
-      <p className="toggle" onClick={() => setIsSignUp(!isSignUp)}>
-        {isSignUp
-          ? 'Already have an account? Sign In'
-          : 'New here? Create an account'}
-      </p>
-
-      {message && <div className="message">{message}</div>}
+        {message && <div className="message">{message}</div>}
+      </div>
     </div>
   );
 }
+

@@ -165,7 +165,6 @@ header::before {
   left: 0;
   width: 100%;
   height: 70%;
-  background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
 
 
   z-index: -1;
@@ -174,10 +173,10 @@ header::before {
 
 .slideshow-container {
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 50%;
   width: 80%;
-  height: 450px;
+  height: 50vh;
   transform: translate(-50%, 0%);
   z-index: 0;
   overflow: hidden;
@@ -191,7 +190,8 @@ header::before {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: center top;
+  object-fit: cover;
+  object-position: top;
   opacity: 0;
   transform: scale(1);
   transition: opacity 1s ease-in-out, transform 10s ease-in-out;
@@ -341,7 +341,7 @@ input {
 .section-title {
   text-align: left;
   font-size: 50px;
-  margin-bottom: 40px;
+  margin-top: 0px;
   text-indent: 5%;
   font-family: 'Baloo Bhai 2', sans-serif;
 }
@@ -654,16 +654,11 @@ a.category-box .category-title {
   }
 
   header {
-    min-height: 80vh;
+    min-height: 30vh;
   }
 
-  .video-container {
-    width: 95vw;
-    height: 220px;
-    top: 60px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    border-radius: 10px;
+  .slideshow-container{
+    height: 40vh;
   }
 
   .video-overlay-text {
@@ -773,11 +768,6 @@ a.category-box .category-title {
 
 /* Mobile Phones (≤ 480px) */
 @media (max-width: 480px) {
-  .top-strip {
-    flex-direction: column;
-    padding: 8px 4px;
-    align-items: flex-start;
-  }
 
   .strip-logo {
     height: 36px;
@@ -790,9 +780,13 @@ a.category-box .category-title {
   }
 
   @media (max-width: 480px) {
+    .slideshow-container{
+      margin-top: 0px;
+    height: 40vh;
+  }
     .video-overlay-text {
       font-size: 3vw;
-      top: 380px;
+      top: 300px;
       padding: 0 10px;
       line-height: 1.3;
     }
@@ -800,7 +794,7 @@ a.category-box .category-title {
 
   @media (max-width: 480px) {
     .search-bar-wrapper {
-      margin-top: 480px;
+      margin-top: 380px;
       width: auto;
       padding: 0 10px;
     }
@@ -832,7 +826,7 @@ a.category-box .category-title {
 
   @media (max-width: 480px) {
     .tag-buttons-below {
-      margin-top: 18px;
+      margin-top: 10px;
       padding: 0 10px;
       gap: 6px;
       flex-wrap: wrap;

@@ -1,3 +1,4 @@
+// AuthModal.js
 import React, { useState, useEffect } from 'react';
 import './AuthModal.css';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
@@ -5,8 +6,6 @@ import { doc, setDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 
 export default function AuthModal({ onClose, onAuthSuccess }) {
-    console.log('AuthModal rendered');
-
     const [isSignUp, setIsSignUp] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -16,9 +15,7 @@ export default function AuthModal({ onClose, onAuthSuccess }) {
 
     useEffect(() => {
         document.body.classList.add('modal-open');
-        return () => {
-            document.body.classList.remove('modal-open');
-        };
+        return () => document.body.classList.remove('modal-open');
     }, []);
 
     const handleAuth = async (e) => {
@@ -46,82 +43,70 @@ export default function AuthModal({ onClose, onAuthSuccess }) {
         }
     };
 
-    const toggleMode = () => {
-        setIsSignUp(!isSignUp);
-        setMessage('');
-        setEmail('');
-        setPassword('');
-        setFName('');
-        setLName('');
-    };
+  return (
+  <div
+    className="auth-modal-overlay"
+    onPointerDown={(e) => {
+      if (e.target === e.currentTarget) {
+        e.preventDefault();
+        onClose();
+      }
+    }}
+  >
+    <form
+      className="auth-modal"
+      onPointerDown={(e) => e.stopPropagation()}
+      onSubmit={handleAuth}
+    >
+      <span className="close-btn" onClick={onClose}>×</span>
 
-    return (
-        <div className="auth-modal-overlay">
-            <form className="auth-modal" onSubmit={handleAuth}>
-                <span className="close-btn" onClick={onClose}>×</span>
+      <h2>{isSignUp ? 'Register' : 'Login'}</h2>
 
-                <h2>{isSignUp ? 'Register' : 'Login'}</h2>
+      {isSignUp && (
+        <>
+          <input
+            type="text"
+            placeholder="First Name"
+            value={fName}
+            onChange={(e) => setFName(e.target.value)}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={lName}
+            onChange={(e) => setLName(e.target.value)}
+            required
+          />
+        </>
+      )}
 
-                {isSignUp ? (
-                    <>
-                        <input
-                            type="text"
-                            placeholder="First Name"
-                            value={fName}
-                            onChange={(e) => setFName(e.target.value)}
-                            required
-                        />
-                        <input
-                            type="text"
-                            placeholder="Last Name"
-                            value={lName}
-                            onChange={(e) => setLName(e.target.value)}
-                            required
-                        />
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                    </>
-                ) : (
-                    <>
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                    </>
-                )}
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
 
-                <button type="submit">
-                    {isSignUp ? 'Sign Up' : 'Sign In'}
-                </button>
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
 
-                <p onClick={toggleMode} style={{ cursor: 'pointer', marginTop: '1rem' }}>
-                    {isSignUp ? 'Already have an account? Login' : "Don't have an account? Sign up"}
-                </p>
+      <button type="submit">
+        {isSignUp ? 'Sign Up' : 'Sign In'}
+      </button>
 
-                {message && <div className="message">{message}</div>}
-            </form>
-        </div>
-    );
+      <p className="switch-mode" onClick={() => setIsSignUp(!isSignUp)}>
+        {isSignUp ? 'Already have an account? Login' : "Don't have an account? Sign up"}
+      </p>
+
+      {message && <div className="message">{message}</div>}
+    </form>
+  </div>
+);
 }
