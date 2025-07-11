@@ -953,3 +953,131 @@ a.category-box .category-title {
     font-size: 11px;
   }
 }
+/* Scholarship Section on Homepage */
+.scholarship-home-section {
+  padding: 60px 40px;
+  background-color: #f3f0f4;
+  text-align: center;
+}
+
+.scholarship-heading-home {
+  font-size: 40px;
+  font-weight: 800;
+  color: #572E54;
+  margin-bottom: 10px;
+  font-family: 'Baloo Bhai 2', cursive;
+}
+
+.scholarship-intro-home {
+  font-size: 18px;
+  color: #5e4b56;
+  margin-bottom: 40px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Poppins', sans-serif;
+}
+
+.scholarship-cards-home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.scholarship-card-home {
+  background-color: #E5D6DD;
+  padding: 25px 20px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  max-width: 280px;
+  min-height: 240px;
+  flex: 1 1 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+}
+
+.scholarship-card-home h4 {
+  font-size: 20px;
+  color: #572E54;
+  margin-bottom: 10px;
+  font-family: 'Baloo Bhai 2', cursive;
+}
+
+.scholarship-card-home p {
+  font-size: 14px;
+  color: #3f2d39;
+  margin-bottom: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.scholarship-card-home button {
+  padding: 10px 16px;
+  background-color: #572E54;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.scholarship-card-home button:hover {
+  background-color: #3f2d39;
+}
+
+@media (max-width: 768px) {
+  .scholarship-heading-home {
+    font-size: 28px;
+  }
+
+  .scholarship-intro-home {
+    font-size: 16px;
+    padding: 0 15px;
+  }
+
+  .scholarship-cards-home {
+    gap: 20px;
+  }
+
+  .scholarship-card-home {
+    max-width: 90%;
+  }
+}
+.scholarship-heading-home {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.bold-highlight {
+  color: #000;
+  font-weight: 800;
+  background: linear-gradient(to right, #ffafbd, #ffc3a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bold-apply {
+  font-weight: bold;
+  color: #e91e63;
+}
+
+.apply-btn {
+  background: #ff6f61;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.apply-btn:hover {
+  background: #ff3d47;
+}
+
