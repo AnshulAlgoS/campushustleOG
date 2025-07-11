@@ -21,7 +21,7 @@ export default function CommunitySection() {
         <div className="stats">
           <div className="card" style={{ borderTop: '4px solid #ff416c' }}>
             <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Active Developers Icon" />
-            <p>Active Developers</p>
+            <p>Active Students</p>
           </div>
           <div className="card" style={{ borderTop: '4px solid #4caf50' }}>
             <img src="https://cdn-icons-png.flaticon.com/512/906/906175.png" alt="Hackathons Icon" />
@@ -29,11 +29,11 @@ export default function CommunitySection() {
           </div>
           <div className="card" style={{ borderTop: '4px solid #ffcc00' }}>
             <img src="https://cdn-icons-png.flaticon.com/512/4149/4149643.png" alt="Companies Participated Icon" />
-            <p>Companies Participated</p>
+            <p>Connected Startups</p>
           </div>
           <div className="card" style={{ borderTop: '4px solid #2196f3' }}>
             <img src="https://cdn-icons-png.flaticon.com/512/484/484167.png" alt="Countries Icon" />
-            <p>Countries</p>
+            <p>Top Contributors</p>
           </div>
         </div>
 
