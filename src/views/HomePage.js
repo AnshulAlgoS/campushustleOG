@@ -188,6 +188,43 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
           ))}
         </div>
       </section>
+munitySection />
+      </div>
+      {/* === Scholarships Section === */}
+<section className="scholarship-home-section" ref={scholarshipRef}>
+  <h2 className="scholarship-heading-home">
+    <span className="light-text">Apply for </span>
+    <span className="bold-highlight">Best Scholarships 🎓</span>
+  </h2>
+
+  <p className="scholarship-intro-home">
+    Unlock your true potential with exclusive scholarships tailored for <strong>young innovators, leaders, and coders</strong>.<br />
+    <span className="bold-apply">Apply now</span> and give your dreams the wings they deserve. Don’t let financial constraints hold you back!
+  </p>
+
+  <div className="scholarship-cards-home">
+    <div className="scholarship-card-home">
+      <h4>💡 Tech Spark Award</h4>
+      <p>For students excelling in open-source & innovation challenges.</p>
+      <button className="apply-btn">Apply</button>
+    </div>
+    <div className="scholarship-card-home">
+      <h4>🚀 HackStar Scholarship</h4>
+      <p>Recognizing top performers in student-led hackathons.</p>
+      <button className="apply-btn">Apply</button>
+    </div>
+    <div className="scholarship-card-home">
+      <h4>👩‍💻 Women in Tech Grant</h4>
+      <p>Empowering girls in tech to lead and innovate fearlessly.</p>
+      <button className="apply-btn">Apply</button>
+    </div>
+    <div className="scholarship-card-home">
+      <h4>🌟 Future Leaders Fund</h4>
+      <p>For students showing leadership in tech communities.</p>
+      <button className="apply-btn">Apply</button>
+    </div>
+  </div>
+</section>
 
       {/* Community Section */}
       <div ref={communityRef}>
