@@ -1,12 +1,21 @@
+/*gradient background */
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #bb7ed9, #ffffff); 
+  font-family: "Poppins", sans-serif;
+}
+
 .guidelines-container {
   display: flex;
   flex-direction: row;
   gap: 3rem;
   padding: 3rem;
-  background: #f5f5fa;
-  font-family: "Poppins", sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* White cards */
 .guidelines-left, .guidelines-right {
   flex: 1;
   background-color: #fff;
@@ -15,12 +24,14 @@
   box-shadow: 0 6px 16px rgba(103, 58, 183, 0.1);
 }
 
+/* Headings */
 .guidelines-left h2, .guidelines-right h2 {
-  color:#572E54;
+  color: #572E54;
   font-size: 1.7rem;
   margin-bottom: 1rem;
 }
 
+/* List styles */
 .guidelines-left ul, .guidelines-right ul {
   list-style-type: none;
   padding-left: 0;
@@ -40,6 +51,7 @@
   background-color: #a068a8b5;
 }
 
+/* Help paragraph */
 .guidelines-right p {
   background-color: #fef3c7;
   padding: 1rem;
@@ -48,3 +60,4 @@
   font-size: 1rem;
   margin-top: 2rem;
 }
+
