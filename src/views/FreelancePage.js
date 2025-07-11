@@ -14,64 +14,6 @@ const FreelancePage = ({ user, navigateTo, handleLogout, openAuthModal, onProfil
       <div className="top-strip">
         <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
 
-        {/* Desktop Nav */}
-        <nav className="navbar-desktop">
-          <ul className="strip-nav">
-            <li><a href="#" onClick={() => navigateTo('')}>Home</a></li>
-            <li><a href="#" onClick={() => navigateTo('freelance')}>Freelance</a></li>
-            <li><a href="#" onClick={() => navigateTo('hackathon')}>Hackathons</a></li>
-            <li><a href="#" onClick={() => navigateTo('')}>Community</a></li>
-            <li><a href="#">About Us</a></li>
-            <li>
-              {user ? (
-                <UserMenu user={user} onLogout={handleLogout} onProfileClick={onProfileClick} />
-              ) : (
-                <a
-                  href="#"
-                  className="signup"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    openAuthModal();
-                  }}
-                >
-                  Get Started
-                </a>
-              )}
-            </li>
-          </ul>
-        </nav>
-
-        {/* Mobile Nav */}
-        <div className="navbar-mobile">
-          <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
-          {menuOpen && (
-            <ul className={`mobile-nav ${menuOpen ? 'open' : ''}`}>
-              <li><a href="#" onClick={() => navigateTo('')}>Home</a></li>
-              <li><a href="#" onClick={() => navigateTo('freelance')}>Freelance</a></li>
-              <li><a href="#" onClick={() => navigateTo('hackathon')}>Hackathons</a></li>
-              <li><a href="#">Community</a></li>
-              <li><a href="#">About Us</a></li>
-              <li>
-                {user ? (
-                  <UserMenu user={user} onLogout={handleLogout} onProfileClick={onProfileClick} />
-                ) : (
-                  <a
-                    href="#"
-                    className="signup"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      openAuthModal();
-                    }}
-                  >
-                    Get Started
-                  </a>
-                )}
-              </li>
-            </ul>
-          )}
-        </div>
-      </div>
-
       {/* ✅ Page Content */}
       <h1 className="freelance-title">Freelance Opportunities</h1>
 
