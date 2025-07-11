@@ -112,8 +112,7 @@ const FreelancePage = ({ user }) => {
 
   return (
     <div className="freelance-page">
-    
-      {/* ✅ Gigs Content */}
+     {/* ✅ Gigs Content */}
       <div className="webdev-page">
         <h1>Web Development Gigs</h1>
         <div className="gig-grid">
