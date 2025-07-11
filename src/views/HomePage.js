@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './HomePage.css';
@@ -38,13 +37,13 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
     }, 3000);
     return () => clearInterval(interval);
   }, []);
-
   useEffect(() => {
     testimonialInterval.current = setInterval(() => {
       handleTestimonialScroll('right');
     }, 5000);
     return () => clearInterval(testimonialInterval.current);
   }, [activeTestimonial]);
+
 
   const handleCategoryClick = (title) => {
     if (title === 'Hackathons') {
@@ -53,7 +52,6 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
       communityRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
   const testimonials = [
     { name: 'Mahira', image: mahiraImg, text: `I can't speak highly enough about CampusHustle! The platform is intuitive and easy to navigate, and the content quality is exceptional.` },
     { name: 'Avanya', image: avanyaImg, text: `This platform truly elevated my learning experience. Highly recommend to all students.` },
@@ -80,69 +78,59 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
     handleTestimonialScroll(dir);
   };
 
+
   return (
     <>
       {/* Top Strip */}
       <div className="top-strip">
-        <img src={logo} alt="Campus Link Logo" className="strip-logo" />
+  <img src={logo} alt="Campus Link Logo" className="strip-logo" />
 
-        {/* ✅ Desktop Nav */}
-        <nav className="navbar-desktop">
-          <ul className="strip-nav">
-            <li><Link to="/">Home</Link></li>
-            <li><a href="#">Freelance</a></li>
-            <li><a href="#">Hackathons</a></li>
-            <li><a href="#">Community</a></li>
-            <li><Link to="/about">About Us</Link></li>
-            <li>
-              {user ? (
-                <UserMenu user={user} onLogout={handleLogout} onProfileClick={onProfileClick} />
-              ) : (
-                <a
-                  href="#"
-                  className="signup"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    openAuthModal();
-                  }}
-                >
-                  Get Started
-                </a>
-              )}
-            </li>
-          </ul>
-        </nav>
+  {/* ✅ Desktop Nav */}
+  <nav className="navbar-desktop">
+    <ul className="strip-nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Freelance</a></li>
+      <li><a href="#">Hackathons</a></li>
+      <li><a href="#">Community</a></li>
+      <li><a href="#">About Us</a></li>
+      <li>
+        {user ? (
+          <UserMenu user={user} onLogout={handleLogout} onProfileClick={onProfileClick} />
+        ) : (
+          <a href="#" className="signup" onClick={(e) => { e.preventDefault(); openAuthModal(); }}>
+            Get Started
+          </a>
+        )}
+      </li>
+    </ul>
+  </nav>
 
-        {/* ✅ Mobile Nav */}
-        <div className="navbar-mobile">
-          <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
-          {menuOpen && (
-            <ul className="mobile-nav open">
-              <li><Link to="/">Home</Link></li>
-              <li><a href="#">Freelance</a></li>
-              <li><a href="#">Hackathons</a></li>
-              <li><a href="#">Community</a></li>
-              <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link></li>
-              <li>
-                {user ? (
-                  <UserMenu user={user} onLogout={handleLogout} onProfileClick={onProfileClick} />
-                ) : (
-                  <a
-                    href="#"
-                    className="signup"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      openAuthModal();
-                    }}
-                  >
-                    Get Started
-                  </a>
-                )}
-              </li>
-            </ul>
+  {/* ✅ Mobile Nav */}
+  <div className="navbar-mobile">
+    <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+    {menuOpen && (
+      <ul className={`mobile-nav ${menuOpen ? 'open' : ''}`}>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Freelance</a></li>
+      <li><a href="#">Hackathons</a></li>
+      <li><a href="#">Community</a></li>
+      <li><a href="#">About Us</a></li>
+        <li>
+          {user ? (
+            <UserMenu user={user} onLogout={handleLogout} onProfileClick={onProfileClick} />
+          ) : (
+            <a href="#" className="signup" onClick={(e) => { e.preventDefault(); openAuthModal(); }}>
+              Get Started
+            </a>
           )}
-        </div>
-      </div>
+        </li>
+      </ul>
+    )}
+  </div>
+</div>
+
+
+
 
       {/* Hero Section */}
       <header>
@@ -157,17 +145,17 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
           ))}
         </div>
 
+
+
         <div className="video-overlay-text">
           <h1>Campus Hustle – Where<br />Hustlers Hangout</h1>
         </div>
-
         <div className="search-bar-wrapper">
           <form>
             <input type="search" placeholder="Search our services ..." />
             <i className="fa fa-search"></i>
           </form>
         </div>
-
         <div className="tag-buttons-below">
           <button className="tag-button">Freelance</button>
           <button className="tag-button">Budget Planner</button>
@@ -205,15 +193,22 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
       </div>
 
       {/* Testimonials Section */}
+      {/* Testimonials Section */}
       <section className="testimonials-section">
         <h2>What Our Users Say</h2>
 
         <div className="testimonial-carousel">
-          <button onClick={() => handleManualClick('left')} className="arrow-btn left">
+          <button
+            onClick={() => handleManualClick('left')}
+            className="arrow-btn left"
+          >
             <ChevronLeft size={24} />
           </button>
 
-          <div ref={testimonialRef} className="testimonial-scroll-container">
+          <div
+            ref={testimonialRef}
+            className="testimonial-scroll-container"
+          >
             {testimonials.map((t, index) => (
               <div key={index} className="testimonial-card">
                 <p>“{t.text}”</p>
@@ -225,17 +220,24 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
             ))}
           </div>
 
-          <button onClick={() => handleManualClick('right')} className="arrow-btn right">
+          <button
+            onClick={() => handleManualClick('right')}
+            className="arrow-btn right"
+          >
             <ChevronRight size={24} />
           </button>
         </div>
 
         <div className="testimonial-dots">
           {testimonials.map((_, i) => (
-            <span key={i} className={i === activeTestimonial ? 'active' : ''} />
+            <span
+              key={i}
+              className={i === activeTestimonial ? 'active' : ''}
+            />
           ))}
         </div>
       </section>
+
 
       {/* Footer */}
       <footer>
