@@ -1,0 +1,104 @@
+/* src/styles/About.css */
+
+.hero-section {
+  height: 100vh;
+  background-image: url('../assets/images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: white;
+  animation: pulse 2s infinite;
+}
+
+.hero-tagline {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: white;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.intro {
+  padding: 2rem;
+  background: white;
+  color: #333;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+.dev-section {
+  background: #f3f4f6;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.dev-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.dev-card {
+  background: white;
+  border-radius: 20px;
+  padding: 1.5rem;
+  width: 250px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.dev-card:hover {
+  transform: scale(1.05);
+}
+
+.dev-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.dev-name {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.dev-role {
+  color: gray;
+  font-size: 0.9rem;
+}
+
+.mission {
+  background: white;
+  padding: 3rem 1rem;
+  text-align: center;
+  color: #444;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}

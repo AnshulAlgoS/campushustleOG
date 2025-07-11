@@ -1,18 +1,20 @@
-// src/App.js
+ // src/App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from './firebase';
-import ExploreHackathonsPage from './views/ExploreHackathonsPage';
-import Guidelines from './views/Guidelines';
 
+// Pages
 import HomePage from './views/HomePage';
 import HackathonPage from './views/HackathonPage';
-import AuthModal from './components/AuthModal';
+import ExploreHackathonsPage from './views/ExploreHackathonsPage';
+import Guidelines from './views/Guidelines';
 import ProfilePage from './views/ProfilePage';
 import DashboardPage from './views/dashboard';
 import ProfileHub from './views/ProfileHub';
-//  Actual logic inside component that is inside <Router>
+import About from './views/About'; // ✅ Add this
+import AuthModal from './components/AuthModal';
+
 function InnerApp() {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [user, setUser] = useState(null);
@@ -59,15 +61,12 @@ function InnerApp() {
         />
 
         <Route path="/hackathon" element={<HackathonPage navigateTo={(page) => navigate(`/${page}`)} />} />
-
+        <Route path="/explore-hackathons" element={<ExploreHackathonsPage />} />
+        <Route path="/participation-guidelines" element={<Guidelines />} />
+        <Route path="/about" element={<About />} /> {/* ✅ About page route added */}
         <Route path="/profile" element={<ProfilePage user={user} navigateTo={(page) => navigate(`/${page}`)} handleLogout={handleLogout} />} />
-
         <Route path="/dashboard" element={<DashboardPage user={user} onNavigate={(page) => navigate(`/${page}`)} />} />
 
-        <Route path="/explore-hackathons" element={<ExploreHackathonsPage />} />
-
-        <Route path="/participation-guidelines" element={<Guidelines />} />
-      
         <Route
           path="/profile-hub"
           element={
@@ -81,14 +80,12 @@ function InnerApp() {
       </Routes>
 
       {showAuthModal && (
-        <AuthModal
-          onClose={closeAuthModal}
-          onAuthSuccess={handleAuthSuccess}
-        />
+        <AuthModal onClose={closeAuthModal} onAuthSuccess={handleAuthSuccess} />
       )}
     </>
   );
 }
+
 export default function App() {
   return (
     <Router>
