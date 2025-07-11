@@ -9,11 +9,6 @@ const FreelancePage = ({ user, navigateTo, handleLogout, openAuthModal, onProfil
 
   return (
     <div className="freelance-page">
-
-      {/* ✅ Top Strip */}
-      <div className="top-strip">
-        <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
-
       {/* ✅ Page Content */}
       <h1 className="freelance-title">Freelance Opportunities</h1>
 
