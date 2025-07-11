@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './HomePage.css';
-import slide1 from '../assets/images/img1.png';
-import slide2 from '../assets/images/img2.png';
-import slide3 from '../assets/images/img3.png';
-import slide4 from '../assets/images/img4.png';
-import slide5 from '../assets/images/img5.png';
+import slide1 from '../assets/images/img1.jpg';
+import slide2 from '../assets/images/img2.jpg';
+import slide3 from '../assets/images/img3.jpg';
+import slide4 from '../assets/images/img4.jpg';
+import slide5 from '../assets/images/img5.jpg';
 import logo from '../assets/images/CL1.png';
 import footerLogo from '../assets/images/CL2.png';
 import freelanceGif from '../assets/images/freelance.gif';
@@ -22,9 +23,14 @@ import CommunitySection from './community';
 
 const slides = [slide1, slide2, slide3, slide4, slide5];
 
+
 const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClick }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const communityRef = useRef(null);
+  const testimonialRef = useRef(null);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const testimonialInterval = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -32,6 +38,13 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
     }, 3000);
     return () => clearInterval(interval);
   }, []);
+  useEffect(() => {
+    testimonialInterval.current = setInterval(() => {
+      handleTestimonialScroll('right');
+    }, 5000);
+    return () => clearInterval(testimonialInterval.current);
+  }, [activeTestimonial]);
+
 
   const handleCategoryClick = (title) => {
     if (title === 'Hackathons') {
@@ -40,37 +53,85 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
       communityRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   };
+  const testimonials = [
+    { name: 'Mahira', image: mahiraImg, text: `I can't speak highly enough about CampusHustle! The platform is intuitive and easy to navigate, and the content quality is exceptional.` },
+    { name: 'Avanya', image: avanyaImg, text: `This platform truly elevated my learning experience. Highly recommend to all students.` },
+    { name: 'Gourika', image: gourikaImg, text: `great peer group, experienced mentors, hackathons — everything in one place.` },
+    { name: 'Anshul', image: anshulImg, text: `The UI is clean and responsive. Great work by the CampusHustle team!` },
+  ];
+
+  const scrollToTestimonial = (index) => {
+    const container = testimonialRef.current;
+    const cardWidth = container.children[0].offsetWidth + 24;
+    container.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+    setActiveTestimonial(index);
+  };
+
+  const handleTestimonialScroll = (dir) => {
+    let newIndex = activeTestimonial + (dir === 'right' ? 1 : -1);
+    if (newIndex >= testimonials.length) newIndex = 0;
+    if (newIndex < 0) newIndex = testimonials.length - 1;
+    scrollToTestimonial(newIndex);
+  };
+
+  const handleManualClick = (dir) => {
+    clearInterval(testimonialInterval.current);
+    handleTestimonialScroll(dir);
+  };
+
 
   return (
     <>
       {/* Top Strip */}
       <div className="top-strip">
-        <img src={logo} alt="Campus Link Logo" className="strip-logo" />
-        <ul className="strip-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Freelance</a></li>
-          <li><a href="#">Hackathons</a></li>
-          <li><a href="#">Mentorship</a></li>
-          <li><a href="#">Events</a></li>
-          <li><a href="#">Dashboard</a></li>
-          <li>
-            {user ? (
-              <UserMenu user={user} onLogout={handleLogout} onProfileClick={onProfileClick} />
-            ) : (
-              <a
-                href="#"
-                className="signup"
-                onClick={(e) => {
-                  e.preventDefault();
-                  openAuthModal();
-                }}
-              >
-                Get Started
-              </a>
-            )}
-          </li>
-        </ul>
-      </div>
+  <img src={logo} alt="Campus Link Logo" className="strip-logo" />
+
+  {/* ✅ Desktop Nav */}
+  <nav className="navbar-desktop">
+    <ul className="strip-nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Freelance</a></li>
+      <li><a href="#">Hackathons</a></li>
+      <li><a href="#">Community</a></li>
+      <li><a href="#">About Us</a></li>
+      <li>
+        {user ? (
+          <UserMenu user={user} onLogout={handleLogout} onProfileClick={onProfileClick} />
+        ) : (
+          <a href="#" className="signup" onClick={(e) => { e.preventDefault(); openAuthModal(); }}>
+            Get Started
+          </a>
+        )}
+      </li>
+    </ul>
+  </nav>
+
+  {/* ✅ Mobile Nav */}
+  <div className="navbar-mobile">
+    <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+    {menuOpen && (
+      <ul className={`mobile-nav ${menuOpen ? 'open' : ''}`}>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Freelance</a></li>
+      <li><a href="#">Hackathons</a></li>
+      <li><a href="#">Community</a></li>
+      <li><a href="#">About Us</a></li>
+        <li>
+          {user ? (
+            <UserMenu user={user} onLogout={handleLogout} onProfileClick={onProfileClick} />
+          ) : (
+            <a href="#" className="signup" onClick={(e) => { e.preventDefault(); openAuthModal(); }}>
+              Get Started
+            </a>
+          )}
+        </li>
+      </ul>
+    )}
+  </div>
+</div>
+
+
+
 
       {/* Hero Section */}
       <header>
@@ -88,7 +149,7 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
 
 
         <div className="video-overlay-text">
-          <h1>Campus Link – Where<br />Hustlers Hangout</h1>
+          <h1>Campus Hustle – Where<br />Hustlers Hangout</h1>
         </div>
         <div className="search-bar-wrapper">
           <form>
@@ -132,21 +193,52 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
         <CommunitySection />
       </div>
 
-      {/* Team */}
-      <section className="team-members">
-        <h2>Our Team Members</h2>
-        <div className="team-boxes">
-          {[{ src: anshulImg, name: 'ANSHUL SAXENA', circle: 'photo-circle1' }, { src: avanyaImg, name: 'AVANYA SHARMA', circle: 'photo-circle' }, { src: mahiraImg, name: 'MAHIRA KHAN', circle: 'photo-circle2' }, { src: gourikaImg, name: 'GOURIKA BUDHIRAJA', circle: 'photo-circle' }].map((member, index) => (
-            <div className="team-box" key={index}>
-              <div className={member.circle}>
-                <img src={member.src} alt={member.name} />
+      {/* Testimonials Section */}
+      {/* Testimonials Section */}
+      <section className="testimonials-section">
+        <h2>What Our Users Say</h2>
+
+        <div className="testimonial-carousel">
+          <button
+            onClick={() => handleManualClick('left')}
+            className="arrow-btn left"
+          >
+            <ChevronLeft size={24} />
+          </button>
+
+          <div
+            ref={testimonialRef}
+            className="testimonial-scroll-container"
+          >
+            {testimonials.map((t, index) => (
+              <div key={index} className="testimonial-card">
+                <p>“{t.text}”</p>
+                <div className="testimonial-user">
+                  <img src={t.image} alt={t.name} />
+                  <span>{t.name}</span>
+                </div>
               </div>
-              <h3>{member.name}</h3>
-              <p>Dr Akhilesh Das Gupta Institute Of Professional Studies</p>
-            </div>
+            ))}
+          </div>
+
+          <button
+            onClick={() => handleManualClick('right')}
+            className="arrow-btn right"
+          >
+            <ChevronRight size={24} />
+          </button>
+        </div>
+
+        <div className="testimonial-dots">
+          {testimonials.map((_, i) => (
+            <span
+              key={i}
+              className={i === activeTestimonial ? 'active' : ''}
+            />
           ))}
         </div>
       </section>
+
 
       {/* Footer */}
       <footer>

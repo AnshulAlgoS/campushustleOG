@@ -18,14 +18,14 @@ import img8 from '../assets/images/h2.jpeg';
 
 const fakeHackathons = [
   {
-    name: 'hackathon 1',
+    name: 'Code;Without Barriers Hackathon',
     image: img1,
     start: '2025-07-15',
     end: '2025-08-15',
     status: 'open'
   },
   {
-    name: 'hackathon 2',
+    name: 'Innovatrix',
     image: img2,
     start: '2025-06-30',
     end: '2025-07-17',
@@ -46,7 +46,7 @@ const fakeHackathons = [
     status: 'closed'
   },
   {
-    name: 'HACKMANIA',
+    name: 'Code',
     image: img5,
     start: '2025-05-01',
     end: '2025-05-18',
