@@ -29,7 +29,7 @@ const Guidelines = () => {
           <li> Must be a current college or university student.</li>
           <li> Open to Indian residents unless stated otherwise.</li>
           <li> Use a valid email address for communication.</li>
-          <li> Minimum age: 18 years.</li>
+          <li> Minimum age: 17 years.</li>
         </ul>
 
         <h2>Need Help?</h2>
