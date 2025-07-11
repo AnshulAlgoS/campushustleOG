@@ -12,7 +12,7 @@ import AuthModal from './components/AuthModal';
 import ProfilePage from './views/ProfilePage';
 import DashboardPage from './views/dashboard';
 import ProfileHub from './views/ProfileHub';
-// ✅ Actual logic inside component that is inside <Router>
+//  Actual logic inside component that is inside <Router>
 function InnerApp() {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [user, setUser] = useState(null);
@@ -65,6 +65,8 @@ function InnerApp() {
         <Route path="/dashboard" element={<DashboardPage user={user} onNavigate={(page) => navigate(`/${page}`)} />} />
 
         <Route path="/explore-hackathons" element={<ExploreHackathonsPage />} />
+
+        <Route path="/participation-guidelines" element={<Guidelines />} />
       
         <Route
           path="/profile-hub"
