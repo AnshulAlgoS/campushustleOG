@@ -24,7 +24,9 @@ const HackathonPage = () => {
       {/* Hackathon Buttons */}
       <div className="hackathon-buttons">
         <button className="hack-btn">Organise a Hackathon</button>
-        <button className="hack-btn">Participate as a Hacker</button>
+        <Link to="/participation-guidelines">
+          <button className="hack-btn">Participation Guidelines</button>
+        </Link>
         <Link to="/explore-hackathons">
           <button className="hack-btn">Explore Hackathons</button>
         </Link>
