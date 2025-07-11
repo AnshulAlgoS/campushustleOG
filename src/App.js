@@ -7,7 +7,6 @@ import { auth } from './firebase';
 // Pages
 import HomePage from './views/HomePage';
 import HackathonPage from './views/HackathonPage';
-import OrganiseHackathon from "./views/OrganiseHackathon";
 import ExploreHackathonsPage from './views/ExploreHackathonsPage';
 import Guidelines from './views/Guidelines';
 import ProfilePage from './views/ProfilePage';
