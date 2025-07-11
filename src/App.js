@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from './firebase';
 import ExploreHackathonsPage from './views/ExploreHackathonsPage';
+import Guidelines from './views/Guidelines';
 
 import HomePage from './views/HomePage';
 import HackathonPage from './views/HackathonPage';
