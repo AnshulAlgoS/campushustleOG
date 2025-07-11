@@ -5,7 +5,7 @@
 }
 
 .section h3 {
-  color: #00aaff;
+  color: #b55be2;
   font-size: 14px;
   letter-spacing: 2px;
   margin-bottom: 10px;
@@ -70,7 +70,7 @@
 .btn {
   display: inline-block;
   padding: 12px 25px;
-  background: #00aaff;
+  background: #cd6fe4;
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
@@ -81,7 +81,7 @@
 }
 
 .btn:hover {
-  background: #008ecc;
+  background: #d690ea;
 }
 
 /* Popup */
@@ -91,7 +91,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background: #ffffff;
-  border: 2px solid #00aaff;
+  border: 2px solid hsl(270, 78%, 62%);
   border-radius: 12px;
   padding: 30px 20px;
   z-index: 1000;
@@ -107,7 +107,7 @@
 }
 
 .popup button {
-  background-color: #00aaff;
+  background-color: #cb60ec;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -118,7 +118,7 @@
 }
 
 .popup button:hover {
-  background-color: #008ecc;
+  background-color: #cd57e1;
 }
 
 /* Overlay */
