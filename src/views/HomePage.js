@@ -46,11 +46,13 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
 
 
   const handleCategoryClick = (title) => {
-    if (title === 'Hackathons') {
-      navigateTo('hackathon');
-    } else if (title === 'Community') {
-      communityRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }
+   if (title === 'Hackathons') {
+  navigateTo('hackathon');
+} else if (title === 'Freelance') {
+  navigateTo('freelance');
+} else if (title === 'Community') {
+  communityRef.current?.scrollIntoView({ behavior: 'smooth' });
+}
   };
   const testimonials = [
     { name: 'Mahira', image: mahiraImg, text: `I can't speak highly enough about CampusHustle! The platform is intuitive and easy to navigate, and the content quality is exceptional.` },
