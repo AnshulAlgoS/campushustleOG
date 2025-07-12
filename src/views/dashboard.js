@@ -44,24 +44,24 @@ export default function DashboardPage({ user }) {
 
   return (
     <div className="dashboard-content">
-      <h2>📊 Your Dashboard</h2>
+      <h2> Your Dashboard</h2>
       <p>Quick overview of your activity on CampusHustle</p>
 
       <div className="dashboard-widgets">
         <div className="widget-card">
-          <h3>🔥 Freelance Gigs</h3>
+          <h3> Freelance Gigs</h3>
           <p>{counts.gigsApplied}</p>
         </div>
         <div className="widget-card">
-          <h3>💡 Hackathons Registered</h3>
+          <h3>Hackathons Registered</h3>
           <p>{counts.hackathonsEnrolled}</p>
         </div>
         <div className="widget-card">
-          <h3>🛠️ Hackathons Organized</h3>
+          <h3> Hackathons Organized</h3>
           <p>{counts.hackathonsOrganized}</p>
         </div>
         <div className="widget-card">
-          <h3>🎯 Mentorships</h3>
+          <h3> Mentorships</h3>
           <p>{counts.mentorshipsActive}</p>
         </div>
       </div>
