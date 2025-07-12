@@ -24,19 +24,18 @@ const About = () => {
   return (
     <div>
 
-      <section className="hero-section">
-  <div className="hero-left">
-    <h1 className="hero-heading">Campus Hustle</h1>
-    <p className="hero-tagline">where hustlers hangout</p>
-  </div>
-  <div className="hero-right">
-    <img src="/assets/images/your-image.png" alt="Campus Illustration" className="hero-image" />
-  </div>
-</section>
+      {/* === Hero Section === */}
+      <section className="hero-section-two-col">
+        <div className="hero-left-text">
+          <h1 className="hero-title">Campus Hustle</h1>
+          <p className="hero-tagline">where hustlers hangout</p>
+        </div>
+        <div className="hero-right-image">
+          <img src={bg} alt="Campus Illustration" />
+        </div>
+      </section>
 
-
-
-      {/* Features Section */}
+      {/* === Features Section === */}
       <section className="features-section">
         <h2 style={{ fontSize: '2rem', marginBottom: '2rem', color: '#222' }}> Our Features</h2>
         <div className="features-wrapper">
@@ -65,7 +64,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Intro Paragraph */}
+      {/* === Intro Paragraph === */}
       <section className="intro">
         <p>
           From college desks to dorm room dreams, <br />
@@ -75,7 +74,7 @@ const About = () => {
         </p>
       </section>
 
-      {/* Developer Section */}
+      {/* === Developer Section === */}
       <section className="dev-section">
         <h2 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Meet the Developers</h2>
         <div className="dev-grid">
@@ -89,7 +88,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Mission Section */}
+      {/* === Mission Section === */}
       <section className="mission">
         <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Our Mission</h2>
         <p>
@@ -106,3 +105,4 @@ const About = () => {
 };
 
 export default About;
+
