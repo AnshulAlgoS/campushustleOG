@@ -284,23 +284,40 @@ else if(title === 'Scholarship'){
 
       {/* Footer */}
       <footer>
-        <span className="footer-container">
-          <span className="footer-logo">
-            <img src={footerLogo} alt="Logo" />
-            <h2>CampusHustle</h2>
-          </span>
-          {[{ title: 'Company', links: ['About Us', 'Careers', 'Press'] }, { title: 'Quick Links', links: ['Home', 'Services', 'Contact'] }, { title: 'Support', links: ['Help Center', 'Privacy Policy', 'Terms & Conditions'] }].map((section, index) => (
-            <span className="footer-column" key={index}>
-              <h4>{section.title}</h4>
-              <ul>
-                {section.links.map((link, i) => (
-                  <li key={i}><a href="#">{link}</a></li>
-                ))}
-              </ul>
-            </span>
-          ))}
-        </span>
-      </footer>
+  <span className="footer-container">
+    <span className="footer-logo">
+      <img src={footerLogo} alt="Logo" />
+      <h2>CampusHustle</h2>
+    </span>
+    <span className="footer-column">
+      <h4>Company</h4>
+      <ul>
+        <li><Link to="/about">About Us</Link></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </span>
+    <span className="footer-column">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><Link to="/freelance">Freelance</Link></li>
+        <li><a href="#" onClick={(e) => { e.preventDefault(); communityRef.current?.scrollIntoView({ behavior: 'smooth' }); }}>Community</a></li>
+        <li><Link to="/hackathon">Hackathon</Link></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </span>
+    <span className="footer-column">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+      </ul>
+    </span>
+  </span>
+</footer>
+
       </div>
     </>
   );
