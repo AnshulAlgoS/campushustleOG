@@ -15,12 +15,11 @@ import img6 from '../assets/images/h6.jpeg';
 import img7 from '../assets/images/h7.jpeg';
 import img8 from '../assets/images/h2.jpeg';
 
-
 const fakeHackathons = [
   {
-    name: 'Code;Without Barriers Hackathon',
+    name: 'Codex Hackathon',
     image: img1,
-    start: '2025-07-15',
+    start: '2025-07-12',
     end: '2025-08-15',
     status: 'open'
   },
@@ -33,7 +32,7 @@ const fakeHackathons = [
   },
   {
     name: 'Hackathon India',
-    image: img3,
+    image: img7,
     start: '2025-05-14',
     end: '2025-07-02',
     status: 'open'
@@ -74,47 +73,47 @@ const fakeHackathons = [
     status: 'closed'
   },
   {
-      name: 'Hackathon India',
-      image: img3,
-      start: '2025-05-14',
-      end: '2025-07-02',
-      status: 'open',
-    },
-    {
-      name: 'AgriTech Hack',
-      image: img4,
-      start: '2025-05-05',
-      end: '2025-05-20',
-      status: 'closed',
-    },
-    {
-      name: 'HACKMANIA',
-      image: img5,
-      start: '2025-05-01',
-      end: '2025-05-18',
-      status: 'closed',
-    },
-    {
-      name: 'SSoC 2025',
-      image: img6,
-      start: '2025-04-29',
-      end: '2025-06-10',
-      status: 'closed',
-    },
-    {
-      name: 'HACK ARYA VERSE',
-      image: img7,
-      start: '2025-04-24',
-      end: '2025-04-27',
-      status: 'closed',
-    },
-    {
-      name: 'IMPACTECH-2K25',
-      image: img8,
-      start: '2025-03-28',
-      end: '2025-04-04',
-      status: 'closed',
-    },
+    name: 'Hackathon India',
+    image: img3,
+    start: '2025-05-14',
+    end: '2025-07-02',
+    status: 'open',
+  },
+  {
+    name: 'AgriTech Hack',
+    image: img4,
+    start: '2025-05-05',
+    end: '2025-05-20',
+    status: 'closed',
+  },
+  {
+    name: 'HACKMANIA',
+    image: img5,
+    start: '2025-05-01',
+    end: '2025-05-18',
+    status: 'closed',
+  },
+  {
+    name: 'SSoC 2025',
+    image: img6,
+    start: '2025-04-29',
+    end: '2025-06-10',
+    status: 'closed',
+  },
+  {
+    name: 'HACK ARYA VERSE',
+    image: img7,
+    start: '2025-04-24',
+    end: '2025-04-27',
+    status: 'closed',
+  },
+  {
+    name: 'IMPACTECH-2K25',
+    image: img8,
+    start: '2025-03-28',
+    end: '2025-04-04',
+    status: 'closed',
+  },
 ];
 
 const ExploreHackathonsPage = () => {
@@ -126,7 +125,7 @@ const ExploreHackathonsPage = () => {
 
   return (
     <div className="hackathon-list-page">
-      {/*original nav bar*/}
+      {/* Nav Bar */}
       <div className="top-strip translucent-strip">
         <img src={logo} alt="Campus Link Logo" className="strip-logo" />
         <ul className="strip-nav">
@@ -141,6 +140,7 @@ const ExploreHackathonsPage = () => {
         </ul>
       </div>
 
+      {/* Search Bar */}
       <div className="search-header">
         <h2>All Hackathons</h2>
         <input
@@ -152,19 +152,33 @@ const ExploreHackathonsPage = () => {
         />
       </div>
 
-
-      {/* Hackathon Cards */}
+      {/* Hackathon Grid */}
       <div className="hackathon-grid">
         {filteredHackathons.map((hack, index) => (
           <div className="hackathon-card" key={index}>
             <img src={hack.image} alt={hack.name} className="card-image" />
-            <h3 style={{ color: '#5c3c6e' }}>{hack.name}</h3>
-            <p style={{ color: '#008CFF', fontWeight: 'bold' }}>Registration Start:</p>
+            <h3>{hack.name}</h3>
+            <p className="start-label">Registration Start:</p>
             <p>{hack.start}</p>
-            <p style={{ color: '#008CFF', fontWeight: 'bold' }}>Registration End:</p>
+            <p className="end-label">Registration End:</p>
             <p>{hack.end}</p>
+
             <p style={{ fontWeight: 'bold' }}>
-              {hack.status === 'open' ? 'Register Now →' : 'Registration Closed '}
+              {hack.status === 'open' ? (
+                <Link
+                  to="/register"
+                  state={{ hackathon: hack }}
+                  style={{
+                    color: '#008CFF',
+                    textDecoration: 'none',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  Register Now →
+                </Link>
+              ) : (
+                'Registration Closed '
+              )}
             </p>
           </div>
         ))}
