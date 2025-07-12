@@ -259,15 +259,17 @@ body {
   margin: 2px 0;
 }
 
-.hackathon-card p:nth-child(5),
-.hackathon-card p:nth-child(7) {
-  color: #008CFF;
+
+.hackathon-card p.start-label,
+.hackathon-card p.end-label {
+  color: #260736; 
   font-weight: bold;
 }
 
+
 .hackathon-card p:last-child {
   font-weight: bold;
-  color: black;
+  color: rgb(33, 35, 150);
 }
 
 .hackathon-card p:last-child:has(span.red) {
@@ -287,7 +289,7 @@ body {
 
 .hackathon-card p:nth-child(5),
 .hackathon-card p:nth-child(7) {
-  color: #008CFF;
+  color:#27197e ;
   font-weight: bold;
 }
 
