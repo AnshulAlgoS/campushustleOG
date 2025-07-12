@@ -23,14 +23,14 @@ html {
   z-index: 999;
 }
 
-.strip-logo {
-  height: 90px;
-  width: auto;
+.home-page .strip-logo {
+  height: 100px;
+  width: 100px;
 }
 .logo-combo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  column-gap: 0px;
 }
 
 .logo-text {
@@ -249,7 +249,7 @@ header::before {
 .search-bar-wrapper {
   display: flex;
   justify-content: center;
-  margin-top: 500px;
+  margin-top: 430px;
   position: relative;
   z-index: 1;
 }
