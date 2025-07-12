@@ -3,6 +3,15 @@ import { auth, db } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import './dashboard.css';
 
+import img1 from '../assets/images/h1.jpeg';
+import img2 from '../assets/images/h2.jpeg';
+import img3 from '../assets/images/h3.jpeg';
+import img4 from '../assets/images/h4.jpeg';
+import img5 from '../assets/images/h5.jpeg';
+import img6 from '../assets/images/h6.jpeg';
+import img7 from '../assets/images/h7.jpeg';
+import img8 from '../assets/images/h2.jpeg';
+
 export default function DashboardPage() {
   const [user, setUser] = useState(null);
   const [counts, setCounts] = useState({
@@ -15,11 +24,12 @@ export default function DashboardPage() {
   const [organizedHackathons, setOrganizedHackathons] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const fallbackImages = [img1, img2, img3, img4, img5, img6, img7, img8];
+
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(currentUser => {
-      if (currentUser) {
-        setUser(currentUser);
-      }
+      if (currentUser) setUser(currentUser);
       setLoading(false);
     });
     return () => unsubscribe();
@@ -32,7 +42,7 @@ export default function DashboardPage() {
       try {
         const [gigsSnap, hackSnap, orgSnap, mentorSnap] = await Promise.all([
           getDocs(query(collection(db, 'freelanceGigs'), where('userId', '==', user.uid))),
-          getDocs(query(collection(db, 'registrations'), where('userId', '==', user.uid))), // ✅ registrations
+          getDocs(query(collection(db, 'registrations'), where('userId', '==', user.uid))),
           getDocs(query(collection(db, 'hackathonsOrganized'), where('userId', '==', user.uid))),
           getDocs(query(collection(db, 'mentorships'), where('userId', '==', user.uid), where('isActive', '==', true)))
         ]);
@@ -94,10 +104,11 @@ export default function DashboardPage() {
             {enrolledHackathons.map((item, idx) => (
               <div className="registered-card" key={idx}>
                 <img
-                  src={item.hackathonImage || 'https://via.placeholder.com/300x200?text=Hackathon'}
+                  src={item.hackathonImage || fallbackImages[idx % fallbackImages.length]}
                   alt={item.hackathonName}
                   className="registered-image"
                 />
+
                 <div className="registered-info">
                   <h4>{item.hackathonName}</h4>
                   <p><strong>Team:</strong> {item.teamName}</p>
