@@ -192,25 +192,25 @@ Special thanks to:
 ## 📬 Team Socials
 
 -  Team Member 1
-   Name- Mahira
+   Mahira Khan
    Email- mahirakhan24538@gmail.com
    
    LinkedIn: https://www.linkedin.com/in/mahira-khan-678646286/
 
  - Team Member-2
-   Name- Anshul Saxena
+   Anshul Saxena
    Email- helloanshul91@gmail.com
    
    LinkedIn: https://www.linkedin.com/in/anshul-saxena-899771362/
 
  - Team Member-2
-   Name- Gourika  
+   Gourika  
    Email- budhirajagourika8@gmail.com
    
    LinkedIn: https://www.linkedin.com/in/gourika-b53280348/
 
 -  Team Member 1
-   Name- Avanya
+   Avanya
    Email- avanyasharma299@gmail.com
    
    LinkedIn: https://www.linkedin.com/in/avanya-sharma-21794b310/
