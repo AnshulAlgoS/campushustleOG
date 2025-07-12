@@ -14,6 +14,9 @@ import DashboardPage from './views/dashboard';
 import ProfileHub from './views/ProfileHub';
 import About from './views/About'; 
 import AuthModal from './components/AuthModal';
+import FreelancePage from './views/FreelancePage';
+import WebDevGigsPage from './views/WebDevGigsPage';
+
 
 function InnerApp() {
   const [showAuthModal, setShowAuthModal] = useState(false);
@@ -77,6 +80,23 @@ function InnerApp() {
             />
           }
         />
+        <Route
+  path="/freelance"
+  element={
+    <FreelancePage
+      user={user}
+      navigateTo={(page) => navigate(`/${page}`)}
+      handleLogout={handleLogout}
+      openAuthModal={openAuthModal}
+      onProfileClick={() => navigate('/profile-hub')}
+    />
+  }
+/>
+{/* Web Dev Gigs Page*/}
+<Route
+path="/Freelance/WebDev"
+element={<WebDevGigsPage />}
+/>               
       </Routes>
 
       {showAuthModal && (
