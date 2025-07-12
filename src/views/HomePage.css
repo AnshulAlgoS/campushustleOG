@@ -24,8 +24,22 @@ html {
 }
 
 .strip-logo {
-  height: 50px;
+  height: 70px;
+  width: auto;
 }
+.logo-combo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-text {
+  font-size: 28px;
+  font-weight: 700;
+  color: #572E54;
+  font-family: 'Poppins', sans-serif;
+}
+
 
 .navbar-desktop {
   display: flex;
