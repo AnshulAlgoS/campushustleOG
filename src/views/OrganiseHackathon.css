@@ -79,3 +79,78 @@
 .submit-btn:hover {
   background-color: #5f3b6c;
 }
+/* ---------- Responsive for Tablets ---------- */
+@media (max-width: 1024px) {
+  .organise-heading {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+  }
+
+  .single-box {
+    width: 90%;
+    padding: 30px;
+  }
+
+  .form-row label {
+    min-width: 140px;
+    font-size: 0.95rem;
+  }
+
+  .form-row input,
+  .form-row textarea,
+  .form-row select {
+    font-size: 0.95rem;
+  }
+}
+
+/* ---------- Responsive for Mobiles ---------- */
+@media (max-width: 468px) {
+  .organise-page {
+    padding: 24px 12px;
+  }
+
+  .organise-heading {
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+  }
+
+  .single-box {
+    width: 100%;
+    padding: 20px 14px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .box-section-title {
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .form-row label {
+    width: 100%;
+    padding-top: 0;
+    font-size: 0.9rem;
+  }
+
+  .form-row input,
+  .form-row textarea,
+  .form-row select {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 10px 12px;
+    box-sizing: border-box;
+  }
+
+  .submit-btn {
+    font-size: 1rem;
+    padding: 12px;
+    margin-top: 10px;
+  }
+}
+
