@@ -514,3 +514,49 @@ body {
   backdrop-filter: blur(4px);               
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
+.background-effect {
+  position: relative;
+  width: 100%;
+  padding: 80px 20px 100px;
+  text-align: center;
+  background: linear-gradient(135deg, #8c187d, #cf80d9); 
+  border-bottom-right-radius: 60px;
+  overflow: hidden;
+}
+
+.background-effect h1 {
+  font-size: 3rem;
+  color: #100317;
+  margin-bottom: 10px;
+}
+
+.background-effect p {
+  color: #190a28;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Blobby shapes */
+.hero-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.3;
+}
+
+.shape1 {
+  width: 200px;
+  height: 200px;
+  background-color: #50155b;
+  top: -40px;
+  left: -60px;
+}
+
+.shape2 {
+  width: 250px;
+  height: 250px;
+  background-color: #d59fe0;
+  bottom: -60px;
+  right: -50px;
+}
