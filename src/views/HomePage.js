@@ -113,7 +113,7 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
       <li><a href="#">Freelance</a></li>
       <li><a href="#">Hackathons</a></li>
       <li><a href="#">Community</a></li>
-      <li><a href="#">About Us</a></li>
+      <li><Link to="/about">About Us</Link></li>
       <li>
         {user ? (
           <UserMenu user={user} onLogout={handleLogout} onProfileClick={onProfileClick} />
@@ -135,7 +135,7 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
       <li><a href="#">Freelance</a></li>
       <li><a href="#">Hackathons</a></li>
       <li><a href="#">Community</a></li>
-      <li><a href="#">About Us</a></li>
+      <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link></li>
         <li>
           {user ? (
             <UserMenu user={user} onLogout={handleLogout} onProfileClick={onProfileClick} />
