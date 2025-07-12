@@ -21,6 +21,8 @@ import mahiraImg from '../assets/images/mahiraa.png';
 import gourikaImg from '../assets/images/gourika1.png';
 import UserMenu from '../components/UserMenu';
 import CommunitySection from './community';
+import Scholarship from './Scholarship';
+
 
 const slides = [slide1, slide2, slide3, slide4, slide5];
 
@@ -212,6 +214,13 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
       <div ref={communityRef}>
         <CommunitySection />
       </div>
+      {/* Scholarship Section */}
+      <div className="scholarship-wrapper">
+        <Scholarship />
+      </div>
+
+
+
       {/* Testimonials Section */}
       <section className="testimonials-section">
         <h2>What Our Users Say</h2>
