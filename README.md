@@ -119,10 +119,10 @@ To better understand how freelancing and collaboration benefit students, check o
 
 
 ##  Arcitechture diagram
-    ![Architecture](assets/images/architecture.png
+    ![Architecture](assets/images/architecture.png)
 
 ##  Process flow diagram    
-   ![Process Flow](assets/images/process-flow.png
+   ![Process Flow](assets/images/process-flow.png)
 
 ## 🙏 Acknowledgments
 
