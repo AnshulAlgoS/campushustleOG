@@ -109,7 +109,7 @@ const ExploreHackathonsPage = () => {
   return (
     <div className="hackathon-list-page">
 
-      {/*  Background Hero Section (gradient + shapes) */}
+      {/*  Background Hero Section */}
       <div className="background-effect">
         <div className="hero-shape shape1"></div>
         <div className="hero-shape shape2"></div>
