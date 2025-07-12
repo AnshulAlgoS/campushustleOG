@@ -8,6 +8,11 @@ import gourika from '../assets/images/gourika1.png';
 import avanya from '../assets/images/avanya.png';
 import mahira from '../assets/images/mahiraa.png';
 
+import innovation from '../assets/images/innovation.png';
+import community from '../assets/images/community.png';
+import hackathons from '../assets/images/hackathons.png';
+import scholarship from '../assets/images/scholarship.png';
+
 const developers = [
   { name: 'Anshul Saxena', role: 'Full Stack Developer', img: anshul },
   { name: 'Gourika', role: 'Frontend & UI/UX Designer', img: gourika },
@@ -26,34 +31,35 @@ const About = () => {
           <p className="hero-tagline">where hustlers hangout</p>
         </div>
       </div>
-            {/* Features Section */}
+
+      {/* Features Section */}
       <section className="features-section">
+        <h2 style={{ fontSize: '2rem', marginBottom: '2rem', color: '#222' }}>🚀 Our Features</h2>
         <div className="features-wrapper">
           <div className="feature-card">
-            <img src="/assets/images/innovation.png" alt="Innovation" />
+            <img src={innovation} alt="Innovation" />
             <h3>Innovation First</h3>
             <p>Empowering students to build, break, and innovate with freedom and fire.</p>
           </div>
           <div className="feature-card">
-            <img src="/assets/images/community.png" alt="Community" />
+            <img src={community} alt="Community" />
             <h3>Strong Community</h3>
             <p>Connect with like-minded hustlers across disciplines and campuses.</p>
           </div>
         </div>
         <div className="features-wrapper">
           <div className="feature-card">
-            <img src="/assets/images/hackathons.png" alt="Hackathons" />
+            <img src={hackathons} alt="Hackathons" />
             <h3>Hackathons & More</h3>
             <p>Access the latest hackathons, coding challenges, and innovation events.</p>
           </div>
           <div className="feature-card">
-            <img src="/assets/images/scholarship.png" alt="Scholarships" />
+            <img src={scholarship} alt="Scholarship" />
             <h3>Scholarships</h3>
             <p>Explore and apply to exclusive scholarships for student leaders.</p>
           </div>
         </div>
       </section>
-
 
       {/* Intro Paragraph */}
       <section className="intro">
