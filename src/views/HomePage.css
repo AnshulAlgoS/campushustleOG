@@ -279,7 +279,6 @@ input {
   opacity: 0;
   visibility: hidden;
   max-width: 0;
-  transition: all 0.5s ease;
   font-size: 1em;
   padding: 0 20px;
   border: none;
