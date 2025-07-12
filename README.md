@@ -64,6 +64,13 @@ A clean, intuitive, and mobile-friendly interface designed specifically with stu
 Auto-generate a professional portfolio from your freelance work and projects to showcase to recruiters or on LinkedIn.
 
 
+##  Architecture diagram
+   ![Architecture Diagram](https://github.com/AnshulAlgoS/campushustle/blob/704099eebf91f593e0b383c9d67d698d48c02051/src/assets/images/architecture.png)
+
+##  Process flow diagram    
+  ![Process flow diagram](https://github.com/AnshulAlgoS/campushustle/blob/c881a58d29e6657747fdfd296882472721a191d1/src/assets/images/process-flow.png)
+  
+
 ## 🎯 Goals
 
 1. Provide an easy way for students to find or offer freelance work.
@@ -117,11 +124,6 @@ To better understand how freelancing and collaboration benefit students, check o
 - *AI Suggestions*: Recommend projects or gigs based on activity.
 
 
-
-##  Architecture diagram
-   ![Architecture Diagram](https://github.com/AnshulAlgoS/campushustle/blob/704099eebf91f593e0b383c9d67d698d48c02051/src/assets/images/architecture.png)
-##  Process flow diagram    
-  ![Process flow diagram](https://github.com/AnshulAlgoS/campushustle/blob/c881a58d29e6657747fdfd296882472721a191d1/src/assets/images/process-flow.png)
 ## Acknowledgments
 
 Special thanks to:
