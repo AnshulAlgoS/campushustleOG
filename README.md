@@ -69,61 +69,69 @@ Auto-generate a professional portfolio from your freelance work and projects to 
 
 ##  Process flow diagram    
   ![Process flow diagram](https://github.com/AnshulAlgoS/campushustle/blob/c881a58d29e6657747fdfd296882472721a191d1/src/assets/images/process-flow.png)
-  
-## Steps to follow:
+  ## 🚀 Steps to Follow
 
-👤 Step 1: Create an Account & Complete Your Profile
-   Visit the Campus Hustle website.
-   Click on the Sign Up button in the navigation bar.   
-   Fill in the required fields: 
-   Full Name
-   Email Address
-   Password
-   Click Register to submit the form and create your account.
+### 👤 Step 1: Create an Account & Complete Your Profile
+- Visit the Campus Hustle website.  
+- Click on the **Sign Up** button in the navigation bar.  
+- Fill in the required fields:  
+  - Full Name  
+  - Email Address  
+  - Password  
+- Click **Register** to submit the form and create your account.
 
-🔒 Post-Registration Instructions:
-   Once registered, a profile icon will appear in the top-right corner of the interface. 
-   Click on this icon to reveal three options in the dropdown menu.
-   Select My Profile.
-    On the profile page, complete your details such as:
-   Skills
-   College
-   Phone
-   About You
-   Tags
+### 🔒 Post-Registration Instructions
+- Once registered, a **profile icon** will appear in the top-right corner.  
+- Click this icon to reveal three options in the dropdown.  
+- Select **My Profile**.  
+- On the profile page, complete your details such as:  
+  - Skills  
+  - College  
+  - Phone  
+  - About You  
+  - Tags  
 
-📦 Data Handling Note:
-   All user information submitted through forms including registration data and profile details is securely stored in Firebase Realtime Database, ensuring data       persistence, scalability, and secure access management.
+> 📦 **Data Handling Note**  
+> All user information submitted through forms — including registration data and profile details — is securely stored in **Firebase Realtime Database**, ensuring data persistence, scalability, and secure access management.
 
-🚀 Step 2: Discover & Register for Hackathons
-   Navigate to the Hackathons section via the top navigation or dashboard.
-   View a curated list of upcoming intra-college and public hackathons with details like deadlines, rules, and prize pools.
-   To register for a hackathon:
-   Select the desired event and click Apply/Register
-   Enter your Team Name and specify the Total Number of Team Members
-   Upon submission, your team will receive a confirmation notification and further participation instructions.
+---
 
-🎯 Step 3: Explore Freelance Opportunities
-   Navigate to the Freelance section.
-   Browse through available gigs.
+### 🚀 Step 2: Discover & Register for Hackathons
+- Navigate to the **Hackathons** section via the top navigation or dashboard.  
+- View a curated list of upcoming **intra-college** and **public hackathons** with details like deadlines, rules, and prize pools.  
+- To register:
+  - Select the desired event and click **Apply/Register**  
+  - Enter your **Team Name** and specify the **Total Number of Team Members**  
+  - Upon submission, your team will receive a **confirmation notification** and further participation instructions.
 
+---
 
-🎓 Step 4: Explore Scholarships by Category
-   Navigate to the Explore by Category section from the homepage or main navigation.
-   Click on the Scholarship category.
-   Browse through a curated list of the latest and verified scholarship opportunities from various platforms and institutions.
-   Each listing includes:
-   Correct Information
-   Application deadlines
+### 🎯 Step 3: Explore Freelance Opportunities
+- Navigate to the **Freelance** section.  
+- Browse through available gigs.
 
-📊 Step 5: Track Your Activities
-   Use the Dashboard to:
-   Monitor hackathon registrations
-   Manage project collaborations
-   Edit your profile 
- 
-🚪 Step 6: Log Out
-   Click on your profile icon and choose Log Out when you're done.
+---
+
+### 🎓 Step 4: Explore Scholarships by Category
+- Navigate to the **Explore by Category** section from the homepage or main navigation.  
+- Click on the **Scholarship** category.  
+- Browse through a curated list of the latest and verified scholarship opportunities from various platforms and institutions.  
+- Each listing includes:
+  - Correct Information  
+  - Application deadlines  
+
+---
+
+### 📊 Step 5: Track Your Activities
+- Use the **Dashboard** to:
+  - Monitor hackathon registrations  
+  - Manage project collaborations  
+  - Edit your profile  
+
+---
+
+### 🚪 Step 6: Log Out
+- Click on your **profile icon** and choose **Log Out** when you're done.
 
    
 ## 🎯 Goals
