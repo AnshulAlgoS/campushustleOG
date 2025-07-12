@@ -19,8 +19,6 @@ export default function ProfilePage({ user, userProfile }) {
     const tagOptions = [
         'Freelancer', 'Gig Seeker', 'Mentor', 'Student', 'Hackathon Participant'
     ];
-
-    // 🔁 Fetch profile data
     useEffect(() => {
         const fetchProfile = async () => {
             if (user) {
@@ -42,12 +40,10 @@ export default function ProfilePage({ user, userProfile }) {
         fetchProfile();
     }, [user]);
 
-    // 📥 Input change handler
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    // 🎯 Tag toggler
     const toggleTag = (tag) => {
         setFormData(prev => ({
             ...prev,
@@ -57,7 +53,6 @@ export default function ProfilePage({ user, userProfile }) {
         }));
     };
 
-    // 💾 Save to Firestore
     const saveProfile = async () => {
         if (user) {
             await setDoc(doc(db, 'users', user.uid), {

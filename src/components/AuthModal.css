@@ -19,7 +19,7 @@
   width: 100%;
   max-width: 400px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-  position: relative; /* <-- fixed to relative */
+  position: relative; 
   font-family: 'Poppins', sans-serif;
   display: flex;
   flex-direction: column;
@@ -112,7 +112,7 @@ body {
     padding: 1.2rem;
     width: 100%;
     max-width: 95vw;
-    margin-top: 2rem; 
+    margin-top: 10vh; 
     max-height: 85vh;
     overflow-y: auto;
     border-radius: 10px;
@@ -120,18 +120,26 @@ body {
 
   .auth-modal input,
   .auth-modal button {
-    font-size: 2rem;
-    padding: 0.75rem;
+    font-size: 1rem;     
+    padding: 0.8rem;    
   }
 
+  .auth-modal {
+    padding: 1rem;
+    max-width: 95vw;
+    margin-top: 10vh;
+  }
+  .auth-modal input::placeholder{
+    font-size: 0.9rem;
+  }
+  .auth-modalp,
+  .auth-modal.switch-mode{
+    font-size: 0.95rem;
+  }
   .close-btn {
     font-size: 1.6rem;
-    top: 8px;
-    right: 10px;
-  }
-
-  .auth-modal p {
-    font-size: 0.9rem;
+    top: 10px;
+    right: 12px;
   }
 }
 

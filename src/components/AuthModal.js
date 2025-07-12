@@ -100,7 +100,7 @@ export default function AuthModal({ onClose, onAuthSuccess }) {
         {isSignUp ? 'Sign Up' : 'Sign In'}
       </button>
 
-      <p className="switch-mode" onClick={() => setIsSignUp(!isSignUp)}>
+      <p className="switch-mode" onPointerUp={() => setIsSignUp(prev => !prev)}>
         {isSignUp ? 'Already have an account? Login' : "Don't have an account? Sign up"}
       </p>
 

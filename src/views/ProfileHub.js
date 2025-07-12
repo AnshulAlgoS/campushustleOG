@@ -9,7 +9,6 @@ export default function ProfileHub({ user, onLogout, navigateToHome }) {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [userProfile, setUserProfile] = useState({});
 
-  // 🔁 Fetch user profile from Firestore
   useEffect(() => {
     const fetchUserData = async () => {
       if (user?.uid) {
