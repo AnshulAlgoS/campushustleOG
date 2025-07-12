@@ -21,7 +21,7 @@ import mahiraImg from '../assets/images/mahiraa.png';
 import gourikaImg from '../assets/images/gourika1.png';
 import UserMenu from '../components/UserMenu';
 import CommunitySection from './community';
-import Scholarship from './Scholarship';
+import Scholarship from './scholarship';
 
 
 const slides = [slide1, slide2, slide3, slide4, slide5];
@@ -30,6 +30,7 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const communityRef = useRef(null);
+  const scholarshipRef=useRef(null);
   const testimonialRef = useRef(null);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const testimonialInterval = useRef(null);
@@ -55,6 +56,9 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
   navigateTo('freelance');
 } else if (title === 'Community') {
   communityRef.current?.scrollIntoView({ behavior: 'smooth' });
+}
+else if(title === 'Scholarship'){
+  scholarshipRef.current?.scrollIntoView({behavior: 'smooth'})
 }
   };
   const testimonials = [
@@ -215,8 +219,8 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
         <CommunitySection />
       </div>
       {/* Scholarship Section */}
-      <div className="scholarship-wrapper">
-        <Scholarship />
+      <div ref={scholarshipRef}>
+        <Scholarship/>
       </div>
 
 

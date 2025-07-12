@@ -7,7 +7,7 @@
 .scholarship-heading {
   font-size: 2.5rem;
   margin-bottom: 40px;
-  color: #1e3a8a;
+  color: #572e54;
 }
 
 .scholarship-flag-wrapper {
@@ -19,7 +19,7 @@
 
 .scholarship-flag-card {
   background: #fff;
-  border-left: 6px solid #1e3a8a;
+  border-left: 6px solid #572e54;
   border-radius: 12px;
   box-shadow: 0 4px 14px rgba(0,0,0,0.1);
   padding: 20px 24px;
@@ -57,7 +57,7 @@
 }
 
 .sch-apply-btn {
-  background: #1e3a8a;
+  background: #572e54;
   color: white;
   padding: 8px 14px;
   border-radius: 8px;
