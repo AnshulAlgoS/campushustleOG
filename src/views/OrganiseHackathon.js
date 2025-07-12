@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./OrganiseHackathon.css";
-import { db } from "../firebase"; // adjust if your path is different
+import { db } from "../firebase"; 
 import { collection, addDoc } from "firebase/firestore";
 
 const OrganiseHackathon = () => {
@@ -29,7 +29,7 @@ const OrganiseHackathon = () => {
     e.preventDefault();
     try {
       await addDoc(collection(db, "hackathons"), formData);
-      alert("✅ Hackathon submitted successfully!");
+      alert(" Hackathon submitted successfully!");
       setFormData({
         title: "",
         startDate: "",
