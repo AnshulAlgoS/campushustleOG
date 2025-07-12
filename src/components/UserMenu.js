@@ -13,10 +13,12 @@ export default function UserMenu({ user, onLogout, onProfileClick }) {
       </div>
       {isOpen && (
         <div className="dropdown">
-          <p onClick={onProfileClick}>My Profile</p>
+          <p onClick={() => { onProfileClick('dashboard'); setIsOpen(false); }}>Dashboard</p>
+          <p onClick={() => { onProfileClick('profile'); setIsOpen(false); }}>My Profile</p>
           <button onClick={onLogout}>Logout</button>
         </div>
       )}
+
     </div>
   );
 }

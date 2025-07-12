@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './HomePage.css';
@@ -27,14 +29,21 @@ import Scholarship from './scholarship';
 
 const slides = [slide1, slide2, slide3, slide4, slide5];
 
-const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClick }) => {
+const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
+  const navigate = useNavigate();
+
+ const onProfileClick = (tab = 'dashboard') => {
+  navigate('/profile-hub', { state: { tab } });
+};
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const communityRef = useRef(null);
-  const scholarshipRef=useRef(null);
+  const scholarshipRef = useRef(null);
   const testimonialRef = useRef(null);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const testimonialInterval = useRef(null);
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -124,6 +133,7 @@ else if(title === 'Scholarship'){
       <li>
         {user ? (
           <UserMenu user={user} onLogout={handleLogout} onProfileClick={onProfileClick} />
+
         ) : (
           <a href="#" className="signup" onClick={(e) => { e.preventDefault(); openAuthModal(); }}>
             Get Started

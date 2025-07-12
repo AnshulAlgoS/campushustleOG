@@ -94,7 +94,7 @@
 }
 
 .dashboard-content p {
-  color: #555;
+  color: #572E54;
   margin-bottom: 2rem;
 }
 
@@ -162,4 +162,24 @@
   .widget-card {
     min-width: 100%;
   }
+  .section-heading {
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #572E54;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.activity-list {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.activity-list li {
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1rem;
+}
+
 }

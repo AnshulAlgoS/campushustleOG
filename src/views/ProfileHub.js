@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import ProfilePage from './ProfilePage';
@@ -8,6 +9,13 @@ import './ProfileHub.css';
 export default function ProfileHub({ user, onLogout, navigateToHome }) {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [userProfile, setUserProfile] = useState({});
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.tab) {
+      setActiveTab(location.state.tab);
+    }
+  }, [location.key]);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -23,46 +31,26 @@ export default function ProfileHub({ user, onLogout, navigateToHome }) {
   }, [user]);
 
   return (
-    <div className="profile-dashboard">
+    <div className="profile-hub">
       {/* Sidebar */}
       <aside className="sidebar">
-        <div className="profile-pic">
-          {userProfile.firstName?.[0]?.toUpperCase() || user?.displayName?.[0] || 'U'}
+        <div className="sidebar-header">
+          <div className="avatar">{userProfile.firstName?.[0]?.toUpperCase() || user?.displayName?.[0] || 'U'}</div>
+          <div className="user-info">
+            <h3>{userProfile.firstName || user?.displayName || 'User'}</h3>
+            <p>{user?.email}</p>
+          </div>
         </div>
-        <h3>
-          {userProfile.firstName || user?.displayName || 'User'}{' '}
-          {userProfile.lastName || ''}
-        </h3>
-        <p>{user?.email}</p>
-        <ul>
-          <li>
-            <button
-              onClick={() => setActiveTab('dashboard')}
-              className={`sidebar-btn ${activeTab === 'dashboard' ? 'active' : ''}`}>
-              🏠 Dashboard
-            </button>
-          </li>
-
-          <li>
-            <button onClick={() => setActiveTab('profile')} className="sidebar-btn">
-              📝 My Profile
-            </button>
-          </li>
-          <li>
-            <button onClick={navigateToHome} className="sidebar-btn">
-              ← Back to Home
-            </button>
-          </li>
-          <li>
-            <button onClick={onLogout} className="sidebar-btn logout-btn">
-              Log Out
-            </button>
-          </li>
+        <ul className="menu-list">
+          <li onClick={() => setActiveTab('dashboard')} className={activeTab === 'dashboard' ? 'active' : ''}>📊 Dashboard</li>
+          <li onClick={() => setActiveTab('profile')} className={activeTab === 'profile' ? 'active' : ''}>📝 My Profile</li>
+          <li onClick={navigateToHome}>🏠 Back to Home</li>
+          <li onClick={onLogout} className="logout">🚪 Logout</li>
         </ul>
       </aside>
 
-      {/* Main Panel */}
-      <main className="dashboard-content">
+      {/* Main Content */}
+      <main className="main-content" key={activeTab}>
         {activeTab === 'dashboard' ? (
           <DashboardPage user={user} />
         ) : (
@@ -72,3 +60,4 @@ export default function ProfileHub({ user, onLogout, navigateToHome }) {
     </div>
   );
 }
+
