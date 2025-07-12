@@ -270,7 +270,7 @@ form:hover .fa {
   color: white;
 }
 
-input {
+.home-page input[type="search"]{
   position: absolute;
   top: 0;
   left: 0;
@@ -808,13 +808,15 @@ a.category-box .category-title {
       border-radius: 20px;
       border-width: 2px;
     }
+@media (max-width: 480px) {
+  .home-page input {
+    font-size: 0.85em;
+    height: 30px;
+    border-radius: 15px;
+    padding: 0 10px;
+  }
+}
 
-    input {
-      font-size: 0.85em;
-      height: 30px;
-      border-radius: 15px;
-      padding: 0 10px;
-    }
 
     .fa {
       font-size: 1em;

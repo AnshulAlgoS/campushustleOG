@@ -1,8 +1,8 @@
 // src/views/About.jsx
 import React from 'react';
-import './About.css'; // ✅ Import CSS
+import './About.css';
 
-import bg from '../assets/images/background.jpg'; // Just to ensure Webpack tracks it
+import bg from '../assets/images/background.jpg'; 
 import anshul from '../assets/images/anshulsaxena.png';
 import gourika from '../assets/images/gourika1.png';
 import avanya from '../assets/images/avanya.png';

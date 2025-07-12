@@ -5,11 +5,11 @@ import UserMenu from '../components/UserMenu';
 
 const FreelancePage = ({ user, navigateTo, handleLogout, openAuthModal, onProfileClick }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [designMsgVisible, setDesignMsgVisible] = useState(false); // ✅ new state
+  const [designMsgVisible, setDesignMsgVisible] = useState(false); 
 
   return (
     <div className="freelance-page">
-      {/* ✅ Page Content */}
+      {/* Page Content */}
       <h1 className="freelance-title">Freelance Opportunities</h1>
 
       <div className="freelance-cards">
@@ -24,7 +24,7 @@ const FreelancePage = ({ user, navigateTo, handleLogout, openAuthModal, onProfil
 
         <div
           className="freelance-card design"
-          onClick={() => setDesignMsgVisible(true)} // ✅ add click
+          onClick={() => setDesignMsgVisible(true)} // add click
           style={{ cursor: 'pointer' }}
         >
           <h2>Designing</h2>
@@ -32,7 +32,7 @@ const FreelancePage = ({ user, navigateTo, handleLogout, openAuthModal, onProfil
         </div>
       </div>
 
-      {/* ✅ Show message on clicking Designing */}
+      {/* Show message on clicking Designing */}
       {designMsgVisible && (
         <div className="design-message">
           <p>🚧 We're currently working on this section. Stay tuned!</p>

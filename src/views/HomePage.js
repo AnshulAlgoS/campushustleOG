@@ -83,11 +83,12 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
 
   return (
     <>
+    <div className="home-page">
       {/* Top Strip */}
       <div className="top-strip">
   <img src={logo} alt="Campus Link Logo" className="strip-logo" />
 
-  {/* ✅ Desktop Nav */}
+  {/*  Desktop Nav */}
   <nav className="navbar-desktop">
     <ul className="strip-nav">
       <li><a href="#">Home</a></li>
@@ -107,7 +108,7 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
     </ul>
   </nav>
 
-  {/* ✅ Mobile Nav */}
+  {/* Mobile Nav */}
   <div className="navbar-mobile">
     <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
     {menuOpen && (
@@ -193,8 +194,6 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
       <div ref={communityRef}>
         <CommunitySection />
       </div>
-
-      {/* Testimonials Section */}
       {/* Testimonials Section */}
       <section className="testimonials-section">
         <h2>What Our Users Say</h2>
@@ -260,6 +259,7 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
           ))}
         </span>
       </footer>
+      </div>
     </>
   );
 };

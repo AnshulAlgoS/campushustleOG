@@ -1,4 +1,4 @@
-/* ✅ Layout wrapper */
+/* Layout wrapper */
 .dashboard-container {
   display: flex;
   min-height: 100vh;
@@ -7,7 +7,7 @@
   color: #333;
 }
 
-/* ✅ Sidebar */
+/* Sidebar */
 .sidebar {
   width: 260px;
   background-color: #572E54;
@@ -81,7 +81,7 @@
   font-weight: bold;
 }
 
-/* ✅ Main dashboard area */
+/* Main dashboard area */
 .dashboard-content {
   flex: 1;
   padding: 2.5rem 3rem;
@@ -98,7 +98,7 @@
   margin-bottom: 2rem;
 }
 
-/* ✅ Card Grid */
+/* Card Grid */
 .dashboard-widgets {
   display: flex;
   flex-wrap: wrap;
@@ -106,7 +106,7 @@
   justify-content: flex-start;
 }
 
-/* ✅ Individual Card */
+/*Individual Card */
 .widget-card {
   background: #ffffff;
   padding: 1.5rem;
@@ -134,7 +134,6 @@
   color: #4a90e2;
 }
 
-/* ✅ Mobile Responsive */
 @media (max-width: 768px) {
   .dashboard-container {
     flex-direction: column;

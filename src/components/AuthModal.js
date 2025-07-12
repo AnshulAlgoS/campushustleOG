@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+// AuthModal.js
+import React, { useState, useEffect } from 'react';
 import './AuthModal.css';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
@@ -13,6 +14,7 @@ export default function AuthModal({ onClose, onAuthSuccess }) {
     const [message, setMessage] = useState('');
 
     useEffect(() => {
+        
         document.body.classList.add('modal-open');
         return () => document.body.classList.remove('modal-open');
     }, []);
@@ -100,7 +102,7 @@ export default function AuthModal({ onClose, onAuthSuccess }) {
         {isSignUp ? 'Sign Up' : 'Sign In'}
       </button>
 
-      <p className="switch-mode" onPointerUp={() => setIsSignUp(prev => !prev)}>
+      <p className="switch-mode" onClick={() => setIsSignUp(!isSignUp)}>
         {isSignUp ? 'Already have an account? Login' : "Don't have an account? Sign up"}
       </p>
 

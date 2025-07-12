@@ -14,7 +14,12 @@
   overflow-x: hidden;
 }
 
-/* Remove unnecessary animation and logo styles */
+body.modal-open {
+  overflow: hidden !important;
+  touch-action: none;               
+  -webkit-overflow-scrolling: auto;
+  overscroll-behavior: none;       
+}
 .App-logo,
 .App-header,
 .App-link {
