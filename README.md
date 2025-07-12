@@ -118,7 +118,7 @@ To better understand how freelancing and collaboration benefit students, check o
 
 
 
-##Architecture diagram
+##  Architecture diagram
     p align="center">
   <img src="https://raw.githubusercontent.com/AnshulAlgoS/campushustle/main/assets/images/architecture.png" alt="Architecture Diagram" width="600" />
 </p>
