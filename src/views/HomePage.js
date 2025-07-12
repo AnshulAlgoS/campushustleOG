@@ -24,6 +24,7 @@ import CommunitySection from './community';
 import Scholarship from './scholarship';
 
 
+
 const slides = [slide1, slide2, slide3, slide4, slide5];
 
 const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClick }) => {
