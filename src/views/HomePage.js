@@ -265,3 +265,4 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
 };
 
 export default HomePage;
+
