@@ -24,17 +24,16 @@ const About = () => {
   return (
     <div>
 
-      {/* === Hero Section === */}
-<div className="hero-section-two-col">
-  <div className="hero-left-card">
-    <h1 className="hero-title">Campus Hustle</h1>
+      <section className="hero-section">
+  <div className="hero-left">
+    <h1 className="hero-heading">Campus Hustle</h1>
     <p className="hero-tagline">where hustlers hangout</p>
   </div>
-
-  <div className="hero-right-image">
-    <img src={bg} alt="Campus Background" />
+  <div className="hero-right">
+    <img src="/assets/images/your-image.png" alt="Campus Illustration" className="hero-image" />
   </div>
-</div>
+</section>
+
 
 
       {/* Features Section */}
