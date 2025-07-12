@@ -21,7 +21,8 @@ import mahiraImg from '../assets/images/mahiraa.png';
 import gourikaImg from '../assets/images/gourika1.png';
 import UserMenu from '../components/UserMenu';
 import CommunitySection from './community';
-import Scholarship from './Scholarship';
+import Scholarship from './scholarship';
+
 
 
 const slides = [slide1, slide2, slide3, slide4, slide5];
