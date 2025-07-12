@@ -125,6 +125,51 @@
   margin-bottom: 1rem;
   color: #222;
 }
+/* === Features Section === */
+.features-section {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.features-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.feature-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 280px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.feature-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.feature-card p {
+  font-size: 14px;
+  color: #555;
+}
+
 
 /* === Responsive Design === */
 @media screen and (max-width: 768px) {
