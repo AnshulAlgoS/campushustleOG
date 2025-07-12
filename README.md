@@ -3,6 +3,7 @@
 ## 🎥 Live Website and Demo 
 
  *Campus Hustle Walkthrough*: (https://youtu.be/ip74hMJSUO8?si=21h3YfZ82Bn5gYXF)
+ 
  *Campus Hustle website* : (https://campushustle-ai.vercel.app)
 
 
