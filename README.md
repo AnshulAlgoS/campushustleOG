@@ -93,7 +93,7 @@ Auto-generate a professional portfolio from your freelance work and projects to 
    Tags
 
 📦 Data Handling Note:
-   All user information submitted through forms — including registration data and profile details — is securely stored in Firebase Realtime Database, ensuring data persistence, scalability, and secure access management.
+   All user information submitted through forms including registration data and profile details is securely stored in Firebase Realtime Database, ensuring data       persistence, scalability, and secure access management.
 
 🚀 Step 2: Discover & Register for Hackathons
    Navigate to the Hackathons section via the top navigation or dashboard.
