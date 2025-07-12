@@ -9,7 +9,7 @@
   flex-wrap: wrap;
 }
 
-/* Removed .hero-left-card and replaced with hero-left-text */
+/* hero-left-text */
 .hero-left-text {
   flex: 1;
   text-align: left;
