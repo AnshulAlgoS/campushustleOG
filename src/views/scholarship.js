@@ -1,6 +1,6 @@
 // src/components/Scholarship.js
 import React from 'react';
-import './Scholarship.css';
+import './scholarship.css';
 
 const scholarships = [
   {
