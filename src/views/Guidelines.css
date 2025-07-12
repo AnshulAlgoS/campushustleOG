@@ -1,4 +1,4 @@
-/*gradient background */
+/* Gradient Background */
 body {
   margin: 0;
   padding: 0;
@@ -6,58 +6,97 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+/* Layout Container */
 .guidelines-container {
   display: flex;
   flex-direction: row;
-  gap: 3rem;
+  gap: 2.5rem;
   padding: 3rem;
   max-width: 1200px;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 
-/* White cards */
+/* Card Sections */
 .guidelines-left, .guidelines-right {
   flex: 1;
-  background-color: #fff;
-  border-radius: 12px;
+  background-color: #ffffff;
+  border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 6px 16px rgba(103, 58, 183, 0.1);
+  box-shadow: 0 8px 20px rgba(87, 46, 84, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.guidelines-left:hover, .guidelines-right:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(87, 46, 84, 0.15);
 }
 
 /* Headings */
 .guidelines-left h2, .guidelines-right h2 {
   color: #572E54;
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   margin-bottom: 1rem;
+  border-left: 5px solid #bb7ed9;
+  padding-left: 1rem;
 }
 
-/* List styles */
+/* List Styles */
 .guidelines-left ul, .guidelines-right ul {
   list-style-type: none;
   padding-left: 0;
 }
 
 .guidelines-left li, .guidelines-right li {
-  background-color: #f3e8ff;
+  background-color: #f8f0ff;
   color: #35353a;
-  padding: 12px 16px;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  margin-bottom: 12px;
   font-size: 1rem;
-  transition: background-color 0.2s ease;
+  line-height: 1.5;
+  border-left: 4px solid #bb7ed9;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .guidelines-left li:hover, .guidelines-right li:hover {
-  background-color: #a068a8b5;
+  background-color: #e6d1f0;
+  transform: scale(1.02);
 }
 
-/* Help paragraph */
+/* Highlight Box */
 .guidelines-right p {
-  background-color: #fef3c7;
-  padding: 1rem;
-  border-radius: 8px;
-  color: #78350f;
+  background-color: #fffbe6;
+  padding: 1rem 1.2rem;
+  border-left: 6px solid #facc15;
+  border-radius: 10px;
+  color: #7c470d;
   font-size: 1rem;
   margin-top: 2rem;
+  line-height: 1.6;
 }
 
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .guidelines-container {
+    flex-direction: column;
+    padding: 2rem 1rem;
+    gap: 2rem;
+  }
+
+  .guidelines-left, .guidelines-right {
+    padding: 1.5rem;
+  }
+
+  .guidelines-left h2, .guidelines-right h2 {
+    font-size: 1.5rem;
+  }
+
+  .guidelines-left li, .guidelines-right li {
+    font-size: 0.95rem;
+  }
+
+  .guidelines-right p {
+    font-size: 0.95rem;
+  }
+}
