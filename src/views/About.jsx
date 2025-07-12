@@ -39,7 +39,7 @@ const About = () => {
 
       {/* Features Section */}
       <section className="features-section">
-        <h2 style={{ fontSize: '2rem', marginBottom: '2rem', color: '#222' }}>🚀 Our Features</h2>
+        <h2 style={{ fontSize: '2rem', marginBottom: '2rem', color: '#222' }}> Our Features</h2>
         <div className="features-wrapper">
           <div className="feature-card">
             <img src={innovation} alt="Innovation" />
