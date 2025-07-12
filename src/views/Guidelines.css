@@ -74,7 +74,6 @@ body {
   font-size: 1rem;
   margin-top: 2rem;
   line-height: 1.6;
-<<<<<<< HEAD
 }
 
 /* Responsive Styles */
@@ -100,10 +99,7 @@ body {
   .guidelines-right p {
     font-size: 0.95rem;
   }
-=======
->>>>>>> aa5bbd72d45dcbdc1362ab616cc6c19ad0b9868e
 }
-
 /* Responsive Styles */
 @media (max-width: 768px) {
   .guidelines-container {
