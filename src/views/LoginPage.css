@@ -1,4 +1,4 @@
-/* Blur overlay */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -38,7 +38,7 @@
   flex-direction: column;
   opacity: 1 !important;
   visibility: visible !important;
-  transform: translateZ(0) !important; /* 🛠 magic line */
+  transform: translateZ(0) !important; 
   z-index: 9999;
   will-change: transform, opacity;
   backface-visibility: hidden;
