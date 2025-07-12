@@ -55,11 +55,28 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout, onProfileClic
 }
   };
   const testimonials = [
-    { name: 'Mahira', image: mahiraImg, text: `I can't speak highly enough about CampusHustle! The platform is intuitive and easy to navigate, and the content quality is exceptional.` },
-    { name: 'Avanya', image: avanyaImg, text: `This platform truly elevated my learning experience. Highly recommend to all students.` },
-    { name: 'Gourika', image: gourikaImg, text: `great peer group, experienced mentors, hackathons — everything in one place.` },
-    { name: 'Anshul', image: anshulImg, text: `The UI is clean and responsive. Great work by the CampusHustle team!` },
-  ];
+  {
+    name: 'Mahira',
+    image: mahiraImg,
+    text: `I can't speak highly enough about CampusHustle! The platform is intuitive and easy to navigate, and the content quality is exceptional. From the very first interaction, I felt like this was built with students in mind. The structured layout, quick access to resources, and constant improvements make it stand out from the rest.`
+  },
+  {
+    name: 'Avanya',
+    image: avanyaImg,
+    text: `This platform truly elevated my learning experience. Highly recommend to all students. I was able to connect with peers, take part in events, and track my progress smoothly. The gamified experience and mentor support give it an edge over traditional platforms. Absolutely loved the interactive design.`
+  },
+  {
+    name: 'Gourika',
+    image: gourikaImg,
+    text: `Great peer group, experienced mentors, hackathons — everything in one place. What I admire the most is the vibrant and active community that keeps you motivated. It's not just a platform, it's a movement for every hustling student who dreams big and works harder.`
+  },
+  {
+    name: 'Anshul',
+    image: anshulImg,
+    text: `The UI is clean and responsive. Great work by the CampusHustle team! Every section is thoughtfully crafted, whether it's the dashboard, resource hub, or the career roadmap. I’ve genuinely enjoyed using it — the consistent updates and attention to user feedback really show how dedicated the team is.`
+  }
+];
+
 
   const scrollToTestimonial = (index) => {
     const container = testimonialRef.current;

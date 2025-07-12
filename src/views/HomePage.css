@@ -557,19 +557,44 @@ form:hover .fa {
 
 @media (max-width: 480px) {
   .testimonial-carousel {
-    padding: 0 0.5rem; /* Less padding to avoid card cutoff */
+    padding: 0;
+    overflow: hidden; /* ✅ Prevent scrollbars/glitch */
   }
 
   .testimonial-scroll-container {
-    padding: 0; /* Remove extra horizontal padding */
-    gap: 1rem;
+    display: flex;
+    gap: 0; /* ✅ Remove gaps to prevent second card peeking */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 0;
+    margin: 0;
   }
 
   .testimonial-card {
-    flex: 0 0 100%; /* Full width card */
-    min-width: 0; /* Prevent fixed width causing overflow */
+    flex: 0 0 100%; /* ✅ Full viewport width = 1 card per view */
     max-width: 100%;
-    padding: 1rem;
+    aspect-ratio: 1 / 1;
+    padding: 1.25rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    scroll-snap-align: center;
+    box-sizing: border-box;
+    background-color: #eaf0fb;
+  }
+
+  .testimonial-card p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
   }
 
   .testimonial-user img {
@@ -580,11 +605,8 @@ form:hover .fa {
   .testimonial-user span {
     font-size: 0.85rem;
   }
-
-  .testimonial-card p {
-    font-size: 0.85rem;
-  }
 }
+
 
 
 
