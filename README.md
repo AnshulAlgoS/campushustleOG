@@ -9,7 +9,7 @@
 
 ## 🌟 Vision
 
-In today’s fast-evolving academic and professional landscape, students are no longer just learners — they are innovators, freelancers, creators, and future leaders. Campus Hustle envisions becoming a transformational digital ecosystem that empowers students to bridge the gap between classroom learning and real-world experience right from within their college environment.
+In today’s fast-evolving academic and professional landscape, students are no longer just learners they are innovators, freelancers, creators, and future leaders. Campus Hustle envisions becoming a transformational digital ecosystem that empowers students to bridge the gap between classroom learning and real-world experience right from within their college environment.
 
 Our vision is to democratize access to opportunities by building a platform where students can:
 
@@ -19,11 +19,11 @@ Offer freelance services,
 
 Discover new skill-based challenges,
 
-And build a strong personal brand — all while still pursuing their education.
+And build a strong personal brand all while still pursuing their education.
 
 We aim to foster a culture of hustle, collaboration, and self-growth where students can not only earn and learn but also connect with like-minded peers, initiate startups, contribute to impactful work, and prepare for the dynamic demands of tomorrow’s job market.
 
-By seamlessly integrating freelancing, networking, project-based learning, and student empowerment into one platform, Campus Hustle aspires to redefine the student journey — making every hustle count.
+By seamlessly integrating freelancing, networking, project-based learning, and student empowerment into one platform, Campus Hustle aspires to redefine the student journey making every hustle count.
 
 ## 🎯 Mission
 
@@ -43,7 +43,7 @@ Our mission is to empower students by simplifying access to freelance jobs, team
 ## *Key Features:*
 
 🔍 Freelance Marketplace
-A curated space for students to offer their services or hire peers — covering skills like graphic design, web development, writing, tutoring, and more.
+A curated space for students to offer their services or hire peers covering skills like graphic design, web development, writing, tutoring, and more.
 
 👥 Team & Project Collaboration
 Build or join teams to work on academic, startup, or hackathon projects. Discover collaborators based on skills, interests, or college departments.
