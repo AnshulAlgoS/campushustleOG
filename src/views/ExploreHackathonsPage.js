@@ -164,7 +164,7 @@ const ExploreHackathonsPage = () => {
             <p style={{ color: '#008CFF', fontWeight: 'bold' }}>Registration End:</p>
             <p>{hack.end}</p>
             <p style={{ fontWeight: 'bold' }}>
-              {hack.status === 'open' ? 'Register Now →' : 'Registration Closed ❌'}
+              {hack.status === 'open' ? 'Register Now →' : 'Registration Closed '}
             </p>
           </div>
         ))}
