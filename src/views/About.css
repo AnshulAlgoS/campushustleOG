@@ -1,8 +1,7 @@
-/* src/styles/About.css */
-
+/* === Hero Section === */
 .hero-section {
   height: 100vh;
-  background-image: url('../assets/images/background.jpg');
+  background-image: url('../assets/images/background.jpg'); /* ✅ Check image path */
   background-size: cover;
   background-position: center;
   position: relative;
@@ -11,11 +10,13 @@
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5); /* ✅ Transparent dark overlay */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0 1rem;
+  text-align: center;
 }
 
 .hero-title {
@@ -23,6 +24,7 @@
   font-weight: bold;
   color: white;
   animation: pulse 2s infinite;
+  line-height: 1.2;
 }
 
 .hero-tagline {
@@ -35,25 +37,36 @@
   margin-top: 1rem;
 }
 
+/* Optional pulse animation */
 @keyframes pulse {
   0% { opacity: 1; }
   50% { opacity: 0.7; }
   100% { opacity: 1; }
 }
 
+/* === Intro === */
 .intro {
-  padding: 2rem;
+  padding: 2rem 1rem;
   background: white;
   color: #333;
   text-align: center;
   font-size: 1.2rem;
   line-height: 1.8;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
+/* === Developer Section === */
 .dev-section {
   background: #f3f4f6;
   padding: 3rem 1rem;
   text-align: center;
+}
+
+.dev-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #222;
 }
 
 .dev-grid {
@@ -92,8 +105,10 @@
 .dev-role {
   color: gray;
   font-size: 0.9rem;
+  margin-top: 0.25rem;
 }
 
+/* === Mission Section === */
 .mission {
   background: white;
   padding: 3rem 1rem;
@@ -101,4 +116,35 @@
   color: #444;
   font-size: 1.1rem;
   line-height: 1.8;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.mission h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+/* === Responsive Design === */
+@media screen and (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.1rem;
+    padding: 8px 16px;
+  }
+
+  .dev-card {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .intro,
+  .mission {
+    padding: 2rem 1rem;
+    font-size: 1rem;
+  }
 }
