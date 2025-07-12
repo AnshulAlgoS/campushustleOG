@@ -34,25 +34,28 @@ const RegisterHackathonPage = () => {
     }));
   };
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    if (!user || !hackathon) return;
+const handleSubmit = async e => {
+  e.preventDefault();
+  if (!user || !hackathon) return;
 
-    const docRef = doc(db, 'registrations', `${user.uid}_${hackathon.name}`);
+  const docRef = doc(db, 'hackathonEnrolments', `${user.uid}_${hackathon.name}`);
 
-    await setDoc(docRef, {
-      hackathonName: hackathon.name,
-      userEmail: user.email,
-      userId: user.uid,
-      teamName: formData.teamName,
-      memberCount: formData.memberCount,
-      additionalNotes: formData.additionalNotes,
-      submittedAt: new Date(),
-    });
+await setDoc(docRef, {
+  hackathonName: hackathon.name,
+  hackathonImage: hackathon.image,
+  userEmail: user.email,
+  userId: user.uid,
+  teamName: formData.teamName,
+  memberCount: formData.memberCount,
+  additionalNotes: formData.additionalNotes,
+  submittedAt: new Date()
+});
 
-    alert('Registered successfully!');
-    navigate('/dashboard');
-  };
+  alert('Registered successfully!');
+  navigate('/ProfileHub');
+};
+
+
 
   // Handle loading or redirect
   if (loading) return <p style={{ textAlign: 'center' }}>Checking authentication...</p>;

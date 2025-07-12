@@ -134,6 +134,52 @@
   color: #4a90e2;
 }
 
+/* Registered Hackathon Cards */
+.registered-hackathon-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 1.5rem;
+}
+
+.registered-card {
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+.registered-card:hover {
+  transform: scale(1.03);
+}
+
+.registered-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.registered-info {
+  padding: 14px 16px;
+}
+
+.registered-info h4 {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  color: #572E54;
+}
+
+.registered-info p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+
 @media (max-width: 768px) {
   .dashboard-container {
     flex-direction: column;
