@@ -120,7 +120,7 @@ else if(title === 'Scholarship'){
     <div className="home-page">
       {/* Top Strip */}
       <div className="top-strip">
-  <img src={logo} alt="Campus Link Logo" className="strip-logo" />
+  <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
 
   {/*  Desktop Nav */}
   <nav className="navbar-desktop">
