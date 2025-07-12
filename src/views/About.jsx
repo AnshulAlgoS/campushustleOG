@@ -24,13 +24,18 @@ const About = () => {
   return (
     <div>
 
-      {/* Hero Section */}
-      <div className="hero-section">
-        <div className="hero-overlay">
-          <h1 className="hero-title">Campus Hustle</h1>
-          <p className="hero-tagline">where hustlers hangout</p>
-        </div>
-      </div>
+      {/* === Hero Section === */}
+<div className="hero-section-two-col">
+  <div className="hero-left-card">
+    <h1 className="hero-title">Campus Hustle</h1>
+    <p className="hero-tagline">where hustlers hangout</p>
+  </div>
+
+  <div className="hero-right-image">
+    <img src={bg} alt="Campus Background" />
+  </div>
+</div>
+
 
       {/* Features Section */}
       <section className="features-section">
