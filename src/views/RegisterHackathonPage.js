@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Timestamp } from 'firebase/firestore'; 
 import { useLocation, useNavigate } from 'react-router-dom';
 import { db, auth } from '../firebase';
 import { doc, setDoc } from 'firebase/firestore';
@@ -38,22 +39,23 @@ const handleSubmit = async e => {
   e.preventDefault();
   if (!user || !hackathon) return;
 
-  const docRef = doc(db, 'hackathonEnrolments', `${user.uid}_${hackathon.name}`);
+  const docRef = doc(db, 'registrations', `${user.uid}_${hackathon.name}`);
 
-await setDoc(docRef, {
-  hackathonName: hackathon.name,
-  hackathonImage: hackathon.image,
-  userEmail: user.email,
-  userId: user.uid,
-  teamName: formData.teamName,
-  memberCount: formData.memberCount,
-  additionalNotes: formData.additionalNotes,
-  submittedAt: new Date()
-});
+  await setDoc(docRef, {
+    hackathonName: hackathon.name,
+    hackathonImage: hackathon.image || '', // Add this line if not present
+    userEmail: user.email,
+    userId: user.uid,
+    teamName: formData.teamName,
+    memberCount: formData.memberCount,
+    additionalNotes: formData.additionalNotes,
+    submittedAt: Timestamp.now() // 👈 Use this for correct Firestore timestamp
+  });
 
   alert('Registered successfully!');
-  navigate('/ProfileHub');
+  navigate('/dashboard');
 };
+
 
 
 

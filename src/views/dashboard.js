@@ -15,7 +15,6 @@ export default function DashboardPage() {
   const [organizedHackathons, setOrganizedHackathons] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 1️⃣ Fetch the user from Firebase Auth
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(currentUser => {
       if (currentUser) {
@@ -26,24 +25,22 @@ export default function DashboardPage() {
     return () => unsubscribe();
   }, []);
 
-  // 2️⃣ When user is ready, fetch dashboard data
   useEffect(() => {
     const fetchData = async () => {
       if (!user?.uid) return;
 
       try {
         const [gigsSnap, hackSnap, orgSnap, mentorSnap] = await Promise.all([
-  getDocs(query(collection(db, 'freelanceGigs'), where('userId', '==', user.uid))),
-  getDocs(query(collection(db, 'registrations'), where('userId', '==', user.uid))), // ← FIXED
-  getDocs(query(collection(db, 'hackathonsOrganized'), where('userId', '==', user.uid))),
-  getDocs(query(collection(db, 'mentorships'), where('userId', '==', user.uid), where('isActive', '==', true)))
-]);
-
+          getDocs(query(collection(db, 'freelanceGigs'), where('userId', '==', user.uid))),
+          getDocs(query(collection(db, 'registrations'), where('userId', '==', user.uid))), // ✅ registrations
+          getDocs(query(collection(db, 'hackathonsOrganized'), where('userId', '==', user.uid))),
+          getDocs(query(collection(db, 'mentorships'), where('userId', '==', user.uid), where('isActive', '==', true)))
+        ]);
 
         const enrolledList = hackSnap.docs.map(doc => doc.data());
         const organizedList = orgSnap.docs.map(doc => doc.data());
 
-        console.log('📦 Hackathon Enrolments:', enrolledList);
+        console.log('✅ Hackathon Registrations:', enrolledList);
         console.log('👤 UID:', user.uid);
 
         setEnrolledHackathons(enrolledList);
@@ -60,14 +57,10 @@ export default function DashboardPage() {
       }
     };
 
-    if (user) {
-      fetchData();
-    }
-  }, [user]); // trigger when user is set
+    if (user) fetchData();
+  }, [user]);
 
-  // 3️⃣ Handle loading state
   if (loading) return <p style={{ textAlign: 'center' }}>🔄 Loading your dashboard...</p>;
-
   if (!user) return <p style={{ textAlign: 'center' }}>⚠️ Please login to view dashboard.</p>;
 
   return (
@@ -75,7 +68,6 @@ export default function DashboardPage() {
       <h2>Your Dashboard</h2>
       <p>Quick overview of your activity on CampusHustle</p>
 
-      {/* Stats Cards */}
       <div className="dashboard-widgets">
         <div className="widget-card">
           <h3>Freelance Gigs</h3>
@@ -95,7 +87,6 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Registered Hackathons Section */}
       {enrolledHackathons.length > 0 && (
         <>
           <h3 className="section-heading">Your Registered Hackathons</h3>
@@ -121,3 +112,4 @@ export default function DashboardPage() {
     </div>
   );
 }
+
