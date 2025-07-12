@@ -1,39 +1,31 @@
-// src/components/scholarship.js
+// src/components/Scholarship.js
 import React from 'react';
-import './scholarship.css';
+import './Scholarship.css';
 
 const scholarships = [
   {
     name: "TechStars Excellence Scholarship",
     amount: "₹50,000 + Internship",
     deadline: "31 July 2025",
-    eligibility: "Students in 2nd/3rd year of B.Tech",
-    details: "Offered to top performers in tech domains with leadership experience.",
-    link: "#"
+    details: "Open for final-year tech students with leadership experience and a GPA above 8.0. Includes a summer internship with stipend and mentorship."
   },
   {
     name: "CodeForIndia Challenge Grant",
     amount: "₹1,00,000 + Mentorship",
     deadline: "10 August 2025",
-    eligibility: "Open to all coding enthusiasts",
-    details: "Participate in an open-source hackathon and submit a project.",
-    link: "#"
+    details: "Awarded to 10 outstanding coders who demonstrate social impact through technology. Includes funding for personal projects and startup ideas."
   },
   {
     name: "Women in STEM Fellowship",
     amount: "₹75,000",
     deadline: "25 July 2025",
-    eligibility: "Female students in STEM fields",
-    details: "Awarded to top-performing female students in engineering & sciences.",
-    link: "#"
+    details: "For women pursuing CS/IT/Engineering, this fellowship supports career growth and education-related expenses."
   },
   {
     name: "HackBright Future Fund",
     amount: "₹60,000 + Bootcamp Access",
     deadline: "15 August 2025",
-    eligibility: "Final year B.Tech students",
-    details: "Best suited for students pursuing careers in AI/ML and startups.",
-    link: "#"
+    details: "Meant for students who have participated in at least one national hackathon. Covers bootcamp registration, travel, and lodging."
   }
 ];
 
@@ -41,12 +33,9 @@ const Scholarship = () => {
   return (
     <section className="scholarship-flag-section">
       <h2 className="scholarship-heading">Featured Scholarships</h2>
-      
+
       <p className="scholarship-subtext">
-        Explore exclusive scholarships designed to support your academic dreams and tech journey. 
-        Whether you're looking for internships, mentorship, or financial support — we've got you covered.
-        These scholarships are curated for passionate learners, innovators, and future leaders.
-        Apply now and take one step closer to your goals!
+        Explore exclusive scholarships designed to support your academic dreams and tech journey. Whether you're looking for internships, mentorship, or financial support — we've got you covered. These scholarships are curated for passionate learners, innovators, and future leaders. Apply now and take one step closer to your goals!
       </p>
 
       <div className="scholarship-flag-wrapper">
@@ -54,11 +43,10 @@ const Scholarship = () => {
           <div className="scholarship-flag-card" key={index}>
             <h3 className="sch-name">{sch.name}</h3>
             <p className="sch-amount">{sch.amount}</p>
-            <p className="sch-eligibility"><strong>Eligibility:</strong> {sch.eligibility}</p>
-            <p className="sch-details">{sch.details}</p>
+            <p className="sch-description">{sch.details}</p>
             <div className="sch-bottom">
               <span className="sch-deadline">⏳ {sch.deadline}</span>
-              <a href={sch.link} className="sch-apply-btn">Apply Now</a>
+              <a href="#" className="sch-apply-btn">Apply Now</a>
             </div>
           </div>
         ))}
@@ -68,5 +56,6 @@ const Scholarship = () => {
 };
 
 export default Scholarship;
+
 
 
