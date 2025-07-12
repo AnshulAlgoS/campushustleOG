@@ -9,32 +9,30 @@
   flex-wrap: wrap;
 }
 
-.hero-left-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-  max-width: 500px;
+/* Removed .hero-left-card and replaced with hero-left-text */
+.hero-left-text {
   flex: 1;
-  text-align: center;
+  text-align: left;
 }
 
-.hero-left-card .hero-title {
-  font-size: 3rem;
-  font-weight: bold;
+.hero-left-text .hero-title {
+  font-size: 4rem;
+  font-weight: 800;
   color: #1e3a8a;
+  margin-bottom: 20px;
 }
 
-.hero-left-card .hero-tagline {
-  margin-top: 1rem;
+.hero-left-text .hero-tagline {
+  font-size: 1.6rem;
+  font-weight: 600;
   background: #000;
   color: #fff;
-  padding: 10px 20px;
-  font-weight: 600;
-  font-size: 1.2rem;
-  border-radius: 10px;
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: 12px;
 }
 
+/* Hero Image */
 .hero-right-image {
   flex: 1;
   max-width: 600px;
@@ -52,19 +50,20 @@
   .hero-section-two-col {
     flex-direction: column;
     padding: 2rem 1rem;
+    text-align: center;
   }
 
-  .hero-left-card {
-    max-width: 100%;
+  .hero-left-text {
+    text-align: center;
   }
 
-  .hero-title {
-    font-size: 2rem;
+  .hero-left-text .hero-title {
+    font-size: 2.8rem;
   }
 
-  .hero-tagline {
-    font-size: 1rem;
-    padding: 8px 16px;
+  .hero-left-text .hero-tagline {
+    font-size: 1.2rem;
+    padding: 12px 24px;
   }
 
   .hero-right-image {
@@ -160,6 +159,7 @@
   margin-bottom: 1rem;
   color: #222;
 }
+
 /* === Features Section === */
 .features-section {
   padding: 60px 20px;
@@ -205,18 +205,8 @@
   color: #555;
 }
 
-
 /* === Responsive Design === */
 @media screen and (max-width: 768px) {
-  .hero-title {
-    font-size: 2.5rem;
-  }
-
-  .hero-tagline {
-    font-size: 1.1rem;
-    padding: 8px 16px;
-  }
-
   .dev-card {
     width: 90%;
     max-width: 300px;
@@ -228,3 +218,4 @@
     font-size: 1rem;
   }
 }
+
