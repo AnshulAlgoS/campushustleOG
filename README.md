@@ -2,7 +2,7 @@
 
 ## 🎥 Live Website and Demo 
 
- *Campus Hustle Walkthrough*: (https://drive.google.com/your-demo-link)
+ *Campus Hustle Walkthrough*: (https://youtu.be/ip74hMJSUO8?si=21h3YfZ82Bn5gYXF)
  *Campus Hustle website* : (https://campushustle-ai.vercel.app)
 
 
@@ -167,7 +167,7 @@ Auto-generate a professional portfolio from your freelance work and projects to 
 
 ## 🔍 Reference Material
 
-To better understand how freelancing and collaboration benefit students, check out this [YouTube Video](https://www.youtube.com/watch?v=freelancing-student-video) (external resource for context).
+To better understand how freelancing and collaboration benefit students, check out this [YouTube Video](https://youtu.be/ip74hMJSUO8?si=21h3YfZ82Bn5gYXF) (external resource for context).
 
 
 
