@@ -121,10 +121,7 @@ To better understand how freelancing and collaboration benefit students, check o
 ##  Architecture diagram
    ![Architecture Diagram](https://github.com/AnshulAlgoS/campushustle/blob/704099eebf91f593e0b383c9d67d698d48c02051/src/assets/images/architecture.png)
 ##  Process flow diagram    
-  <p align="center">
-  <img src="https://raw.githubusercontent.com/AnshulAlgoS/campushustle/main/assets/images/process-flow.png" alt="Process Flow Diagram" width="600" />
-</p>
-
+  ![Process flow diagram](https://github.com/AnshulAlgoS/campushustle/blob/c881a58d29e6657747fdfd296882472721a191d1/src/assets/images/process-flow.png)
 ## Acknowledgments
 
 Special thanks to:
