@@ -1,8 +1,5 @@
-// src/views/ExploreHackathonsPage.js
-
 import React, { useState } from 'react';
 import './HackathonPage.css';
-import logo from '../assets/images/CL1.png';
 import { Link } from 'react-router-dom';
 
 // Hackathon images
@@ -53,7 +50,7 @@ const fakeHackathons = [
   },
   {
     name: 'SSoC 2025',
-    image: img2,
+    image: img6,
     start: '2025-04-29',
     end: '2025-06-10',
     status: 'closed'
@@ -95,25 +92,11 @@ const fakeHackathons = [
   },
   {
     name: 'SSoC 2025',
-    image: img6,
+    image: img8,
     start: '2025-04-29',
     end: '2025-06-10',
     status: 'closed',
-  },
-  {
-    name: 'HACK ARYA VERSE',
-    image: img7,
-    start: '2025-04-24',
-    end: '2025-04-27',
-    status: 'closed',
-  },
-  {
-    name: 'IMPACTECH-2K25',
-    image: img8,
-    start: '2025-03-28',
-    end: '2025-04-04',
-    status: 'closed',
-  },
+  }
 ];
 
 const ExploreHackathonsPage = () => {
@@ -125,22 +108,16 @@ const ExploreHackathonsPage = () => {
 
   return (
     <div className="hackathon-list-page">
-      {/* Nav Bar */}
-      <div className="top-strip translucent-strip">
-        <img src={logo} alt="Campus Link Logo" className="strip-logo" />
-        <ul className="strip-nav">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/freelance">Freelance</Link></li>
-          <li><Link to="/hackathons">Hackathons</Link></li>
-          <li><Link to="/mentorship">Mentorship</Link></li>
-          <li><Link to="/events">Events</Link></li>
-          <li><Link to="/dashboard">Dashboard</Link></li>
-          <li><Link to="/login">Log In</Link></li>
-          <li><Link to="/signup" className="signup">Sign Up</Link></li>
-        </ul>
+
+      {/*  Background Hero Section (gradient + shapes) */}
+      <div className="background-effect">
+        <div className="hero-shape shape1"></div>
+        <div className="hero-shape shape2"></div>
+        <h1>Hackathons</h1>
+        <p>Harnessing creativity of tech enthusiasts to build a futuristic funnel of innovative India.</p>
       </div>
 
-      {/* Search Bar */}
+      {/* Search + Heading */}
       <div className="search-header">
         <h2>All Hackathons</h2>
         <input
@@ -152,7 +129,7 @@ const ExploreHackathonsPage = () => {
         />
       </div>
 
-      {/* Hackathon Grid */}
+      {/* Hackathon Cards */}
       <div className="hackathon-grid">
         {filteredHackathons.map((hack, index) => (
           <div className="hackathon-card" key={index}>
@@ -162,22 +139,17 @@ const ExploreHackathonsPage = () => {
             <p>{hack.start}</p>
             <p className="end-label">Registration End:</p>
             <p>{hack.end}</p>
-
-            <p style={{ fontWeight: 'bold' }}>
+            <p>
               {hack.status === 'open' ? (
                 <Link
                   to="/register"
                   state={{ hackathon: hack }}
-                  style={{
-                    color: '#008CFF',
-                    textDecoration: 'none',
-                    fontWeight: 'bold',
-                  }}
+                  style={{ color: '#008CFF', fontWeight: 'bold' }}
                 >
                   Register Now →
                 </Link>
               ) : (
-                'Registration Closed '
+                <span style={{ color: 'black', fontWeight: 'bold' }}>Registration Closed</span>
               )}
             </p>
           </div>
