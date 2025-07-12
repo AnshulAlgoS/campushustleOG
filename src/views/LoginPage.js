@@ -29,10 +29,10 @@ export default function LoginPage({ navigateTo, onClose }) {
           fullName,
           email,
         });
-        setMessage('✅ Account created!');
+        setMessage(' Account created!');
       } else {
         await signInWithEmailAndPassword(auth, email, password);
-        setMessage('✅ Login successful!');
+        setMessage(' Login successful!');
       }
 
       setTimeout(() => {
