@@ -11,9 +11,10 @@
   padding: 1rem;
   overflow-y: auto;
 }
+
 .auth-modal input::placeholder {
-  color: #666;            
-  opacity: 1 !important;  
+  color: #666;
+  opacity: 1 !important;
   font-size: 1rem;
   transition: none !important;
 }
@@ -25,7 +26,7 @@
   width: 100%;
   max-width: 400px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-  position: relative; 
+  position: relative;
   font-family: 'Poppins', sans-serif;
   display: flex;
   flex-direction: column;
@@ -41,6 +42,7 @@ body {
   -webkit-overflow-scrolling: touch;
   height: 100%;
 }
+
 .auth-modal input {
   all: unset;
   display: block;
@@ -61,8 +63,6 @@ body {
   transform: none !important;
   transition: none !important;
 }
-
-
 
 .auth-modal button {
   width: 100%;
@@ -107,13 +107,13 @@ body {
   position: relative;
   cursor: pointer;
 }
+
 .auth-modal input:focus,
 .auth-modal button:focus {
   outline: none;
   border-color: #572E54;
   box-shadow: 0 0 0 2px rgba(87, 46, 84, 0.2);
 }
-
 
 @media (max-width: 480px) {
   .auth-modal-overlay {
@@ -125,7 +125,7 @@ body {
     padding: 1.2rem;
     width: 100%;
     max-width: 95vw;
-    margin-top: 10vh; 
+    margin-top: 10vh;
     max-height: 85vh;
     overflow-y: auto;
     border-radius: 10px;
@@ -133,21 +133,23 @@ body {
 
   .auth-modal input,
   .auth-modal button {
-    font-size: 1rem;     
-    padding: 0.8rem;    
+    font-size: 1rem;
+    padding: 0.8rem;
     transition: none;
   }
+
   .auth-modal input::placeholder {
-  color: #666;              
-  opacity: 1 !important;     
-  font-size: 1rem;
-  transition: none !important;
-}
+    color: #666;
+    opacity: 1 !important;
+    font-size: 1rem;
+    transition: none !important;
+  }
 
   .auth-modal p,
-  .auth-modal.switch-mode{
+  .auth-modal.switch-mode {
     font-size: 0.95rem;
   }
+
   .close-btn {
     font-size: 1.6rem;
     top: 10px;
@@ -155,4 +157,20 @@ body {
   }
 }
 
+.auth-modal * {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
 
+.auth-modal input,
+.auth-modal button,
+.auth-modal form {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: auto;
+  -webkit-user-select: auto;
+}
