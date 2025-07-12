@@ -1,1 +1,85 @@
+.scholarship-flag-section {
+  background: #fdfdfd;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.scholarship-heading {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #1e3a8a;
+}
+
+.scholarship-flag-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.scholarship-flag-card {
+  background: #fff;
+  border-left: 6px solid #1e3a8a;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  padding: 20px 24px;
+  width: 300px;
+  text-align: left;
+  transition: 0.3s ease;
+}
+
+.scholarship-flag-card:hover {
+  transform: translateY(-5px);
+}
+
+.sch-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.sch-amount {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 16px;
+}
+
+.sch-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sch-deadline {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.sch-apply-btn {
+  background: #1e3a8a;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.sch-apply-btn:hover {
+  background: #162d6b;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+  .scholarship-flag-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .scholarship-flag-card {
+    width: 90%;
+  }
+}
 
