@@ -9,7 +9,7 @@
 /* Sidebar */
 .sidebar {
   width: 260px;
-  background-color: #572E54;
+  background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -17,32 +17,36 @@
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
 }
 
-.profile-pic {
+.avatar {
   width: 70px;
   height: 70px;
-  background-color: #fff;
-  color: #572E54;
-  font-weight: bold;
+  background-color: #3a2040;
+  color: #fff;
+  font-weight: 700;
   font-size: 1.8rem;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto 0.5rem;
+  box-shadow: 0 4px 10px rgba(156, 172, 241, 0.15); 
 }
 
 .sidebar h3 {
   text-align: center;
   font-size: 1.2rem;
   margin: 0.2rem 0;
+  color: #2c1a33;
 }
 
 .sidebar p {
   font-size: 0.9rem;
   text-align: center;
-  opacity: 0.9;
+  opacity: 0.95;
   margin-bottom: 1.8rem;
+  color: #3d2b4d; 
 }
+
 
 .menu-list {
   list-style: none;
@@ -54,13 +58,14 @@
   padding: 12px 16px;
   margin-bottom: 10px;
   border-radius: 8px;
-  background-color: #6a3a5d;
+  background-color: rgba(87, 46, 84, 0.08);
   cursor: pointer;
   transition: background 0.25s ease;
 }
 
 .menu-list li:hover {
-  background-color: #814a71;
+ background: linear-gradient(to right, #d66ac4, #a855f7);
+  color:#f5f6fa;
 }
 
 .menu-list li.active {
@@ -71,11 +76,12 @@
 
 /* Logout Button */
 .menu-list li.logout {
-  background-color: #b33939;
+  background: linear-gradient(to right, #d66ac4, #a855f7);
 }
 
 .menu-list li.logout:hover {
-  background-color: #e55039;
+  background: linear-gradient(to right, #c850c0, #6f42c1);
+  transform: scale(1.03);
 }
 
 /* Main Content */

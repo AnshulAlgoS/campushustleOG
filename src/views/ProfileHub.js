@@ -42,10 +42,10 @@ export default function ProfileHub({ user, onLogout, navigateToHome }) {
           </div>
         </div>
         <ul className="menu-list">
-          <li onClick={() => setActiveTab('dashboard')} className={activeTab === 'dashboard' ? 'active' : ''}>📊 Dashboard</li>
-          <li onClick={() => setActiveTab('profile')} className={activeTab === 'profile' ? 'active' : ''}>📝 My Profile</li>
-          <li onClick={navigateToHome}>🏠 Back to Home</li>
-          <li onClick={onLogout} className="logout">🚪 Logout</li>
+          <li onClick={() => setActiveTab('dashboard')} className={activeTab === 'dashboard' ? 'active' : ''}>Dashboard</li>
+          <li onClick={() => setActiveTab('profile')} className={activeTab === 'profile' ? 'active' : ''}>My Profile</li>
+          <li onClick={navigateToHome}> Back to Home</li>
+          <li onClick={onLogout} className="logout">Logout</li>
         </ul>
       </aside>
 

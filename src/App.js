@@ -18,6 +18,8 @@ import About from './views/About';
 import AuthModal from './components/AuthModal';
 import FreelancePage from './views/FreelancePage';
 import WebDevGigsPage from './views/WebDevGigsPage';
+import CommunitySection from './views/community';
+
 
 
 function InnerApp() {
@@ -64,7 +66,7 @@ function InnerApp() {
             />
           }
         />
-
+        <Route path="/community" element={<CommunitySection />} />
         <Route path="/hackathon" element={<HackathonPage navigateTo={(page) => navigate(`/${page}`)} />} />
         <Route path="/explore-hackathons" element={<ExploreHackathonsPage />} />
         <Route path="/participation-guidelines" element={<Guidelines />} />
