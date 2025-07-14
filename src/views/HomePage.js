@@ -25,8 +25,6 @@ import UserMenu from '../components/UserMenu';
 import CommunitySection from './community';
 import Scholarship from './scholarship';
 
-
-
 const slides = [slide1, slide2, slide3, slide4, slide5];
 
 const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
@@ -173,8 +171,7 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
                 <li><Link to="/freelance" onClick={() => setMenuOpen(false)}>Freelance</Link></li>
                 <li><Link to="/hackathon" onClick={() => setMenuOpen(false)}>Hackathons</Link></li>
                 <li><Link to="/" state={{ scrollTo: 'community' }} onClick={() => setMenuOpen(false)}>Community</Link></li>
-                <li>
-                  <Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
+                <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
                 </li>
                 <li>
                   {user ? (
