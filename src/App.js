@@ -22,6 +22,8 @@ import AuthModal from './components/AuthModal';
 import FreelancePage from './views/FreelancePage';
 import WebDevGigsPage from './views/WebDevGigsPage';
 import CommunitySection from './views/community';
+import Mentorship from './views/Mentorship';
+
 
 
 
@@ -81,6 +83,7 @@ function InnerApp() {
         <Route path="/dashboard" element={<DashboardPage user={user} onNavigate={(page) => navigate(`/${page}`)} />} />
         <Route path="/organise-hackathon" element={<OrganiseHackathon />} />
         <Route path="/register" element={<RegisterHackathonPage />} />
+        <Route path="/mentorship" element={<Mentorship />} />
 
         <Route
           path="/profile-hub"
