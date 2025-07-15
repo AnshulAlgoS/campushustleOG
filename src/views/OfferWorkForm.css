@@ -1,0 +1,61 @@
+/* OfferWorkForm.css */
+.form-wrapper {
+  max-width: 700px;
+  margin: 60px auto;
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.form-wrapper h2 {
+  text-align: center;
+  color: #4b0082;
+  margin-bottom: 30px;
+}
+
+.offer-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.offer-form label {
+  font-weight: 600;
+  margin-top: 15px;
+  margin-bottom: 6px;
+}
+
+.offer-form input,
+.offer-form select,
+.offer-form textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+
+.offer-form input:focus,
+.offer-form select:focus,
+.offer-form textarea:focus {
+  outline: none;
+  border-color: #6a11cb;
+}
+
+.offer-form button {
+  margin-top: 25px;
+  padding: 14px;
+  background: linear-gradient(to right, #6a11cb, #ae58f5);
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.offer-form button:hover {
+  background: linear-gradient(to right, #bd43e2, #be85db);
+}
