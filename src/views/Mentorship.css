@@ -1,0 +1,236 @@
+/* How It Works Section */
+
+/* Base Page Styling */
+.mentorship-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #c3a0ee, #f5a8e9);
+  color: rgb(16, 2, 2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Hero Section */
+.mentorship-hero {
+  width: 100%;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.mentorship-hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.mentorship-hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.mentorship-cta-btn {
+  padding: 12px 30px;
+  font-size: 1rem;
+  border: none;
+  background: #572E54;
+  color: white;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.mentorship-cta-btn:hover {
+  background: #691041;
+}
+
+
+.how-it-works {
+  width: 100%;
+  padding: 60px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.how-it-works h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.steps-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.step-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  width: 250px;
+  transition: transform 0.3s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  background: #572E54;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin: 0 auto 15px auto;
+}
+
+.step-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.step-card p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Mentor Cards Section */
+.mentors-section {
+  width: 100%;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.mentors-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.mentors-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.mentor-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 20px;
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.mentor-card:hover {
+  transform: translateY(-5px);
+}
+
+.mentor-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid #510a38;
+}
+
+.mentor-card h3 {
+  margin-bottom: 5px;
+  font-size: 1.4rem;
+}
+
+.mentor-role {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.mentor-tags {
+  margin-bottom: 15px;
+}
+
+.mentor-tag {
+  background: #792b73;
+  color: white;
+  border-radius: 12px;
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  margin: 3px;
+  display: inline-block;
+}
+
+.book-btn {
+  padding: 10px 20px;
+  border: none;
+  background: #050007;
+  color: white;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.book-btn:hover {
+  background: #491650;
+}
+
+/* Benefits Section */
+.benefits-section {
+  width: 100%;
+  padding: 60px 20px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.benefits-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.benefits-list li {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.benefits-list li::before {
+  content: '-';
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* CTA Footer Section */
+.mentorship-cta-footer {
+  width: 100%;
+  padding: 60px 20px;
+  text-align: center;
+  background: #f0e7f3;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mentorship-cta-footer h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.mentorship-cta-footer p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  opacity: 0.85;
+}
