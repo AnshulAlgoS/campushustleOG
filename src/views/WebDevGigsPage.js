@@ -1,145 +1,81 @@
 import React, { useState } from 'react';
 import './WebDevGigsPage.css';
-import logo from '../assets/images/CL1.png';
-
-// Hackathon images
-import img1 from '../assets/images/w1.jpeg';
-import img2 from '../assets/images/w2.jpeg';
-import img3 from '../assets/images/w3.jpeg';
-import img4 from '../assets/images/w4.jpeg';
-import img5 from '../assets/images/w5.jpeg';
-import img6 from '../assets/images/w6.jpeg';
-import img7 from '../assets/images/w7.jpeg';
-import img8 from '../assets/images/w8.jpeg';
-
-
-
 
 const gigs = [
   {
-    id: 1,
-    title: 'Provide 3 Hours Of Edits/Fixes/Updates To Your WordPress Website',
-    tags: ['E-commerce website'],
-    seller: { name: 'Mohammed I.', rating: 5.0, reviews: 556 },
-    price: '$45',
-    delivery: '1 day',
-    featured: true,
-    image : img1,
+    title: 'Portfolio Website',
+    description: 'Design and build a modern responsive portfolio for clients or students.',
+    price: '₹1500 - ₹3000'
   },
   {
-    id: 2,
-    title: 'Design & Develop Responsive SEO Friendly Wordpress Website',
-    tags: ['Custom website'],
-    seller: { name: 'Wings Web Me...', rating: 5.0, reviews: 1710 },
-    price: '$180',
-    delivery: '7 days',
-    featured: true,
-    image : img2,
+    title: 'E-commerce Site',
+    description: 'Create a small e-commerce site with cart and checkout functionality.',
+    price: '₹3000 - ₹8000'
   },
   {
-    id: 3,
-    title: 'Design Responsive, SEO friendly & Fast Loading WordPress website',
-    tags: ['Design', 'Logo design'],
-    seller: { name: 'Vishal M.', rating: 5.0, reviews: 1277 },
-    price: '$105',
-    delivery: '3 days',
-    featured: true,
-    image : img3,
+    title: 'Landing Page',
+    description: 'Build a stunning landing page for startups or events.',
+    price: '₹1000 - ₹2500'
   },
   {
-    id: 4,
-    title: 'Fix WordPress Errors, Bugs, and Theme Issues Quickly',
-    tags: ['Bug fixing', 'WordPress'],
-    seller: { name: 'Ayesha K.', rating: 4.9, reviews: 890 },
-    price: '$60',
-    delivery: '2 days',
-    featured: false,
-    image : img4,
+    title: 'Blog Website',
+    description: 'Develop a blog with categories, post pages, and CMS integration.',
+    price: '₹2000 - ₹5000'
   },
   {
-    id: 5,
-    title: 'Develop a Custom WordPress Plugin Based on Your Needs',
-    tags: ['Plugin development'],
-    seller: { name: 'DevPro Team', rating: 5.0, reviews: 1440 },
-    price: '$200',
-    delivery: '5 days',
-    featured: true,
-    image : img5,
+    title: 'Fix Bugs / Improve UI',
+    description: 'Freelancers can help debug or redesign existing websites.',
+    price: '₹500 - ₹2000'
   },
-  {
-    id: 6,
-    title: 'Speed Optimize Your WordPress Website for Better Performance',
-    tags: ['Speed optimization'],
-    seller: { name: 'Ravi S.', rating: 4.8, reviews: 620 },
-    price: '$75',
-    delivery: '1 day',
-    featured: false,
-    image : img6,
-  },
-    {
-    id: 7,
-    title: 'Build a Full-Stack MERN Website with Admin Panel',
-    tags: ['MERN stack', 'Full-stack'],
-    seller: { name: 'Simran K.', rating: 4.9, reviews: 980 },
-    price: '$250',
-    delivery: '6 days',
-    featured: true,
-    image : img7,
-  },
-  {
-    id: 8,
-    title: 'Create a Portfolio Website using HTML, CSS, and JavaScript',
-    tags: ['Frontend', 'Portfolio'],
-    seller: { name: 'Ankit T.', rating: 4.7, reviews: 450 },
-    price: '$40',
-    delivery: '2 days',
-    featured: false,
-    image : img8,
-  },
-
 ];
 
-// Dummy data/functions to avoid errors
-
-const UserMenu = ({ user }) => <div>{user.name}</div>;
-const handleLogout = () => {};
-const onProfileClick = () => {};
-const openAuthModal = () => {};
-const navigateTo = (route) => console.log("Navigating to:", route);
-
-const FreelancePage = ({ user }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
+const WebDevGigsPage = () => {
+  const [selectedGig, setSelectedGig] = useState(null);
 
   return (
-    <div className="freelance-page">
-     {/* ✅ Gigs Content */}
-      <div className="webdev-page">
-        <h1>Web Development Gigs</h1>
-        <div className="gig-grid">
-          {gigs.map((gig) => (
-            <div key={gig.id} className="gig-card">
-            <img src={gig.image} alt={gig.title} classname="gig-image" />
-              <h3>{gig.title}</h3>
-              <div className="tags">
-                {gig.tags.map((tag, i) => (
-                  <span key={i} className="tag">{tag}</span>
-                ))}
-              </div>
-              <div className="gig-footer">
-                <p>by {gig.seller.name}</p>
-                <p>⭐ {gig.seller.rating} ({gig.seller.reviews})</p>
-                <p className="price">{gig.price}</p>
-              </div>
-              <p className="delivery">Delivered in {gig.delivery}</p>
-              {gig.featured && <span className="featured">Featured</span>}
+    <div className="webdev-gigs-container">
+      <h1>Web Development Gigs</h1>
+      <div className="webdev-cards-wrapper">
+        {gigs.map((gig, index) => (
+          <div key={index} className="webdev-card">
+            <div className="card-header">
+              <h2>{gig.title}</h2>
             </div>
-          ))}
-          
-        </div>
+            <div className="card-body">
+              <p>{gig.description}</p>
+              <div className="card-footer">
+                <span className="gig-price">{gig.price}</span>
+                <button className="apply-btn" onClick={() => setSelectedGig(gig)}>Apply Now</button>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
 
+      {/* Modal */}
+      {selectedGig && (
+        <div className="modal-overlay" onClick={() => setSelectedGig(null)}>
+          <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+            <h2>{selectedGig.title}</h2>
+            <p>{selectedGig.description}</p>
+            <p><strong>Budget:</strong> {selectedGig.price}</p>
+            <input type="text" placeholder="Your Name" />
+            <input type="email" placeholder="Your Email" />
+            <textarea placeholder="Why are you fit for this gig?"></textarea>
+            <button className="submit-btn">Submit Application</button>
+            <button className="close-btn" onClick={() => setSelectedGig(null)}>Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-export default FreelancePage;
+export default WebDevGigsPage;
+
+ 
+   
+  
+   
+          
+        
