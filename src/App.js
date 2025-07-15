@@ -23,6 +23,12 @@ import FreelancePage from './views/FreelancePage';
 import WebDevGigsPage from './views/WebDevGigsPage';
 import CommunitySection from './views/community';
 import Mentorship from './views/Mentorship';
+import ExploreFreelance from  './views/ExploreFreelance';
+import OfferWorkForm from './views/OfferWorkForm';
+import ContentWritingGigsPage from './views/ContentWritingGigsPage';
+import GraphicDesignGigsPage from './views/GraphicDesignGigsPage';
+import MarketingGigsPage from './views/MarketingGigsPage';
+import VideoEditingGigsPage from './views/VideoEditingGigsPage';
 
 
 
@@ -107,11 +113,15 @@ function InnerApp() {
             />
           }
         />
-        {/* Web Dev Gigs Page*/}
-        <Route
-          path="/Freelance/WebDev"
-          element={<WebDevGigsPage />}
-        />
+      
+         <Route path="/explore-freelance" element={<ExploreFreelance />} /> {/* ✅ Added this route */}
+        <Route path="/offer-work" element={<OfferWorkForm />} />
+        <Route path="/Freelance/WebDev" element={<WebDevGigsPage />} />
+        <Route path="/freelance/content-writing" element={<ContentWritingGigsPage />} />
+        <Route path="/freelance/graphic-design" element={<GraphicDesignGigsPage />} />
+        <Route path="/freelance/marketing" element={<MarketingGigsPage />} />
+        <Route path="/freelance/video-editing" element={<VideoEditingGigsPage />} />
+        
       </Routes>
 
       {showAuthModal && (
