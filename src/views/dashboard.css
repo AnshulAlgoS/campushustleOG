@@ -227,5 +227,91 @@
   color: #333;
   font-size: 1rem;
 }
+.section-heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  text-align: center;
+  color: #333;
+}
+
+.registered-hackathon-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 0 1rem 2rem;
+}
+
+.registered-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.registered-card:hover {
+  transform: translateY(-5px);
+}
+
+.registered-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.registered-info {
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.registered-info h4 {
+  margin: 0 0 0.6rem;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+/* ✅ Responsive Breakpoints */
+@media (max-width: 768px) {
+  .section-heading {
+    font-size: 1.5rem;
+  }
+
+  .registered-info h4 {
+    font-size: 1.1rem;
+  }
+
+  .registered-info {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .registered-hackathon-cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .registered-card {
+    border-radius: 10px;
+  }
+
+  .registered-image {
+    height: 140px;
+  }
+
+  .registered-info {
+    font-size: 0.85rem;
+  }
+
+  .registered-info h4 {
+    font-size: 1rem;
+  }
+}
+
 
 }

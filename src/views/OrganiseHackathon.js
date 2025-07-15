@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import "./OrganiseHackathon.css";
+import {auth} from "../firebase";
 import { db } from "../firebase"; 
 import { collection, addDoc } from "firebase/firestore";
+const initialState = {
+  title: "",
+  startDate: "",
+  endDate: "",
+  regStart: "",
+  regEnd: "",
+  mode: "online",
+  description: "",
+  rules: "",
+  teamSize: "",
+  prize: "",
+};
+
 
 const OrganiseHackathon = () => {
-  const [formData, setFormData] = useState({
-    title: "",
-    startDate: "",
-    endDate: "",
-    regStart: "",
-    regEnd: "",
-    mode: "online",
-    description: "",
-    rules: "",
-    teamSize: "",
-    prize: "",
-  });
+  const [formData, setFormData] = useState(initialState);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,28 +28,30 @@ const OrganiseHackathon = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await addDoc(collection(db, "hackathons"), formData);
-      alert(" Hackathon submitted successfully!");
-      setFormData({
-        title: "",
-        startDate: "",
-        endDate: "",
-        regStart: "",
-        regEnd: "",
-        mode: "online",
-        description: "",
-        rules: "",
-        teamSize: "",
-        prize: "",
-      });
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("❌ Failed to submit. Please try again.");
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const user = auth.currentUser;
+    if (!user) {
+      alert("You must be logged in to organise a hackathon.");
+      return;
     }
-  };
+
+    const formWithUser = {
+      ...formData,
+      userId: user.uid,
+      createdAt: new Date(),
+    };
+
+    await addDoc(collection(db, "hackathons"), formWithUser);
+    alert("✅ Hackathon submitted successfully!");
+    setFormData({ ...initialState });
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    alert("❌ Failed to submit. Please try again.");
+  }
+};
+
 
   return (
     <div className="organise-page">

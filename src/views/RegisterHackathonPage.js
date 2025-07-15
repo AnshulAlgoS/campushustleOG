@@ -1,8 +1,9 @@
+// src/views/RegisterHackathonPage.jsx
+
 import React, { useEffect, useState } from 'react';
-import { Timestamp } from 'firebase/firestore'; 
+import { Timestamp, doc, setDoc } from 'firebase/firestore';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { db, auth } from '../firebase';
-import { doc, setDoc } from 'firebase/firestore';
 import './RegisterHackathonPage.css';
 
 const RegisterHackathonPage = () => {
@@ -11,7 +12,8 @@ const RegisterHackathonPage = () => {
   const { hackathon } = location.state || {};
 
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
+
   const [formData, setFormData] = useState({
     teamName: '',
     memberCount: '',
@@ -20,53 +22,50 @@ const RegisterHackathonPage = () => {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(currentUser => {
-      if (currentUser) {
-        setUser(currentUser);
-      }
-      setLoading(false); 
+      setUser(currentUser);
+      setLoading(false);
     });
-    return () => unsubscribe();
+    return unsubscribe;
   }, []);
 
+  useEffect(() => {
+    if (!loading && !user) {
+      navigate('/login');
+    }
+  }, [user, loading, navigate]);
+
   const handleChange = e => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-const handleSubmit = async e => {
-  e.preventDefault();
-  if (!user || !hackathon) return;
+  const handleSubmit = async e => {
+    e.preventDefault();
+    if (!user || !hackathon) return;
 
-  const docRef = doc(db, 'registrations', `${user.uid}_${hackathon.name}`);
+    try {
+      const docRef = doc(db, 'registrations', `${user.uid}_${hackathon.name}`);
 
-  await setDoc(docRef, {
-    hackathonName: hackathon.name,
-    hackathonImage: hackathon.image || '', // Add this line if not present
-    userEmail: user.email,
-    userId: user.uid,
-    teamName: formData.teamName,
-    memberCount: formData.memberCount,
-    additionalNotes: formData.additionalNotes,
-    submittedAt: Timestamp.now() // 👈 Use this for correct Firestore timestamp
-  });
+      await setDoc(docRef, {
+        hackathonName: hackathon.name,
+        hackathonImage: hackathon.image || '',
+        userEmail: user.email,
+        userId: user.uid,
+        teamName: formData.teamName,
+        memberCount: formData.memberCount,
+        additionalNotes: formData.additionalNotes,
+        submittedAt: Timestamp.now()
+      });
 
-  alert('Registered successfully!');
-  navigate('/dashboard');
-};
+      alert('✅ Registered successfully!');
+      navigate('/dashboard');
+    } catch (err) {
+      console.error('❌ Registration failed:', err);
+      alert('Registration failed. Try again.');
+    }
+  };
 
-
-
-
-  // Handle loading or redirect
   if (loading) return <p style={{ textAlign: 'center' }}>Checking authentication...</p>;
-
-  if (!user) {
-    navigate('/login');
-    return null;
-  }
-
   if (!hackathon) return <p style={{ textAlign: 'center' }}>Hackathon info missing.</p>;
 
   return (

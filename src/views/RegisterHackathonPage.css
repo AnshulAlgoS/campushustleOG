@@ -1,63 +1,135 @@
-/* page layout */
-.register-container {
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #ecd5fc, #fcd3f8);
   min-height: 100vh;
-  padding: 60px 20px;
-  max-width: 600px;
-  margin: auto;
-  background: linear-gradient(135deg, #e9d5ff, #fcd3f8);
+  overflow-x: hidden;
+}
+
+/* Main Container */
+.register-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  animation: fadeInUp 0.6s ease-in-out;
 }
 
-/* Heading */
+/*  Heading */
 .register-title {
-  font-size: 2rem;
-  margin-bottom: 24px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #4a186b;
+  margin-bottom: 30px;
   text-align: center;
-  color: #5c3c6e;
-  font-weight: bold;
 }
 
-/* Form container */
+/* Form Box */
 .register-form {
+  background: #ffffff;
+  padding: 36px 32px;
+  border-radius: 20px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  background: white;
-  border-radius: 16px;
-  padding: 30px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  gap: 20px;
+  width: 100%;
+  transition: all 0.3s ease;
 }
 
-/* Inputs */
+/*  Inputs */
 .register-input,
 .register-textarea {
-  padding: 12px 16px;
+  width: 100%;
+  padding: 14px 18px;
   font-size: 1rem;
-  border-radius: 10px;
+  border-radius: 12px;
   border: 1px solid #ccc;
-  background-color: #f9f9f9;
+  background-color: #fefeff;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.register-input:focus,
+.register-textarea:focus {
+  border-color: #8321b7;
+  box-shadow: 0 0 0 3px rgba(131, 33, 183, 0.15);
   outline: none;
 }
 
 .register-textarea {
-  min-height: 100px;
+  min-height: 130px;
+  resize: vertical;
 }
 
-/* Button */
+/*  Submit Button */
 .register-button {
   padding: 14px;
-  background-color: #5c3c6e;
+  background-color: #6d18a8;
   color: white;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 600;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .register-button:hover {
-  background-color: #7b4b94;
+  background-color: #8321b7;
+  transform: translateY(-2px);
+}
+
+.register-button:active {
+  transform: scale(0.97);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .register-container {
+    padding: 32px 16px;
+  }
+
+  .register-form {
+    padding: 28px 20px;
+  }
+
+  .register-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-container {
+    padding: 24px 12px;
+  }
+
+  .register-form {
+    padding: 20px 16px;
+  }
+
+  .register-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

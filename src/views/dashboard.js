@@ -35,40 +35,41 @@ export default function DashboardPage() {
     return () => unsubscribe();
   }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (!user?.uid) return;
+useEffect(() => {
+  const fetchData = async () => {
+    if (!user?.uid) return;
 
-      try {
-        const [gigsSnap, hackSnap, orgSnap, mentorSnap] = await Promise.all([
-          getDocs(query(collection(db, 'freelanceGigs'), where('userId', '==', user.uid))),
-          getDocs(query(collection(db, 'registrations'), where('userId', '==', user.uid))),
-          getDocs(query(collection(db, 'hackathonsOrganized'), where('userId', '==', user.uid))),
-          getDocs(query(collection(db, 'mentorships'), where('userId', '==', user.uid), where('isActive', '==', true)))
-        ]);
+    try {
+      const [gigsSnap, hackSnap, mentorSnap] = await Promise.all([
+        getDocs(query(collection(db, 'freelanceGigs'), where('userId', '==', user.uid))),
+        getDocs(query(collection(db, 'registrations'), where('userId', '==', user.uid))),
+        getDocs(query(collection(db, 'mentorships'), where('userId', '==', user.uid), where('isActive', '==', true)))
+      ]);
 
-        const enrolledList = hackSnap.docs.map(doc => doc.data());
-        const organizedList = orgSnap.docs.map(doc => doc.data());
+      const orgSnap = await getDocs(
+        query(collection(db, 'hackathons'), where('userId', '==', user.uid)) // 🔁 Updated collection
+      );
 
-        console.log('✅ Hackathon Registrations:', enrolledList);
-        console.log('👤 UID:', user.uid);
+      const enrolledList = hackSnap.docs.map(doc => doc.data());
+      const organizedList = orgSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
-        setEnrolledHackathons(enrolledList);
-        setOrganizedHackathons(organizedList);
+      setEnrolledHackathons(enrolledList);
+      setOrganizedHackathons(organizedList);
 
-        setCounts({
-          gigsApplied: gigsSnap.size,
-          hackathonsEnrolled: hackSnap.size,
-          hackathonsOrganized: orgSnap.size,
-          mentorshipsActive: mentorSnap.size
-        });
-      } catch (err) {
-        console.error('⚠️ Error fetching dashboard data:', err);
-      }
-    };
+      setCounts({
+        gigsApplied: gigsSnap.size,
+        hackathonsEnrolled: hackSnap.size,
+        hackathonsOrganized: orgSnap.size,
+        mentorshipsActive: mentorSnap.size
+      });
+    } catch (err) {
+      console.error('⚠️ Error fetching dashboard data:', err);
+    }
+  };
 
-    if (user) fetchData();
-  }, [user]);
+  if (user) fetchData();
+}, [user]);
+
 
   if (loading) return <p style={{ textAlign: 'center' }}>🔄 Loading your dashboard...</p>;
   if (!user) return <p style={{ textAlign: 'center' }}>⚠️ Please login to view dashboard.</p>;
@@ -120,6 +121,30 @@ export default function DashboardPage() {
           </div>
         </>
       )}
+      {organizedHackathons.length > 0 && (
+  <>
+    <h3 className="section-heading">Hackathons You Organized</h3>
+    <div className="registered-hackathon-cards">
+      {organizedHackathons.map((item, idx) => (
+        <div className="registered-card" key={item.id}>
+          <img
+            src={fallbackImages[idx % fallbackImages.length]}
+            alt={item.title}
+            className="registered-image"
+          />
+          <div className="registered-info">
+            <h4>{item.title}</h4>
+            <p><strong>Mode:</strong> {item.mode}</p>
+            <p><strong>Start:</strong> {item.startDate}</p>
+            <p><strong>End:</strong> {item.endDate}</p>
+            <p><strong>Teamsize:</strong> {item.teamSize}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </>
+)}
+
     </div>
   );
 }
