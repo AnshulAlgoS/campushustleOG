@@ -1,106 +1,90 @@
-.freelance-page {
+/* Entire page container */
+.freelance-container {
+  min-height: 100vh;
+ background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #5d3b76;
+  padding: 10px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo styling */
+.logo {
+  height: 32px;
+}
+
+/* Navbar links */
+.nav-links a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #d9b2f9;
+}
+
+/* Sign Up button */
+.signup-btn {
+  background-color: white;
+  color: #5d3b76;
+  font-weight: 700;
+  padding: 8px 16px;
+  border: 2px solid #5d3b76;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.signup-btn:hover {
+  background-color: #f0dfff;
+}
+
+.signup-btn:active {
+  background-color: #5d3b76;
+  color: white;
+  border-color: white;
+}
+  
+/* Centered content block */
+.freelance-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 20px;
-  background-color: #f9f9f9;
-  min-height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.freelance-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #572E54;
-  margin-bottom: 70px;
-  margin-top: 50px;
-  text-align: center;
-}
-
-.freelance-cards {
-  display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  margin-top: 100px;
   gap: 30px;
-  width: 100%;
-  max-width: 1000px;
 }
 
-.freelance-card {
-  flex: 1 1 300px;
-  max-width: 400px;
-  padding: 30px;
-  border-radius: 16px;
+/* Button styling */
+.freelance-btn {
+  background: linear-gradient(135deg, #943cf1 0%, #d877f0 100%);
   color: #fff;
-  text-align: center;
-  transition: transform 0.3s ease;
-  cursor: pointer;
+  padding: 18px 32px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(106, 17, 203, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+.freelance-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 25px rgba(106, 17, 203, 0.6);
 }
 
-.freelance-card h2 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-}
 
-.freelance-card p {
-  font-size: 1rem;
-  line-height: 1.5;
-}
+ 
 
-.freelance-card:hover {
-  transform: translateY(-10px);
-}
-
-/* Gradient backgrounds */
-.webdev {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-}
-
-.design {
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
-  overflow-x: hidden;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-.freelance-page {
-  min-height: 100vh;
-  padding: 2rem;
-  background: linear-gradient(to bottom right, oklch(76.526% 0.09336 307.781), #bcccdd);
-  font-family: sans-serif;
-}
-.design-message {
-  margin-top: 20px;
-  padding: 15px 20px;
-  background-color: #f2d9ff;
-  color: #4b0082;
-  font-weight: 500;
-  border-radius: 8px;
-  text-align: center;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  animation: fadeIn 0.4s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
