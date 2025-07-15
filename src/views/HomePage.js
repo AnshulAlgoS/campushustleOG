@@ -223,16 +223,17 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
 
 
 
-          <div className="video-overlay-text">
+          <div className="video-overlay-text" data-aos="fade-up">
             <h1>Campus Hustle – Where<br />Hustlers Hangout</h1>
           </div>
-          <div className="search-bar-wrapper">
+
+          <div className="search-bar-wrapper" data-aos="zoom-in" data-aos-delay="200">
             <form>
               <input type="search" placeholder="Search our services ..." />
               <i className="fa fa-search"></i>
             </form>
           </div>
-          <div className="tag-buttons-below">
+          <div className="tag-buttons-below" data-aos="fade-up" data-aos-delay="400">
             <button className="tag-button">Freelance</button>
             <button className="tag-button">Budget Planner</button>
             <button className="tag-button">Scholarships</button>
@@ -253,7 +254,10 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
                 className="category-box"
                 onClick={() => handleCategoryClick(item.title)}
                 style={{ cursor: 'pointer' }}
+                data-aos="flip-left"
+                data-aos-delay={`${index * 100}`}
               >
+
                 <div className="category-inner-box">
                   <img src={item.src} alt={item.title} />
                 </div>
@@ -263,19 +267,19 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
           </div>
         </section>
 
-        {/* Community Section */}
-        <div ref={communityRef}>
+        <div ref={communityRef} data-aos="fade-up">
           <CommunitySection />
         </div>
-        {/* Scholarship Section */}
-        <div ref={scholarshipRef}>
+
+        <div ref={scholarshipRef} data-aos="fade-up">
           <Scholarship />
         </div>
 
 
 
+
         {/* Testimonials Section */}
-        <section className="testimonials-section">
+        <section className="testimonials-section" data-aos="fade-up">
           <h2>What Our Users Say</h2>
 
           <div className="testimonial-carousel">
@@ -330,8 +334,9 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
             </span>
 
             {/* Company Section */}
-            <span className="footer-column">
+            <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
               <h4>Company</h4>
+
               <ul>
                 <li><Link to="/about">About Us</Link></li>
                 <li><a href="#">Careers</a></li>

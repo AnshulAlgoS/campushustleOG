@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import './LoginPage.css';
 import { auth, db } from '../firebase';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from 'firebase/auth';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
 
 export default function LoginPage({ navigateTo, onClose }) {
   const [isSignUp, setIsSignUp] = useState(true);
@@ -28,11 +33,13 @@ export default function LoginPage({ navigateTo, onClose }) {
         await setDoc(doc(db, 'users', res.user.uid), {
           fullName,
           email,
+          provider: 'email',
+          createdAt: new Date(),
         });
-        setMessage(' Account created!');
+        setMessage('✅ Account created!');
       } else {
         await signInWithEmailAndPassword(auth, email, password);
-        setMessage(' Login successful!');
+        setMessage('✅ Login successful!');
       }
 
       setTimeout(() => {
@@ -41,6 +48,36 @@ export default function LoginPage({ navigateTo, onClose }) {
       }, 1500);
     } catch (err) {
       setMessage(`❌ ${err.message}`);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      const userRef = doc(db, 'users', user.uid);
+      const userSnap = await getDoc(userRef);
+
+      if (!userSnap.exists()) {
+        await setDoc(userRef, {
+          fullName: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+          provider: 'google',
+          createdAt: new Date(),
+        });
+      }
+
+      setMessage('✅ Logged in with Google!');
+      setTimeout(() => {
+        setMessage('');
+        navigateTo('dashboard');
+      }, 1500);
+    } catch (error) {
+      console.error(error);
+      setMessage(`❌ ${error.message}`);
     }
   };
 
@@ -53,11 +90,7 @@ export default function LoginPage({ navigateTo, onClose }) {
         }
       }}
     >
-
-      <div
-        className="popup"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="popup" onClick={(e) => e.stopPropagation()}>
         <button className="close-btn" onClick={onClose}>×</button>
         <h2>{isSignUp ? 'Register' : 'Login'}</h2>
         <p className="switch-text">
@@ -103,9 +136,19 @@ export default function LoginPage({ navigateTo, onClose }) {
           {isSignUp ? 'Sign Up' : 'Sign In'}
         </button>
 
+        <div className="divider">or</div>
+
+        <button onClick={handleGoogleLogin} className="google-btn">
+          <img
+            src="/assets/google-icon.svg"
+            alt="Google"
+            className="google-icon"
+          />
+          Continue with Google
+        </button>
+
         {message && <div className="message">{message}</div>}
       </div>
     </div>
   );
 }
-

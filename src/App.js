@@ -1,8 +1,11 @@
- // src/App.js
+// src/App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from './firebase';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 // Pages
 import HomePage from './views/HomePage';
@@ -14,7 +17,7 @@ import Guidelines from './views/Guidelines';
 import ProfilePage from './views/ProfilePage';
 import DashboardPage from './views/dashboard';
 import ProfileHub from './views/ProfileHub';
-import About from './views/About'; 
+import About from './views/About';
 import AuthModal from './components/AuthModal';
 import FreelancePage from './views/FreelancePage';
 import WebDevGigsPage from './views/WebDevGigsPage';
@@ -26,6 +29,9 @@ function InnerApp() {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  useEffect(() => {
+  AOS.init({duration: 1000,once: true});
+}, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -87,22 +93,22 @@ function InnerApp() {
           }
         />
         <Route
-  path="/freelance"
-  element={
-    <FreelancePage
-      user={user}
-      navigateTo={(page) => navigate(`/${page}`)}
-      handleLogout={handleLogout}
-      openAuthModal={openAuthModal}
-      onProfileClick={() => navigate('/profile-hub')}
-    />
-  }
-/>
-{/* Web Dev Gigs Page*/}
-<Route
-path="/Freelance/WebDev"
-element={<WebDevGigsPage />}
-/>               
+          path="/freelance"
+          element={
+            <FreelancePage
+              user={user}
+              navigateTo={(page) => navigate(`/${page}`)}
+              handleLogout={handleLogout}
+              openAuthModal={openAuthModal}
+              onProfileClick={() => navigate('/profile-hub')}
+            />
+          }
+        />
+        {/* Web Dev Gigs Page*/}
+        <Route
+          path="/Freelance/WebDev"
+          element={<WebDevGigsPage />}
+        />
       </Routes>
 
       {showAuthModal && (
