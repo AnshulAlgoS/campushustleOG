@@ -1,45 +1,38 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './FreelancePage.css';
 import logo from '../assets/images/CL1.png';
-import UserMenu from '../components/UserMenu';
+import { Link } from 'react-router-dom';
 
-const FreelancePage = ({ user, navigateTo, handleLogout, openAuthModal, onProfileClick }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [designMsgVisible, setDesignMsgVisible] = useState(false); 
-
+const FreelancePage = () => {
   return (
-    <div className="freelance-page">
-      {/* Page Content */}
-      <h1 className="freelance-title">Freelance Opportunities</h1>
-
-      <div className="freelance-cards">
-        <div
-          className="freelance-card webdev"
-          onClick={() => navigateTo('freelance/webdev')}
-          style={{ cursor: 'pointer' }}
-        >
-          <h2>Web Development</h2>
-          <p>Take on freelance web development projects and grow your skills.</p>
-        </div>
-
-        <div
-          className="freelance-card design"
-          onClick={() => setDesignMsgVisible(true)} // add click
-          style={{ cursor: 'pointer' }}
-        >
-          <h2>Designing</h2>
-          <p>Work on creative design gigs and expand your portfolio.</p>
+    <div className="freelance-container">
+      <div className="navbar">
+        <img src={logo} alt="Campus Hustle Logo" className="logo" />
+        <div className="nav-links">
+          <Link to="/">Home</Link>
+          <Link to="/freelance">Freelance</Link>
+          <Link to="/hackathons">Hackathons</Link>
+          <Link to="/mentorship">Mentorship</Link>
+          <Link to="/events">Events</Link>
+          <Link to="/dashboard">Dashboard</Link>
+          <Link to="/login">Log In</Link>
+          <Link to="/signup" className="signup-btn">Sign Up</Link>
         </div>
       </div>
 
-      {/* Show message on clicking Designing */}
-      {designMsgVisible && (
-        <div className="design-message">
-          <p>🚧 We're currently working on this section. Stay tuned!</p>
-        </div>
-      )}
+      <div className="freelance-content">
+        <Link to="/explore-freelance" className="freelance-btn">
+          Explore Freelancing Opportunities
+        </Link>
+       <Link to="/offer-work" className="freelance-btn">
+  Offer Work to Freelancers
+</Link>
+
+      </div>
     </div>
   );
 };
 
 export default FreelancePage;
+
+        
