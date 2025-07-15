@@ -850,82 +850,94 @@ a.category-box .category-title {
     font-size: 13px;
   }
 }
-
-/* Mobile Phones (≤ 480px) */
 @media (max-width: 480px) {
-
-  .strip-logo {
-    height: 36px;
-    margin-bottom: 4px;
+  /* Overlay Text */
+  .video-overlay-text {
+    position: absolute;
+    margin-top: 25%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    color: white;
+    width: 100%;
+    padding: 0 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1.3;
+    font-family: 'Poppins', sans-serif;
   }
 
-  .strip-nav {
-    gap: 7px;
-    font-size: 13px;
+  /* Search Wrapper */
+  .search-bar-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 55%;
+    position: relative;
+    z-index: 1;
   }
 
-  @media (max-width: 480px) {
-    .slideshow-container{
-      margin-top: 0px;
-    height: 40vh;
-  }
-    .video-overlay-text {
-      font-size: 3vw;
-      top: 300px;
-      padding: 0 10px;
-      line-height: 1.3;
-    }
+  .home-page form {
+    width: 75%;
+    height: 48px;
+    background: white;
+    border-radius: 25px;
+    border: 4px solid white;
+    padding: 15px;
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
   }
 
-  @media (max-width: 480px) {
-    .search-bar-wrapper {
-      margin-top: 320px;
-      width: auto;
-      padding: 0 10px;
-    }
-
-    .home-page form,
-    .home-page form:hover {
-      width: 10vw;
-      min-width: 0;
-      padding: 6px;
-      height: 40px;
-      border-radius: 20px;
-      border-width: 2px;
-    }
-@media (max-width: 480px) {
-  .home-page input {
-    font-size: 0.85em;
-    height: 30px;
-    border-radius: 15px;
-    padding: 0 10px;
+  .home-page form:hover {
+    width: 75%;
+    height: 48px;
+    cursor: pointer;
   }
+
+  .home-page form:hover input {
+    opacity: 1;
+    visibility: visible;
+    max-width: 100%;
+  }
+
+  .home-page form:hover .fa {
+    background: #572E54;
+    color: white;
+  }
+
+ .home-page input[type="search"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 42px;
+  opacity: 0;
+  visibility: hidden;
+  max-width: 0;
+  font-size: 1em;
+  padding: 0 20px;
+  border: none;
+  border-radius: 20px;
+  font-family: 'Poppins', sans-serif;
+  background: white;
+  transition: all 0.3s ease;
 }
 
 
-    .fa {
-      font-size: 1em;
-      width: 30px;
-      height: 30px;
-      padding: 7px;
-    }
+  .fa {
+    padding: 10px;
+    width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: white;
+    background-color: #572E54;
+    text-align: center;
+    font-size: 1.3em;
   }
-
-  @media (max-width: 480px) {
-    .tag-buttons-below {
-      margin-top: 10px;
-      padding: 0 10px;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .tag-buttons-below .tag-button {
-      padding: 5px 10px;
-      font-size: 12px;
-      border-width: 1px;
-    }
-  }
-
   .category-section,
   .team-members {
     padding: 20px 2px;
