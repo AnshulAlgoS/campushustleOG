@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+import { Player } from '@lottiefiles/react-lottie-player';
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './HomePage.css';
@@ -9,6 +9,19 @@ import slide2 from '../assets/images/img2.jpg';
 import slide3 from '../assets/images/img3.jpg';
 import slide4 from '../assets/images/img4.jpg';
 import slide5 from '../assets/images/img5.jpg';
+import FloatingDoodles from './FloatingDoodle';
+import Doodle6Anim from '../assets/images/Blob.json';
+import HackathonAnim from '../assets/images/Champion.json';
+import ScholarshipAnim from '../assets/images/Developer.json';
+import BudgetingAnim from '../assets/images/Event Budgeting Breakdown - Hero.json';
+import Doodle2Anim from '../assets/images/Knowledge, Idea, Power, Books, Creativity, Learning Animation icon..json';
+import Doodle5Anim from '../assets/images/Loading 40 | Paperplane.json';
+import FreelanceAnim from '../assets/images/Man work from home with laptops.json';
+import Doodle3Anim from '../assets/images/Rocket startup Animation.json';
+import DoodleAnim from '../assets/images/Run cycle recreated in Lottie Creator.json';
+import MentorshipAnim from '../assets/images/Teacher.json';
+import Doodle1Anim from '../assets/images/Welcome-2.json';
+import CommunityAnim from '../assets/images/Welcome.json';
 import logo from '../assets/images/CL1.png';
 import footerLogo from '../assets/images/CL2.png';
 import freelanceGif from '../assets/images/freelance.gif';
@@ -115,6 +128,8 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
 
   return (
     <>
+    <div className="home-page-wrapper">
+      <FloatingDoodles />
       <div className="home-page">
         {/* Top Strip */}
         <div className="top-strip">
@@ -248,22 +263,34 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
             <span className="dark-text">Category</span>
           </h2>
           <div className="category-container">
-            {[{ src: freelanceGif, title: 'Freelance' }, { src: mentorshipGif, title: 'Mentorship' }, { src: communityGif, title: 'Community' }, { src: budgetingGif, title: 'Budgeting' }, { src: webinarsGif, title: 'Hackathons' }, { src: scholarshipGif, title: 'Scholarship' }].map((item, index) => (
+            {[
+              { animation: FreelanceAnim, title: 'Freelance' },
+              { animation: MentorshipAnim, title: 'Mentorship' },
+              { animation: CommunityAnim, title: 'Community' },
+              { animation: BudgetingAnim, title: 'Budgeting' },
+              { animation: HackathonAnim, title: 'Hackathons' },
+              { animation: ScholarshipAnim, title: 'Scholarship' }
+            ].map((item, index) => (
               <div
                 key={index}
                 className="category-box"
                 onClick={() => handleCategoryClick(item.title)}
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: 'pointer', zIndex: 1 }}
                 data-aos="flip-left"
                 data-aos-delay={`${index * 100}`}
               >
-
                 <div className="category-inner-box">
-                  <img src={item.src} alt={item.title} />
+                  <Player
+                    autoplay
+                    loop
+                    src={item.animation}
+                    style={{ height: '165px', width: '165px' }}
+                  />
                 </div>
                 <span className="category-title">{item.title}</span>
               </div>
-            ))}
+            ))
+            }
           </div>
         </section>
 
@@ -369,6 +396,7 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
         </footer>
 
 
+      </div>
       </div>
     </>
   );

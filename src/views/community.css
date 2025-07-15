@@ -1,6 +1,6 @@
 .section {
   padding: 60px 20px;
-  background: #fff;
+  background: linear-gradient(to top, #e0bfed, #f3f0f4, #f3f0f4);
   text-align: center;
 }
 

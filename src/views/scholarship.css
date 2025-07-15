@@ -1,5 +1,5 @@
 .scholarship-flag-section {
-  background: #fdfdfd;
+ background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
   padding: 80px 20px;
   text-align: center;
 }
@@ -86,7 +86,7 @@
 }
 
 .sch-apply-btn:hover {
-  background: #3e166;
+  background: #3e166f;
 }
 
 /* Mobile Responsive */
