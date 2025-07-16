@@ -938,6 +938,9 @@ a.category-box .category-title {
 .logo-text {
   font-size: 20px;
 }
+header{
+  min-height: fit-content;
+}
 
 /* Optional: Adjust strip padding to center better on small screens */
 .top-strip {
