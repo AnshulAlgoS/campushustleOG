@@ -15,7 +15,7 @@ import HackathonAnim from '../assets/images/Champion.json';
 import ScholarshipAnim from '../assets/images/Developer.json';
 import BudgetingAnim from '../assets/images/Event Budgeting Breakdown - Hero.json';
 import Doodle2Anim from '../assets/images/Knowledge, Idea, Power, Books, Creativity, Learning Animation icon..json';
-import Doodle5Anim from '../assets/images/Loading 40 | Paperplane.json';
+import Doodle5Anim from '../assets/images/Loading 40-Paperplane.json';
 import FreelanceAnim from '../assets/images/Man work from home with laptops.json';
 import Doodle3Anim from '../assets/images/Rocket startup Animation.json';
 import DoodleAnim from '../assets/images/Run cycle recreated in Lottie Creator.json';
