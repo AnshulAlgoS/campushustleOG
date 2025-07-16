@@ -1,4 +1,3 @@
-// src/components/FloatingDoodle.js
 import React from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
 import Doodle1 from '../assets/images/Welcome-2.json';
@@ -9,8 +8,6 @@ import Doodle5 from '../assets/images/Girl with books.json';
 import Doodle6 from '../assets/images/Blob.json';
 import Doodle7 from '../assets/images/Run cycle recreated in Lottie Creator.json';
 
-
-
 const doodles = [
   Doodle1, Doodle2, Doodle3, Doodle4, Doodle5, Doodle7, Doodle6,
   Doodle1, Doodle3, Doodle5, Doodle2, Doodle7, Doodle6, Doodle4,
@@ -20,14 +17,15 @@ const doodles = [
 const FloatingDoodles = () => {
   return (
     <div className="floating-doodles">
-      {doodles.map((src, i) => (
-        <Player
-          key={i}
-          autoplay
-          loop
-          src={src}
-          className={`doodle doodle-${i}`}
-        />
+      {doodles.map((src, index) => (
+        <div key={index} className={`doodle doodle-${index}`}>
+          <Player
+            autoplay
+            loop
+            src={src}
+            style={{ height: '60px', width: '60px' }}
+          />
+        </div>
       ))}
     </div>
   );
