@@ -65,7 +65,7 @@ html {
   font-size: 24px;
 }
 
-.strip-nav {
+.home-page.strip-nav {
   display: flex;
   list-style: none;
   gap: 25px;
@@ -73,7 +73,7 @@ html {
   align-items: center;
 }
 
-.strip-nav li a {
+.home-page.strip-nav li a {
   text-decoration: none;
   font-weight: 500;
   color: #572e54;
@@ -99,7 +99,8 @@ html {
   width: 90%;
   max-width: 300px;
   flex-direction: column;
-  background: linear-gradient(135deg, #602f5d, #ec85b8);
+  color: #572E54;
+  background: linear-gradient(to top, #864f9c, #d896ef, #dcafea, #d5b5dd);
   padding: 18px 20px;
   border-radius: 18px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
@@ -120,6 +121,7 @@ html {
 }
 
 .mobile-nav li {
+  color:#572E54;
   margin-bottom: 14px;
   text-align: left;
   list-style:none;
