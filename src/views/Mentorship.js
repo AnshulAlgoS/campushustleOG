@@ -7,7 +7,7 @@ import gourikaImg from '../assets/images/gourika1.png';
 
 const mentors = [
   {
-    name: 'Anshul ji',
+    name: 'Anshul Saxena',
     role: 'SDE Intern @ Microsoft',
     expertise: ['Web Dev', 'Public Speaking', 'Resume Review'],
     image: anshulImg
@@ -19,7 +19,7 @@ const mentors = [
     image: avanyaImg
   },
   {
-    name: 'Goldu',
+    name: 'Gourika',
     role: 'AI Research Intern',
     expertise: ['Web Dev','ML/AI', 'Open Source'],
     image: gourikaImg
