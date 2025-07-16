@@ -1,4 +1,4 @@
-// src/components/FloatingDoodles.js
+// src/components/FloatingDoodle.js
 import React from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
 import Doodle1 from '../assets/images/Welcome-2.json';
