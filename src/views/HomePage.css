@@ -6,13 +6,14 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
+  background:transparent;
   overflow-x: hidden;
 }
 
 html {
   scroll-behavior: smooth;
 }
+
 
 .top-strip {
   display: flex;
@@ -203,12 +204,13 @@ html {
 
 /* Video */
 header::before {
+  background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 70%;
+  height: 80%;
   z-index: -1;
 }
 
@@ -372,7 +374,7 @@ header::before {
 /* Category Boxes */
 .category-section {
   min-height: 100vh;
-  background-color: #f5f4f4;
+    background: linear-gradient(to top, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
   padding: 80px 40px;
 }
 
@@ -456,7 +458,7 @@ header::before {
 .testimonials-section {
   width: 100%;
   padding: 4rem 1rem;
-  background: linear-gradient(to top, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
+  background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
   position: relative;
   z-index: 2; 
 }

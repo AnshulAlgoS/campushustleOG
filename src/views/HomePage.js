@@ -133,6 +133,7 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
     <div className="home-page-wrapper">
       <FloatingDoodles />
       <div className="home-page">
+        <div classname="home-gradient-bg">
         {/* Top Strip */}
         <div className="top-strip">
           <div className="logo-combo">
@@ -398,6 +399,7 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
         </footer>
 
 
+      </div>
       </div>
       </div>
     </>

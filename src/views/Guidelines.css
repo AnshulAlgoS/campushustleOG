@@ -1,5 +1,5 @@
 /* Gradient Background */
-body {
+.guidelines-container body {
   margin: 0;
   padding: 0;
   background: linear-gradient(to bottom, #bb7ed9, #ffffff); 

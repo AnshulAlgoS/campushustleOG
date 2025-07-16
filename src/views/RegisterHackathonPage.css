@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-body {
+.register-container body {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(to right, #ecd5fc, #fcd3f8);
   min-height: 100vh;
