@@ -375,19 +375,19 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
             </span>
 
             {/* Quick Links */}
-            <span className="footer-column">
+            <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
               <h4>Quick Links</h4>
               <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/freelance">Freelance</Link></li>
                 <Link to="/" state={{ scrollTo: 'community' }}>Community</Link>
                 <li><Link to="/hackathon">Hackathon</Link></li>
-                <li><Link to="/contact">Contact</Link></li> {/* If route exists */}
+                <li><Link to="/contact">Contact</Link></li> 
               </ul>
             </span>
 
             {/* Support */}
-            <span className="footer-column">
+            <span className="footer-column"data-aos="fade-up" data-aos-delay="100">
               <h4>Support</h4>
               <ul>
                 <li><a href="#">Help Center</a></li>
