@@ -11,7 +11,7 @@ const ExploreFreelance = () => {
     <div className="explore-container">
       <FloatingDoodles />
       
-      <div className="gradient-navbar">
+      <div className="freelance-navbar">
         <div className="nav-left">
           <img src={logo} alt="Campus Hustle Logo" className="nav-logo" />
           <span className="brand-name">CampusHustle</span>
