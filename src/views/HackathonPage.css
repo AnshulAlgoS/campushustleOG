@@ -6,16 +6,17 @@ html, body {
 }
 
 .translucent-strip {
-  background-color: rgba(92, 60, 110, 0.8);
+  background: linear-gradient(90deg, #864f9c, #d896ef, #dcafea, #d5b5dd);
   backdrop-filter: blur(10px);
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 10px 20px;
+  padding: 12px 30px;
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 
@@ -528,12 +529,9 @@ body {
   justify-content: center;
   text-align: center;
 
-  overflow: hidden; /* to contain absolutely positioned shapes */
+  overflow: hidden;
 }
  
-
-
-
 .background-effect h1 {
   font-size: 3rem;
   color: #efecf1;
@@ -570,5 +568,96 @@ body {
   background-color: #d59fe0;
   top: 40%;
   right: 10%;
+}
+
+.custom-navbar {
+  background: linear-gradient(90deg, #864f9c, #d896ef, #dcafea, #d5b5dd);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 12px 30px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo {
+  height: 45px;
+  margin-right: 12px;
+}
+
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.nav-right {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-right a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-right a:hover {
+  color: #ddd;
+}
+
+.hackathon-gradient-bg {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #864f9c, #d896ef, #dcafea, #d5b5dd);
+  position: relative;
+  overflow: hidden;
+  padding-top: 100px; 
+}
+
+@keyframes floatAnimation {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.hackathon-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+}
+
+.hack-btn {
+  padding: 22px 60px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 2px solid rgb(90, 24, 109);
+  border-radius: 12px;
+  background-color: #ac73cd;
+  color: rgb(33, 4, 37);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 340px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.hack-btn:hover {
+  background-color: rgba(189, 137, 201, 0.89);
+  transform: scale(1.06);
 }
 
