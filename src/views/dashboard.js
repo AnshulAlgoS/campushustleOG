@@ -23,6 +23,9 @@ export default function DashboardPage() {
   const [enrolledHackathons, setEnrolledHackathons] = useState([]);
   const [organizedHackathons, setOrganizedHackathons] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [createdGigs, setCreatedGigs] = useState([]);
+  const [appliedGigs, setAppliedGigs] = useState([]);
+
 
   const fallbackImages = [img1, img2, img3, img4, img5, img6, img7, img8];
 
@@ -34,41 +37,43 @@ export default function DashboardPage() {
     });
     return () => unsubscribe();
   }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!user?.uid) return;
 
-useEffect(() => {
-  const fetchData = async () => {
-    if (!user?.uid) return;
+      try {
+        const [userGigsSnap, applicationsSnap, hackSnap, mentorSnap, orgSnap] = await Promise.all([
+          getDocs(query(collection(db, 'gigs'), where('createdBy', '==', user.uid))),
+          getDocs(query(collection(db, 'applications'), where('applicantId', '==', user.uid))),
+          getDocs(query(collection(db, 'registrations'), where('userId', '==', user.uid))),
+          getDocs(query(collection(db, 'mentorships'), where('userId', '==', user.uid), where('isActive', '==', true))),
+          getDocs(query(collection(db, 'hackathons'), where('userId', '==', user.uid)))
+        ]);
 
-    try {
-      const [gigsSnap, hackSnap, mentorSnap] = await Promise.all([
-        getDocs(query(collection(db, 'freelanceGigs'), where('userId', '==', user.uid))),
-        getDocs(query(collection(db, 'registrations'), where('userId', '==', user.uid))),
-        getDocs(query(collection(db, 'mentorships'), where('userId', '==', user.uid), where('isActive', '==', true)))
-      ]);
+        setCreatedGigs(userGigsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+        setAppliedGigs(applicationsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
 
-      const orgSnap = await getDocs(
-        query(collection(db, 'hackathons'), where('userId', '==', user.uid)) // 🔁 Updated collection
-      );
+        const enrolledList = hackSnap.docs.map(doc => doc.data());
+        const organizedList = orgSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
-      const enrolledList = hackSnap.docs.map(doc => doc.data());
-      const organizedList = orgSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setEnrolledHackathons(enrolledList);
+        setOrganizedHackathons(organizedList);
 
-      setEnrolledHackathons(enrolledList);
-      setOrganizedHackathons(organizedList);
+        setCounts({
+          gigsPosted: userGigsSnap.size,
+          gigsApplied: applicationsSnap.size,
+          hackathonsEnrolled: hackSnap.size,
+          hackathonsOrganized: orgSnap.size,
+          mentorshipsActive: mentorSnap.size
+        });
+      } catch (err) {
+        console.error('⚠️ Error fetching dashboard data:', err);
+      }
+    };
 
-      setCounts({
-        gigsApplied: gigsSnap.size,
-        hackathonsEnrolled: hackSnap.size,
-        hackathonsOrganized: orgSnap.size,
-        mentorshipsActive: mentorSnap.size
-      });
-    } catch (err) {
-      console.error('⚠️ Error fetching dashboard data:', err);
-    }
-  };
+    if (user) fetchData();
+  }, [user]);
 
-  if (user) fetchData();
-}, [user]);
 
 
   if (loading) return <p style={{ textAlign: 'center' }}>🔄 Loading your dashboard...</p>;
@@ -122,29 +127,65 @@ useEffect(() => {
         </>
       )}
       {organizedHackathons.length > 0 && (
-  <>
-    <h3 className="section-heading">Hackathons You Organized</h3>
-    <div className="registered-hackathon-cards">
-      {organizedHackathons.map((item, idx) => (
-        <div className="registered-card" key={item.id}>
-          <img
-            src={fallbackImages[idx % fallbackImages.length]}
-            alt={item.title}
-            className="registered-image"
-          />
-          <div className="registered-info">
-            <h4>{item.title}</h4>
-            <p><strong>Mode:</strong> {item.mode}</p>
-            <p><strong>Start:</strong> {item.startDate}</p>
-            <p><strong>End:</strong> {item.endDate}</p>
-            <p><strong>Teamsize:</strong> {item.teamSize}</p>
+        <>
+          <h3 className="section-heading">Hackathons You Organized</h3>
+          <div className="registered-hackathon-cards">
+            {organizedHackathons.map((item, idx) => (
+              <div className="registered-card" key={item.id}>
+                <img
+                  src={fallbackImages[idx % fallbackImages.length]}
+                  alt={item.title}
+                  className="registered-image"
+                />
+                <div className="registered-info">
+                  <h4>{item.title}</h4>
+                  <p><strong>Mode:</strong> {item.mode}</p>
+                  <p><strong>Start:</strong> {item.startDate}</p>
+                  <p><strong>End:</strong> {item.endDate}</p>
+                  <p><strong>Teamsize:</strong> {item.teamSize}</p>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
-      ))}
-    </div>
-  </>
-)}
+        </>
+      )}
+      {createdGigs.length > 0 && (
+        <>
+          <h3 className="section-heading">Gigs You've Posted</h3>
+          <div className="registered-hackathon-cards">
+            {createdGigs.map((gig, idx) => (
+              <div className="registered-card" key={gig.id}>
+                <img src={fallbackImages[idx % fallbackImages.length]} alt={gig.title} className="registered-image" />
+                <div className="registered-info">
+                  <h4>{gig.title}</h4>
+                  <p><strong>Category:</strong> {gig.category}</p>
+                  <p><strong>Budget:</strong> {gig.payment}</p>
+                  <p><strong>Deadline:</strong> {gig.endDate}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
 
+      {appliedGigs.length > 0 && (
+        <>
+          <h3 className="section-heading">Gigs You've Applied To</h3>
+          <div className="registered-hackathon-cards">
+            {appliedGigs.map((app, idx) => (
+              <div className="registered-card" key={app.id}>
+                <img src={fallbackImages[(idx + 3) % fallbackImages.length]} alt="Applied Gig" className="registered-image" />
+                <div className="registered-info">
+                  <p><strong>Gig ID:</strong> {app.gigId}</p>
+                  <p><strong>Message:</strong> {app.reason || 'N/A'}</p>
+<p><strong>Applied On:</strong> {app.submittedAt?.seconds ? new Date(app.submittedAt.seconds * 1000).toLocaleDateString() : 'N/A'}</p>
+
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }

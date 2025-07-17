@@ -29,7 +29,7 @@ import ContentWritingGigsPage from './views/ContentWritingGigsPage';
 import GraphicDesignGigsPage from './views/GraphicDesignGigsPage';
 import MarketingGigsPage from './views/MarketingGigsPage';
 import VideoEditingGigsPage from './views/VideoEditingGigsPage';
-
+import CategoryListingPage from './views/categoryListing';
 
 
 
@@ -90,6 +90,8 @@ function InnerApp() {
         <Route path="/organise-hackathon" element={<OrganiseHackathon />} />
         <Route path="/register" element={<RegisterHackathonPage />} />
         <Route path="/mentorship" element={<Mentorship />} />
+        <Route path="/freelance/:categorySlug" element={<CategoryListingPage />} />
+
 
         <Route
           path="/profile-hub"
@@ -114,9 +116,9 @@ function InnerApp() {
           }
         />
       
-         <Route path="/explore-freelance" element={<ExploreFreelance />} /> {/* ✅ Added this route */}
+         <Route path="/explore-freelance" element={<ExploreFreelance />} /> 
         <Route path="/offer-work" element={<OfferWorkForm />} />
-        <Route path="/Freelance/WebDev" element={<WebDevGigsPage />} />
+        <Route path="/freelance/webdev" element={<WebDevGigsPage />} />
         <Route path="/freelance/content-writing" element={<ContentWritingGigsPage />} />
         <Route path="/freelance/graphic-design" element={<GraphicDesignGigsPage />} />
         <Route path="/freelance/marketing" element={<MarketingGigsPage />} />

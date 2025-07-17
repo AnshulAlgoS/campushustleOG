@@ -34,7 +34,7 @@ const ExploreFreelance = () => {
 
           <div
             className="service-card"
-            onClick={() => navigate('/freelance/webdev')}
+            onClick={() => navigate('/freelance/WebDev')}
             style={{ background: 'linear-gradient(135deg, #6A0DAD, #8A2BE2)' }}
           >
             <h2>Web Development</h2>

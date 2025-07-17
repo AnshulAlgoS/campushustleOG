@@ -12,14 +12,14 @@
   margin-bottom: 40px;
 }
 
-.gigs-wrapper {
+.contentwriting-gigs-container .gigs-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
 }
 
-.gig-card {
+.contentwriting-gigs-container .gig-card {
   background: linear-gradient(135deg, #60c9d9, #0ae2ea);
   width: 280px;
   border-radius: 16px;
@@ -29,21 +29,21 @@
   transition: transform 0.3s ease;
 }
 
-.gig-card:hover {
+.contentwriting-gigs-container .gig-card:hover {
   transform: translateY(-8px);
 }
 
-.card-header {
+.contentwriting-gigs-container .card-header {
   padding: 20px;
   font-size: 1.4rem;
   font-weight: bold;
 }
 
-.card-body {
+.contentwriting-gigs-container .card-body {
   padding: 20px;
 }
 
-.card-footer {
+.contentwriting-gigs-container .card-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;

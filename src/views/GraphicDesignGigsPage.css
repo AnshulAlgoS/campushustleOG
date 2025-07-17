@@ -2,66 +2,88 @@
   padding: 60px 20px;
   background: linear-gradient(to bottom right, #fff0f5, #fddde6);
   min-height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
   text-align: center;
+  line-height: 1.6;
 }
 
 .graphicdesign-gigs-container h1 {
-  font-size: 2.6rem;
+  font-size: 2.4rem;
   color: #e91e63;
+  font-weight: 600;
   margin-bottom: 40px;
 }
 
-.gigs-wrapper {
+
+.graphicdesign-gigs-container .gigs-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
+  gap: 40px;
 }
 
-.gig-card {
+.graphicdesign-gigs-container .gig-card {
   background: linear-gradient(135deg, #ec407a, #f48fb1);
-  width: 280px;
-  border-radius: 16px;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  width: 300px;
+  border-radius: 20px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
   color: white;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.gig-card:hover {
-  transform: translateY(-8px);
+.graphicdesign-gigs-container .gig-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
-.card-header {
-  padding: 20px;
-  font-size: 1.4rem;
-  font-weight: bold;
+.graphicdesign-gigs-container .card-header {
+  padding: 24px 20px 10px;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
-.card-body {
-  padding: 20px;
+.graphicdesign-gigs-container .card-body {
+  padding: 0 20px 20px;
+  font-size: 0.98rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #fffafc;
 }
 
-.card-footer {
+.graphicdesign-gigs-container .card-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
+  padding: 0 20px 20px;
+  font-size: 0.95rem;
 }
 
-.gig-price {
-  font-weight: bold;
+.graphicdesign-gigs-container .gig-price {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.graphicdesign-gigs-container .gig-deadline {
+  font-size: 0.9rem;
+  color: #fff5f8;
+  margin-top: 6px;
 }
 
 .card-footer button {
   background-color: #ffffff;
   color: #e91e63;
-  padding: 8px 14px;
-  border-radius: 8px;
+  padding: 10px 16px;
+  border-radius: 10px;
   border: none;
   font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.card-footer button:hover {
+  background-color: #fce4ec;
 }
 
 /* Modal styles */
@@ -81,13 +103,14 @@
 
 .modal-box {
   background: #fff;
-  padding: 30px;
+  padding: 32px;
   width: 90%;
-  max-width: 450px;
-  border-radius: 16px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+  max-width: 460px;
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
   text-align: left;
   animation: popin 0.3s ease-out;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
 }
 
 @keyframes popin {
@@ -103,42 +126,51 @@
 
 .modal-box h2 {
   color: #e91e63;
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 16px;
 }
 
 .modal-box input,
 .modal-box textarea {
   width: 100%;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 8px;
+  margin: 12px 0;
+  padding: 12px;
+  border-radius: 10px;
   border: 1px solid #ccc;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: inherit;
+  font-size: 1rem;
+  background-color: #fafafa;
 }
 
 .modal-box textarea {
-  height: 80px;
+  height: 100px;
   resize: vertical;
 }
 
 .submit-btn {
   background-color: #e91e63;
   color: white;
-  padding: 10px 18px;
+  padding: 12px 20px;
   border: none;
-  border-radius: 8px;
-  font-weight: bold;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 12px;
+}
+
+.submit-btn:hover {
+  background-color: #d81b60;
 }
 
 .close-btn {
   background-color: transparent;
-  color: #888;
+  color: #666;
   font-size: 0.9rem;
-  margin-top: 10px;
+  margin-top: 14px;
   border: none;
   cursor: pointer;
+  text-align: right;
   display: block;
 }
