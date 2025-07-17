@@ -59,3 +59,8 @@
 .offer-form button:hover {
   background: linear-gradient(to right, #bd43e2, #be85db);
 }
+.offer-background {
+  width: 100%;
+  background: linear-gradient(to bottom right, #c378e0, #e29ff8, #f8e7fd);
+  padding: 60px 20px; 
+}
