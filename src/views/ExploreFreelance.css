@@ -1,153 +1,106 @@
-/* ExploreFreelance.css */
-
-.explore-container {
-  padding: 60px 20px;
-  background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
+/* Entire page container */
+.freelance-container {
   min-height: 100vh;
-  text-align: center;
-  font-family: 'Segoe UI', sans-serif;
+ background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
+  font-family: 'Poppins', sans-serif;
 }
 
-.explore-container h1 {
-  font-size: 2.8rem;
-  font-weight: bold;
-  color: #9d4edd;
-  margin-bottom: 40px;
-}
-
-.cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.service-card {
-  width: 260px;
-  min-height: 200px;
-  padding: 25px;
-  border-radius: 16px;
-  color: #fff;
-  background: linear-gradient(145deg, #7b2cbf, #9d4edd);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  cursor: pointer;
-}
-
-.service-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.2);
-}
-
-.service-card h2 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-  color: #fff;
-}
-
-.service-card p {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #f0f0f0;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .service-card {
-    width: 90%;
-  }
-
-  .explore-container h1 {
-    font-size: 2.2rem;
-  }
-}
-
-.explore-container {
-  min-height: 100vh;
-  width: 100%;
-  position: relative;
-  background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4);
-  overflow: hidden;
-}
-
-.explore-container canvas {
-  position: absolute !important;
-  top: 0;
-  left: 0;
-  z-index: 0;
-}
-
-.freelance-content {
-  position: relative;
-  z-index: 1;
-  padding-top: 120px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.freelance-navbar {
+/* Navbar styles */
+.navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(90deg, #864f9c, #d896ef, #dcafea, #d5b5dd);
-  padding: 12px 30px;
+  padding: 12px 40px;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Navbar Left */
+/* Updated navbar background & style */
+.updated-navbar {
+  background: linear-gradient(90deg, #c287e8, #d7a5f1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Left side (logo + text) */
 .nav-left {
   display: flex;
   align-items: center;
 }
 
-.nav-logo {
+.logo {
   height: 40px;
   margin-right: 12px;
 }
 
 .brand-name {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: 700;
-  color: white;
+  color: #3b255c;
 }
 
-.nav-right {
-  display: flex;
-  gap: 24px;
-}
-
-.nav-right a {
-  color: white;
+/* Navbar links */
+.nav-links a {
+  color: #fff;
+  margin-left: 24px;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: 500;
+  font-size: 1.05rem;
   transition: color 0.3s ease;
 }
 
-.nav-right a:hover {
-  color: #ddd;
+.nav-links a:hover {
+  color: #f8e6ff;
 }
 
-.signup-btn {
-  background-color: rgb(176, 110, 192);
+/* Get Started button */
+.get-started-btn {
+  background: #bb5cf2;
   color: #5d3b76;
   font-weight: 700;
-  padding: 8px 16px;
-  border: 2px solid #5d3b76;
-  border-radius: 10px;
-  transition: 0.3s;
+  padding: 8px 18px;
+  border-radius: 12px;
+  margin-left: 30px;
+  border: none;
+  transition: 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.signup-btn:hover {
-  background-color: #744a98;
+.get-started-btn:hover {
+  background: #6b4185;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.signup-btn:active {
-  background-color: #5d3b76;
-  color: white;
-  border-color: white;
+  
+/* Centered content block */
+.freelance-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  gap: 30px;
 }
+
+/* Button styling */
+.freelance-btn {
+  background: linear-gradient(135deg, #943cf1 0%, #d877f0 100%);
+  color: #fff;
+  padding: 18px 32px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(106, 17, 203, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+.freelance-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 25px rgba(106, 17, 203, 0.6);
+}
+
+
+ 
+
