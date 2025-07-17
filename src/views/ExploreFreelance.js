@@ -21,10 +21,7 @@ const ExploreFreelance = () => {
           <Link to="/freelance">Freelance</Link>
           <Link to="/mentorship">Mentorship</Link>
           <Link to="/hackathon">Hackathons</Link>
-          <Link to="/events">Events</Link>
           <Link to="/dashboard">Dashboard</Link>
-          <Link to="/login">Log In</Link>
-          <Link to="/signup" className="signup-btn">Sign Up</Link>
         </div>
       </div>
 
