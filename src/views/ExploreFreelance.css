@@ -1,11 +1,29 @@
 /* ExploreFreelance.css */
-
 .explore-container {
   padding: 60px 20px;
   background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
   min-height: 100vh;
   text-align: center;
   font-family: 'Segoe UI', sans-serif;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.explore-container canvas {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.freelance-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .explore-container h1 {
@@ -15,6 +33,7 @@
   margin-bottom: 40px;
 }
 
+/* Cards */
 .cards-container {
   display: flex;
   flex-wrap: wrap;
@@ -28,7 +47,6 @@
   padding: 25px;
   border-radius: 16px;
   color: #fff;
-  background: linear-gradient(145deg, #7b2cbf, #9d4edd);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
@@ -51,54 +69,20 @@
   color: #f0f0f0;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .service-card {
-    width: 90%;
-  }
-
-  .explore-container h1 {
-    font-size: 2.2rem;
-  }
-}
-
-.explore-container {
-  min-height: 100vh;
-  width: 100%;
-  position: relative;
-  background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4);
-  overflow: hidden;
-}
-
-.explore-container canvas {
-  position: absolute !important;
-  top: 0;
-  left: 0;
-  z-index: 0;
-}
-
-.freelance-content {
-  position: relative;
-  z-index: 1;
-  padding-top: 120px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
+/* Navbar */
 .freelance-navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(90deg, #864f9c, #d896ef, #dcafea, #d5b5dd);
+  background: linear-gradient(90deg, #e0a7f7, #d896ef, #dcafea, #e7b8f3);
   padding: 12px 30px;
   position: sticky;
   top: 0;
   z-index: 1000;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  flex-wrap: wrap;
 }
 
-/* Navbar Left */
 .nav-left {
   display: flex;
   align-items: center;
@@ -115,9 +99,12 @@
   color: white;
 }
 
+/* Nav Right */
 .nav-right {
   display: flex;
   gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .nav-right a {
@@ -152,6 +139,53 @@
   border-color: white;
 }
 
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .explore-container h1 {
+    font-size: 2.2rem;
+  }
 
- 
+  .nav-right {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-card {
+    width: 90%;
+  }
+
+  .explore-container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .freelance-navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 20px;
+  }
+
+  .nav-left {
+    margin-bottom: 10px;
+  }
+
+  .nav-right {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 12px;
+  }
+
+  .nav-right a {
+    white-space: nowrap;
+    font-size: 0.9rem;
+  }
+}
 
