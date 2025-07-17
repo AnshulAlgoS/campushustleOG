@@ -17,7 +17,6 @@ const FreelancePage = () => {
           <Link to="/hackathons">Hackathons</Link>
           <Link to="/community">Community</Link>
           <Link to="/about">About Us</Link>
-          <Link to="/get-started" className="get-started-btn">Get Started</Link>
         </div>
       </div>
 
