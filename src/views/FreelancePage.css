@@ -1,62 +1,72 @@
-/* Entire page container */
+/*page container */
 .freelance-container {
   min-height: 100vh;
  background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
   font-family: 'Poppins', sans-serif;
 }
 
-/* Navbar styles */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #5d3b76;
-  padding: 10px 30px;
+  padding: 12px 40px;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
-/* Logo styling */
-.logo {
-  height: 32px;
+.updated-navbar {
+  background: linear-gradient(90deg, #c287e8, #d7a5f1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* Navbar links */
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+  margin-right: 12px;
+}
+
+.brand-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #3b255c;
+}
+
 .nav-links a {
-  color: white;
-  margin-left: 20px;
+  color: #fff;
+  margin-left: 24px;
   text-decoration: none;
   font-weight: 500;
+  font-size: 1.05rem;
   transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: #d9b2f9;
+  color: #f8e6ff;
 }
 
-/* Sign Up button */
-.signup-btn {
-  background-color: white;
+.get-started-btn {
+  background: #bb5cf2;
   color: #5d3b76;
   font-weight: 700;
-  padding: 8px 16px;
-  border: 2px solid #5d3b76;
-  border-radius: 10px;
-  transition: 0.3s;
+  padding: 8px 18px;
+  border-radius: 12px;
+  margin-left: 30px;
+  border: none;
+  transition: 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.signup-btn:hover {
-  background-color: #f0dfff;
+.get-started-btn:hover {
+  background: #6b4185;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.signup-btn:active {
-  background-color: #5d3b76;
-  color: white;
-  border-color: white;
-}
   
-/* Centered content block */
 .freelance-content {
   display: flex;
   flex-direction: column;
@@ -66,7 +76,6 @@
   gap: 30px;
 }
 
-/* Button styling */
 .freelance-btn {
   background: linear-gradient(135deg, #943cf1 0%, #d877f0 100%);
   color: #fff;
@@ -87,4 +96,5 @@
 
 
  
+
 
