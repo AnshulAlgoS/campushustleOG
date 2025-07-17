@@ -13,7 +13,7 @@ const FreelancePage = () => {
         </div>
         <div className="nav-links">
           <Link to="/">Home</Link>
-          <Link to="/freelance">Freelance</Link>
+          <Link to="/mentorships">Mentorship</Link>
           <Link to="/hackathons">Hackathons</Link>
           <Link to="/community">Community</Link>
           <Link to="/about">About Us</Link>
