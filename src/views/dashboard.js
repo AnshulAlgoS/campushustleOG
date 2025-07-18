@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { auth, db } from '../firebase';
-import { collection, query, where, getDocs } from 'firebase/firestore';
+// src/views/DashboardPage.js
+import React,{useEffect,useState} from 'react';
+import {auth,db} from '../firebase';
+import {collection,getDocs,query,where} from 'firebase/firestore';
 import './dashboard.css';
 
 import img1 from '../assets/images/h1.jpeg';
@@ -12,155 +13,128 @@ import img6 from '../assets/images/h6.jpeg';
 import img7 from '../assets/images/h7.jpeg';
 import img8 from '../assets/images/h2.jpeg';
 
-export default function DashboardPage() {
-  const [user, setUser] = useState(null);
-  const [counts, setCounts] = useState({
-    gigsApplied: 0,
-    hackathonsEnrolled: 0,
-    hackathonsOrganized: 0,
-    mentorshipsActive: 0
-  });
-  const [enrolledHackathons, setEnrolledHackathons] = useState([]);
-  const [organizedHackathons, setOrganizedHackathons] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [createdGigs, setCreatedGigs] = useState([]);
-  const [appliedGigs, setAppliedGigs] = useState([]);
+const fallbackImages=[img1,img2,img3,img4,img5,img6,img7,img8];
 
+export default function DashboardPage(){
+  const [user,setUser]=useState(null);
+  const [loading,setLoading]=useState(true);
 
-  const fallbackImages = [img1, img2, img3, img4, img5, img6, img7, img8];
+  const [createdGigs,setCreatedGigs]=useState([]);
+  const [appliedGigs,setAppliedGigs]=useState([]);
+  const [enrolledHackathons,setEnrolledHackathons]=useState([]);
+  const [organizedHackathons,setOrganizedHackathons]=useState([]);
+  const [mentorshipsActive,setMentorshipsActive]=useState(0);
 
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(currentUser => {
-      if (currentUser) setUser(currentUser);
+  useEffect(()=>{
+    const unsub=auth.onAuthStateChanged(u=>{
+      setUser(u||null);
       setLoading(false);
     });
-    return () => unsubscribe();
-  }, []);
-  useEffect(() => {
-    const fetchData = async () => {
-      if (!user?.uid) return;
+    return ()=>unsub();
+  },[]);
 
-      try {
-        const [userGigsSnap, applicationsSnap, hackSnap, mentorSnap, orgSnap] = await Promise.all([
-          getDocs(query(collection(db, 'gigs'), where('createdBy', '==', user.uid))),
-          getDocs(query(collection(db, 'applications'), where('applicantId', '==', user.uid))),
-          getDocs(query(collection(db, 'registrations'), where('userId', '==', user.uid))),
-          getDocs(query(collection(db, 'mentorships'), where('userId', '==', user.uid), where('isActive', '==', true))),
-          getDocs(query(collection(db, 'hackathons'), where('userId', '==', user.uid)))
+  useEffect(()=>{
+    if(!user?.uid) return;
+
+    const fetchAll=async()=>{
+      try{
+        const [
+          gigsSnap,
+          appsSnap,
+          regSnap,
+          mentSnap,
+          orgSnap
+        ]=await Promise.all([
+          getDocs(query(collection(db,'gigs'),where('createdBy','==',user.uid))),
+          getDocs(query(collection(db,'applications'),where('applicantId','==',user.uid))),
+          getDocs(query(collection(db,'registrations'),where('userId','==',user.uid))), // rename if needed
+          getDocs(query(collection(db,'mentorships'),where('userId','==',user.uid),where('isActive','==',true))),
+          getDocs(query(collection(db,'hackathons'),where('userId','==',user.uid)))      // hackathons you organised
         ]);
 
-        setCreatedGigs(userGigsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-        setAppliedGigs(applicationsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-
-        const enrolledList = hackSnap.docs.map(doc => doc.data());
-        const organizedList = orgSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
-        setEnrolledHackathons(enrolledList);
-        setOrganizedHackathons(organizedList);
-
-        setCounts({
-          gigsPosted: userGigsSnap.size,
-          gigsApplied: applicationsSnap.size,
-          hackathonsEnrolled: hackSnap.size,
-          hackathonsOrganized: orgSnap.size,
-          mentorshipsActive: mentorSnap.size
-        });
-      } catch (err) {
-        console.error('⚠️ Error fetching dashboard data:', err);
+        setCreatedGigs(gigsSnap.docs.map(d=>({id:d.id,...d.data()})));
+        setAppliedGigs(appsSnap.docs.map(d=>({id:d.id,...d.data()})));
+        setEnrolledHackathons(regSnap.docs.map(d=>d.data()));
+        setOrganizedHackathons(orgSnap.docs.map(d=>({id:d.id,...d.data()})));
+        setMentorshipsActive(mentSnap.size);
+      }catch(err){
+        console.error('Dashboard fetch error',err);
       }
     };
+    fetchAll();
+  },[user]);
 
-    if (user) fetchData();
-  }, [user]);
+  if(loading) return <p style={{textAlign:'center'}}>🔄 Loading your dashboard...</p>;
+  if(!user) return <p style={{textAlign:'center'}}>⚠️ Please login to view dashboard.</p>;
 
-
-
-  if (loading) return <p style={{ textAlign: 'center' }}>🔄 Loading your dashboard...</p>;
-  if (!user) return <p style={{ textAlign: 'center' }}>⚠️ Please login to view dashboard.</p>;
-
-  return (
+  return(
     <div className="dashboard-content">
       <h2>Your Dashboard</h2>
       <p>Quick overview of your activity on CampusHustle</p>
 
+      {/* summary widgets */}
       <div className="dashboard-widgets">
-        <div className="widget-card">
-          <h3>Freelance Gigs</h3>
-          <p>{counts.gigsApplied}</p>
-        </div>
-        <div className="widget-card">
-          <h3>Hackathons Registered</h3>
-          <p>{counts.hackathonsEnrolled}</p>
-        </div>
-        <div className="widget-card">
-          <h3>Hackathons Organized</h3>
-          <p>{counts.hackathonsOrganized}</p>
-        </div>
-        <div className="widget-card">
-          <h3>Mentorships</h3>
-          <p>{counts.mentorshipsActive}</p>
-        </div>
+        <div className="widget-card"><h3>Gigs Posted</h3><p>{createdGigs.length}</p></div>
+        <div className="widget-card"><h3>Gigs Applied</h3><p>{appliedGigs.length}</p></div>
+        <div className="widget-card"><h3>Hackathons Registered</h3><p>{enrolledHackathons.length}</p></div>
+        <div className="widget-card"><h3>Hackathons Organized</h3><p>{organizedHackathons.length}</p></div>
+        <div className="widget-card"><h3>Mentorships Active</h3><p>{mentorshipsActive}</p></div>
       </div>
 
-      {enrolledHackathons.length > 0 && (
+      {/* registered hackathons */}
+      {enrolledHackathons.length>0&&(
         <>
           <h3 className="section-heading">Your Registered Hackathons</h3>
           <div className="registered-hackathon-cards">
-            {enrolledHackathons.map((item, idx) => (
+            {enrolledHackathons.map((h,idx)=>(
               <div className="registered-card" key={idx}>
-                <img
-                  src={item.hackathonImage || fallbackImages[idx % fallbackImages.length]}
-                  alt={item.hackathonName}
-                  className="registered-image"
-                />
-
+                <img src={h.hackathonImage||fallbackImages[idx%fallbackImages.length]} alt={h.hackathonName} className="registered-image"/>
                 <div className="registered-info">
-                  <h4>{item.hackathonName}</h4>
-                  <p><strong>Team:</strong> {item.teamName}</p>
-                  <p><strong>Members:</strong> {item.memberCount}</p>
-                  <p><strong>On:</strong> {item.submittedAt?.seconds ? new Date(item.submittedAt.seconds * 1000).toLocaleDateString() : 'N/A'}</p>
+                  <h4>{h.hackathonName}</h4>
+                  <p><strong>Team:</strong> {h.teamName||'—'}</p>
+                  <p><strong>Members:</strong> {h.memberCount||'—'}</p>
+                  <p><strong>Registered:</strong> {h.submittedAt?.seconds?new Date(h.submittedAt.seconds*1000).toLocaleDateString():'N/A'}</p>
                 </div>
               </div>
             ))}
           </div>
         </>
       )}
-      {organizedHackathons.length > 0 && (
+
+      {/* organised hackathons */}
+      {organizedHackathons.length>0&&(
         <>
           <h3 className="section-heading">Hackathons You Organized</h3>
           <div className="registered-hackathon-cards">
-            {organizedHackathons.map((item, idx) => (
-              <div className="registered-card" key={item.id}>
-                <img
-                  src={fallbackImages[idx % fallbackImages.length]}
-                  alt={item.title}
-                  className="registered-image"
-                />
+            {organizedHackathons.map((h,idx)=>(
+              <div className="registered-card" key={h.id}>
+                <img src={fallbackImages[idx%fallbackImages.length]} alt={h.title} className="registered-image"/>
                 <div className="registered-info">
-                  <h4>{item.title}</h4>
-                  <p><strong>Mode:</strong> {item.mode}</p>
-                  <p><strong>Start:</strong> {item.startDate}</p>
-                  <p><strong>End:</strong> {item.endDate}</p>
-                  <p><strong>Teamsize:</strong> {item.teamSize}</p>
+                  <h4>{h.title}</h4>
+                  <p><strong>Mode:</strong> {h.mode}</p>
+                  <p><strong>Start:</strong> {h.startDate}</p>
+                  <p><strong>End:</strong> {h.endDate}</p>
+                  <p><strong>Team Size:</strong> {h.teamSize}</p>
                 </div>
               </div>
             ))}
           </div>
         </>
       )}
-      {createdGigs.length > 0 && (
+
+      {/* gigs posted */}
+      {createdGigs.length>0&&(
         <>
           <h3 className="section-heading">Gigs You've Posted</h3>
           <div className="registered-hackathon-cards">
-            {createdGigs.map((gig, idx) => (
-              <div className="registered-card" key={gig.id}>
-                <img src={fallbackImages[idx % fallbackImages.length]} alt={gig.title} className="registered-image" />
+            {createdGigs.map((g,idx)=>(
+              <div className="registered-card" key={g.id}>
+                <img src={fallbackImages[idx%fallbackImages.length]} alt={g.title} className="registered-image"/>
                 <div className="registered-info">
-                  <h4>{gig.title}</h4>
-                  <p><strong>Category:</strong> {gig.category}</p>
-                  <p><strong>Budget:</strong> {gig.payment}</p>
-                  <p><strong>Deadline:</strong> {gig.endDate}</p>
+                  <h4>{g.title}</h4>
+                  <p><strong>Category:</strong> {g.category}</p>
+                  <p><strong>Budget:</strong> {g.payment}</p>
+                  <p><strong>Deadline:</strong> {g.endDate}</p>
                 </div>
               </div>
             ))}
@@ -168,18 +142,18 @@ export default function DashboardPage() {
         </>
       )}
 
-      {appliedGigs.length > 0 && (
+      {/* gigs applied */}
+      {appliedGigs.length>0&&(
         <>
-          <h3 className="section-heading">Gigs You've Applied To</h3>
+          <h3 className="section-heading">Gigs You've Applied To</h3>
           <div className="registered-hackathon-cards">
-            {appliedGigs.map((app, idx) => (
-              <div className="registered-card" key={app.id}>
-                <img src={fallbackImages[(idx + 3) % fallbackImages.length]} alt="Applied Gig" className="registered-image" />
+            {appliedGigs.map((a,idx)=>(
+              <div className="registered-card" key={a.id}>
+                <img src={fallbackImages[(idx+3)%fallbackImages.length]} alt="Applied Gig" className="registered-image"/>
                 <div className="registered-info">
-                  <p><strong>Gig ID:</strong> {app.gigId}</p>
-                  <p><strong>Message:</strong> {app.reason || 'N/A'}</p>
-<p><strong>Applied On:</strong> {app.submittedAt?.seconds ? new Date(app.submittedAt.seconds * 1000).toLocaleDateString() : 'N/A'}</p>
-
+                  <p><strong>Gig ID:</strong> {a.gigId}</p>
+                  <p><strong>Message:</strong> {a.reason||'—'}</p>
+                  <p><strong>Applied On:</strong> {a.appliedAt?.seconds?new Date(a.appliedAt.seconds*1000).toLocaleDateString():'N/A'}</p>
                 </div>
               </div>
             ))}
@@ -189,4 +163,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-

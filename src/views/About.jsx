@@ -2,7 +2,7 @@
 import React from 'react';
 import './About.css';
 
-import bg from '../assets/images/background.jpg'; 
+import bg from '../assets/images/background.jpg';
 import anshul from '../assets/images/anshulsaxena.png';
 import gourika from '../assets/images/gourika1.png';
 import avanya from '../assets/images/avanya.png';
@@ -17,54 +17,46 @@ const developers = [
   { name: 'Anshul Saxena', role: 'Tech Lead & Product Architect', img: anshul },
   { name: 'Gourika', role: 'Content Strategist & Frontend Developer', img: gourika },
   { name: 'Avanya', role: 'Frontend Developer & Creative Assistant', img: avanya },
-  { name: 'Mahira Khan', role: 'Product Design Support engineer', img: mahira }
+  { name: 'Mahira Khan', role: 'Product Design Engineer', img: mahira },
+];
+
+const features = [
+  { img: innovation, title: 'Innovation First', desc: 'Empowering students to build, break, and innovate with fire.' },
+  { img: community, title: 'Strong Community', desc: 'Connect with like-minded hustlers across disciplines and campuses.' },
+  { img: hackathons, title: 'Hackathons & More', desc: 'Access the latest hackathons, challenges, and events.' },
+  { img: scholarship, title: 'Scholarships', desc: 'Apply to exclusive scholarships for student leaders.' },
 ];
 
 const About = () => {
   return (
-    <div>
+    <div className="about-container">
 
-      {/* === Hero Section === */}
-      <section className="hero-section-two-col">
-        <div className="hero-left-text">
-          <h1 className="hero-title">Campus Hustle</h1>
-          <p className="hero-tagline">where hustlers hangout</p>
-        </div>
-        <div className="hero-right-image">
-          <img src={bg} alt="Campus Illustration" />
+      {/* Hero Section */}
+      <section className="hero">
+        <div className="hero-bg-glow"></div>
+        <div className="hero-content">
+          <h1>Campus Hustle</h1>
+          <p className="tagline">where hustlers hangout</p>
         </div>
       </section>
 
-      {/* === Features Section === */}
-      <section className="features-section">
-        <h2 style={{ fontSize: '2rem', marginBottom: '2rem', color: '#222' }}> Our Features</h2>
-        <div className="features-wrapper">
-          <div className="feature-card">
-            <img src={innovation} alt="Innovation" />
-            <h3>Innovation First</h3>
-            <p>Empowering students to build, break, and innovate with freedom and fire.</p>
-          </div>
-          <div className="feature-card">
-            <img src={community} alt="Community" />
-            <h3>Strong Community</h3>
-            <p>Connect with like-minded hustlers across disciplines and campuses.</p>
-          </div>
-        </div>
-        <div className="features-wrapper">
-          <div className="feature-card">
-            <img src={hackathons} alt="Hackathons" />
-            <h3>Hackathons & More</h3>
-            <p>Access the latest hackathons, coding challenges, and innovation events.</p>
-          </div>
-          <div className="feature-card">
-            <img src={scholarship} alt="Scholarship" />
-            <h3>Scholarships</h3>
-            <p>Explore and apply to exclusive scholarships for student leaders.</p>
-          </div>
+
+
+      {/* Features */}
+      <section className="features">
+        <h2>Our Features</h2>
+        <div className="features-grid">
+          {features.map((f, i) => (
+            <div className="feature-card" key={i}>
+              <img src={f.img} alt={f.title} />
+              <h3>{f.title}</h3>
+              <p>{f.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* === Intro Paragraph === */}
+      {/* Intro */}
       <section className="intro">
         <p>
           From college desks to dorm room dreams, <br />
@@ -74,35 +66,31 @@ const About = () => {
         </p>
       </section>
 
-      {/* === Developer Section === */}
-      <section className="dev-section">
-        <h2 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Meet the Developers</h2>
+      {/* Developers */}
+      <section className="developers">
+        <h2>Meet the Developers</h2>
         <div className="dev-grid">
-          {developers.map((dev, index) => (
-            <div className="dev-card" key={index}>
-              <img src={dev.img} alt={dev.name} className="dev-img" />
-              <h3 className="dev-name">{dev.name}</h3>
-              <p className="dev-role">{dev.role}</p>
+          {developers.map((dev, idx) => (
+            <div className="dev-card" key={idx}>
+              <img src={dev.img} alt={dev.name} />
+              <h3>{dev.name}</h3>
+              <p>{dev.role}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* === Mission Section === */}
+      {/* Mission */}
       <section className="mission">
-        <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Our Mission</h2>
+        <h2>Our Mission</h2>
         <p>
-          We’re passionate about building something bigger than ourselves.
-          Campus Hustle isn’t just a platform — it’s our shared dream to create a space where
+          Campus Hustle isn’t just a platform ,it’s a shared dream to create a space where
           students, developers, and creatives connect, grow, and hustle together.
-          With every line of code and every idea shared, we move one step closer
-          to a more empowered campus culture.
+          Every line of code brings us closer to an empowered campus culture.
         </p>
       </section>
-
     </div>
   );
 };
 
 export default About;
-
