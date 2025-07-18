@@ -30,6 +30,7 @@ import GraphicDesignGigsPage from './views/GraphicDesignGigsPage';
 import MarketingGigsPage from './views/MarketingGigsPage';
 import VideoEditingGigsPage from './views/VideoEditingGigsPage';
 import CategoryListingPage from './views/categoryListing';
+import Budgeting from './views/Budgeting'; 
 
 
 
@@ -91,6 +92,7 @@ function InnerApp() {
         <Route path="/register" element={<RegisterHackathonPage />} />
         <Route path="/mentorship" element={<Mentorship />} />
         <Route path="/freelance/:categorySlug" element={<CategoryListingPage />} />
+        <Route path="/budgeting" element={<Budgeting />} />
 
 
         <Route
