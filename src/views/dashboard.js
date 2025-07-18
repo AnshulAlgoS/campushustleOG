@@ -12,8 +12,17 @@ import img5 from '../assets/images/h5.jpeg';
 import img6 from '../assets/images/h6.jpeg';
 import img7 from '../assets/images/h7.jpeg';
 import img8 from '../assets/images/h2.jpeg';
+import img9 from '../assets/images/w1.jpeg';
+import img10 from '../assets/images/w2.jpeg';
+import img11 from '../assets/images/w3.jpeg';
+import img12 from '../assets/images/w4.jpeg';
+import img13 from '../assets/images/w5.jpeg';
+import img14 from '../assets/images/w6.jpeg';
+import img15 from '../assets/images/w7.jpeg';
+import img16 from '../assets/images/w8.jpeg';
 
 const fallbackImages=[img1,img2,img3,img4,img5,img6,img7,img8];
+const fallbackImages2=[img9,img10,img11,img12,img13,img14,img15,img16];
 
 export default function DashboardPage(){
   const [user,setUser]=useState(null);
@@ -129,7 +138,7 @@ export default function DashboardPage(){
           <div className="registered-hackathon-cards">
             {createdGigs.map((g,idx)=>(
               <div className="registered-card" key={g.id}>
-                <img src={fallbackImages[idx%fallbackImages.length]} alt={g.title} className="registered-image"/>
+                <img src={fallbackImages2[idx%fallbackImages2.length]} alt={g.title} className="registered-image"/>
                 <div className="registered-info">
                   <h4>{g.title}</h4>
                   <p><strong>Category:</strong> {g.category}</p>
@@ -149,7 +158,7 @@ export default function DashboardPage(){
           <div className="registered-hackathon-cards">
             {appliedGigs.map((a,idx)=>(
               <div className="registered-card" key={a.id}>
-                <img src={fallbackImages[(idx+3)%fallbackImages.length]} alt="Applied Gig" className="registered-image"/>
+                <img src={fallbackImages2[(idx+3)%fallbackImages2.length]} alt="Applied Gig" className="registered-image"/>
                 <div className="registered-info">
                   <p><strong>Gig ID:</strong> {a.gigId}</p>
                   <p><strong>Message:</strong> {a.reason||'—'}</p>
