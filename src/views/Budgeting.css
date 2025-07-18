@@ -68,5 +68,40 @@ body {
     border-radius: 10px;
     border: 1px solid #ccc;
 }
+.budget-form button {
+    background: #8c39a3;
+    color: white;
+    border: none;
+    transition: 0.3s;
+}
 
+.budget-form button:hover {
+    background: #570e5c;
+}
 
+.budget-list {
+    max-width: 500px;
+    margin: 20px auto;
+    background: rgba(255,255,255,0.85);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+
+.budget-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
+}
+
+.budget-item .label {
+    font-weight: 500;
+}
+
+.budget-item .delete {
+    color: #1b0307;
+    cursor: pointer;
+    margin-left: 10px;
+}
