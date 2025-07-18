@@ -15,10 +15,10 @@ import hackathons from '../assets/images/hackathons.png';
 import scholarship from '../assets/images/scholarship.png';
 
 const developers = [
-  { name: 'Anshul Saxena', role: 'Tech Lead & Product Architect', img: anshul },
+  { name: 'Mahira Khan', role: 'Frontend Engineering Lead', img: mahira },
   { name: 'Gourika', role: 'Content Strategist & Frontend Developer', img: gourika },
   { name: 'Avanya', role: 'Frontend Developer & Creative Assistant', img: avanya },
-  { name: 'Mahira Khan', role: 'Product Design Engineer', img: mahira },
+  { name: 'Anshul Saxena', role: 'Tech Lead & Product Architect', img: anshul },
 ];
 
 const features = [
