@@ -205,4 +205,18 @@ body {
         display: flex;
         justify-content: center;
     }
+        .hero {
+        padding-top: 20px;
+    }
+
+    .budget-summary,
+    .recent-transactions,
+    .budget-form,
+    .set-budget,
+    .budget-list,
+    .tips {
+        width: 90%;
+        margin: 15px auto;
+    }
+
 
