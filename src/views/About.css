@@ -1,61 +1,60 @@
 /* === Base Container === */
 .about-container {
   font-family: 'Segoe UI', sans-serif;
-  color: #333;
-  background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
+  color: #1a1a1a;
+  background: linear-gradient(180deg, #e3d5fa 0%, #f5ecff 60%, #ffffff 100%);
 }
 
+/* === Hero Section === */
 .hero {
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 6rem 2rem;
-  text-align: center;
-  flex-direction: column;
   position: relative;
+  overflow: hidden;
+  text-align: center;
+  background: linear-gradient(135deg, #c084fc, #9333ea);
 }
 
+.gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.1), transparent);
+  animation: pulseGlow 6s infinite;
+}
 
 .hero-content {
-  flex: 1;
-  text-align: left;
-  animation: fadeInUp 0.8s ease-out;
+  position: relative;
+  z-index: 2;
+  color: #fff;
 }
+
 .hero h1 {
-  font-size: 4rem;
+  font-size: 3.8rem;
   font-weight: 900;
   letter-spacing: -1px;
-  line-height: 1.1;
-  color: #3c007b;
-  margin-bottom: 1.2rem;
-  text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
-  animation: fadeInDown 0.8s ease-out;
+  margin-bottom: 1rem;
 }
 
 .tagline {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 600;
-  padding: 0.8rem 2rem;
-  border-radius: 16px;
-  background: linear-gradient(to right, #6a11cb, #2575fc);
-  color: #fff;
+  padding: 0.6rem 1.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
   display: inline-block;
-  box-shadow: 0 4px 20px rgba(106, 17, 203, 0.2);
-  animation: fadeInUp 1s ease-out;
-}
-@keyframes pulseGlow {
-  0%, 100% { transform: scale(1); opacity: 0.6; }
-  50% { transform: scale(1.1); opacity: 0.8; }
 }
 
-/* === Features Section === */
+/* === Features === */
 .features {
-  padding: 3rem 1rem;
+  padding: 4rem 1rem;
   text-align: center;
 }
 
 .features h2 {
-  font-size: 2rem;
+  font-size: 2.4rem;
   margin-bottom: 2rem;
 }
 
@@ -67,17 +66,18 @@
 }
 
 .feature-card {
-  background: #fff;
-  padding: 1.5rem;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.6);
   border-radius: 1.5rem;
-  width: 250px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 2rem;
+  width: 260px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
 
 .feature-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
 }
 
 .feature-card img {
@@ -88,22 +88,22 @@
 
 /* === Intro === */
 .intro {
-  padding: 2rem 1rem;
+  padding: 3rem 1rem;
   text-align: center;
   font-size: 1.2rem;
   font-style: italic;
   line-height: 1.8;
 }
 
-/* === Developer Section === */
+/* === Developers === */
 .developers {
-  background: #fdfbff;
-  padding: 3rem 1rem;
+  padding: 4rem 1rem;
+  background: linear-gradient(120deg, #f8f6ff, #ede9fe);
   text-align: center;
 }
 
 .developers h2 {
-  font-size: 2rem;
+  font-size: 2.4rem;
   margin-bottom: 2rem;
 }
 
@@ -115,12 +115,12 @@
 }
 
 .dev-card {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
   border-radius: 1.5rem;
-  width: 220px;
   padding: 1.5rem;
-  text-align: center;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  width: 220px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
 }
 
@@ -143,31 +143,22 @@
 
 .dev-card p {
   font-size: 0.9rem;
-  color: #777;
+  color: #555;
 }
 
 /* === Mission === */
 .mission {
-  padding: 3rem 1rem;
+  padding: 4rem 1rem;
   text-align: center;
-  font-size: 1.1rem;
   max-width: 900px;
   margin: auto;
+  font-size: 1.2rem;
 }
 
 /* === Responsive Fixes === */
 @media screen and (max-width: 768px) {
-  .hero {
-    flex-direction: column-reverse;
-    text-align: center;
-  }
-
-  .hero-content h1 {
-    font-size: 2.4rem;
-  }
-
-  .hero-img {
-    max-width: 100%;
+  .hero h1 {
+    font-size: 2.5rem;
   }
 
   .features-grid,
@@ -179,18 +170,14 @@
   .feature-card,
   .dev-card {
     width: 90%;
-    max-width: 300px;
+    max-width: 320px;
   }
 }
 
 /* === Animations === */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.05); opacity: 0.9; }
 }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
 

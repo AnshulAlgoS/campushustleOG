@@ -1,6 +1,7 @@
 // src/views/About.jsx
 import React from 'react';
 import './About.css';
+import { motion } from 'framer-motion';
 
 import bg from '../assets/images/background.jpg';
 import anshul from '../assets/images/anshulsaxena.png';
@@ -21,37 +22,43 @@ const developers = [
 ];
 
 const features = [
-  { img: innovation, title: 'Innovation First', desc: 'Empowering students to build, break, and innovate with fire.' },
-  { img: community, title: 'Strong Community', desc: 'Connect with like-minded hustlers across disciplines and campuses.' },
-  { img: hackathons, title: 'Hackathons & More', desc: 'Access the latest hackathons, challenges, and events.' },
-  { img: scholarship, title: 'Scholarships', desc: 'Apply to exclusive scholarships for student leaders.' },
+  { img: innovation, title: 'Student Freelancing', desc: 'Find or post real freelance gigs to gain experience and earnings.' },
+  { img: community, title: 'Peer Collaboration', desc: 'Connect with student hustlers across colleges and build real teams.' },
+  { img: hackathons, title: 'Hackathons & Events', desc: 'Explore, register, and track top-tier student hackathons.' },
+  { img: scholarship, title: 'Scholarships & Budgeting', desc: 'Discover scholarships and plan finances with smart tools.' },
 ];
+
 
 const About = () => {
   return (
     <div className="about-container">
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="hero">
-        <div className="hero-bg-glow"></div>
-        <div className="hero-content">
+        <div className="gradient-overlay" />
+        <motion.div className="hero-content" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
           <h1>Campus Hustle</h1>
           <p className="tagline">where hustlers hangout</p>
-        </div>
+        </motion.div>
       </section>
-
-
 
       {/* Features */}
       <section className="features">
         <h2>Our Features</h2>
         <div className="features-grid">
           {features.map((f, i) => (
-            <div className="feature-card" key={i}>
+            <motion.div
+              className="feature-card"
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              viewport={{ once: true }}
+            >
               <img src={f.img} alt={f.title} />
               <h3>{f.title}</h3>
               <p>{f.desc}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
@@ -71,11 +78,18 @@ const About = () => {
         <h2>Meet the Developers</h2>
         <div className="dev-grid">
           {developers.map((dev, idx) => (
-            <div className="dev-card" key={idx}>
+            <motion.div
+              className="dev-card"
+              key={idx}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: idx * 0.15 }}
+              viewport={{ once: true }}
+            >
               <img src={dev.img} alt={dev.name} />
               <h3>{dev.name}</h3>
               <p>{dev.role}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
@@ -84,7 +98,7 @@ const About = () => {
       <section className="mission">
         <h2>Our Mission</h2>
         <p>
-          Campus Hustle isn’t just a platform ,it’s a shared dream to create a space where
+          Campus Hustle isn’t just a platform it’s a shared dream to create a space where
           students, developers, and creatives connect, grow, and hustle together.
           Every line of code brings us closer to an empowered campus culture.
         </p>
