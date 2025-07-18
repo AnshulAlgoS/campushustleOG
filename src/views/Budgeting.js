@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FloatingDoodles from './FloatingDoodle';
 import './Budgeting.css';
 
-const categories = ['Scholarship', 'Travel', 'Rent', 'College fees','Food' ,'Other'];
+const categories = ['Food', 'Travel', 'Rent', 'Shopping', 'Other'];
 
 const Budgeting = () => {
+    const today = new Date();
+    const defaultMonth = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}`;
+
     const [entries, setEntries] = useState([]);
     const [label, setLabel] = useState('');
     const [amount, setAmount] = useState('');
     const [type, setType] = useState('income');
     const [category, setCategory] = useState('Other');
-    const [budgetLimit, setBudgetLimit] = useState(5000); // Default ₹5000 budget cap
+    const [note, setNote] = useState('');
+    const [budgetLimit, setBudgetLimit] = useState(5000);
+    const [selectedMonth, setSelectedMonth] = useState(defaultMonth);
 
     const addEntry = (e) => {
         e.preventDefault();
@@ -24,23 +29,32 @@ const Budgeting = () => {
             id: Date.now(),
             label,
             amount: type === 'expense' ? -parseFloat(amount) : parseFloat(amount),
-            category
+            category,
+            note,
+            month: selectedMonth
         };
 
         setEntries([...entries, newEntry]);
         setLabel('');
         setAmount('');
+        setNote('');
     };
 
     const deleteEntry = (id) => {
         setEntries(entries.filter(entry => entry.id !== id));
     };
 
-    const totalIncome = entries
+    const resetBudget = () => {
+        setEntries([]);
+    };
+
+    const monthEntries = entries.filter(e => e.month === selectedMonth);
+
+    const totalIncome = monthEntries
         .filter(e => e.amount > 0)
         .reduce((sum, e) => sum + e.amount, 0);
 
-    const totalExpenses = entries
+    const totalExpenses = monthEntries
         .filter(e => e.amount < 0)
         .reduce((sum, e) => sum + Math.abs(e.amount), 0);
 
@@ -48,13 +62,25 @@ const Budgeting = () => {
 
     const spendingPercent = Math.min((totalExpenses / budgetLimit) * 100, 100).toFixed(0);
 
+    const recentTransactions = monthEntries.slice(-3).reverse();
+
     return (
         <div className="budgeting-page">
             <FloatingDoodles />
 
+            <div className="calendar-picker">
+                <label>Month: </label>
+                <input
+                    type="month"
+                    value={selectedMonth}
+                    onChange={(e) => setSelectedMonth(e.target.value)}
+                />
+            </div>
+
             <div className="hero">
                 <h1>Student Budget Planner</h1>
-                <p>Track, Save & Stay in Control</p>
+                <p>Track your monthly budget</p>
+                <p className="selected-month">Budgeting for: {selectedMonth}</p>
             </div>
 
             <div className="budget-summary">
@@ -71,19 +97,33 @@ const Budgeting = () => {
                 </p>
             </div>
 
+            <div className="recent-transactions">
+                <h4>Recent Transactions</h4>
+                {recentTransactions.length === 0 ? (
+                    <p>No recent entries.</p>
+                ) : (
+                    recentTransactions.map(entry => (
+                        <div key={entry.id} className="recent-item">
+                            <span>{entry.label} ({entry.category})</span>
+                            <span>₹{Math.abs(entry.amount)} - {entry.note || 'No note'}</span>
+                        </div>
+                    ))
+                )}
+            </div>
+
             <div className="budget-form">
                 <form onSubmit={addEntry}>
                     <input
                         type="text"
                         value={label}
                         onChange={(e) => setLabel(e.target.value)}
-                        placeholder="Enter label (e.g., Tution, Travel, etc.)"
+                        placeholder="Label (e.g., College fees)"
                     />
                     <input
                         type="number"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
-                        placeholder="Enter amount"
+                        placeholder="Amount"
                     />
                     <select value={type} onChange={(e) => setType(e.target.value)}>
                         <option value="income">Income</option>
@@ -94,6 +134,12 @@ const Budgeting = () => {
                             <option key={idx} value={cat}>{cat}</option>
                         ))}
                     </select>
+                    <input
+                        type="text"
+                        value={note}
+                        onChange={(e) => setNote(e.target.value)}
+                        placeholder="Optional Note"
+                    />
                     <button type="submit">Add Entry</button>
                 </form>
             </div>
@@ -109,18 +155,36 @@ const Budgeting = () => {
             </div>
 
             <div className="budget-list">
-                {entries.map(entry => (
+                <h4>All Entries for {selectedMonth}</h4>
+                {monthEntries.length === 0 ? <p>No entries yet.</p> : null}
+                {monthEntries.map(entry => (
                     <div className="budget-item" key={entry.id}>
                         <span className="label">{entry.label} ({entry.category})</span>
                         <span>
                             ₹{Math.abs(entry.amount).toFixed(2)}
+                            {entry.note && <span className="note"> - {entry.note}</span>}
                             <span className="delete" onClick={() => deleteEntry(entry.id)}>✖</span>
                         </span>
                     </div>
                 ))}
+            </div>
+
+            <div className="reset-section">
+                <button onClick={resetBudget}>Reset Budget</button>
+            </div>
+
+            <div className="tips">
+                <h4>Budgeting Tips:</h4>
+                <ul>
+                    <li>Track your expenses daily</li>
+                    <li>Avoid impulse purchases</li>
+                    <li>Set aside savings first</li>
+                </ul>
             </div>
         </div>
     );
 };
 
 export default Budgeting;
+
+
