@@ -235,5 +235,14 @@ body {
         width: 90%;
     }
 }
-
+@media (min-width: 769px) and (max-width: 1024px) {
+    .budget-summary,
+    .recent-transactions,
+    .budget-form,
+    .set-budget,
+    .budget-list,
+    .tips {
+        width: 80%;
+    }
+}
 
