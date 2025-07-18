@@ -13,13 +13,13 @@ import innovation from '../assets/images/innovation.png';
 import community from '../assets/images/community.png';
 import hackathons from '../assets/images/hackathons.png';
 import scholarship from '../assets/images/scholarship.png';
-
 const developers = [
-  { name: 'Mahira Khan', role: 'Frontend Engineering Lead', img: mahira },
+  { name: 'Mahira Khan', role: 'Frontend Engineering Lead', img: mahira, zoom: true },
   { name: 'Gourika', role: 'Content Strategist & Frontend Developer', img: gourika },
   { name: 'Avanya', role: 'Frontend Developer & Creative Assistant', img: avanya },
-  { name: 'Anshul Saxena', role: 'Tech Lead & Product Architect', img: anshul },
+  { name: 'Anshul Saxena', role: 'Tech Lead & Product Architect', img: anshul, zoom: true },
 ];
+
 
 const features = [
   { img: innovation, title: 'Student Freelancing', desc: 'Find or post real freelance gigs to gain experience and earnings.' },
@@ -86,7 +86,18 @@ const About = () => {
               transition={{ duration: 0.4, delay: idx * 0.15 }}
               viewport={{ once: true }}
             >
-              <img src={dev.img} alt={dev.name} />
+              <div className="image-wrapper">
+  <img
+    src={dev.img}
+    alt={dev.name}
+    className="dev-img zoom-static"
+  />
+</div>
+
+
+
+
+
               <h3>{dev.name}</h3>
               <p>{dev.role}</p>
             </motion.div>
