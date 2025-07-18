@@ -198,3 +198,11 @@ body {
     margin: 0;
     padding-left: 20px;
 }
+@media (max-width: 768px) {
+    .calendar-picker {
+        position: static;
+        margin: 10px auto;
+        display: flex;
+        justify-content: center;
+    }
+
