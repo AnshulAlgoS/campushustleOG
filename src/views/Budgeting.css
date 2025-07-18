@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #b187d5, #f1e4fe);
+    color: #333333;
+    overflow-x: hidden;
+}
+
+.hero {
+    text-align: center;
+    padding: 50px 20px 20px 20px;
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+}
+
+.hero p {
+    color: #555;
+}
+
+.budget-summary {
+    max-width: 500px;
+    margin: 20px auto;
+    background: rgba(255,255,255,0.85);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.progress-bar {
+    background: #eee;
+    height: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress {
+    height: 15px;
+    background: #bb7bcf;
+    width: 0%;
+    transition: width 0.5s ease-in-out;
+}
+
+.success {
+    color: rgb(3, 99, 3);
+}
+
+.warning {
+    color: rgb(133, 2, 2);
+}
+
+.budget-form, .set-budget {
+    max-width: 500px;
+    margin: 20px auto;
+    background: rgba(255,255,255,0.8);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+}
+
+.budget-form input, .budget-form select, .budget-form button, .set-budget input {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+
