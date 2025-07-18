@@ -218,5 +218,22 @@ body {
         width: 90%;
         margin: 15px auto;
     }
+        .budget-form input, .budget-form select, .budget-form button, .set-budget input {
+        padding: 10px;
+    }
+
+    .budget-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .budget-item span {
+        margin-bottom: 5px;
+    }
+
+    .reset-section button {
+        width: 90%;
+    }
+}
 
 
