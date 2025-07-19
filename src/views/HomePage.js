@@ -64,14 +64,14 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
     } else if (title === 'Freelance') {
       navigateTo('freelance');
     } else if (title === 'Mentorship') {
-      navigate('/mentorship');
+      navigateTo('/mentorship');
     } else if (title === 'Community') {
       communityRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
     else if (title === 'Scholarship') {
       scholarshipRef.current?.scrollIntoView({ behavior: 'smooth' })
     } else if (title === 'Budgeting') {
-      navigate('/Budgeting'); 
+      navigateTo('/Budgeting'); 
     }
   };
   const testimonials = [
