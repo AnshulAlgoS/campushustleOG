@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './Mentorship.css';
+import FloatingDoodles from './FloatingDoodle';
+
 import HitenImg from '../assets/images/Hiten.png';
 import ShradhaImg from '../assets/images/shradha.png';
 import NeerajImg from '../assets/images/Neeraj.png';
@@ -14,30 +16,38 @@ const mentors = [
 
 const Mentorship = () => {
   const [showForm, setShowForm] = useState(false);
+  const [selectedMentor, setSelectedMentor] = useState(null);
 
-  const handleFormOpen = () => setShowForm(true);
-  const handleFormClose = () => setShowForm(false);
+  const handleFormOpen = (mentor = null) => {
+    setSelectedMentor(mentor);
+    setShowForm(true);
+  };
+
+  const handleFormClose = () => {
+    setShowForm(false);
+    setSelectedMentor(null);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Submit logic here (API or console)
-    alert("Application submitted successfully!");
+   
+    alert(`Application submitted successfully${selectedMentor ? ` for ${selectedMentor}` : ''}!`);
     setShowForm(false);
+    setSelectedMentor(null);
   };
 
   return (
     <div className="mentorship-page">
+      <FloatingDoodles />
 
-      {/* Hero Section */}
       <section className="mentorship-hero">
         <div className="mentorship-hero-content" data-aos="fade-up">
           <h1>Unlock Your Potential with Mentorship</h1>
           <p>Connect with experienced mentors for personalized guidance on careers, skills, and student life.</p>
-          <button className="mentorship-cta-btn">Find a Mentor</button>
+          <button className="mentorship-cta-btn" onClick={() => handleFormOpen()}>Find a Mentor</button>
         </div>
       </section>
 
-      {/* How It Works */}
       <section className="how-it-works" data-aos="fade-up">
         <h2>How It Works</h2>
         <div className="steps-container">
@@ -56,13 +66,17 @@ const Mentorship = () => {
               <img src={mentor.image} alt={mentor.name} />
               <h3>{mentor.name}</h3>
               <p className="mentor-role">{mentor.role}</p>
-              <button className="book-btn">Book Now</button>
+              <button
+                className="book-btn"
+                onClick={() => handleFormOpen(mentor.name)}
+              >
+                Book Now
+              </button>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Benefits */}
       <section className="benefits-section" data-aos="fade-up">
         <h2>Why Join Mentorship?</h2>
         <ul className="benefits-list">
@@ -74,18 +88,16 @@ const Mentorship = () => {
         </ul>
       </section>
 
-      {/* Footer CTA */}
       <section className="mentorship-cta-footer" data-aos="fade-up">
         <h2>Ready to Level Up?</h2>
         <p>Join Campus Hustle Mentorship and get the guidance you need to succeed.</p>
-        <button className="mentorship-cta-btn" onClick={handleFormOpen}>Join Now</button>
+        <button className="mentorship-cta-btn" onClick={() => handleFormOpen()}>Join Now</button>
       </section>
 
-      {/* Student Join Form (Modal) */}
       {showForm && (
         <div className="modal-overlay">
           <div className="form-modal">
-            <h2>Join as a Mentee</h2>
+            <h2>{selectedMentor ? `Book Session with ${selectedMentor}` : 'Join as a Mentee'}</h2>
             <form onSubmit={handleSubmit}>
               <input type="text" name="name" placeholder="Full Name" required />
               <input type="email" name="email" placeholder="Email" required />
@@ -104,8 +116,6 @@ const Mentorship = () => {
 };
 
 export default Mentorship;
-
-    
 
   
             
