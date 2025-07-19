@@ -9,22 +9,19 @@ import Doodle5 from '../assets/images/Girl with books.json';
 import Doodle6 from '../assets/images/Blob.json';
 import Doodle7 from '../assets/images/Run cycle recreated in Lottie Creator.json';
 
-const doodleAnimations = [
-  Doodle1, Doodle2, Doodle3, Doodle4, Doodle5, Doodle6, Doodle7
-];
+const doodleAnimations = [Doodle1, Doodle2, Doodle3, Doodle4, Doodle5, Doodle6, Doodle7];
 
 const FloatingDoodles = () => {
   const doodles = useMemo(() =>
-    Array.from({ length: 20 }, () => {
-      const safeTop = 12 + Math.random() * 88; 
-      const safeLeft = Math.random() * 100;
-      const scale = Math.random() * 0.6 + 0.4;
-      const rotate = Math.random() * 360;
+    Array.from({ length: 10 }, () => {
       const src = doodleAnimations[Math.floor(Math.random() * doodleAnimations.length)];
-
-      return { src, top: safeTop, left: safeLeft, scale, rotate };
-    }), []);
-
+      const top = 12 + Math.random() * 85; 
+      const left = Math.random() * 100;
+      const scale = Math.random() * 0.6 + 0.4;
+      const rotate = Math.floor(Math.random() * 360);
+      return { src, top, left, scale, rotate };
+    }), []
+  );
 
   return (
     <div className="floating-doodles">
