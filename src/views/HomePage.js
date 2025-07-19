@@ -71,7 +71,7 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
     else if (title === 'Scholarship') {
       scholarshipRef.current?.scrollIntoView({ behavior: 'smooth' })
     } else if (title === 'Budgeting') {
-      navigate('/budgeting'); 
+      navigate('/Budgeting'); 
     }
   };
   const testimonials = [
