@@ -1150,7 +1150,7 @@ header{
 
 .floating-doodles .doodle {
   position: absolute;
-  opacity: 0.08;
+  opacity: 0.8;
   animation: float 6s ease-in-out infinite;
   filter: blur(0.4px);
 }
