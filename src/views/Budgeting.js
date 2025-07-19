@@ -6,8 +6,6 @@ import {
   collection, addDoc, deleteDoc, doc,
   onSnapshot, query, where, serverTimestamp
 } from 'firebase/firestore';
-
-/* ─── Chart.js setup ─── */
 import {
   Chart as ChartJS,
   ArcElement,
@@ -33,14 +31,11 @@ ChartJS.register(
 );
 
 const BudgetingPage = () => {
-  /* ─── State ─── */
   const [expenses, setExpenses] = useState([]);
   const [formData, setFormData] = useState({ title: '', amount: '', category: '', notes: '' });
   const [income, setIncome] = useState('');
   const [limit, setLimit]   = useState('');
   const [userId, setUserId] = useState(null);
-
-  /* ─── Firestore listener ─── */
   useEffect(() => {
     const unsubAuth = auth.onAuthStateChanged(user => {
       if (user) {
@@ -55,8 +50,6 @@ const BudgetingPage = () => {
     });
     return () => unsubAuth();
   }, []);
-
-  /* ─── Handlers ─── */
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async e => {
@@ -73,15 +66,9 @@ const BudgetingPage = () => {
 
   const deleteExpense = id => deleteDoc(doc(db, 'expenses', id));
   const resetBudget   = () => { setIncome(''); setLimit(''); };
-
-  /* ─── Calculations ─── */
   const totalSpent  = expenses.reduce((sum, e) => sum + Number(e.amount || 0), 0);
   const remaining   = limit ? (parseFloat(limit) - totalSpent).toFixed(2) : '-';
   const percentUsed = limit ? Math.min(100, ((totalSpent / limit) * 100).toFixed(0)) : 0;
-
-  /* ─── Chart Data (memoized) ─── */
-
-  /* Category totals for Doughnut / Pie */
   const categoryTotals = useMemo(() => {
     return expenses.reduce((acc, e) => {
       acc[e.category] = (acc[e.category] || 0) + Number(e.amount || 0);
@@ -98,8 +85,6 @@ const BudgetingPage = () => {
       borderWidth: 1
     }]
   };
-
-  /* Limit vs Spent (Bar) */
   const barData = {
     labels: ['Limit', 'Spent'],
     datasets: [{
@@ -109,8 +94,6 @@ const BudgetingPage = () => {
     }]
   };
   const barOptions = { indexAxis: 'y', responsive: true, plugins: { legend: { display: false } } };
-
-  /* Expense timeline (Line) */
   const lineData = useMemo(() => {
     const sorted = [...expenses].sort((a, b) => (a.createdAt?.seconds || 0) - (b.createdAt?.seconds || 0));
     return {
@@ -125,8 +108,6 @@ const BudgetingPage = () => {
       }]
     };
   }, [expenses]);
-
-  /* ─── JSX ─── */
   return (
     <div className="budgeting-page">
       <h1>Budgeting Dashboard</h1>
@@ -143,8 +124,6 @@ const BudgetingPage = () => {
         </div>
         <button className="reset-btn" onClick={resetBudget}>Reset Budget</button>
       </div>
-
-      {/* Budget Summary */}
       {limit && (
         <div className="progress-summary">
           <p><strong>Total Spent:</strong> ₹{totalSpent}</p>
@@ -155,8 +134,6 @@ const BudgetingPage = () => {
           </p>
         </div>
       )}
-
-      {/* Expense Form */}
       <form className="budget-form" onSubmit={handleSubmit}>
         <input name="title"  value={formData.title}  onChange={handleChange} placeholder="Expense Title" required />
         <input name="amount" type="number" value={formData.amount} onChange={handleChange} placeholder="Amount" required />
@@ -168,8 +145,6 @@ const BudgetingPage = () => {
         <textarea name="notes" value={formData.notes} onChange={handleChange} placeholder="Additional Notes" rows="3" />
         <button type="submit">Add Expense</button>
       </form>
-
-      {/* Charts */}
       <div className="charts-wrapper">
         <div className="chart-card">
           <h3>Spending by Category</h3>
@@ -184,8 +159,6 @@ const BudgetingPage = () => {
           {expenses.length ? <Line data={lineData} /> : <p>No data yet.</p>}
         </div>
       </div>
-
-      {/* Expense List */}
       <div className="expense-list">
         <h2>Expenses</h2>
         {expenses.map(exp => (
