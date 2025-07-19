@@ -23,14 +23,14 @@ import FreelancePage from './views/FreelancePage';
 import WebDevGigsPage from './views/WebDevGigsPage';
 import CommunitySection from './views/community';
 import Mentorship from './views/Mentorship';
-import ExploreFreelance from  './views/ExploreFreelance';
+import ExploreFreelance from './views/ExploreFreelance';
 import OfferWorkForm from './views/OfferWorkForm';
 import ContentWritingGigsPage from './views/ContentWritingGigsPage';
 import GraphicDesignGigsPage from './views/GraphicDesignGigsPage';
 import MarketingGigsPage from './views/MarketingGigsPage';
 import VideoEditingGigsPage from './views/VideoEditingGigsPage';
 import CategoryListingPage from './views/categoryListing';
-import Budgeting from './views/Budgeting'; 
+import Budgeting from './views/Budgeting';
 
 
 
@@ -39,8 +39,8 @@ function InnerApp() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
-  AOS.init({duration: 1000,once: true});
-}, []);
+    AOS.init({ duration: 1000, once: true });
+  }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -92,7 +92,9 @@ function InnerApp() {
         <Route path="/register" element={<RegisterHackathonPage />} />
         <Route path="/mentorship" element={<Mentorship />} />
         <Route path="/freelance/:categorySlug" element={<CategoryListingPage />} />
-        <Route path="/Budgeting" element={<Budgeting />} />
+       <Route path="/budgeting" element={<Budgeting navigateTo={(page) => navigate(`/${page}`)} />} />
+
+
 
 
         <Route
@@ -117,15 +119,15 @@ function InnerApp() {
             />
           }
         />
-      
-         <Route path="/explore-freelance" element={<ExploreFreelance />} /> 
+
+        <Route path="/explore-freelance" element={<ExploreFreelance />} />
         <Route path="/offer-work" element={<OfferWorkForm />} />
         <Route path="/freelance/webdev" element={<WebDevGigsPage />} />
         <Route path="/freelance/content-writing" element={<ContentWritingGigsPage />} />
         <Route path="/freelance/graphic-design" element={<GraphicDesignGigsPage />} />
         <Route path="/freelance/marketing" element={<MarketingGigsPage />} />
         <Route path="/freelance/video-editing" element={<VideoEditingGigsPage />} />
-        
+
       </Routes>
 
       {showAuthModal && (

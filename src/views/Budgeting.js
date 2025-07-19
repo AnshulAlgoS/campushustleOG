@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import FloatingDoodles from './FloatingDoodle';
 import './Budgeting.css';
 import {db, auth} from '../firebase';
 import {
@@ -58,7 +57,7 @@ const Budgeting = () => {
   useEffect(() => {
     if (!userId) return;
 
-    const ref = doc(db, 'budget', userId, 'meta');
+    const ref = doc(db, 'budgetMeta', userId); // ✅ fixed path
     getDoc(ref).then(snapshot => {
       if (snapshot.exists()) {
         setBudgetLimit(snapshot.data().limit || 5000);
@@ -68,7 +67,7 @@ const Budgeting = () => {
 
   useEffect(() => {
     if (userId) {
-      const ref = doc(db, 'budget', userId, 'meta');
+      const ref = doc(db, 'budgetMeta', userId); // ✅ fixed path
       setDoc(ref, {limit: budgetLimit}, {merge: true});
     }
   }, [budgetLimit, userId]);
@@ -109,8 +108,7 @@ const Budgeting = () => {
   };
 
   const resetBudget = async () => {
-    const monthDocs = entries;
-    for (let entry of monthDocs) {
+    for (let entry of entries) {
       await deleteDoc(doc(db, 'budget', userId, 'entries', entry.id));
     }
   };
@@ -131,8 +129,6 @@ const Budgeting = () => {
 
   return (
     <div className="budgeting-page">
-      <FloatingDoodles />
-
       <div className="calendar-picker">
         <label>Month: </label>
         <input
