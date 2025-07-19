@@ -1136,48 +1136,22 @@ header{
   }
 }
 .floating-doodles {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed;
+  inset: 0;
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 0; /* ensure it stays behind interactive elements */
+  z-index: 0;
   overflow: hidden;
 }
 
 .floating-doodles .doodle {
   position: absolute;
-  width: 60px;
-  height: 60px;
-  opacity: 0.8;
-  animation: float 4s ease-in-out infinite;
+  opacity: 0.7;
+  animation: float 6s ease-in-out infinite;
 }
 
-/* Floating animation */
 @keyframes float {
-  0% { transform: translateY(0px) rotate(0deg); }
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-10px) rotate(5deg); }
-  100% { transform: translateY(0px) rotate(0deg); }
 }
-.doodle-0 { top: 10%; left: 65%; }
-.doodle-1 { top: 12%; right: 5%; }
-.doodle-2 { bottom: 15%; left: 5%; }
-.doodle-3 { bottom: 25%; right: 10%; }
-.doodle-4 { top: 25%; left: 2%; }
-.doodle-5 { bottom: 20%; left: 25%; }
-.doodle-6 { top: 50%; right: 6%; }
-.doodle-7 { bottom: 20%; right: 10%; }
-.doodle-8 { top: 15%; left: 10%; }
-.doodle-9 { top: 75%; right: 40%; }
-.doodle-10 { bottom: 20%; left: 30%; }
-.doodle-11 { top: 15%; right: 40%; }
-.doodle-12 { bottom: 0%; left: 2%; }
-.doodle-13 { top: 30%; left: 75%; }
-.doodle-14 { bottom: -20%; left: 5%; }
-.doodle-15 { bottom: -30%; right: 5%; }
-.doodle-16 { bottom: -35%; left: 35%; }
-.doodle-17 { bottom: -40%; right: 6%; }
-.doodle-18 { bottom: -40%; left: 7%; }
-.doodle-19 { bottom: -50%; right: 15%; }
-.doodle-20 { bottom: 15%; right: 35%; }
