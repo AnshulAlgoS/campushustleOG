@@ -64,7 +64,7 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
     } else if (title === 'Freelance') {
       navigateTo('freelance');
     } else if (title === 'Mentorship') {
-      navigateTo('/mentorship');
+      navigateTo('mentorship');
     } else if (title === 'Community') {
       communityRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
