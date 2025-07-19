@@ -1,249 +1,307 @@
 body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #d8b4f8, #f3e8ff);
-    color: #333;
-    overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom right, #d6b4fc, #f3e8ff);
+  color: #2c2c2c;
 }
 
 .budgeting-page {
-    position: relative;
-    min-height: 100vh;
-    padding-top: 60px;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem 3rem;
+  background: rgba(255,255,255,0.95);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 
-.hero {
-    text-align: center;
-    padding: 50px 20px 20px 20px;
+.budgeting-page h1 {
+  text-align: center;
+  color: #4a00e0;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
 }
 
-.hero h1 {
-    font-size: 2.2rem;
-    margin-bottom: 5px;
+.income-limit-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
-.hero p {
-    color: #555;
+.input-group {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
 }
 
-.selected-month {
-    font-weight: 500;
-    margin-top: 8px;
+.input-group label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
 }
 
-.calendar-picker {
-    position: absolute;
-    top: 20px;
-    left: 20px; /* Moved to top-left */
-    background: rgba(227, 166, 239, 0.9);
-    padding: 10px 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
+.input-group input {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.8rem;
+  background: #fdfbff;
+  font-size: 1rem;
+  transition: 0.3s;
 }
 
-.calendar-picker label {
-    margin-right: 8px;
-    font-weight: 500;
+.input-group input:focus {
+  border-color: #8e2de2;
+  box-shadow: 0 0 0 4px rgba(142, 45, 226, 0.1);
+  outline: none;
 }
 
-.calendar-picker input {
-    padding: 6px 10px;
-    border-radius: 6px;
-    border: 1px solid #eecff9;
+.reset-btn {
+  padding: 1rem 1.6rem;
+  background: #ffdde8;
+  color: #b30044;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.budget-summary {
-    max-width: 500px;
-    margin: 20px auto;
-    background: rgba(255,255,255,0.85);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    text-align: center;
+.reset-btn:hover {
+  background: #ffc2d4;
 }
 
-.progress-bar {
-    background: #d5d3d6;
-    height: 15px;
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 10px 0;
+.budget-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 3rem;
 }
 
-.progress {
-    height: 15px;
-    background: #5b0f6a;
-    width: 0%;
-    transition: width 0.5s ease-in-out;
+.budget-form input,
+.budget-form select,
+.budget-form textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.8rem;
+  background: #fdfbff;
+  font-size: 1rem;
+  transition: 0.3s ease;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.03);
 }
 
-.success {
-    color: rgb(19, 113, 19);
-}
-
-.warning {
-    color: rgb(139, 45, 45);
-}
-
-.recent-transactions {
-    max-width: 500px;
-    margin: 20px auto;
-    background: rgba(255,255,255,0.8);
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-}
-
-.recent-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-}
-
-.budget-form, .set-budget {
-    max-width: 500px;
-    margin: 20px auto;
-    background: rgba(255,255,255,0.8);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.05);
-}
-
-.budget-form input, .budget-form select, .budget-form button, .set-budget input {
-    width: 100%;
-    margin-bottom: 12px;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
+.budget-form input:focus,
+.budget-form select:focus,
+.budget-form textarea:focus {
+  border-color: #8e2de2;
+  box-shadow: 0 0 0 4px rgba(142, 45, 226, 0.1);
+  outline: none;
 }
 
 .budget-form button {
-    background: #aa5dce;
-    color: white;
-    border: none;
-    transition: 0.3s;
+  padding: 1rem;
+  background: linear-gradient(to right, #7a27c2, #5501fc);
+  color: #fff;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
 }
 
 .budget-form button:hover {
-    background: #6e4272;
+  background: linear-gradient(to right, #6e1eb1, #4601c4);
 }
 
-
-.budget-list {
-    max-width: 500px;
-    margin: 20px auto;
-    background: rgba(255,255,255,0.85);
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+.expense-list h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #333;
 }
 
-.budget-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 8px;
+.expense-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: #faf7ff;
+  border: 1px solid #e0d4ff;
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
 }
 
-.budget-item .label {
-    font-weight: 500;
+.expense-card h4 {
+  margin: 0;
+  color: #5501fc;
 }
 
-.budget-item .delete {
-    color: #201517;
-    cursor: pointer;
-    margin-left: 10px;
+.expense-card p {
+  margin: 0.2rem 0;
+  font-size: 0.95rem;
+  color: #666;
 }
 
-.budget-item .note {
-    color: #666;
-    font-size: 0.85rem;
-    margin-left: 5px;
+.expense-card small {
+  font-size: 0.85rem;
+  color: #999;
 }
 
-.reset-section {
-    text-align: center;
-    margin: 20px;
+.expense-card button {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  margin-left: 1rem;
+  transition: background 0.3s;
 }
 
-.reset-section button {
-    background: #c76fc2;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
+.expense-card button:hover {
+  background: #d63031;
 }
 
-.reset-section button:hover {
-    background: #5d3d6b;
+.progress-summary {
+  margin: 2rem 0;
+  background: #f4e9ff;
+  padding: 1rem 1.5rem;
+  border: 1px solid #e3d3f8;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-size: 0.95rem;
 }
 
-.tips {
-    max-width: 500px;
-    margin: 20px auto 50px auto;
-    background: rgba(255,255,255,0.75);
-    padding: 15px;
-    border-radius: 12px;
-    font-size: 0.95rem;
+.progress-bar {
+  height: 12px;
+  background: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0.6rem 0 1rem;
 }
 
-.tips ul {
-    margin: 0;
-    padding-left: 20px;
+.progress {
+  height: 100%;
+  background: linear-gradient(to right, #8e2de2, #4a00e0);
+  width: 0;
+  transition: width 0.5s ease;
+}
+
+.success {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.warning {
+  color: #c62828;
+  font-weight: 600;
 }
 
 @media (max-width: 768px) {
-    .calendar-picker {
-        position: static;
-        margin: 10px auto;
-        display: flex;
-        justify-content: center;
-    }
-        .hero {
-        padding-top: 20px;
-    }
+  .budgeting-page {
+    padding: 1.5rem;
+  }
 
-    .budget-summary,
-    .recent-transactions,
-    .budget-form,
-    .set-budget,
-    .budget-list,
-    .tips {
-        width: 90%;
-        margin: 15px auto;
-    }
-        .budget-form input, .budget-form select, .budget-form button, .set-budget input {
-        padding: 10px;
-    }
+  .income-limit-section {
+    flex-direction: column;
+  }
 
-    .budget-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  .input-group {
+    flex: 1 1 100%;
+  }
 
-    .budget-item span {
-        margin-bottom: 5px;
-    }
+  .reset-btn {
+    width: 100%;
+    margin-top: 1rem;
+  }
 
-    .reset-section button {
-        width: 90%;
-    }
+  .budget-form button {
+    width: 100%;
+  }
+
+  .expense-card {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .expense-card button {
+    align-self: flex-end;
+  }
 }
-@media (min-width: 769px) and (max-width: 1024px) {
-    .budget-summary,
-    .recent-transactions,
-    .budget-form,
-    .set-budget,
-    .budget-list,
-    .tips {
-        width: 80%;
-    }
-}
+@media (max-width: 468px) {
+  .budgeting-page {
+    padding: 1rem 1rem;
+    margin: 1rem;
+    border-radius: 1rem;
+  }
 
+  .budgeting-page h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .income-limit-section {
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .input-group input {
+    padding: 0.9rem;
+    font-size: 0.95rem;
+  }
+
+  .reset-btn {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .budget-form input,
+  .budget-form select,
+  .budget-form textarea {
+    padding: 0.9rem;
+    font-size: 0.95rem;
+  }
+
+  .budget-form button {
+    font-size: 1rem;
+    padding: 0.9rem;
+  }
+
+  .expense-list h2 {
+    font-size: 1.5rem;
+  }
+
+  .expense-card {
+    padding: 1rem;
+    gap: 0.6rem;
+  }
+
+  .expense-card h4 {
+    font-size: 1rem;
+  }
+
+  .expense-card p,
+  .expense-card small {
+    font-size: 0.85rem;
+  }
+
+  .expense-card button {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    align-self: flex-end;
+  }
+
+  .progress-summary {
+    font-size: 0.9rem;
+    padding: 1rem;
+  }
+
+  .progress-bar {
+    height: 10px;
+  }
+}

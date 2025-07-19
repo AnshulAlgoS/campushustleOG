@@ -1,229 +1,122 @@
+// src/views/BudgetingPage.js
 import React, {useState, useEffect} from 'react';
 import './Budgeting.css';
 import {db, auth} from '../firebase';
 import {
-  collection,
-  addDoc,
-  deleteDoc,
-  doc,
-  onSnapshot,
-  query,
-  where,
-  setDoc,
-  getDoc,
-  serverTimestamp
+  collection, addDoc, deleteDoc, doc,
+  onSnapshot, query, where, serverTimestamp
 } from 'firebase/firestore';
-import {onAuthStateChanged} from 'firebase/auth';
 
-const categories = ['Food','Travel','Rent','Shopping','Other'];
-
-const Budgeting = () => {
-  const today = new Date();
-  const defaultMonth = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}`;
-  
-  const [entries, setEntries] = useState([]);
-  const [label, setLabel] = useState('');
-  const [amount, setAmount] = useState('');
-  const [type, setType] = useState('income');
-  const [category, setCategory] = useState('Other');
-  const [note, setNote] = useState('');
-  const [budgetLimit, setBudgetLimit] = useState(5000);
-  const [selectedMonth, setSelectedMonth] = useState(defaultMonth);
+const BudgetingPage = () => {
+  const [expenses, setExpenses] = useState([]);
+  const [formData, setFormData] = useState({title: '', amount: '', category: '', notes: ''});
+  const [income, setIncome] = useState('');
+  const [limit, setLimit] = useState('');
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) setUserId(user.uid);
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        setUserId(user.uid);
+        const q = query(collection(db, 'expenses'), where('userId', '==', user.uid));
+        const unsub = onSnapshot(q, snapshot => {
+          const data = snapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
+          setExpenses(data);
+        });
+        return () => unsub();
+      }
     });
     return () => unsubscribe();
   }, []);
 
-  useEffect(() => {
-    if (!userId) return;
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value});
+  };
 
-    const q = query(
-      collection(db, 'budget', userId, 'entries'),
-      where('month', '==', selectedMonth)
-    );
-
-    const unsub = onSnapshot(q, (snapshot) => {
-      const data = snapshot.docs.map(doc => ({...doc.data(), id: doc.id}));
-      setEntries(data);
-    });
-
-    return () => unsub();
-  }, [userId, selectedMonth]);
-
-  useEffect(() => {
-    if (!userId) return;
-
-    const ref = doc(db, 'budgetMeta', userId); // ✅ fixed path
-    getDoc(ref).then(snapshot => {
-      if (snapshot.exists()) {
-        setBudgetLimit(snapshot.data().limit || 5000);
-      }
-    });
-  }, [userId]);
-
-  useEffect(() => {
-    if (userId) {
-      const ref = doc(db, 'budgetMeta', userId); // ✅ fixed path
-      setDoc(ref, {limit: budgetLimit}, {merge: true});
-    }
-  }, [budgetLimit, userId]);
-
-  const addEntry = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (label.trim() === '' || isNaN(parseFloat(amount))) {
-      alert('Please enter valid details.');
-      return;
-    }
-
-    const newEntry = {
-      label,
-      amount: type === 'expense' ? -parseFloat(amount) : parseFloat(amount),
-      category,
-      note,
-      month: selectedMonth,
+    if (!userId || !formData.title || !formData.amount || !formData.category) return;
+    await addDoc(collection(db, 'expenses'), {
+      ...formData,
+      amount: parseFloat(formData.amount),
+      userId,
       createdAt: serverTimestamp()
-    };
-
-    try {
-      await addDoc(collection(db, 'budget', userId, 'entries'), newEntry);
-      setLabel('');
-      setAmount('');
-      setNote('');
-    } catch (err) {
-      console.error('Error adding entry:', err);
-    }
+    });
+    setFormData({title: '', amount: '', category: '', notes: ''});
   };
 
-  const deleteEntry = async (id) => {
-    try {
-      await deleteDoc(doc(db, 'budget', userId, 'entries', id));
-    } catch (err) {
-      console.error('Error deleting entry:', err);
-    }
+  const deleteExpense = async (id) => {
+    await deleteDoc(doc(db, 'expenses', id));
   };
 
-  const resetBudget = async () => {
-    for (let entry of entries) {
-      await deleteDoc(doc(db, 'budget', userId, 'entries', entry.id));
-    }
+  const resetBudget = () => {
+    setIncome('');
+    setLimit('');
   };
 
-  const monthEntries = entries.filter(e => e.month === selectedMonth);
-
-  const totalIncome = monthEntries
-    .filter(e => e.amount > 0)
-    .reduce((sum, e) => sum + e.amount, 0);
-
-  const totalExpenses = monthEntries
-    .filter(e => e.amount < 0)
-    .reduce((sum, e) => sum + Math.abs(e.amount), 0);
-
-  const remaining = budgetLimit - totalExpenses;
-  const spendingPercent = Math.min((totalExpenses / budgetLimit) * 100, 100).toFixed(0);
-  const recentTransactions = monthEntries.slice(-3).reverse();
+  const totalSpent = expenses.reduce((sum, exp) => sum + parseFloat(exp.amount || 0), 0);
+  const remaining = limit ? (parseFloat(limit) - totalSpent).toFixed(2) : '-';
+  const percentUsed = limit ? Math.min(100, ((totalSpent / limit) * 100).toFixed(0)) : 0;
 
   return (
     <div className="budgeting-page">
-      <div className="calendar-picker">
-        <label>Month: </label>
-        <input
-          type="month"
-          value={selectedMonth}
-          onChange={(e) => setSelectedMonth(e.target.value)}
-        />
-      </div>
+      <h1>Budgeting Dashboard</h1>
 
-      <div className="hero">
-        <h1>Student Budget Planner</h1>
-        <p>Track your monthly budget</p>
-        <p className="selected-month">Budgeting for: {selectedMonth}</p>
-      </div>
-
-      <div className="budget-summary">
-        <h3>Monthly Budget: ₹{budgetLimit}</h3>
-        <div className="progress-bar">
-          <div className="progress" style={{width: `${spendingPercent}%`}}></div>
+      <div className="income-limit-section">
+        <div className="input-group">
+          <label>Monthly Income</label>
+          <input type="number" value={income} onChange={(e) => setIncome(e.target.value)} placeholder="Enter income" />
         </div>
-        <p>Income: ₹{totalIncome} | Expenses: ₹{totalExpenses}</p>
-        <p className={remaining < 0 ? 'warning' : 'success'}>
-          {remaining >= 0 ? `Savings: ₹${remaining}` : `Overspending by ₹${Math.abs(remaining)}`}
-        </p>
+        <div className="input-group">
+          <label>Monthly Limit</label>
+          <input type="number" value={limit} onChange={(e) => setLimit(e.target.value)} placeholder="Enter limit" />
+        </div>
+        <button className="reset-btn" onClick={resetBudget}>Reset Budget</button>
       </div>
 
-      <div className="recent-transactions">
-        <h4>Recent Transactions</h4>
-        {recentTransactions.length === 0 ? (
-          <p>No recent entries.</p>
-        ) : (
-          recentTransactions.map(entry => (
-            <div key={entry.id} className="recent-item">
-              <span>{entry.label} ({entry.category})</span>
-              <span>₹{Math.abs(entry.amount)} - {entry.note || 'No note'}</span>
+      {limit && (
+        <div className="progress-summary">
+          <p><strong>Total Spent:</strong> ₹{totalSpent}</p>
+          <p><strong>Remaining:</strong> ₹{remaining}</p>
+          <div className="progress-bar">
+            <div className="progress" style={{width: `${percentUsed}%`}}></div>
+          </div>
+          <p className={remaining < 0 ? 'warning' : 'success'}>
+            {remaining >= 0 ? `You're within budget.` : `Overspending by ₹${Math.abs(remaining)}`}
+          </p>
+        </div>
+      )}
+
+      <form className="budget-form" onSubmit={handleSubmit}>
+        <input name="title" value={formData.title} onChange={handleChange} placeholder="Expense Title" required />
+        <input name="amount" type="number" value={formData.amount} onChange={handleChange} placeholder="Amount" required />
+        <select name="category" value={formData.category} onChange={handleChange} required>
+          <option value="">Select Category</option>
+          <option value="Food">Food</option>
+          <option value="Travel">Travel</option>
+          <option value="Bills">Bills</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Other">Other</option>
+        </select>
+        <textarea name="notes" value={formData.notes} onChange={handleChange} placeholder="Additional Notes" rows="3" />
+        <button type="submit">Add Expense</button>
+      </form>
+
+      <div className="expense-list">
+        <h2>Expenses</h2>
+        {expenses.map(exp => (
+          <div key={exp.id} className="expense-card">
+            <div>
+              <h4>{exp.title} - ₹{exp.amount}</h4>
+              <p>{exp.category}</p>
+              {exp.notes && <small>{exp.notes}</small>}
             </div>
-          ))
-        )}
-      </div>
-
-      <div className="budget-form">
-        <form onSubmit={addEntry}>
-          <input type="text" value={label} onChange={(e) => setLabel(e.target.value)} placeholder="Label" />
-          <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Amount" />
-          <select value={type} onChange={(e) => setType(e.target.value)}>
-            <option value="income">Income</option>
-            <option value="expense">Expense</option>
-          </select>
-          <select value={category} onChange={(e) => setCategory(e.target.value)}>
-            {categories.map((cat, idx) => <option key={idx} value={cat}>{cat}</option>)}
-          </select>
-          <input type="text" value={note} onChange={(e) => setNote(e.target.value)} placeholder="Optional Note" />
-          <button type="submit">Add Entry</button>
-        </form>
-      </div>
-
-      <div className="set-budget">
-        <h4>Set Monthly Limit</h4>
-        <input
-          type="number"
-          value={budgetLimit}
-          onChange={(e) => setBudgetLimit(parseFloat(e.target.value) || 0)}
-          placeholder="Set monthly limit"
-        />
-      </div>
-
-      <div className="budget-list">
-        <h4>All Entries for {selectedMonth}</h4>
-        {monthEntries.length === 0 ? <p>No entries yet.</p> : null}
-        {monthEntries.map(entry => (
-          <div className="budget-item" key={entry.id}>
-            <span className="label">{entry.label} ({entry.category})</span>
-            <span>
-              ₹{Math.abs(entry.amount).toFixed(2)}
-              {entry.note && <span className="note"> - {entry.note}</span>}
-              <span className="delete" onClick={() => deleteEntry(entry.id)}>✖</span>
-            </span>
+            <button onClick={() => deleteExpense(exp.id)}>Delete</button>
           </div>
         ))}
-      </div>
-
-      <div className="reset-section">
-        <button onClick={resetBudget}>Reset Budget</button>
-      </div>
-
-      <div className="tips">
-        <h4>Budgeting Tips:</h4>
-        <ul>
-          <li>Track your expenses daily</li>
-          <li>Avoid impulse purchases</li>
-          <li>Set aside savings first</li>
-        </ul>
       </div>
     </div>
   );
 };
 
-export default Budgeting;
+export default BudgetingPage;
