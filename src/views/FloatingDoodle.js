@@ -16,16 +16,15 @@ const doodleAnimations = [
 const FloatingDoodles = () => {
   const doodles = useMemo(() =>
     Array.from({ length: 20 }, () => {
+      const safeTop = 12 + Math.random() * 88; 
+      const safeLeft = Math.random() * 100;
+      const scale = Math.random() * 0.6 + 0.4;
+      const rotate = Math.random() * 360;
       const src = doodleAnimations[Math.floor(Math.random() * doodleAnimations.length)];
-      return {
-        src,
-        top: Math.random() * 100,
-        left: Math.random() * 100,
-        scale: Math.random() * 0.6 + 0.4,
-        rotate: Math.floor(Math.random() * 360)
-      };
-    }), []
-  );
+
+      return { src, top: safeTop, left: safeLeft, scale, rotate };
+    }), []);
+
 
   return (
     <div className="floating-doodles">

@@ -1138,7 +1138,7 @@ header{
     font-size: 11px;
   }
 }
-.floating-doodles {
+.floating-doodles{
   position: fixed;
   inset: 0;
   width: 100vw;
@@ -1147,6 +1147,7 @@ header{
   z-index: 0;
   overflow: hidden;
 }
+
 
 .floating-doodles .doodle {
   position: absolute;
