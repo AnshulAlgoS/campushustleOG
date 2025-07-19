@@ -383,7 +383,7 @@ header::before {
   font-size: 50px;
   margin-top: 0px;
   text-indent: 10%;
-  z-index: 1;
+  z-index: 2;
   font-family: 'Baloo Bhai 2', sans-serif;
 }
 
@@ -865,6 +865,7 @@ a.category-box .category-title {
   .section-title {
     font-size: 32px;
     text-indent: 2%;
+    z-index: 2;
   }
 
   .category-container {
@@ -1033,6 +1034,7 @@ header{
     text-indent: 0%;
     text-align: center;
     line-height: 1.2;
+    z-index: 2;
     margin-bottom: 20px;
   }
 
