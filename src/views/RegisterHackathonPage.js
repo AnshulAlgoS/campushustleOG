@@ -1,7 +1,7 @@
 // src/views/RegisterHackathonPage.jsx
 
 import React, { useEffect, useState } from 'react';
-import { Timestamp, doc, setDoc } from 'firebase/firestore';
+import { Timestamp, doc, addDoc } from 'firebase/firestore';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { db, auth } from '../firebase';
 import './RegisterHackathonPage.css';
@@ -46,7 +46,7 @@ const RegisterHackathonPage = () => {
     try {
       const docRef = doc(db, 'registrations', `${user.uid}_${hackathon.name}`);
 
-      await setDoc(docRef, {
+      await addDoc(docRef, {
         hackathonName: hackathon.name,
         hackathonImage: hackathon.image || '',
         userEmail: user.email,
