@@ -1,5 +1,4 @@
 // src/views/RegisterHackathonPage.jsx
-
 import React, { useEffect, useState } from 'react';
 import { Timestamp, doc, setDoc } from 'firebase/firestore';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -44,7 +43,9 @@ const RegisterHackathonPage = () => {
     if (!user || !hackathon) return;
 
     try {
-      const docRef = doc(db, 'registrations', `${user.uid}_${hackathon.name}`);
+      const safeHackathonId = hackathon.name.replace(/[^a-zA-Z0-9_-]/g, '_');
+      const docRef = doc(db, 'registrations', `${user.uid}_${safeHackathonId}`);
+
 
       await setDoc(docRef, {
         hackathonName: hackathon.name,
