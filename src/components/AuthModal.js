@@ -69,9 +69,11 @@ export default function AuthModal({ onClose, onAuthSuccess }) {
           fullName: user.displayName,
           photoURL: user.photoURL,
           provider: 'google',
+          userId: user.uid, 
           createdAt: new Date()
         });
       }
+
 
       onAuthSuccess(user);
       onClose();

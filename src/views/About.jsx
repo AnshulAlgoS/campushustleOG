@@ -87,12 +87,12 @@ const About = () => {
               viewport={{ once: true }}
             >
               <div className="image-wrapper">
-  <img
-    src={dev.img}
-    alt={dev.name}
-    className="dev-img zoom-static"
-  />
-</div>
+                <img
+                  src={dev.img}
+                  alt={dev.name}
+                  className="dev-img zoom-static"
+                />
+              </div>
 
 
 
