@@ -1,204 +1,105 @@
-/* === Base Container === */
 .about-container {
+  background-color: #0f0f1a;
+  color: white;
+  padding: 40px 20px;
   font-family: 'Segoe UI', sans-serif;
-  color: #1a1a1a;
-  background: linear-gradient(180deg, #e3d5fa 0%, #f5ecff 60%, #ffffff 100%);
-}
-
-/* === Hero Section === */
-.hero {
-  height: 50vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  background: linear-gradient(135deg, #c084fc, #9333ea);
-}
-
-.gradient-overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.1), transparent);
-  animation: pulseGlow 6s infinite;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  color: #fff;
-}
-
-.hero h1 {
-  font-size: 3.8rem;
-  font-weight: 900;
-  letter-spacing: -1px;
-  margin-bottom: 1rem;
-}
-
-.tagline {
-  font-size: 1.4rem;
-  font-weight: 600;
-  padding: 0.6rem 1.5rem;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(6px);
-  border-radius: 12px;
-  display: inline-block;
-}
-
-/* === Features === */
-.features {
-  padding: 4rem 1rem;
   text-align: center;
 }
 
-.features h2 {
-  font-size: 2.4rem;
-  margin-bottom: 2rem;
+.about-heading {
+  font-size: 2.5rem;
+  color: #00bfff;
 }
 
-.features-grid {
+.about-subheading {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: #ccc;
+}
+
+.feature-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  gap: 25px;
 }
 
 .feature-card {
-  backdrop-filter: blur(8px);
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 1.5rem;
-  padding: 2rem;
+  background: #1a1a2e;
+  border-radius: 20px;
   width: 260px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .feature-card img {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 1rem;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
 }
 
-/* === Intro === */
-.intro {
-  padding: 3rem 1rem;
-  text-align: center;
-  font-size: 1.2rem;
+.feature-card h3 {
+  margin: 10px 0 5px;
+  color: #00ffff;
+}
+
+.feature-card p {
+  color: #aaa;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px #00ffff88;
+}
+
+.tagline {
+  margin-top: 50px;
   font-style: italic;
-  line-height: 1.8;
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.7;
 }
 
-/* === Developers === */
-.developers {
-  padding: 4rem 1rem;
-  background: linear-gradient(120deg, #f8f6ff, #ede9fe);
-  text-align: center;
+.dev-heading {
+  margin: 60px 0 30px;
+  font-size: 2rem;
+  color: #c084fc;
 }
 
-.developers h2 {
-  font-size: 2.4rem;
-  margin-bottom: 2rem;
-}
-
-.dev-grid {
+.dev-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  gap: 25px;
 }
 
 .dev-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  border-radius: 1.5rem;
-  padding: 1.5rem;
-  width: 320px;
-  height: 230px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+  background-color: #1f1f2e;
+  padding: 20px;
+  border-radius: 20px;
+  width: 180px;
+  transition: 0.3s ease;
+  cursor: pointer;
 }
 
-.dev-card:hover {
-  transform: scale(1.05);
-}
-
-.dev-card h3 {
-  font-size: 1.1rem;
-  font-weight: bold;
+.dev-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 10px;
 }
 
 .dev-card p {
-  font-size: 0.9rem;
-  color: #555;
+  margin: 0;
+  color: white;
+  font-weight: bold;
 }
 
-/* === Mission === */
-.mission {
-  padding: 4rem 1rem;
-  text-align: center;
-  max-width: 900px;
-  margin: auto;
-  font-size: 1.2rem;
-}
-
-/* === Responsive Fixes === */
-@media screen and (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-
-  .features-grid,
-  .dev-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .feature-card,
-  .dev-card {
-    width: 90%;
-    max-width: 320px;
-  }
-}
-
-/* === Animations === */
-@keyframes pulseGlow {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.05); opacity: 0.9; }
-}
-/* REMOVE this old one:
-.dev-card img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-}
-*/
-
-.image-wrapper {
-  width: 120px; 
-  height: 120px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 0 auto 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.dev-img {
-  width: 140%;
-  height: 140%;
-  object-fit: cover;
-  object-position: center;
-}
-.zoom-static {
-  transform: scale(1.3);
+.dev-card:hover {
+  box-shadow: 0 0 15px #a855f7aa;
+  border: 2px solid #a855f7;
 }
