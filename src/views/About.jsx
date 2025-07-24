@@ -9,26 +9,29 @@ const About = () => {
 
       {/* Features Section */}
       <section className="features">
-        <h2>🌟 Our Core Features</h2>
+        <h2>🚀 Campus Hustle Features</h2>
+        <p className="section-subtext">
+          Explore our mission to empower student hustlers with powerful opportunities and tools.
+        </p>
         <div className="feature-grid">
           <div className="feature-box">
             <img src="/images/freelance.png" alt="Student Freelancing" />
-            <h3>Student Freelancing</h3>
+            <h3>👨‍💻 <strong>Student Freelancing</strong></h3>
             <p>Find or post freelance gigs to gain experience and earnings.</p>
           </div>
           <div className="feature-box">
             <img src="/images/community.png" alt="Peer Collaboration" />
-            <h3>Peer Collaboration</h3>
+            <h3>🤝 <strong>Peer Collaboration</strong></h3>
             <p>Connect with hustlers across colleges and build real teams.</p>
           </div>
           <div className="feature-box">
             <img src="/images/hackathons.png" alt="Hackathons & Events" />
-            <h3>Hackathons & Events</h3>
+            <h3>🏆 <strong>Hackathons & Events</strong></h3>
             <p>Explore, register, and track top-tier student hackathons.</p>
           </div>
           <div className="feature-box">
             <img src="/images/innovation.png" alt="Scholarships & Budgeting" />
-            <h3>Scholarships & Budgeting</h3>
+            <h3>🎓 <strong>Scholarships & Budgeting</strong></h3>
             <p>Discover scholarships and plan your finances smartly.</p>
           </div>
         </div>
@@ -36,21 +39,20 @@ const About = () => {
 
       {/* Core Features Section */}
       <section className="core">
-        <h2>🛠️ Core Features</h2>
+        <h2>🛠️ Core Platform Features</h2>
         <ul>
-          <li><strong>Smart Matching:</strong> Intelligent event and opportunity suggestions for each user.</li>
-          <li><strong>Verified Gigs:</strong> Safe and real freelance listings by trusted users.</li>
-          <li><strong>Collaboration Tools:</strong> Chat, group creation, and file sharing in one place.</li>
-          <li><strong>Finance Planning:</strong> Built-in budget planner and scholarship reminders.</li>
+          <li><strong>Smart Matching:</strong> Personalized suggestions for events and scholarships.</li>
+          <li><strong>Verified Gigs:</strong> Safe freelance listings from trusted students & orgs.</li>
+          <li><strong>Collaboration Tools:</strong> Chat, file-sharing, and team creation.</li>
+          <li><strong>Finance Planning:</strong> Budget tracker and scholarship reminders.</li>
         </ul>
       </section>
 
-      {/* Applications Section */}
+      {/* Applications */}
       <section className="applications">
-        <h2>🎯 Applications</h2>
+        <h2>🎯 Real-World Applications</h2>
         <p>
-          Campus Hustle boosts student productivity, helps manage finances, and connects students to real-world
-          career-building tools — all in one student-first platform.
+          Campus Hustle boosts student productivity, builds real-world portfolios, and connects you to opportunities that shape your future — all in one place.
         </p>
       </section>
 
