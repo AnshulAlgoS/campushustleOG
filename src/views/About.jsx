@@ -3,50 +3,89 @@ import './About.css';
 
 const About = () => {
   return (
-    <div className="about-container">
-      <h1 className="about-heading">🚀 Campus Hustle Features</h1>
-      <p className="about-subheading">Explore our mission to empower student hustlers with powerful opportunities and tools.</p>
+    <div className="about-wrapper">
+      <h1 className="main-title">Campus Hustle</h1>
+      <p className="tagline">where hustlers hangout</p>
 
-      <div className="feature-cards">
-        <div className="feature-card">
-          <img src="/images/freelance.jpg" alt="Student Freelancing" />
-          <h3>Student Freelancing</h3>
-          <p>Find or post freelance gigs to gain experience and earnings.</p>
+      {/* Features Section */}
+      <section className="features">
+        <h2>🌟 Our Core Features</h2>
+        <div className="feature-grid">
+          <div className="feature-box">
+            <img src="/images/freelance.png" alt="Student Freelancing" />
+            <h3>Student Freelancing</h3>
+            <p>Find or post freelance gigs to gain experience and earnings.</p>
+          </div>
+          <div className="feature-box">
+            <img src="/images/community.png" alt="Peer Collaboration" />
+            <h3>Peer Collaboration</h3>
+            <p>Connect with hustlers across colleges and build real teams.</p>
+          </div>
+          <div className="feature-box">
+            <img src="/images/hackathons.png" alt="Hackathons & Events" />
+            <h3>Hackathons & Events</h3>
+            <p>Explore, register, and track top-tier student hackathons.</p>
+          </div>
+          <div className="feature-box">
+            <img src="/images/innovation.png" alt="Scholarships & Budgeting" />
+            <h3>Scholarships & Budgeting</h3>
+            <p>Discover scholarships and plan your finances smartly.</p>
+          </div>
         </div>
-        <div className="feature-card">
-          <img src="/images/peer.jpg" alt="Peer Collaboration" />
-          <h3>Peer Collaboration</h3>
-          <p>Connect with hustlers across colleges and build real teams.</p>
-        </div>
-        <div className="feature-card">
-          <img src="/images/hackathon.jpg" alt="Hackathons & Events" />
-          <h3>Hackathons & Events</h3>
-          <p>Explore, register, and track top-tier student hackathons.</p>
-        </div>
-        <div className="feature-card">
-          <img src="/images/scholarships.jpg" alt="Scholarships & Budgeting" />
-          <h3>Scholarships & Budgeting</h3>
-          <p>Discover scholarships and plan your finances smartly.</p>
-        </div>
-      </div>
+      </section>
 
-      <p className="tagline">
-        From college desks to dorm room dreams, Campus Hustle is more than it seems.<br />
-        A space where passion meets the grind, innovation and teamwork, beautifully aligned.
+      {/* Core Features Section */}
+      <section className="core">
+        <h2>🛠️ Core Features</h2>
+        <ul>
+          <li><strong>Smart Matching:</strong> Intelligent event and opportunity suggestions for each user.</li>
+          <li><strong>Verified Gigs:</strong> Safe and real freelance listings by trusted users.</li>
+          <li><strong>Collaboration Tools:</strong> Chat, group creation, and file sharing in one place.</li>
+          <li><strong>Finance Planning:</strong> Built-in budget planner and scholarship reminders.</li>
+        </ul>
+      </section>
+
+      {/* Applications Section */}
+      <section className="applications">
+        <h2>🎯 Applications</h2>
+        <p>
+          Campus Hustle boosts student productivity, helps manage finances, and connects students to real-world
+          career-building tools — all in one student-first platform.
+        </p>
+      </section>
+
+      {/* Quote Section */}
+      <p className="bottom-quote">
+        From college desks to dorm room dreams,<br />
+        Campus Hustle is more than it seems.<br />
+        A space where passion meets the grind,<br />
+        Innovation and teamwork, beautifully aligned.
       </p>
 
-      <h2 className="dev-heading">💻 Meet the Developers</h2>
-      <div className="dev-cards">
-        {['Anshul Saxena', 'Gourika', 'Avanya', 'Mahira Khan'].map((name, index) => (
-          <div className="dev-card" key={index}>
-            <img src={`/images/dev${index + 1}.jpg`} alt={name} />
-            <p>{name}</p>
+      {/* Developers Section */}
+      <section className="devs">
+        <h2>💻 Meet the Developers</h2>
+        <div className="dev-grid">
+          <div className="dev-card">
+            <img src="/images/anshulsaxena.png" alt="Anshul Saxena" />
+            <p>Anshul Saxena</p>
           </div>
-        ))}
-      </div>
+          <div className="dev-card">
+            <img src="/images/gourika.png" alt="Gourika" />
+            <p>Gourika</p>
+          </div>
+          <div className="dev-card">
+            <img src="/images/avanya.png" alt="Avanya" />
+            <p>Avanya</p>
+          </div>
+          <div className="dev-card">
+            <img src="/images/mahiraa.png" alt="Mahira Khan" />
+            <p>Mahira Khan</p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
 
 export default About;
-
