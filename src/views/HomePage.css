@@ -377,28 +377,28 @@ header::before {
     background: linear-gradient(to top, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
   padding: 80px 40px;
 }
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600;700&display=swap');
 .section-title {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 64px;
+  font-family: 'IBM Plex Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: clamp(2.6rem, 6vw, 4rem);
   text-align: left;
+  font-weight: 700;
   text-indent: 10%;
-  letter-spacing: 2px;
-  line-height: 1.2;
-  text-indent: 11%;
-  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  letter-spacing: 1px;
+  margin-bottom: 1.2rem;
+  padding: 0 1rem;
 }
 
 .light-text {
-  color: #e8d6fa; /* soft lavender */
-  text-shadow: 0 0 5px #b57ce9, 0 0 10px #b57ce9;
+  color: #be98cb;
 }
 
 .dark-text {
-  color: #3b0a59; /* rich deep violet */
+  color: #572e54;
 }
+
+
 
 .category-container {
   display: flex;
@@ -409,11 +409,7 @@ header::before {
 .category-box {
   flex: 1 1 calc(26% - 20px);
   max-width: calc(26% - 20px);
-  background: linear-gradient(to left,
-    #b998d6 ,
-    rgba(223, 202, 240, 0.99) ,
-    rgba(223, 202, 240, 0.99) ,
-    #b998d6);
+  background: linear-gradient(to bottom, #d8a7eb, #e6c2f3, #f2d7fb, #f0dff6);
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   padding: 15px; 
@@ -1040,7 +1036,7 @@ header{
   }
 
   .section-title {
-    font-size: 24px;
+    font-size: 34px;
     text-indent: 0%;
     text-align: center;
     line-height: 1.2;

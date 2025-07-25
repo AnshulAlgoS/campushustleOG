@@ -21,16 +21,6 @@
   align-items: center;
   padding:20px;
 }
-
-
-.heading {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 24px;
-  text-align: center;
-  color: #1a1a1a;
-}
-
 .scholarship-filter-section {
   display: flex;
   justify-content: center;
@@ -68,12 +58,18 @@
   align-items: center;
 }
 
-.heading {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  text-align: center;
-  position: relative;
-  z-index: 1;
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600;700&display=swap');
+
+.scholarship-heading {
+  font-family: "IBM Plex Sans", "Macan", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  text-align: left;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+  margin: 0 0 1.5rem 0;
+  padding: 0 1rem;
+  color: #572e54
 }
 
 .card-grid {

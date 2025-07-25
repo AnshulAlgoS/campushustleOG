@@ -33,3 +33,10 @@ body.modal-open {
 .auth-modal-overlay {
   z-index: 1000 !important;
 }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

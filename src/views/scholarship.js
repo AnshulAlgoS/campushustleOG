@@ -49,8 +49,9 @@ const ScholarshipSection = ({ showAll, isFullPage }) => {
 
   return (
     <section className={`scholarship-container ${isFullPage ? 'fullpage' : 'homepage'}`}>
-  <div className="scholarship-wrapper">
-    <h2 className="heading">{showAll ? '🎓 Explore Scholarships' : ' Featured Scholarships'}</h2>
+<div className="scholarship-wrapper">
+  <h2 className="scholarship-heading">
+    {showAll ? 'Explore Scholarships' : 'Featured Scholarships'}</h2>
 
     {showAll && (
       <div className="scholarship-filter-section">

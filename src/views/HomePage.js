@@ -25,6 +25,10 @@ import gourikaImg from '../assets/images/gourika1.png';
 import UserMenu from '../components/UserMenu';
 import CommunitySection from './community';
 import Scholarship from './scholarship';
+import ScholarshipCarousel from "./MobileScholarshipCaraousel";
+
+
+
 
 const slides = [slide1, slide2, slide3, slide4, slide5];
 
