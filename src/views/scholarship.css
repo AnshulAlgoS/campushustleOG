@@ -93,8 +93,8 @@
   border-radius: 1rem;
   padding: 1rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  max-height: 400px;
-  min-width: 350px;
+  max-height: 25%;
+  min-width: 90%;
   overflow: hidden;
   box-sizing: border-box;
   display:flex;
@@ -109,13 +109,12 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 468px) {
   .card-grid {
     flex-direction: column;
   }
-
-  .scholarship-card {
-    width: 100%;
+  .scholarship-card{
+    max-width: 280px;
   }
 }
 
