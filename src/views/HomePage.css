@@ -1,4 +1,4 @@
-* {
+* .HomePage{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -403,7 +403,14 @@ header::before {
 .category-box {
   flex: 1 1 calc(26% - 20px);
   max-width: calc(26% - 20px);
-  background: linear-gradient(to bottom, #d8a7eb, #e6c2f3, #f2d7fb, #f0dff6);
+  background: linear-gradient(
+    135deg,
+    #48186f 0%,
+    rgba(108, 61, 146, 0.99) 40%,
+    rgba(117, 69, 157, 0.97) 50%,
+    rgba(108, 61, 146, 0.99) 60%,
+    #48186f 100%
+  );
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   padding: 15px; 
@@ -439,7 +446,7 @@ header::before {
 .category-title {
   font-size: 24px;
   font-weight: bold;
-  color: #572E54;
+  color: #dfb8ef;
   font-family: 'Baloo Bhai 2', cursive;
   transition: color 0.3s ease;
 }

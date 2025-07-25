@@ -1,64 +1,96 @@
-// src/components/Scholarship.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { get, ref } from 'firebase/database';
+import { realtimeDb } from '../firebase';
 import './scholarship.css';
+import ScholarshipCard from './ScholarshipCard';
+import Modal from './ScholarshipModal'; 
+import { useNavigate } from 'react-router-dom';
 
-const scholarships = [
-  {
-    name: "TechStars Excellence Scholarship",
-    amount: "₹50,000 + Internship",
-    deadline: "31 July 2025",
-    details: "Open for final-year tech students with leadership experience and a GPA above 8.0. Includes a summer internship with stipend and mentorship."
-  },
-  {
-    name: "CodeForIndia Challenge Grant",
-    amount: "₹1,00,000 + Mentorship",
-    deadline: "10 August 2025",
-    details: "Awarded to 10 outstanding coders who demonstrate social impact through technology. Includes funding for personal projects and startup ideas."
-  },
-  {
-    name: "Women in STEM Fellowship",
-    amount: "₹75,000",
-    deadline: "25 July 2025",
-    details: "For women pursuing CS/IT/Engineering, this fellowship supports career growth and education-related expenses."
-  },
-  {
-    name: "HackBright Future Fund",
-    amount: "₹60,000 + Bootcamp Access",
-    deadline: "15 August 2025",
-    details: "Meant for students who have participated in at least one national hackathon. Covers bootcamp registration, travel, and lodging."
-  }
-];
 
-const Scholarship = () => {
+const ScholarshipSection = ({ showAll, isFullPage }) => {
+  const [scholarships, setScholarships] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedScholarship, setSelectedScholarship] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+  
+
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const dbRef = ref(realtimeDb, 'scholarships');
+      const snapshot = await get(dbRef);
+      if (snapshot.exists()) {
+        const data = Object.values(snapshot.val());
+        console.log('📦 Scholarships from Firebase:', data);
+        setScholarships(data);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const openModal = (item) => {
+    setSelectedScholarship(item);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setSelectedScholarship(null);
+    setShowModal(false);
+  };
+
+  const categories = [...new Set(scholarships.map(s => s.Category))];
+  const filteredScholarships = selectedCategory === 'All'
+    ? scholarships
+    : scholarships.filter(s => s.Category?.toLowerCase() === selectedCategory.toLowerCase());
+
+  const itemsToShow = showAll ? filteredScholarships : scholarships.slice(0, 4);
+
   return (
-    <section className="scholarship-flag-section">
-      <h2 className="scholarship-heading">Featured Scholarships</h2>
+    <section className={`scholarship-container ${isFullPage ? 'fullpage' : 'homepage'}`}>
+  <div className="scholarship-wrapper">
+    <h2 className="heading">{showAll ? '🎓 Explore Scholarships' : ' Featured Scholarships'}</h2>
 
-      <p className="scholarship-subtext">
-        Explore exclusive scholarships designed to support your academic dreams and tech journey. Whether you're looking for internships, mentorship, or financial support — we've got you covered. These scholarships are curated for passionate learners, innovators, and future leaders. Apply now and take one step closer to your goals!
-      </p>
-
-      <div className="scholarship-flag-wrapper">
-        {scholarships.map((sch, index) => (
-          <div className="scholarship-flag-card" key={index}>
-            <h3 className="sch-name">{sch.name}</h3>
-            <p className="sch-amount">{sch.amount}</p>
-            <p className="sch-description">{sch.details}</p>
-            <div className="sch-bottom">
-              <span className="sch-deadline">⏳ {sch.deadline}</span>
-              <a href="#" className="sch-apply-btn">Apply Now</a>
-            </div>
-          </div>
-        ))}
+    {showAll && (
+      <div className="scholarship-filter-section">
+        <select
+          className="dropdown"
+          value={selectedCategory}
+          onChange={e => setSelectedCategory(e.target.value)}
+        >
+          <option value="All">All Categories</option>
+          {categories.map((cat, idx) => (
+            <option key={idx} value={cat}>{cat}</option>
+          ))}
+        </select>
       </div>
-    </section>
+    )}
+
+    <div className="card-grid">
+      {itemsToShow.map((item, idx) => (
+        <ScholarshipCard
+          key={idx}
+          item={item}
+          idx={idx}
+          openModal={openModal} 
+        />
+      ))}
+    </div>
+
+    {!showAll && (
+      <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+        <button className="explore-btn" onClick={() => navigate('/scholarships')}>
+          Explore More Scholarships
+        </button>
+      </div>
+    )}
+  </div>
+
+  <Modal isOpen={showModal} item={selectedScholarship} onClose={closeModal} />
+</section>
+
   );
 };
 
-export default Scholarship;
-
-
-
-
-
-
+export default ScholarshipSection;

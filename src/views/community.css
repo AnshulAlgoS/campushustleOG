@@ -70,7 +70,14 @@ background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
 .btn {
   display: inline-block;
   padding: 12px 25px;
-  background: #572e54;
+  background: linear-gradient(
+    135deg,
+    #3b0865 0%,
+    rgba(81, 27, 125, 0.99) 40%,
+    rgba(98, 21, 161, 0.97) 50%,
+    rgba(81, 27, 125, 0.99) 60%,
+    #3b0865 100%
+  );
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
@@ -79,11 +86,6 @@ background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
   cursor: pointer;
   transition: background 0.3s ease;
 }
-
-.btn:hover {
-  background: #d690ea;
-}
-
 /* Popup */
 .popup {
   position: fixed;

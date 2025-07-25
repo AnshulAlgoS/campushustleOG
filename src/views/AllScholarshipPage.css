@@ -1,0 +1,59 @@
+
+.all-scholarships-page {
+  min-height: 100vh;
+  padding-top: 80px;
+  background: linear-gradient(to top, #864f9c, #d896ef, #dcafea, #d5b5dd);
+}
+
+/* Scholarship card styling */
+.AllScholarshipsPage .scholarship-card {
+  background-color: #121212;
+  border: 1px solid #2e2e2e;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease-in-out;
+}
+
+.AllScholarshipsPage .scholarship-card:hover {
+  transform: scale(1.01);
+  border-color: #5e17eb;
+}
+
+.AllScholarshipsPage .scholarship-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.AllScholarshipsPage .scholarship-card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #d0d0d0;
+  margin: 8px 0;
+}
+
+.AllScholarshipsPage .read-more-btn {
+  background: none;
+  border: none;
+  color: #5e17eb;
+  font-weight: bold;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.AllScholarshipsPage .read-more-btn:hover {
+  text-decoration: underline;
+}
+
+.badge {
+  display: inline-block;
+  background-color: #5e17eb;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 5px 10px;
+  border-radius: 30px;
+  margin-right: 8px;
+  margin-top: 10px;
+}

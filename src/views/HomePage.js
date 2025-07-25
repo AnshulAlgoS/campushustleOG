@@ -71,7 +71,7 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
     else if (title === 'Scholarship') {
       scholarshipRef.current?.scrollIntoView({ behavior: 'smooth' })
     } else if (title === 'Budgeting') {
-      navigateTo('budgeting'); 
+      navigateTo('budgeting');
     }
   };
   const testimonials = [
@@ -122,182 +122,176 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
     <>
       <FloatingDoodles />
       <div className="home-page">
-              <div className="home-page-wrapper">
-        {/* Top Strip */}
-        <div className="top-strip">
-          <div className="logo-combo">
-            <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
-            <span className="logo-text">CampusHustle</span>
-          </div>
+        <div className="home-page-wrapper">
+          {/* Top Strip */}
+          <div className="top-strip">
+            <div className="logo-combo">
+              <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
+              <span className="logo-text">CampusHustle</span>
+            </div>
 
-          {/*  Desktop Nav */}
-          <nav className="navbar-desktop">
-            <ul className="strip-nav">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/freelance">Freelance</Link></li>
-              <li><Link to="/hackathon">Hackathons</Link></li>
-              <li>
-                <Link
-                  to="/"
-                  state={{ scrollTo: 'community' }}
-                  onClick={() => { }}
-                  className="desktop-link-btn"
-                >
-                  Community
-                </Link>
-              </li>
-
-              <li><Link to="/about">About Us</Link></li>
-              <li>
-                {user ? (
-                  <UserMenu
-                    user={user}
-                    onLogout={handleLogout}
-                    onProfileClick={onProfileClick}
-                  />
-                ) : (
-                  <button
-                    className="signup"
-                    onClick={() => openAuthModal()}
+            {/*  Desktop Nav */}
+            <nav className="navbar-desktop">
+              <ul className="strip-nav">
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/freelance">Freelance</Link></li>
+                <li><Link to="/hackathon">Hackathons</Link></li>
+                <li>
+                  <Link
+                    to="/"
+                    state={{ scrollTo: 'community' }}
+                    onClick={() => { }}
+                    className="desktop-link-btn"
                   >
-                    Get Started
-                  </button>
-                )}
-              </li>
-            </ul>
-          </nav>
-
-
-          {/* Mobile Nav */}
-          <div className="navbar-mobile">
-            <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
-
-            {menuOpen && (
-              <ul className={`mobile-nav ${menuOpen ? 'open' : ''}`}>
-                <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
-                <li><Link to="/freelance" onClick={() => setMenuOpen(false)}>Freelance</Link></li>
-                <li><Link to="/hackathon" onClick={() => setMenuOpen(false)}>Hackathons</Link></li>
-                <li><Link to="/" state={{ scrollTo: 'community' }} onClick={() => setMenuOpen(false)}>Community</Link></li>
-                <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
+                    Community
+                  </Link>
                 </li>
+
+                <li><Link to="/about">About Us</Link></li>
                 <li>
                   {user ? (
                     <UserMenu
                       user={user}
-                      onLogout={() => {
-                        setMenuOpen(false);
-                        handleLogout();
-                      }}
-                      onProfileClick={() => {
-                        setMenuOpen(false);
-                        onProfileClick();
-                      }}
+                      onLogout={handleLogout}
+                      onProfileClick={onProfileClick}
                     />
                   ) : (
                     <button
                       className="signup"
-                      onClick={() => {
-                        setMenuOpen(false);
-                        openAuthModal();
-                      }}
+                      onClick={() => openAuthModal()}
                     >
                       Get Started
                     </button>
                   )}
                 </li>
               </ul>
-            )}
+            </nav>
+
+
+            {/* Mobile Nav */}
+            <div className="navbar-mobile">
+              <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+
+              {menuOpen && (
+                <ul className={`mobile-nav ${menuOpen ? 'open' : ''}`}>
+                  <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
+                  <li><Link to="/freelance" onClick={() => setMenuOpen(false)}>Freelance</Link></li>
+                  <li><Link to="/hackathon" onClick={() => setMenuOpen(false)}>Hackathons</Link></li>
+                  <li><Link to="/" state={{ scrollTo: 'community' }} onClick={() => setMenuOpen(false)}>Community</Link></li>
+                  <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
+                  </li>
+                  <li>
+                    {user ? (
+                      <UserMenu
+                        user={user}
+                        onLogout={() => {
+                          setMenuOpen(false);
+                          handleLogout();
+                        }}
+                        onProfileClick={() => {
+                          setMenuOpen(false);
+                          onProfileClick();
+                        }}
+                      />
+                    ) : (
+                      <button
+                        className="signup"
+                        onClick={() => {
+                          setMenuOpen(false);
+                          openAuthModal();
+                        }}
+                      >
+                        Get Started
+                      </button>
+                    )}
+                  </li>
+                </ul>
+              )}
+            </div>
+
+
           </div>
 
 
-        </div>
+
+
+          {/* Hero Section */}
+          <header>
+            <div className="slideshow-container">
+              {slides.map((slide, index) => (
+                <img
+                  key={index}
+                  src={slide}
+                  alt={`Slide ${index + 1}`}
+                  className={`slide-image ${index === currentSlide ? 'active' : ''}`}
+                />
+              ))}
+            </div>
 
 
 
+            <div className="video-overlay-text" data-aos="fade-up">
+              <h1>Campus Hustle – Where<br />Hustlers Hangout</h1>
+            </div>
 
-        {/* Hero Section */}
-        <header>
-          <div className="slideshow-container">
-            {slides.map((slide, index) => (
-              <img
-                key={index}
-                src={slide}
-                alt={`Slide ${index + 1}`}
-                className={`slide-image ${index === currentSlide ? 'active' : ''}`}
-              />
-            ))}
-          </div>
+            <div className="search-bar-wrapper" data-aos="zoom-in" data-aos-delay="200">
+              <form>
+                <input type="search" placeholder="Search our services ..." />
+                <i className="fa fa-search"></i>
+              </form>
+            </div>
+            <div className="tag-buttons-below" data-aos="fade-up" data-aos-delay="400">
+              <button className="tag-button">Freelance</button>
+              <button className="tag-button">Budget Planner</button>
+              <button className="tag-button">Scholarships</button>
+              <button className="tag-button">Team Finder</button>
+            </div>
+          </header>
 
-
-
-          <div className="video-overlay-text" data-aos="fade-up">
-            <h1>Campus Hustle – Where<br />Hustlers Hangout</h1>
-          </div>
-
-          <div className="search-bar-wrapper" data-aos="zoom-in" data-aos-delay="200">
-            <form>
-              <input type="search" placeholder="Search our services ..." />
-              <i className="fa fa-search"></i>
-            </form>
-          </div>
-          <div className="tag-buttons-below" data-aos="fade-up" data-aos-delay="400">
-            <button className="tag-button">Freelance</button>
-            <button className="tag-button">Budget Planner</button>
-            <button className="tag-button">Scholarships</button>
-            <button className="tag-button">Team Finder</button>
-          </div>
-        </header>
-
-        {/* Category Section */}
-        <section className="category-section">
-          <h2 className="section-title">
-            <span className="light-text">Explore By </span>
-            <span className="dark-text">Category</span>
-          </h2>
-          <div className="category-container">
-            {[
-              { animation: FreelanceAnim, title: 'Freelance' },
-              { animation: MentorshipAnim, title: 'Mentorship' },
-              { animation: CommunityAnim, title: 'Community' },
-              { animation: BudgetingAnim, title: 'Budgeting' },
-              { animation: HackathonAnim, title: 'Hackathons' },
-              { animation: ScholarshipAnim, title: 'Scholarship' }
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="category-box"
-                onClick={() => handleCategoryClick(item.title)}
-                style={{ cursor: 'pointer', zIndex: 1 }}
-                data-aos="flip-left"
-                data-aos-delay={`${index * 100}`}
-              >
-                <div className="category-inner-box">
-                  <Player
-                    autoplay
-                    loop
-                    src={item.animation}
-                    style={{ height: '165px', width: '165px' }}
-                  />
+          {/* Category Section */}
+          <section className="category-section">
+            <h2 className="section-title">
+              <span className="light-text">Explore By </span>
+              <span className="dark-text">Category</span>
+            </h2>
+            <div className="category-container">
+              {[
+                { animation: FreelanceAnim, title: 'Freelance' },
+                { animation: MentorshipAnim, title: 'Mentorship' },
+                { animation: CommunityAnim, title: 'Community' },
+                { animation: BudgetingAnim, title: 'Budgeting' },
+                { animation: HackathonAnim, title: 'Hackathons' },
+                { animation: ScholarshipAnim, title: 'Scholarship' }
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="category-box"
+                  onClick={() => handleCategoryClick(item.title)}
+                  style={{ cursor: 'pointer', zIndex: 1 }}
+                  data-aos="flip-left"
+                  data-aos-delay={`${index * 100}`}
+                >
+                  <div className="category-inner-box">
+                    <Player
+                      autoplay
+                      loop
+                      src={item.animation}
+                      style={{ height: '165px', width: '165px' }}
+                    />
+                  </div>
+                  <span className="category-title">{item.title}</span>
                 </div>
-                <span className="category-title">{item.title}</span>
-              </div>
-            ))
-            }
-          </div>
-        </section>
+              ))
+              }
+            </div>
+          </section>
         </div>
 
         <div ref={communityRef} data-aos="fade-up">
           <CommunitySection />
         </div>
 
-        <div ref={scholarshipRef} data-aos="fade-up">
-          <Scholarship />
-        </div>
-
-
-
-
+        <Scholarship showAll={false} isFullPage={false} />
         {/* Testimonials Section */}
         <section className="testimonials-section" data-aos="fade-up">
           <h2>What Our Users Say</h2>
@@ -347,46 +341,46 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
         {/* Footer */}
         <footer>
           <div className="home-page-wrapper">
-          <span className="footer-container">
-            {/* Logo & Title */}
-            <span className="footer-logo">
-              <img src={footerLogo} alt="Campus Hustle Logo" />
-              <h2>CampusHustle</h2>
-            </span>
+            <span className="footer-container">
+              {/* Logo & Title */}
+              <span className="footer-logo">
+                <img src={footerLogo} alt="Campus Hustle Logo" />
+                <h2>CampusHustle</h2>
+              </span>
 
-            {/* Company Section */}
-            <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
-              <h4>Company</h4>
+              {/* Company Section */}
+              <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
+                <h4>Company</h4>
 
-              <ul>
-                <li><Link to="/about">About Us</Link></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Press</a></li>
-              </ul>
-            </span>
+                <ul>
+                  <li><Link to="/about">About Us</Link></li>
+                  <li><a href="#">Careers</a></li>
+                  <li><a href="#">Press</a></li>
+                </ul>
+              </span>
 
-            {/* Quick Links */}
-            <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
-              <h4>Quick Links</h4>
-              <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/freelance">Freelance</Link></li>
-                <Link to="/" state={{ scrollTo: 'community' }}>Community</Link>
-                <li><Link to="/hackathon">Hackathon</Link></li>
-                <li><Link to="/contact">Contact</Link></li> 
-              </ul>
-            </span>
+              {/* Quick Links */}
+              <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
+                <h4>Quick Links</h4>
+                <ul>
+                  <li><Link to="/">Home</Link></li>
+                  <li><Link to="/freelance">Freelance</Link></li>
+                  <Link to="/" state={{ scrollTo: 'community' }}>Community</Link>
+                  <li><Link to="/hackathon">Hackathon</Link></li>
+                  <li><Link to="/contact">Contact</Link></li>
+                </ul>
+              </span>
 
-            {/* Support */}
-            <span className="footer-column"data-aos="fade-up" data-aos-delay="100">
-              <h4>Support</h4>
-              <ul>
-                <li><a href="#">Help Center</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms & Conditions</a></li>
-              </ul>
+              {/* Support */}
+              <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
+                <h4>Support</h4>
+                <ul>
+                  <li><a href="#">Help Center</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+              </span>
             </span>
-          </span>
           </div>
         </footer>
 

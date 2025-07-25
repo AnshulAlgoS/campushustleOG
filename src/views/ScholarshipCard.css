@@ -1,0 +1,83 @@
+.scholarship-card {
+  background: linear-gradient(
+    135deg,
+    #48186f 0%,
+    rgba(108, 61, 146, 0.99) 40%,
+    rgba(117, 69, 157, 0.97) 50%,
+    rgba(108, 61, 146, 0.99) 60%,
+    #48186f 100%
+  );
+  border: 1px solid #3d0d58;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 12px 0;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+  color: #f3e6ff;
+  transition: transform 0.3s ease;
+}
+
+.scholarship-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(186, 119, 255, 0.3);
+}
+
+
+.scholarship-title {
+  font-size: 1rem;
+  color: #f3e6ff;
+  margin-bottom: 1rem;
+}
+
+.scholarship-text {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+  color: #dcdcdc;
+}
+
+.read-more {
+  color: #cdaeea;
+  cursor: pointer;
+  font-weight: 500;
+  margin-left: 6px;
+  transition: color 0.2s ease;
+}
+
+.read-more:hover {
+  color: #8312ec;
+  text-decoration: underline;
+}
+
+.scholarship-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.scholarship-date {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 0.5rem;
+}
+
+.scholarship-apply {
+  background: linear-gradient(
+    135deg,
+    #3b0865 0%,
+    rgba(81, 27, 125, 0.99) 40%,
+    rgba(98, 21, 161, 0.97) 50%,
+    rgba(81, 27, 125, 0.99) 60%,
+    #3b0865 100%
+  );
+  color: #f3e6ff;
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.scholarship-apply:hover {
+  background-color: #7c4dff;
+}

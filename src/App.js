@@ -8,6 +8,7 @@ import 'aos/dist/aos.css';
 
 
 // Pages
+import AllScholarshipsPage from './views/AllScholarshipsPage';
 import HomePage from './views/HomePage';
 import HackathonPage from './views/HackathonPage';
 import ExploreHackathonsPage from './views/ExploreHackathonsPage';
@@ -93,9 +94,7 @@ function InnerApp() {
         <Route path="/mentorship" element={<Mentorship />} />
         <Route path="/freelance/:categorySlug" element={<CategoryListingPage />} />
        <Route path="/budgeting" element={<Budgeting navigateTo={(page) => navigate(`/${page}`)} />} />
-
-
-
+        <Route path="/scholarships" element={<AllScholarshipsPage />} />
 
         <Route
           path="/profile-hub"

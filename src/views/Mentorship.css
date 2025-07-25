@@ -1,20 +1,18 @@
+
 .mentorship-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #d7b9fc, #f5b5eb);
-  color: #100202;
+  background: linear-gradient(135deg, #c3a0ee, #f5a8e9);
+  color: rgb(16, 2, 2);
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  overflow-x: hidden;
 }
 
+/* Hero Section */
 .mentorship-hero {
   width: 100%;
   padding: 100px 20px;
   text-align: center;
-  position: relative;
-  z-index: 2;
 }
 
 .mentorship-hero-content h1 {
@@ -43,13 +41,13 @@
   background: #691041;
 }
 
+
 .how-it-works {
   width: 100%;
   padding: 60px 20px;
   background: rgba(255, 255, 255, 0.05);
   text-align: center;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 2;
 }
 
 .how-it-works h2 {
@@ -99,11 +97,11 @@
   opacity: 0.9;
 }
 
+/* Mentor Cards Section */
 .mentors-section {
   width: 100%;
   padding: 60px 20px;
   text-align: center;
-  z-index: 2;
 }
 
 .mentors-section h2 {
@@ -151,6 +149,20 @@
   margin-bottom: 10px;
 }
 
+.mentor-tags {
+  margin-bottom: 15px;
+}
+
+.mentor-tag {
+  background: #792b73;
+  color: white;
+  border-radius: 12px;
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  margin: 3px;
+  display: inline-block;
+}
+
 .book-btn {
   padding: 10px 20px;
   border: none;
@@ -165,6 +177,7 @@
   background: #491650;
 }
 
+/* Benefits Section */
 .benefits-section {
   width: 100%;
   padding: 60px 20px;
@@ -200,6 +213,7 @@
   top: 0;
 }
 
+/* CTA Footer Section */
 .mentorship-cta-footer {
   width: 100%;
   padding: 60px 20px;
@@ -218,7 +232,6 @@
   margin-bottom: 25px;
   opacity: 0.85;
 }
-
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -256,6 +269,7 @@
   margin-top: 10px;
 }
 
+/* Submit Button */
 .submit-btn {
   flex: 1;
   background-color: #047857;
@@ -266,13 +280,13 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s ease;
-  margin-right: 5px;
 }
 
 .submit-btn:hover {
   background-color: #065f46;
 }
 
+/* Cancel Button */
 .cancel-btn {
   flex: 1;
   background-color: #f3f4f6;
@@ -289,36 +303,16 @@
   background-color: #e5e7eb;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .mentorship-hero-content h1 {
-    font-size: 2.2rem;
-  }
 
-  .steps-container,
-  .mentors-container {
-    flex-direction: column;
-    align-items: center;
-  }
+ 
+  
 
-  .step-card,
-  .mentor-card {
-    width: 90%;
-  }
-}
+ 
 
-@media (max-width: 480px) {
-  .mentorship-hero-content h1 {
-    font-size: 1.8rem;
-  }
 
-  .mentorship-cta-btn,
-  .book-btn {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
 
-  .form-modal {
-    padding: 1.5rem;
-  }
-}
+
+
+
+ 
+ 
