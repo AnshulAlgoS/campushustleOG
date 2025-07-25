@@ -82,10 +82,11 @@
 .scholarship-apply:hover {
   background-color: #7c4dff;
 }
-@media (max-width: 468px) {
+@media (max-width: 600px) {
   .scholarship-card {
-    width: 90%;
-    height: 400px;
-    margin-right: 150%;
+    width: 80%;
+    margin: 0 auto 30px auto;
+    min-height: 400px;
+
   }
 }
