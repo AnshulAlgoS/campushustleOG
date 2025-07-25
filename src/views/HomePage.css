@@ -377,23 +377,29 @@ header::before {
     background: linear-gradient(to top, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
   padding: 80px 40px;
 }
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap');
+
 
 .section-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 64px;
   text-align: left;
-  font-size: 50px;
-  margin-top: 0px;
   text-indent: 10%;
-  z-index: 2;
-  font-family: 'Baloo Bhai 2', sans-serif;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  text-indent: 11%;
+  margin-bottom: 0.5rem;
 }
 
 .light-text {
-  color: #ceb2bd;
+  color: #e8d6fa; /* soft lavender */
+  text-shadow: 0 0 5px #b57ce9, 0 0 10px #b57ce9;
 }
+
 .dark-text {
-  color: #572E54;
-  font-weight: 800;
+  color: #3b0a59; /* rich deep violet */
 }
+
 .category-container {
   display: flex;
   justify-content: center;
@@ -403,14 +409,11 @@ header::before {
 .category-box {
   flex: 1 1 calc(26% - 20px);
   max-width: calc(26% - 20px);
-  background: linear-gradient(
-    225deg,
-    #794ba0 0%,
-    rgba(166, 117, 207, 0.99) 40%,
-    rgba(156, 109, 194, 0.97) 50%,
-    rgba(166, 117, 207, 0.99) 60%,
-    #794ba0 100%
-  );
+  background: linear-gradient(to left,
+    #b998d6 ,
+    rgba(223, 202, 240, 0.99) ,
+    rgba(223, 202, 240, 0.99) ,
+    #b998d6);
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   padding: 15px; 
@@ -444,9 +447,9 @@ header::before {
 }
 
 .category-title {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #eee0f4;
+  color: #1d0228;
   font-family: 'Baloo Bhai 2', cursive;
   transition: color 0.3s ease;
 }
