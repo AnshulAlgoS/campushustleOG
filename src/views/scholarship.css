@@ -5,7 +5,6 @@
   align-items: flex-start; 
   gap: 20px;
   padding: 20px;
-  min-height: 300px; 
 }
 
 
@@ -16,7 +15,11 @@
 
 /* For AllScholarshipsPage */
 .scholarship-container.fullpage {
-  background: none; /* or your preferred clean look */
+  background: none; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding:20px;
 }
 
 
@@ -31,34 +34,44 @@
 .scholarship-filter-section {
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 1.5rem;
+  width:100%;
 }
 
-.dropdown {
-  padding: 10px 16px;
+.dropdownn {
+  padding: 8px 12px;
   font-size: 1rem;
+  margin-left:85%;
   border: 1px solid #ccc;
   border-radius: 8px;
+  width: auto;
   background: #fff;
   cursor: pointer;
+  max-width: 90%;
   transition: all 0.2s ease-in-out;
 }
 
-.dropdown:hover {
+.dropdownn :hover {
   border-color: #7f56d9;
 }
 
-
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
 .scholarship-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 90%;
 }
 
 .heading {
   font-size: 2rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   text-align: center;
   position: relative;
   z-index: 1;
@@ -75,17 +88,17 @@
 }
 
 .scholarship-card {
-  flex: 1 1 280px; 
-  max-width: 320px;
-  width:100%; 
+  flex: 1 1 300px; 
+  width:400px;
   background: linear-gradient(to top, #864f9c, #d896ef, #dcafea, #d5b5dd);
   border-radius: 1rem;
   padding: 1rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  min-height: 280px;
-  max-height: 320px;
+  max-height: 400px;
+  min-width: 350px;
   overflow: hidden;
-  display: flex;
+  box-sizing: border-box;
+  display:flex;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -179,4 +192,16 @@
 .explore-btn:hover {
   background-color: #6c47c3;
   transform: translateY(-2px);
+}
+
+@media (max-width: 468px) {
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .dropdownn {
+    font-size: 0.95rem;
+    padding: 6px 10px;
+    margin-right: 20%;
+  }
 }

@@ -55,7 +55,7 @@ const ScholarshipSection = ({ showAll, isFullPage }) => {
     {showAll && (
       <div className="scholarship-filter-section">
         <select
-          className="dropdown"
+          className="dropdownn"
           value={selectedCategory}
           onChange={e => setSelectedCategory(e.target.value)}
         >
