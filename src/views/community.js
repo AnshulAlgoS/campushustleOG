@@ -50,7 +50,7 @@ export default function CommunitySection() {
         <>
           <div className="overlay" onClick={handleOverlayClick}></div>
           <div className="popup">
-            <p>Thanks for showing interest!<br />More features are coming soon.</p>
+            <p>Thanks for showing interest <br />More features are coming soon,Register now.</p>
             <button onClick={() => setShowPopup(false)}>Close</button>
           </div>
         </>
