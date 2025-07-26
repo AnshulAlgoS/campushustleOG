@@ -270,7 +270,8 @@ header::before {
   color: white;
   width: 100%;
   padding: 0 1rem;
-  font-size: 2rem;
+  font-size: 3.6rem;
+  font-weight: bold;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -926,7 +927,8 @@ a.category-box .category-title {
     color: white;
     width: 100%;
     padding: 0 0.5rem;
-    font-size: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: bold;
     line-height: 1.3;
     font-family: 'Poppins', sans-serif;
   }
@@ -1045,7 +1047,7 @@ header{
   }
 
   .category-container {
-    gap: 8px;
+    gap: 20px;
   }
 
   .category-box {
