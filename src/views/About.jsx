@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import "./About.css";
 import TeamCarousel from "../components/teamCarousel";
 import anshulImg from "../assets/images/anshulsaxena.png";
