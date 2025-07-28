@@ -329,28 +329,29 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
 
         {/* Testimonials Section */}
         <section className="testimonials-section" data-aos="fade-up">
-          <h2>What Our Users Say</h2>
-          <div className="testimonial-carousel">
-            <button onClick={() => handleManualClick('left')} className="arrow-btn left"><ChevronLeft size={24} /></button>
-            <div ref={testimonialRef} className="testimonial-scroll-container">
-              {testimonials.map((t, index) => (
-                <div key={index} className="testimonial-card">
-                  <p>“{t.text}”</p>
-                  <div className="testimonial-user">
-                    <img src={t.image} alt={t.name} />
-                    <span>{t.name}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <button onClick={() => handleManualClick('right')} className="arrow-btn right"><ChevronRight size={24} /></button>
+  <h2>What Our Users Say</h2>
+  <div className="testimonial-carousel">
+    <button onClick={() => handleManualClick('left')} className="arrow-btn left"><ChevronLeft size={24} /></button>
+    <div ref={testimonialRef} className="testimonial-scroll-container">
+      {testimonials.map((t, index) => (
+        <div key={index} className="testimonial-card">
+          <p>“{t.text}”</p>
+          <div className="testimonial-user">
+            <img src={t.image} alt={t.name} />
+            <span>{t.name}</span>
           </div>
-          <div className="testimonial-dots">
-            {testimonials.map((_, i) => (
-              <span key={i} className={i === activeTestimonial ? 'active' : ''} />
-            ))}
-          </div>
-        </section>
+        </div>
+      ))}
+    </div>
+    <button onClick={() => handleManualClick('right')} className="arrow-btn right"><ChevronRight size={24} /></button>
+  </div>
+  <div className="testimonial-dots">
+    {testimonials.map((_, i) => (
+      <span key={i} className={i === activeTestimonial ? 'active' : ''} />
+    ))}
+  </div>
+</section>
+
 
         {/* Footer */}
         <footer>
