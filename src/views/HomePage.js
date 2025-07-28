@@ -77,43 +77,48 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
     } else if (title === 'Budgeting') {
       navigateTo('budgeting'); 
     }
-  };
-  const testimonials = [
+    const testimonials = [
   {
     name: 'Mahira Khan',
     image: mahiraImg,
-    text: `Campus Hustle completely changed how I navigated my college life. From discovering hackathons to applying for scholarships — everything is just one click away. Earlier, I used to miss deadlines or felt too shy to ask doubts, but now, the CH community has my back. The mentorship sessions are super insightful, and the resources are curated perfectly for students like me. I even built my first project during a hackathon I found on this platform. Thanks to Campus Hustle, I now feel more confident, connected, and future-ready.`
+    text: `Campus Hustle changed my college life. Found hackathons, scholarships, and even built my first project here! Super helpful mentors!`
   },
   {
-    name: 'Avanya Sharma',
+    name: 'Avanya Gupta',
     image: avanyaImg,
-    text: 'I always wanted to start freelancing, but I didn’t know where to begin. Campus Hustle helped me take that first step. I created my profile, joined a team for a project, and within two weeks, I was earning my first stipend. The platform is so clean and vibrant — it literally pushes you to do better. I also found some amazing women-led communities through CH. I never thought college life could be this exciting and full of opportunities. Campus Hustle isn’t just a platform, it’s like my virtual college support system.'
-    
+    text: `I used to be too shy to ask doubts, but now I connect with mentors easily. The sessions boosted my confidence big time!`
   },
   {
     name: 'Gourika Budhiraja',
     image: gourikaImg,
-    text: 'Campus Hustle became my college survival kit. Whether it was about finding teammates for hackathons, preparing event budgets, or checking scholarships — I found everything in one place. I even got featured as a “Hustler of the Week” once, which really boosted my morale. The UI is super cute, the doodles are fun, and the community? Just WOW. Everyone uplifts each other here. I used to feel lost in college chaos, but CH gave me clarity. It’s like the perfect sidekick for every student with a dream.'
+    text: `Loved the way everything is student-focused. I never miss a hackathon or opportunity now — all thanks to CH!`
   },
   {
     name: 'Anshul Saxena',
     image: anshulImg,
-    text: 'I was blown away by how Campus Hustle balances design with purpose. The clean UI, smart navigation, and actual helpful features — it’s unlike anything I’ve used before. I joined as a curious user and ended up getting a remote internship, mentorship support, and new friends who are now my teammates. The hackathon listing is regularly updated and legit, and the resume tips helped me land my first interview. If you’re a student who wants more than just grades, Campus Hustle is where you belong.'
+    text: `Campus Hustle helped me find my passion in web dev. Mentors actually care and guide like a big bro/sis!`
   },
   {
-    name: 'Rohan Mehta',
-    image: 'https://randomuser.me/api/portraits/men/45.jpg',
-    text: `As a second-year B.Tech student, I was always looking for platforms to grow beyond the classroom, and Campus Hustle became that bridge for me. I found a remote mentorship program through the platform and learned web development in a much more structured way. The community is super active — I even collaborated with a team for a hackathon hosted via Campus Hustle. What stood out the most was the scholarship section; I discovered funding opportunities I had never even heard of. The UI is smooth, and the team keeps adding fresh features. This is the only student platform that actually feels built by students, for students. It’s a must-join if you're serious about your personal and professional growth.`
+    name: 'Rohan Verma',
+    image: 'https://randomuser.me/api/portraits/men/52.jpg',
+    text: `DSA was scary but my mentor broke it down step by step. I’m solving daily now. Really helped me get started!`
   },
   {
-    name: 'Priya Sinha',
-    image: 'https://randomuser.me/api/portraits/women/22.jpg',
-    text: 'I joined Campus Hustle out of curiosity, but stayed for the value. The hackathon announcements are timely and well-curated, and I found teammates using the Team Finder feature — something no other platform really offers in such a smooth way. The budgeting tools helped me manage my events finances when I organized a college fest. Their community is active, welcoming, and always ready to collaborate or help. It genuinely feels like a smart campus packed into a website. Highly recommended for any student who wants to do more than just attend classes.'
+    name: 'Simran Yadav',
+    image: 'https://randomuser.me/api/portraits/women/72.jpg',
+    text: `The community vibe is amazing. I made friends, found teams for hackathons, and even got internship help!`
+  },
+  {
+    name: 'Aarav Sharma',
+    image: 'https://randomuser.me/api/portraits/men/77.jpg',
+    text: `I was lost in college chaos. Now I have weekly goals, mentorship calls and even got resume reviewed.`
+  },
+  {
+    name: 'Open Slot',
+    image: 'https://api.dicebear.com/7.x/initials/svg?seed=User',
+    text: `Your story can be here! Join Campus Hustle and share how it helped you.`
   }
 ];
-
-
-
   const scrollToTestimonial = (index) => {
     const container = testimonialRef.current;
     const cardWidth = container.children[0].offsetWidth + 24;
