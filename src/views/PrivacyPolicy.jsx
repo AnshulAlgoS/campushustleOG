@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+ import React, { useEffect } from 'react';
+import './TermsAndConditions.css'; // Use this if all legal pages share the same CSS
 
 const PrivacyPolicy = () => {
   useEffect(() => {
