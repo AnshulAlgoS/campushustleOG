@@ -96,7 +96,8 @@ function InnerApp() {
         <Route path="/register" element={<RegisterHackathonPage />} />
         <Route path="/mentorship" element={<Mentorship />} />
         <Route path="/freelance/:categorySlug" element={<CategoryListingPage />} />
-       <Route path="/budgeting" element={<Budgeting navigateTo={(page) => navigate(`/${page}`)} />} />
+        <Route path="/budgeting" element={<Budgeting navigateTo={(page) => navigate(`/${page}`)} />} />
+        <Route path="/scholarships" element={<AllScholarshipsPage />} />
 
 
 
