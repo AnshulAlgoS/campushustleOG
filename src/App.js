@@ -36,7 +36,8 @@ import CommunityHub from './views/CommunityHub';
 import HelpCenter from './views/HelpCenter';
 import PrivacyPolicy from './views/PrivacyPolicy';
 import TermsAndConditions from './views/TermsAndConditions';
-import Contact from './views/contact';
+import Contact from './views/Contact'; // ✅ correct (uppercase 'C')
+
 
 function InnerApp() {
   const [showAuthModal, setShowAuthModal] = useState(false);
