@@ -98,7 +98,7 @@ function InnerApp() {
         <Route path="/freelance/:categorySlug" element={<CategoryListingPage />} />
         <Route path="/budgeting" element={<Budgeting navigateTo={(page) => navigate(`/${page}`)} />} />
         <Route path="/scholarships" element={<AllScholarshipsPage />} />
-        <Route path="/community" element={<CommunityHub />} />
+        <Route path="/community1" element={<CommunityHub />} />
 
 
         <Route
