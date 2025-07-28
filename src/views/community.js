@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import './community.css';
 
 // Import images (make sure file names match exactly)
-import collaborationImg from '../assets/collaboration.jpeg';
+import collaborationImg from '../assets/images/collaboration.jpeg';
 import neonCapImg from '../assets/images/neon cap.jpeg';
-import bulbImg from '../assets/bulb.jpeg';
-import globeImg from '../assets/globe.jpeg';
+import bulbImg from '../assets/images/bulb.jpeg';
+import globeImg from '../assets/images/globe.jpeg';
 
 export default function CommunitySection() {
   return (
