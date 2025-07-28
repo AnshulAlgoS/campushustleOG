@@ -1,100 +1,183 @@
-import React, { useState } from 'react';
-import './Mentorship.css';
-import HitenImg from '../assets/images/Hiten.png';
-import ShradhaImg from '../assets/images/shradha.png';
-import NeerajImg from '../assets/images/Neeraj.png';
-import TharunImg from '../assets/images/Tharun.png';
-
-const mentors = [
-  { name: 'Neeraj Walia', role: 'Technical lead/project manager', image: NeerajImg },
-  { name: 'Shradha Khapra', role: 'Co-Founder, Apna College, Ex-SDE Microsoft', image: ShradhaImg },
-  { name: 'Hiten Lulla', role: '2x TEDx Speaker | Software Engineer', image: HitenImg },
-  { name: 'Tharun Naik', role: '3X TEDx Speaker | IIT KGP 23', image: TharunImg }
-];
+import React, { useState } from "react";
+import "./Mentorship.css";
 
 const Mentorship = () => {
-  const [showForm, setShowForm] = useState(false);
+  const [activeTab, setActiveTab] = useState("");
+  const [domain, setDomain] = useState("");
+  const [batch, setBatch] = useState("");
+  const [selectedMentor, setSelectedMentor] = useState(null);
 
-  const handleFormOpen = () => setShowForm(true);
-  const handleFormClose = () => setShowForm(false);
+  const [mentors, setMentors] = useState([]);
 
-  const handleSubmit = (e) => {
+
+  const filteredMentors = mentors.filter(
+    (m) => (!domain || m.domain === domain) && (!batch || m.batch === batch)
+  );
+
+  const handleMentorRegister = (e) => {
     e.preventDefault();
+    const form = e.target;
 
-    alert("Application submitted successfully!");
-    setShowForm(false);
+    const name = form.name.value.trim();
+    const age = form.age.value;
+    const domain = form.domain.value;
+    const batch = form.batch.value;
+    const pictureFile = form.picture.files[0];
+
+    if (!name || !age || !domain || !batch || !pictureFile) {
+      alert("Please fill all required fields and upload a picture!");
+      return;
+    }
+
+    const imageURL = URL.createObjectURL(pictureFile);
+
+    const newMentor = {
+      name,
+      age,
+      qualification: form.qualification.value,
+      experience: form.experience.value,
+      domain,
+      batch,
+      charges: form.charges.value,
+      gender: form.gender.value,
+      picture: imageURL,
+    };
+
+    setMentors([...mentors, newMentor]);
+    setActiveTab("mentee");
+    form.reset();
   };
 
   return (
     <div className="mentorship-page">
-
-      {/* Hero Section */}
       <section className="mentorship-hero">
-        <div className="mentorship-hero-content" data-aos="fade-up">
-          <h1>Unlock Your Potential with Mentorship</h1>
-          <p>Connect with experienced mentors for personalized guidance on careers, skills, and student life.</p>
-          <button className="mentorship-cta-btn">Find a Mentor</button>
+        <h1>Mentorship Platform</h1>
+        <p>Choose your path – Learn or Guide</p>
+
+        <div className="mentorship-buttons-center">
+          <button
+            className={`btn-toggle ${activeTab === "mentee" ? "active" : ""}`}
+            onClick={() => setActiveTab("mentee")}
+          >
+            Join as a Mentee
+          </button>
+          <button
+            className={`btn-toggle ${activeTab === "mentor" ? "active" : ""}`}
+            onClick={() => setActiveTab("mentor")}
+          >
+            Register as a Mentor
+          </button>
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="how-it-works" data-aos="fade-up">
-        <h2>How It Works</h2>
-        <div className="steps-container">
-          <div className="step-card"><div className="step-number">1</div><h3>Browse Mentors</h3><p>Choose mentors based on their skills & experience.</p></div>
-          <div className="step-card"><div className="step-number">2</div><h3>Book a Session</h3><p>Pick a time slot that works for you.</p></div>
-          <div className="step-card"><div className="step-number">3</div><h3>Get Guidance</h3><p>Join the session and get actionable advice.</p></div>
-        </div>
-      </section>
+      {activeTab === "mentee" && (
+        <section className="mentee-section mentee-bg">
+          <h2>Find a Mentor</h2>
+          <form className="dropdown-form">
+            <label>
+              Domain:
+              <select value={domain} onChange={(e) => setDomain(e.target.value)}>
+                <option value="">-- Select --</option>
+                <option>Web Development</option>
+                <option>DSA / CP</option>
+                <option>UI/UX Design</option>
+                <option>Machine Learning</option>
+              </select>
+            </label>
+            <label>
+              Batch:
+              <select value={batch} onChange={(e) => setBatch(e.target.value)}>
+                <option value="">-- Select --</option>
+                <option>Beginner</option>
+                <option>Intermediate</option>
+                <option>Advanced</option>
+              </select>
+            </label>
+          </form>
 
-      {/* Mentor Cards */}
-      <section className="mentors-section" data-aos="fade-up">
-        <h2>Meet Our Mentors</h2>
-        <div className="mentors-container">
-          {mentors.map((mentor, index) => (
-            <div key={index} className="mentor-card">
-              <img src={mentor.image} alt={mentor.name} />
-              <h3>{mentor.name}</h3>
-              <p className="mentor-role">{mentor.role}</p>
-              <button className="book-btn">Book Now</button>
-            </div>
-          ))}
-        </div>
-      </section>
+          <div className="mentor-cards">
+            {filteredMentors.length > 0 ? (
+              filteredMentors.map((mentor, idx) => (
+                <div className={`mentor-card glass-effect ${selectedMentor?.name === mentor.name ? "selected-mentor" : ""}`}key={idx}>
+                  <img
+                    src={mentor.picture}
+                    alt={mentor.name}
+                    className="mentor-square"
+                  />
+                  <h3>{mentor.name}</h3>
+                  <p><strong>Domain:</strong> {mentor.domain}</p>
+                  <p><strong>Batch:</strong> {mentor.batch}</p>
+                  <p><strong>Charges:</strong> ₹{mentor.charges || "Free"}</p>
+                  <button className="btn-book" onClick={() => setSelectedMentor(mentor)}>
+                    Book Now
+                  </button>
+                </div>
+              ))
+            ) : (
+              <p>No mentors found for selected domain/batch.</p>
+            )}
+          </div>
+        </section>
+      )}
 
-      {/* Benefits */}
-      <section className="benefits-section" data-aos="fade-up">
-        <h2>Why Join Mentorship?</h2>
-        <ul className="benefits-list">
-          <li>Real Career Insights from Industry Experts</li>
-          <li>Mock Interviews & Feedback</li>
-          <li>Personalized Resume & Portfolio Guidance</li>
-          <li>Expand Your Network & Build Connections</li>
-          <li>Get a Custom Growth Roadmap</li>
-        </ul>
-      </section>
+      {activeTab === "mentor" && (
+        <section className="mentor-register-section">
+          <h2>Register as a Mentor</h2>
+          <form className="mentor-form" onSubmit={handleMentorRegister}>
+            <input name="name" type="text" placeholder="Full Name" required />
+            <input name="age" type="number" placeholder="Age" required />
+            <input name="qualification" type="text" placeholder="Qualification" />
+            <input name="experience" type="text" placeholder="Experience" />
+            <input name="charges" type="number" placeholder="Charges (₹)" />
+            <select name="gender" required>
+              <option value="">Select Gender</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+            <select name="domain" required>
+              <option value="">Select Domain</option>
+              <option>Web Development</option>
+              <option>DSA / CP</option>
+              <option>UI/UX Design</option>
+              <option>Machine Learning</option>
+            </select>
+            <select name="batch" required>
+              <option value="">Select Batch</option>
+              <option>Beginner</option>
+              <option>Intermediate</option>
+              <option>Advanced</option>
+            </select>
+            <input name="picture" type="file" accept="image/*" required />
+            <button className="btn-submit">Submit</button>
+          </form>
+        </section>
+      )}
 
-      {/* Footer CTA */}
-      <section className="mentorship-cta-footer" data-aos="fade-up">
-        <h2>Ready to Level Up?</h2>
-        <p>Join Campus Hustle Mentorship and get the guidance you need to succeed.</p>
-        <button className="mentorship-cta-btn" onClick={handleFormOpen}>Join Now</button>
-      </section>
-
-      {/* Student Join Form (Modal) */}
-      {showForm && (
-        <div className="modal-overlay">
-          <div className="form-modal">
-            <h2>Join as a Mentee</h2>
-            <form onSubmit={handleSubmit}>
-              <input type="text" name="name" placeholder="Full Name" required />
-              <input type="email" name="email" placeholder="Email" required />
-              <input type="text" name="year" placeholder="Your Year (e.g. 1st, 2nd)" required />
-              <textarea name="help" placeholder="What do you want guidance on?" required />
-              <div className="form-buttons">
-                <button type="submit" className="submit-btn">Submit</button>
-                <button type="button" className="cancel-btn" onClick={handleFormClose}>Cancel</button>
-              </div>
+      {selectedMentor && (
+        <div className="popup-overlay">
+          <div className="popup">
+            <h3>Book Session with {selectedMentor.name}</h3>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                alert("Session Booked Successfully!");
+                setSelectedMentor(null);
+              }}
+            >
+              <input type="text" placeholder="Your Full Name" required />
+              <input type="email" placeholder="Email" required />
+              <select required>
+                <option value="">Select Suitable Time</option>
+                <option>Morning (9–11 AM)</option>
+                <option>Afternoon (12–2 PM)</option>
+                <option>Evening (4–6 PM)</option>
+                <option>Late Evening (7–9 PM)</option>
+              </select>
+              <button className="btn-submit">Confirm Booking</button>
+              <button type="button" className="btn-cancel" onClick={() => setSelectedMentor(null)}>
+                Cancel
+              </button>
             </form>
           </div>
         </div>
@@ -104,9 +187,3 @@ const Mentorship = () => {
 };
 
 export default Mentorship;
-
-    
-
-  
-            
-       
