@@ -31,8 +31,8 @@ import MarketingGigsPage from './views/MarketingGigsPage';
 import VideoEditingGigsPage from './views/VideoEditingGigsPage';
 import CategoryListingPage from './views/categoryListing';
 import Budgeting from './views/Budgeting';
+import CommunityHub from './views/CommunityHub';
 
-// ✅ Legal Pages
 import HelpCenter from './views/HelpCenter';
 import PrivacyPolicy from './views/PrivacyPolicy';
 import TermsAndConditions from './views/TermsAndConditions';
@@ -98,8 +98,7 @@ function InnerApp() {
         <Route path="/freelance/:categorySlug" element={<CategoryListingPage />} />
         <Route path="/budgeting" element={<Budgeting navigateTo={(page) => navigate(`/${page}`)} />} />
         <Route path="/scholarships" element={<AllScholarshipsPage />} />
-
-
+        <Route path="/community" element={<CommunityHub />} />
 
 
         <Route
