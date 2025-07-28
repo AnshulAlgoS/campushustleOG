@@ -36,6 +36,7 @@ import CommunityHub from './views/CommunityHub';
 import HelpCenter from './views/HelpCenter';
 import PrivacyPolicy from './views/PrivacyPolicy';
 import TermsAndConditions from './views/TermsAndConditions';
+import Contact from './views/contact';
 
 function InnerApp() {
   const [showAuthModal, setShowAuthModal] = useState(false);
@@ -99,6 +100,7 @@ function InnerApp() {
         <Route path="/budgeting" element={<Budgeting navigateTo={(page) => navigate(`/${page}`)} />} />
         <Route path="/scholarships" element={<AllScholarshipsPage />} />
         <Route path="/community1" element={<CommunityHub />} />
+        <Route path="/contact" element={<Contact />} />
 
 
         <Route
