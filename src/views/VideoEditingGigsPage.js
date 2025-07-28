@@ -72,8 +72,16 @@ const VideoEditingGigsPage = () => {
   };
 
   return (
+     <>
+      <div className="video-header">
+        <h1 className="video-title">Video Editing Gigs</h1>
+        <p className="video-subtitle">
+          Cut, trim, animate, and bring stories to life through exciting video projects.
+        </p>
+      </div>
+
     <div className="video-gigs-container">
-      <h1>Video Editing Gigs</h1>
+     
       <div className="gigs-wrapper">
         {gigs.map((gig) => (
           <div key={gig.id} className="gig-card">
@@ -120,6 +128,7 @@ const VideoEditingGigsPage = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

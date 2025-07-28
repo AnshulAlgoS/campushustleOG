@@ -14,12 +14,6 @@
   top: 0;
   z-index: 1000;
 }
-
-.updated-navbar {
-  background: linear-gradient(90deg, #c287e8, #d7a5f1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
 .nav-left {
   display: flex;
   align-items: center;
@@ -88,11 +82,33 @@
   box-shadow: 0 4px 20px rgba(106, 17, 203, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   backdrop-filter: blur(10px);
+  width: 380px; 
+  text-align: center;
 }
+
 .freelance-btn:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 25px rgba(106, 17, 203, 0.6);
 }
+.navbar-mobile {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
+  color: white;
+  font-size: 24px;
+}
+
 
 
  

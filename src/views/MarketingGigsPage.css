@@ -141,3 +141,23 @@
   cursor: pointer;
   display: block;
 }
+.marketing-header {
+  background: linear-gradient(135deg, #8bf7e5, #79edd6);
+  padding: 80px 20px 60px;
+  text-align: center;
+  color: rgb(9, 131, 121);
+}
+
+.marketing-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.marketing-subtitle {
+  font-size: 1.25rem;
+  margin-top: 10px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}

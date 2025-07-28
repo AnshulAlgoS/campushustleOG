@@ -73,8 +73,14 @@ const MarketingGigsPage = () => {
   };
 
   return (
+    <>
+      <div className="marketing-header">
+        <h1 className="marketing-title">Marketing Gigs</h1>
+        <p className="marketing-subtitle">
+          Promote, strategize, and market brands with real-world opportunities.
+        </p>
+      </div>
     <div className="marketing-gigs-container">
-      <h1>Marketing Gigs</h1>
       <div className="gigs-wrapper">
         {gigs.map((gig) => (
           <div key={gig.id} className="gig-card">
@@ -121,6 +127,7 @@ const MarketingGigsPage = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

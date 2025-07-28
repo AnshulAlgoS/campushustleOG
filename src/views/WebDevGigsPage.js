@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './WebDevGigsPage.css';
 import {
   collection,
@@ -8,8 +8,8 @@ import {
   addDoc,
   serverTimestamp
 } from 'firebase/firestore';
-import {db, auth} from '../firebase';
-import {useNavigate} from 'react-router-dom';
+import { db, auth } from '../firebase';
+import { useNavigate } from 'react-router-dom';
 
 const WebDevGigsPage = () => {
   const [gigs, setGigs] = useState([]);
@@ -24,7 +24,7 @@ const WebDevGigsPage = () => {
       try {
         const q = query(collection(db, 'gigs'), where('category', '==', 'Web Development'));
         const querySnapshot = await getDocs(q);
-        const gigsData = querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
+        const gigsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         setGigs(gigsData);
       } catch (error) {
         console.error('Error fetching gigs:', error);
@@ -71,23 +71,31 @@ const WebDevGigsPage = () => {
   };
 
   return (
-    <div className="webdev-gigs-container">
-      <h1>Web Development Gigs</h1>
-      <div className="webdev-cards-wrapper">
-        {gigs.map((gig) => (
-          <div key={gig.id} className="webdev-card">
-            <div className="card-header">
-              <h2>{gig.title}</h2>
-            </div>
-            <div className="card-body">
-              <p>{gig.description}</p>
-              <div className="card-footer">
-                <span className="gig-price">{gig.payment}</span>
-                <button className="apply-btn" onClick={() => setSelectedGig(gig)}>Apply Now</button>
+    <>
+      <div className="webdev-header">
+        <h1 className="webdev-title">Web Development Gigs</h1>
+        <p className="webdev-subtitle">
+          Explore freelance gigs tailored for students to build real-world web development experience.
+        </p>
+      </div>
+
+      <div className="webdev-gigs-container">
+        <div className="webdev-cards-wrapper">
+          {gigs.map((gig) => (
+            <div key={gig.id} className="webdev-card">
+              <div className="card-header">
+                <h2>{gig.title}</h2>
+              </div>
+              <div className="card-body">
+                <p>{gig.description}</p>
+                <div className="card-footer">
+                  <span className="gig-price">{gig.payment}</span>
+                  <button className="apply-btn" onClick={() => setSelectedGig(gig)}>Apply Now</button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {selectedGig && (
@@ -118,7 +126,7 @@ const WebDevGigsPage = () => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

@@ -73,12 +73,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(90deg, #e0a7f7, #d896ef, #dcafea, #e7b8f3);
   padding: 8px 30px;
   position: sticky;
   margin-top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   flex-wrap: wrap;
 }
 

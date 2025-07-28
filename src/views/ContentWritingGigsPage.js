@@ -73,8 +73,15 @@ const ContentWritingGigsPage = () => {
   };
 
   return (
+    <>
+      <div className="content-header">
+        <h1 className="content-title">Content Writing Gigs</h1>
+        <p className="content-subtitle">
+          Find exciting writing gigs to sharpen your storytelling and build your writing portfolio.
+        </p>
+      </div>
     <div className="contentwriting-gigs-container">
-      <h1>Content Writing Gigs</h1>
+      
       <div className="gigs-wrapper">
         {gigs.map((gig) => (
           <div key={gig.id} className="gig-card">
@@ -121,6 +128,7 @@ const ContentWritingGigsPage = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

@@ -142,3 +142,23 @@
   cursor: pointer;
   display: block;
 }
+.content-header {
+  background: linear-gradient(135deg, #74d3f3, #58c0dd);
+  padding: 80px 20px 60px;
+  text-align: center;
+  color: rgb(7, 62, 76);
+}
+
+.content-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.content-subtitle {
+  font-size: 1.25rem;
+  margin-top: 10px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}

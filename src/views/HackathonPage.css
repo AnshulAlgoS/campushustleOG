@@ -6,7 +6,7 @@ html, body {
 }
 
 .translucent-strip {
-  background: linear-gradient(90deg, #864f9c, #d896ef, #dcafea, #d5b5dd);
+
   backdrop-filter: blur(10px);
   position: fixed;
   top: 0;
@@ -16,7 +16,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  
 }
 
 
@@ -35,7 +35,7 @@ html, body {
 }
 
 .translucent-strip {
-  background-color: rgba(92, 60, 110, 0.8);
+ 
   backdrop-filter: blur(10px);
   position: fixed;
   top: 0;
@@ -70,7 +70,7 @@ body {
 
 /* Nav Bar */
 .translucent-strip {
-  background-color: #5c3c6e;
+ 
   backdrop-filter: blur(10px);
   position: fixed;
   top: 0;
@@ -660,4 +660,5 @@ body {
   background-color: rgba(189, 137, 201, 0.89);
   transform: scale(1.06);
 }
+
 

@@ -74,8 +74,15 @@ const GraphicDesignGigsPage = () => {
   };
 
   return (
+    <>
+      <div className="design-header">
+        <h1 className="design-title">Graphic Design Gigs</h1>
+        <p className="design-subtitle">
+          Discover student-friendly design gigs to grow your skills and build a creative portfolio.
+        </p>
+      </div>
     <div className="graphicdesign-gigs-container">
-      <h1>Graphic Design Gigs</h1>
+      
       <div className="gigs-wrapper">
         {gigs.map((gig) => (
           <div key={gig.id} className="gig-card">
@@ -125,6 +132,7 @@ const GraphicDesignGigsPage = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 
