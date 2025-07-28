@@ -1,4 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Player } from '@lottiefiles/react-lottie-player';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -78,6 +79,14 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
       navigateTo('budgeting'); 
     }
     };
+    const location = useLocation();
+
+useEffect(() => {
+  if (location.state?.scrollTo === 'community') {
+    communityRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }
+}, [location.state]);
+
     const testimonials = [
   {
     name: 'Mahira Khan',
@@ -348,52 +357,48 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
 </section>
 
 
-        {/* Footer */}
-        <footer>
-          <div className="home-page-wrapper">
-          <span className="footer-container">
-            {/* Logo & Title */}
-            <span className="footer-logo">
-              <img src={footerLogo} alt="Campus Hustle Logo" />
-              <h2>CampusHustle</h2>
-            </span>
+    <footer>
+  <div className="home-page-wrapper">
+    <span className="footer-container">
+      <span className="footer-logo">
+        <img src={footerLogo} alt="Campus Hustle Logo" />
+        <h2>CampusHustle</h2>
+      </span>
 
-            {/* Company Section */}
-            <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
-              <h4>Company</h4>
+      {/* ✅ Support */}
+      <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
+        <h4>Support</h4>
+        <ul>
+          <li><Link to="/help-center">Help Center</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
+        </ul>
+      </span>
 
-              <ul>
-                <li><Link to="/about">About Us</Link></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Press</a></li>
-              </ul>
-            </span>
+      {/* ✅ Company */}
+      <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
+        <h4>Company</h4>
+        <ul>
+          <li><Link to="/about">About Us</Link></li>
+          <li><Link to="/hackathon">Hackathons</Link></li>
+          <li><Link to="/" state={{ scrollTo: 'community' }}>Community</Link></li>
+          <li><Link to="/freelance">Freelance</Link></li>
+        </ul>
+      </span>
 
-            {/* Quick Links */}
-            <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
-              <h4>Quick Links</h4>
-              <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/freelance">Freelance</Link></li>
-              <li><Link to="/" state={{ scrollTo: 'community' }}>Community</Link></li>
-              <li><Link to="/hackathon">Hackathon</Link></li>
-              <li><Link to="/contact">Contact</Link></li> 
-              </ul>
+      {/* ✅ Quick Links */}
+      <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+          <li><Link to="/terms-and-conditions">Terms & Conditions</Link></li>
+        </ul>
+      </span>
+    </span>
+  </div>
+</footer>
 
-            </span>
 
-            {/* Support */}
-            <span className="footer-column"data-aos="fade-up" data-aos-delay="100">
-              <h4>Support</h4>
-              <ul>
-                <li><a href="#">Help Center</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms & Conditions</a></li>
-              </ul>
-            </span>
-          </span>
-          </div>
-        </footer>
       </div>
     </>
   );
