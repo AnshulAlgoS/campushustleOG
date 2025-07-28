@@ -77,6 +77,7 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
     } else if (title === 'Budgeting') {
       navigateTo('budgeting'); 
     }
+    };
     const testimonials = [
   {
     name: 'Mahira Khan',
