@@ -1,115 +1,87 @@
-
 .mentorship-page {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #06000b 0%, rgba(26, 2, 46, 0.99) 40%, rgba(44, 5, 75, 0.97) 50%, rgba(26,2,46,0.99) 60%, #06000b 100%);
+  color: #fff;
   min-height: 100vh;
-  background: linear-gradient(135deg, #c3a0ee, #f5a8e9);
-  color: rgb(16, 2, 2);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding-bottom: 50px;
 }
 
-/* Hero Section */
 .mentorship-hero {
-  width: 100%;
-  padding: 100px 20px;
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+
+.mentorship-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.mentorship-hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.mentorship-buttons-center {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-toggle {
+  background: #ffffff11;
+  color: #fff;
+  padding: 12px 25px;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-toggle:hover,
+.btn-toggle.active {
+  background: #fff;
+  color: #06000b;
+}
+
+/* Mentee Section */
+.mentee-section {
+  padding: 40px 20px;
   text-align: center;
 }
 
-.mentorship-hero-content h1 {
-  font-size: 3rem;
+.mentee-section h2 {
+  font-size: 2rem;
   margin-bottom: 20px;
 }
 
-.mentorship-hero-content p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  opacity: 0.9;
-}
-
-.mentorship-cta-btn {
-  padding: 12px 30px;
-  font-size: 1rem;
-  border: none;
-  background: #572E54;
-  color: white;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.mentorship-cta-btn:hover {
-  background: #691041;
-}
-
-
-.how-it-works {
-  width: 100%;
-  padding: 60px 20px;
-  background: rgba(255, 255, 255, 0.05);
-  text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.how-it-works h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-}
-
-.steps-container {
+.dropdown-form {
   display: flex;
+  justify-content: center;
+  gap: 20px;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-}
-
-.step-card {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 30px;
-  border-radius: 15px;
-  width: 250px;
-  transition: transform 0.3s ease;
-}
-
-.step-card:hover {
-  transform: translateY(-5px);
-}
-
-.step-number {
-  width: 50px;
-  height: 50px;
-  background: #572E54;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  margin: 0 auto 15px auto;
-}
-
-.step-card h3 {
-  margin-bottom: 10px;
-  font-size: 1.4rem;
-}
-
-.step-card p {
-  font-size: 1rem;
-  opacity: 0.9;
-}
-
-/* Mentor Cards Section */
-.mentors-section {
-  width: 100%;
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.mentors-section h2 {
-  font-size: 2.5rem;
   margin-bottom: 40px;
 }
 
-.mentors-container {
+.dropdown-form select {
+  background-color: #1e0033;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.dropdown-form select:focus {
+  border-color: #a259ff;
+  box-shadow: 0 0 0 3px rgba(162, 89, 255, 0.4);
+}
+
+/* Mentor Cards */
+.mentor-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -118,201 +90,180 @@
 
 .mentor-card {
   background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   padding: 25px;
   border-radius: 20px;
-  width: 250px;
-  text-align: center;
+  width: 280px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
   transition: transform 0.3s ease;
+  text-align: center;
 }
 
 .mentor-card:hover {
   transform: translateY(-5px);
 }
 
-.mentor-card img {
-  width: 100px;
-  height: 100px;
+.mentor-avatar,
+.mentor-square {
+  width: 100%;
+  height: 200px;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 15px;
   margin-bottom: 15px;
-  border: 3px solid #510a38;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
 }
 
-.mentor-card h3 {
-  margin-bottom: 5px;
-  font-size: 1.4rem;
-}
-
-.mentor-role {
-  font-size: 0.95rem;
-  opacity: 0.8;
-  margin-bottom: 10px;
-}
-
-.mentor-tags {
-  margin-bottom: 15px;
-}
-
-.mentor-tag {
-  background: #792b73;
-  color: white;
-  border-radius: 12px;
-  padding: 5px 10px;
-  font-size: 0.75rem;
-  margin: 3px;
-  display: inline-block;
-}
-
-.book-btn {
+/* Book and Submit Buttons */
+.btn-book,
+.btn-submit {
+  margin-top: 15px;
   padding: 10px 20px;
-  border: none;
-  background: #050007;
+  background: #a259ff;
   color: white;
-  border-radius: 50px;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: 0.3s ease;
 }
 
-.book-btn:hover {
-  background: #491650;
+.btn-book:hover,
+.btn-submit:hover {
+  background: #8836e0;
+  transform: scale(1.02);
 }
 
-/* Benefits Section */
-.benefits-section {
-  width: 100%;
-  padding: 60px 20px;
+/* Cancel Button */
+.btn-cancel {
+  background: #999;
+  color: white;
+  padding: 10px;
+  border: none;
+  margin-top: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Mentor Register Section */
+.mentor-register-section {
+  padding: 40px 20px;
   text-align: center;
-  background: rgba(255, 255, 255, 0.05);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.benefits-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 30px;
+.mentor-register-section h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
 }
 
-.benefits-list {
-  list-style: none;
-  padding: 0;
-  max-width: 600px;
+.mentor-form {
+  max-width: 400px;
   margin: 0 auto;
-  text-align: left;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
-.benefits-list li {
-  font-size: 1.1rem;
-  margin-bottom: 15px;
-  padding-left: 20px;
-  position: relative;
+.mentor-form input,
+.mentor-form select {
+  background-color: #1e0033;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
 }
 
-.benefits-list li::before {
-  content: '-';
-  position: absolute;
-  left: 0;
-  top: 0;
+.mentor-form input[type="file"] {
+  background-color: transparent;
+  border: none;
+  padding-left: 0;
 }
 
-/* CTA Footer Section */
-.mentorship-cta-footer {
-  width: 100%;
-  padding: 60px 20px;
-  text-align: center;
-  background: #f0e7f3;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+.mentor-form input::placeholder {
+  color: #ccc;
 }
 
-.mentorship-cta-footer h2 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
+.mentor-form input:focus,
+.mentor-form select:focus {
+  border-color: #a259ff;
+  box-shadow: 0 0 0 3px rgba(162, 89, 255, 0.3);
 }
 
-.mentorship-cta-footer p {
-  font-size: 1.1rem;
-  margin-bottom: 25px;
-  opacity: 0.85;
-}
-.modal-overlay {
+/* Popup Booking Overlay */
+.popup-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background: rgba(0,0,0,0.8);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
+  z-index: 1000;
 }
 
-.form-modal {
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 16px;
+.popup {
+  background: #fff;
+  color: #06000b;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 400px;
   width: 90%;
-  max-width: 500px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-.form-modal input,
-.form-modal textarea {
+.popup input,
+.popup select {
   width: 100%;
-  padding: 0.75rem;
+  padding: 10px;
   margin: 10px 0;
+  border-radius: 10px;
   border: 1px solid #ccc;
-  border-radius: 8px;
 }
 
-.form-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
+/* Background image for mentee */
+.mentee-bg {
+  background-image: url('https://images.unsplash.com/photo-1581090700227-1e8e5f59d5c4?auto=format&fit=crop&w=1400&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(4px);
+  padding: 60px 20px;
+  border-radius: 20px;
 }
 
-/* Submit Button */
-.submit-btn {
-  flex: 1;
-  background-color: #047857;
-  color: white;
-  padding: 0.75rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .btn-toggle {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .dropdown-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .mentor-card {
+    width: 90%;
+  }
+
+  .mentorship-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .mentorship-hero p {
+    font-size: 1rem;
+  }
 }
-
-.submit-btn:hover {
-  background-color: #065f46;
+.selected-mentor {
+  border: 2px solid #a259ff;
+  box-shadow: 0 0 10px rgba(162, 89, 255, 0.5);
 }
-
-/* Cancel Button */
-.cancel-btn {
-  flex: 1;
-  background-color: #f3f4f6;
-  color: #111827;
-  padding: 0.75rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.cancel-btn:hover {
-  background-color: #e5e7eb;
-}
-
-
- 
-  
-
- 
-
-
-
-
-
-
- 
- 
