@@ -114,11 +114,6 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
     image: 'https://randomuser.me/api/portraits/men/77.jpg',
     text: `I was lost in college chaos. Now I have weekly goals, mentorship calls and even got resume reviewed.`
   },
-  {
-    name: 'Open Slot',
-    image: 'https://api.dicebear.com/7.x/initials/svg?seed=User',
-    text: `Your story can be here! Join Campus Hustle and share how it helped you.`
-  }
 ];
   const scrollToTestimonial = (index) => {
     const container = testimonialRef.current;
