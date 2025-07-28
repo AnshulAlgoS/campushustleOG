@@ -1,69 +1,68 @@
+/* LegalPages.css */
+
 .legal-page-container {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px 25px;
-  background-color: #fafafa;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
-  line-height: 1.6;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .legal-title {
-  font-size: 2.8rem;
+  font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 30px;
-  color: #2c3e50;
+  margin-bottom: 2rem;
   text-align: center;
+  color: #fff;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
-.legal-subtitle {
-  font-size: 1.6rem;
+.legal-subtitle,
+h2 {
+  font-size: 1.7rem;
   font-weight: 600;
-  margin-top: 30px;
-  margin-bottom: 15px;
-  color: #34495e;
-  border-left: 4px solid #2980b9;
-  padding-left: 10px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #f7f9ff;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 0.5rem;
+  width: 100%;
+  max-width: 700px;
 }
 
 .legal-paragraph {
   font-size: 1.1rem;
-  margin-bottom: 20px;
-  color: #444;
+  line-height: 1.8;
+  max-width: 800px;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+  color: #f0f0f0;
 }
 
-.legal-list {
-  list-style-type: disc;
-  padding-left: 25px;
-  margin-bottom: 20px;
-  color: #555;
+.legal-list,
+ul {
+  list-style: disc;
+  padding-left: 2rem;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  color: #eaeaea;
 }
 
-.legal-list li {
-  margin-bottom: 8px;
+.legal-list li,
+ul li {
+  margin-bottom: 0.8rem;
+  font-size: 1.05rem;
 }
 
-.legal-page-container strong {
-  color: #2c3e50;
+a {
+  color: #fff799;
+  text-decoration: underline;
 }
 
-@media (max-width: 600px) {
-  .legal-page-container {
-    padding: 15px 20px;
-    margin: 20px 10px;
-  }
-  
-  .legal-title {
-    font-size: 2rem;
-  }
-  
-  .legal-subtitle {
-    font-size: 1.3rem;
-  }
-  
-  .legal-paragraph, .legal-list {
-    font-size: 1rem;
-  }
+strong {
+  color: #fff799;
 }
