@@ -6,7 +6,6 @@ import { auth } from './firebase';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-
 // Pages
 import AllScholarshipsPage from './views/AllScholarshipsPage';
 import HomePage from './views/HomePage';
@@ -33,12 +32,16 @@ import VideoEditingGigsPage from './views/VideoEditingGigsPage';
 import CategoryListingPage from './views/categoryListing';
 import Budgeting from './views/Budgeting';
 
-
+// ✅ Legal Pages
+import HelpCenter from './views/HelpCenter';
+import PrivacyPolicy from './views/PrivacyPolicy';
+import TermsAndConditions from './views/TermsAndConditions';
 
 function InnerApp() {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
@@ -94,7 +97,9 @@ function InnerApp() {
         <Route path="/mentorship" element={<Mentorship />} />
         <Route path="/freelance/:categorySlug" element={<CategoryListingPage />} />
        <Route path="/budgeting" element={<Budgeting navigateTo={(page) => navigate(`/${page}`)} />} />
-        <Route path="/scholarships" element={<AllScholarshipsPage />} />
+
+
+
 
         <Route
           path="/profile-hub"
@@ -127,6 +132,10 @@ function InnerApp() {
         <Route path="/freelance/marketing" element={<MarketingGigsPage />} />
         <Route path="/freelance/video-editing" element={<VideoEditingGigsPage />} />
 
+        {/* ✅ Legal Routes */}
+        <Route path="/help-center" element={<HelpCenter />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
       </Routes>
 
       {showAuthModal && (

@@ -468,15 +468,14 @@ header::before {
   padding: 4rem 1rem;
   background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
   position: relative;
-  z-index: 2; 
+  z-index: 2;
 }
-
 
 .testimonials-section h2 {
   text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-top:7%;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-top: 2rem;
   color: #333;
 }
 
@@ -484,35 +483,41 @@ header::before {
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
-  padding: 0 2rem;
+  padding: 2rem 2rem;
   overflow: hidden;
 }
 
 .testimonial-scroll-container {
   display: flex;
   gap: 1.5rem;
-  overflow: hidden;
+  overflow-x: auto;
   scroll-behavior: smooth;
-  width: 100%;
+  padding-bottom: 1rem;
+  scrollbar-width: none; /* Firefox */
+}
+
+.testimonial-scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 
 .testimonial-card {
   flex: 0 0 calc(50% - 0.75rem);
   min-width: 280px;
   max-width: 100%;
-  background-color: #eaf0fb;
+  background-color: #fefeff;
   border-radius: 1.5rem;
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
 
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
 .testimonial-card p {
-  font-size: 0.9rem;
-  color: #333;
+  font-size: 1rem;
+  color: #444;
   line-height: 1.6;
   margin-bottom: 1rem;
 }
@@ -528,15 +533,16 @@ header::before {
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
+  border: 2px solid #572E54;
 }
 
 .testimonial-user span {
   font-weight: 600;
-  font-size: 0.95rem;
-  color: #444;
+  font-size: 1rem;
+  color: #572E54;
 }
 
-
+/* Arrow buttons */
 .testimonial-carousel .arrow-btn {
   position: absolute;
   top: 50%;
@@ -572,7 +578,7 @@ header::before {
   right: 8px;
 }
 
-
+/* Dots */
 .testimonial-dots {
   display: flex;
   justify-content: center;
@@ -593,71 +599,18 @@ header::before {
   transform: scale(1.3);
 }
 
-
-@media (max-width: 768px) {
+/* Responsive Fixes */
+@media screen and (max-width: 768px) {
   .testimonial-card {
     flex: 0 0 100%;
   }
 
-  .testimonial-scroll-container {
-    gap: 1rem;
-    padding: 0 1rem;
+  .testimonial-carousel .arrow-btn {
+    display: none;
   }
 
-  .testimonial-carousel {
-    padding: 0 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .testimonial-carousel {
-    padding: 0;
-    overflow: hidden;
-  }
-
-  .testimonial-scroll-container {
-    display: flex;
-    gap: 0; 
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    padding: 0;
-    margin: 0;
-  }
-
-  .testimonial-card {
-    flex: 0 0 100%;
-    max-width: 100%;
-    aspect-ratio: 1 / 1;
-    padding: 1.25rem;
-    border-radius: 1rem;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    scroll-snap-align: center;
-    box-sizing: border-box;
-    background-color: #eaf0fb;
-  }
-
-  .testimonial-card p {
-    font-size: 0.85rem;
-    line-height: 1.4;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-  }
-
-  .testimonial-user img {
-    width: 36px;
-    height: 36px;
-  }
-
-  .testimonial-user span {
-    font-size: 0.85rem;
+  .testimonials-section h2 {
+    font-size: 1.75rem;
   }
 }
 footer {
@@ -1167,3 +1120,203 @@ header{
   0%, 100% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-10px) rotate(5deg); }
 }
+/* === ABOUT PAGE === */
+
+.about-hero {
+  height: 90vh;
+  background: linear-gradient(to bottom right, #120028, #320066);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.about-hero h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.about-hero p {
+  font-size: 1.4rem;
+  font-weight: 400;
+  max-width: 700px;
+  color: #e0e0e0;
+  margin-top: 20px;
+}
+
+/* Developer Cards */
+.developer-section {
+  padding: 80px 20px;
+  background: linear-gradient(to right, #e7d2f8, #fbe7ff);
+  text-align: center;
+}
+
+.developer-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #572e54;
+  font-family: 'Baloo Bhai 2', cursive;
+}
+
+.team-boxes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.team-box {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 240px;
+  width: 100%;
+  text-align: center;
+}
+
+.photo-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 15px;
+  border: 3px solid #d8a7eb;
+}
+
+.photo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-box h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 10px 0;
+  color: #572e54;
+}
+
+.team-box p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Mission Section */
+.mission-section {
+  background: linear-gradient(to bottom, #f8eaff, #ffffff);
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.mission-section h2 {
+  font-size: 2.5rem;
+  color: #572e54;
+  font-family: 'Baloo Bhai 2', cursive;
+}
+
+.mission-section p {
+  font-size: 1.2rem;
+  color: #333;
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+/* Stats Section */
+.stats-section {
+  padding: 60px 20px;
+  background-color: #fdf4ff;
+  text-align: center;
+}
+
+.stats-section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #572e54;
+  font-family: 'Baloo Bhai 2', cursive;
+}
+
+.stats-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.stats-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px 30px;
+  text-align: center;
+  min-width: 180px;
+}
+
+.stats-card h3 {
+  font-size: 2rem;
+  color: #864f9c;
+  font-weight: 700;
+}
+
+.stats-card p {
+  margin-top: 8px;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Scholarship Cards */
+.scholarship-section {
+  background: linear-gradient(to right, #fdf0ff, #ffffff);
+  padding: 80px 20px;
+}
+
+.scholarship-section h2 {
+  font-size: 2.5rem;
+  color: #572e54;
+  text-align: center;
+  font-family: 'Baloo Bhai 2', cursive;
+  margin-bottom: 40px;
+}
+
+.scholarship-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.scholarship-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  max-width: 300px;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.scholarship-card:hover {
+  transform: scale(1.03);
+}
+
+.scholarship-card h4 {
+  font-size: 1.25rem;
+  color: #864f9c;
+  margin-bottom: 10px;
+}
+
+.scholarship-card p {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.4;
+}
+
+
