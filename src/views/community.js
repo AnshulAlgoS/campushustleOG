@@ -39,7 +39,7 @@ export default function CommunitySection() {
         Join the community which has a strive to excel - Be a part of our community and learn about various upcoming initiatives and opportunities.
       </p>
 
-      <Link to="/Community" className="btn">
+      <Link to="/community" className="btn">
         Join Our Community
       </Link>
     </section>
