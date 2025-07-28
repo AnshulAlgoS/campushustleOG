@@ -1,0 +1,573 @@
+/* Container for the whole page */
+.hub-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #270348, #611087);
+  color: white;   
+}
+
+
+/* -------------------- NAVBAR -------------------- */
+.hub-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #270348, #611087); /* gradient */
+  padding: 12px 30px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.hub-navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.streak {
+  font-size: 1rem;
+  margin-left: 8px;
+}
+
+.right-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+}
+
+.nav-link:hover {
+  opacity: 0.8;
+}
+
+/* -------------------- MAIN LAYOUT -------------------- */
+.hub-main {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* -------------------- SIDEBAR -------------------- */
+.hub-sidebar {
+  width: 240px;
+  background: linear-gradient(180deg, #270348, #611087); /* vertical gradient */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.sidebar-btn {
+  background: linear-gradient(135deg, #955fbc, #6c0ab3);
+  border: none;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  font-size: 1rem;
+}
+
+
+.sidebar-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+.sidebar-btn.active {
+  background: #c579e9;
+  color: #381353;
+  font-weight: bold;
+}
+/* -------------------- RIGHT CONTENT -------------------- */
+
+.hub-content {
+  flex: 1;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 8px rgba(87, 46, 84, 0.4);
+  color: white;
+  overflow-y: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.welcome-text {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  padding: 30px 50px;
+  border: 2px solid #a855f7; 
+  border-radius: 12px;
+  animation: glowPulse 2s infinite ease-in-out;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; 
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.5),
+                0 0 20px rgba(168, 85, 247, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.9),
+                0 0 40px rgba(168, 85, 247, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.5),
+                0 0 20px rgba(168, 85, 247, 0.3);
+  }
+}
+
+
+
+/* -------------------- RESPONSIVENESS -------------------- */
+@media (max-width: 768px) {
+  .hub-main {
+    flex-direction: column;
+  }
+
+  .hub-sidebar {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .sidebar-btn {
+    flex: 1 1 calc(50% - 10px);
+    font-size: 0.9rem;
+  }
+}
+
+/* --- Extra simple styles for Web Dev page --- */
+.webdev-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+}
+
+.webdev-desc {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  color: #444;
+}
+
+.discussion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.discussion-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.discussion-card h4 {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.new-discussion-btn {
+  margin-top: 20px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  border: none;
+  background-color: #7b4397;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* --- DSA Section --- */
+.dsa-container {
+  max-width: 700px;
+  width: 100%;
+}
+
+.dsa-desc {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #555;
+  text-align: center;
+}
+
+.dsa-list {
+  list-style: disc;
+  padding-left: 20px;
+  color: #333;
+  font-size: 1rem;
+}
+
+.dsa-list li {
+  margin-bottom: 10px;
+}
+
+/* --- Generic Section Content --- */
+.section-content {
+  max-width: 800px;
+  color: #f9f3f3;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.section-content h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #f3eef2;
+}
+
+.section-content p {
+  margin-bottom: 1rem;
+}
+
+.section-content ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-content ul li {
+  margin-bottom: 0.5rem;
+  list-style-type: disc;
+}
+
+/* --- Guidelines Section --- */
+.guidelines h3 {
+  font-size: 1.3rem;
+  margin: 1.5rem 0 0.5rem;
+  color: #efe9f2;
+}
+
+.guidelines p {
+  margin-bottom: 1rem;
+}
+
+/* --- Web Dev Posts / Feed --- */
+.post-box {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.post-box textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  resize: none;
+  font-size: 1rem;
+}
+
+.post-box-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.attach-btn,
+.post-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.attach-btn {
+  background: #ecc5fa;
+}
+
+.posts-feed {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Post card design */
+.post-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1rem;
+  padding: 16px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 15px rgba(120, 50, 150, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(200, 120, 255, 0.4);
+}
+
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #eee;
+}
+
+
+.post-text {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.post-image {
+  max-width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: 12px;
+}
+.replies {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
+  padding: 10px;
+}
+
+.reply {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+.reply:last-child {
+  border-bottom: none;
+}
+
+/* Reply input */
+.replies input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  outline: none;
+  padding: 8px 10px;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.replies input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.leetcode-container {
+  max-width: 900px;        /* increased width */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0 auto;          /* center horizontally */
+  align-items: center;
+  text-align: center;
+}
+
+.leetcode-card {
+  width: 100%;
+  max-width: 800px; /* make cards wide */
+  padding: 20px;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 8px rgba(87, 46, 84, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.leetcode-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(87, 46, 84, 0.6);
+}
+
+.leaderboard-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #f5f3f5;
+  margin-bottom: 25px;
+}
+
+.leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.leaderboard-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 18px 24px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  font-size: 1.1rem;
+}
+
+.leaderboard-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.rank {
+  font-weight: bold;
+  color: #7b4397;
+  font-size: 1.1rem;
+  width: 45px;
+  text-align: right;
+}
+
+.name {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge {
+  font-size: 1.3rem;
+}
+
+.score {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #4a125c;
+}
+/* --- LeetCode Daily Tasks Section --- */
+.leetcode-container {
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.leetcode-container h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #f3eef2;
+  margin-bottom: 10px;
+}
+
+.leetcode-card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.leetcode-card h4 {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0;
+}
+
+.leetcode-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
+}
+
+.leetcode-card a {
+  align-self: flex-start;
+  margin-top: 5px;
+  font-size: 0.95rem;
+  color: #7b4397;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.leetcode-card a:hover {
+  color: #670e5d;
+}
+/* LeetCode challenge styling */
+.leetcode-container {
+  max-width: 700px;
+  width: 100%;
+}
+
+.leetcode-title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #572E54;
+  margin-bottom: 20px;
+}
+
+.leetcode-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.leetcode-card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.leetcode-card h3 {
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.leetcode-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.solve-btn {
+  padding: 10px 16px;
+  background: #7b4397;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.solve-btn:hover {
+  background: #572E54;
+}
