@@ -373,7 +373,7 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
               <ul>
               <li><Link to="/">Home</Link></li>
               <li><Link to="/freelance">Freelance</Link></li>
-              <li><Link to="/" state={{ scrollTo: 'community' }}>Community</Link></li>  // 
+              <li><Link to="/" state={{ scrollTo: 'community' }}>Community</Link></li>
               <li><Link to="/hackathon">Hackathon</Link></li>
               <li><Link to="/contact">Contact</Link></li> 
               </ul>
