@@ -18,8 +18,7 @@
   text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
-.legal-subtitle,
-h2 {
+.legal-subtitle {
   font-size: 1.7rem;
   font-weight: 600;
   margin-top: 2rem;
@@ -41,8 +40,7 @@ h2 {
   color: #f0f0f0;
 }
 
-.legal-list,
-ul {
+.legal-list {
   list-style: disc;
   padding-left: 2rem;
   margin-bottom: 2rem;
@@ -50,8 +48,7 @@ ul {
   color: #eaeaea;
 }
 
-.legal-list li,
-ul li {
+.legal-list li {
   margin-bottom: 0.8rem;
   font-size: 1.05rem;
 }
@@ -64,6 +61,7 @@ a {
 strong {
   color: #fff799;
 }
+
 .legal-gradient {
   background: linear-gradient(
     135deg,
