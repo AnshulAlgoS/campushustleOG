@@ -660,5 +660,26 @@ body {
   background-color: rgba(189, 137, 201, 0.89);
   transform: scale(1.06);
 }
+.hackathon-page {
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 100px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(
+    135deg,
+    #06000b 0%,
+    rgba(26, 2, 46, 0.99) 40%,
+    rgba(44, 5, 75, 0.97) 50%,
+    rgba(26, 2, 46, 0.99) 60%,
+    #06000b 100%
+  );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 
 
