@@ -10,6 +10,10 @@ const HackathonPage = () => {
       <FloatingDoodles /> {/* Animated doodles background */}
 
       <div className="hackathon-page">
+    <div className="hackathon-page glow-border">
+  {/* All content inside */}
+</div>
+
         {/* Top Navigation Bar */}
         <div className="translucent-strip">
           <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
