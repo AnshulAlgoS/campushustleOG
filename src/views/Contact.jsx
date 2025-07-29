@@ -23,8 +23,8 @@ const Contact = () => {
 
   return (
     <div className="contact-page">
-      <h1>Get in Touch</h1>
-      <p>
+      <h1 className="contact-title">Get in Touch</h1>
+      <p className="contact-description">
         Whether you're a student, mentor, company, or community builder — we’d love to hear from you.
         Campus Hustle is all about collaboration, guidance, and growth. Drop us a message!
       </p>
