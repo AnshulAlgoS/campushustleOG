@@ -36,6 +36,8 @@ import CommunityHub from './views/CommunityHub';
 import HelpCenter from './views/HelpCenter';
 import PrivacyPolicy from './views/PrivacyPolicy';
 import TermsAndConditions from './views/TermsAndConditions';
+import Contact from './views/Contact';
+
 
 
 
@@ -139,6 +141,8 @@ function InnerApp() {
         <Route path="/help-center" element={<HelpCenter />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="/contact" element={<Contact />} />
+
       
 
       </Routes>
