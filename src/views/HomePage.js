@@ -389,7 +389,6 @@ useEffect(() => {
       <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
         <h4>Quick Links</h4>
         <ul>
-          <li><Link to="/">Home</Link></li>
           <li><Link to="/privacy-policy">Privacy Policy</Link></li>
           <li><Link to="/terms-and-conditions">Terms & Conditions</Link></li>
         </ul>
