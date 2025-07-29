@@ -90,6 +90,25 @@
   transform: translateY(-4px);
   box-shadow: 0 6px 25px rgba(106, 17, 203, 0.6);
 }
+.logo-combo {
+  display: flex;
+  align-items: center;
+  column-gap: 0px;
+}
+
+.logo-text {
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.navbar-desktop {
+  display: flex;
+  align-items: center;
+}
+
 .navbar-mobile {
   display: none;
 }
@@ -109,8 +128,105 @@
   font-size: 24px;
 }
 
+.home-page.strip-nav {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  margin-left: auto;
+  align-items: center;
+}
 
+.home-page.strip-nav li a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #572e54;
+}
 
- 
+.strip-nav .signup {
+  padding: 6px 14px;
+  background-color: #ceb2bd;
+  color: #572E54;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.strip-nav .signup:hover {
+  background-color: #572E54;
+  color: #f5f4f4;
+}
+.mobile-nav {
+  display: none;
+  position: absolute;
+  top: 65px;
+  right: 20px;
+  width: 90%;
+  max-width: 300px;
+  flex-direction: column;
+  color: #572E54;
+  background: linear-gradient(to top, #864f9c, #d896ef, #dcafea, #d5b5dd);
+  padding: 18px 20px;
+  border-radius: 18px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  transform: translateY(-10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav.open {
+  display: flex;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav li {
+  color:#572E54;
+  margin-bottom: 14px;
+  text-align: left;
+  list-style:none;
+}
+
+.mobile-nav li a,
+.mobile-nav .signup {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #fceff4;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  display: block;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.mobile-nav li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.mobile-nav .signup {
+  background: linear-gradient(135deg, #f481a7 0%, #eda7e7 100%);
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  width: 50%;
+  margin-top: 8px;
+}
+
+.mobile-nav .signup:hover {
+  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+  color: #000;
+  transform: scale(1.03);
+}
 
 
