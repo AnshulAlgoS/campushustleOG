@@ -10,7 +10,6 @@ const HackathonPage = () => {
       <FloatingDoodles /> {/* Animated doodles background */}
 
       <div className="hackathon-page">
-    <div className="hackathon-page glow-border">
   {/* All content inside */}
 </div>
 
