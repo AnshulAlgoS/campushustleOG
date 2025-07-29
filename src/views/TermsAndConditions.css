@@ -1,6 +1,6 @@
 /* TermsAndConditions.css */
 
-.terms-wrapper {
+.terms-gradient {
   min-height: 100vh;
   padding: 2rem;
   background: linear-gradient(
@@ -21,11 +21,11 @@
 .terms-container {
   max-width: 900px;
   width: 100%;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
   padding: 2.5rem;
   border-radius: 16px;
   backdrop-filter: blur(8px);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
 }
 
 .terms-title {
