@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import './HelpCenter.css'; //
+
 
 const HelpCenter = () => {
   useEffect(() => {
