@@ -13,13 +13,14 @@ const FreelancePage = ({ user, handleLogout, onProfileClick, openAuthModal }) =>
     <div className="freelance-container">
       <FloatingDoodles />
 
+      {/* Top Navigation Strip */}
       <div className="top-strip">
         <div className="logo-combo">
           <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
           <span className="logo-text">CampusHustle</span>
         </div>
 
-        {/* Desktop Nav */}
+        {/* Desktop Navbar */}
         <nav className="navbar-desktop">
           <ul className="strip-nav">
             <li><Link to="/">Home</Link></li>
@@ -29,7 +30,6 @@ const FreelancePage = ({ user, handleLogout, onProfileClick, openAuthModal }) =>
               <Link
                 to="/"
                 state={{ scrollTo: 'community' }}
-                onClick={() => { }}
                 className="desktop-link-btn"
               >
                 Community
@@ -52,7 +52,7 @@ const FreelancePage = ({ user, handleLogout, onProfileClick, openAuthModal }) =>
           </ul>
         </nav>
 
-        {/* Mobile Nav */}
+        {/* Mobile Navbar */}
         <div className="navbar-mobile">
           <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
 
@@ -97,8 +97,11 @@ const FreelancePage = ({ user, handleLogout, onProfileClick, openAuthModal }) =>
         </div>
       </div>
 
-      {/* Freelance Page Main Content */}
+      {/* Freelance Page CTA */}
       <div className="freelance-content">
+        <h1>Unleash Your Talent</h1>
+        <p>Join Campus Hustle’s freelance network – either work or hire students with amazing skills.</p>
+
         <Link to="/explore-freelance" className="freelance-btn">
           Explore Freelancing Opportunities
         </Link>
