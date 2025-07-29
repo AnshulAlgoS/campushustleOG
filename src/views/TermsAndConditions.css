@@ -1,68 +1,77 @@
-/* LegalPages.css */
+/* TermsAndConditions.css */
 
-.legal-page-container {
+.terms-wrapper {
   min-height: 100vh;
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, #6e8efb, #a777e3);
-  color: #ffffff;
-  font-family: 'Poppins', sans-serif;
+  padding: 2rem;
+  background: linear-gradient(
+    135deg,
+    #06000b 0%,
+    rgba(26, 2, 46, 0.99) 40%,
+    rgba(44, 5, 75, 0.97) 50%,
+    rgba(26, 2, 46, 0.99) 60%,
+    #06000b 100%
+  );
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
 }
 
-.legal-title {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
+.terms-container {
+  max-width: 900px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2.5rem;
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.terms-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
   text-align: center;
   color: #fff;
   text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
-.legal-subtitle,
-h2 {
-  font-size: 1.7rem;
+.terms-subtitle {
+  font-size: 1.6rem;
   font-weight: 600;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  text-align: center;
-  color: #f7f9ff;
+  color: #f8e1ff;
   border-bottom: 2px solid #fff;
   padding-bottom: 0.5rem;
-  width: 100%;
-  max-width: 700px;
 }
 
-.legal-paragraph {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  max-width: 800px;
-  margin-bottom: 1.5rem;
+.terms-paragraph {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  font-size: 1rem;
+  color: #e5e5e5;
   text-align: justify;
-  color: #f0f0f0;
 }
 
-.legal-list,
-ul {
+.terms-list {
   list-style: disc;
-  padding-left: 2rem;
-  margin-bottom: 2rem;
-  max-width: 800px;
-  color: #eaeaea;
+  padding-left: 1.5rem;
+  margin-bottom: 1.2rem;
+  color: #ddd;
 }
 
-.legal-list li,
-ul li {
+.terms-list li {
   margin-bottom: 0.8rem;
   font-size: 1.05rem;
 }
 
-a {
+.terms-container a {
   color: #fff799;
   text-decoration: underline;
 }
 
-strong {
+.terms-container strong {
   color: #fff799;
 }
