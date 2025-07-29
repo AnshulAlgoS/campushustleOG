@@ -36,7 +36,6 @@ import CommunityHub from './views/CommunityHub';
 import HelpCenter from './views/HelpCenter';
 import PrivacyPolicy from './views/PrivacyPolicy';
 import TermsAndConditions from './views/TermsAndConditions';
-import Contact from './views/Contact'; // ✅ correct (uppercase 'C')
 
 
 function InnerApp() {
@@ -101,7 +100,7 @@ function InnerApp() {
         <Route path="/budgeting" element={<Budgeting navigateTo={(page) => navigate(`/${page}`)} />} />
         <Route path="/scholarships" element={<AllScholarshipsPage />} />
         <Route path="/community1" element={<CommunityHub />} />
-        <Route path="/contact" element={<Contact />} />
+        
 
 
         <Route
