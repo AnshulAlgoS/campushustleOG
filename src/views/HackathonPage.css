@@ -693,6 +693,12 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.glow-border {
+  border: 2px solid #d08bff;
+  border-radius: 0; /* or 10px if you want curved edges */
+  box-shadow: 0 0 20px rgba(208, 139, 255, 0.5);
+}
+
 
 
 
