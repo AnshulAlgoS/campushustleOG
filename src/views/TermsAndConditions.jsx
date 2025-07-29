@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import './TermsAndConditions.css';
+
 
 const TermsAndConditions = () => {
   useEffect(() => {
