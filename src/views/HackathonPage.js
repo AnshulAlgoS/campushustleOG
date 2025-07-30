@@ -12,7 +12,10 @@ const HackathonPage = () => {
       <div className="hackathon-page">
         {/* Top Navigation Bar */}
         <div className="translucent-strip">
+           <div class="logo-container">
           <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
+          <span class="logo-text">CampusHustle</span>
+  </div>
           <ul className="strip-nav">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/freelance">Freelance</Link></li>

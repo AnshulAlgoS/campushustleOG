@@ -65,6 +65,7 @@ body {
   align-items: center;
   padding-top: 100px;
   box-sizing: border-box;
+  
 }
 
 
@@ -83,8 +84,19 @@ body {
 }
 
 .strip-logo {
-  height: 40px;
+  height: 70px;
 }
+.logo-text {
+  margin-left: 10px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
 
 .strip-nav {
   display: flex;
@@ -93,6 +105,7 @@ body {
   padding: 0;
   margin: 0;
 }
+
 
 .strip-nav li a {
   color: white;
@@ -116,6 +129,14 @@ body {
   padding-top: 0;
   box-sizing: border-box;
   overflow: hidden;
+   background: linear-gradient(
+    135deg,
+    #06000b 0%,
+    rgba(26, 2, 46, 0.99) 40%,
+    rgba(44, 5, 75, 0.97) 50%,
+    rgba(26, 2, 46, 0.99) 60%,
+    #06000b 100%
+     );
 }
 
 
@@ -176,7 +197,7 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  color: #000;
+  color: #dad4d4;
   transition: all 0.3s ease;
   width: 100%; /* ensures it fits within the grid column */
 }
@@ -201,7 +222,7 @@ body {
 
 /* Card */
 .hackathon-card {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgb(162, 127, 171);
   border: 1px solid #000;
   border-radius: 12px;
   padding: 15px;
@@ -320,7 +341,7 @@ body {
 }
 
 .modal-box {
-  background: white;
+  background: rgb(181, 59, 200);
   color: black;
   padding: 30px;
   border-radius: 10px;
@@ -383,7 +404,7 @@ body {
 }
 
 .modal-box {
-  background: white;
+  background: rgb(126, 35, 165);
   color: black;
   padding: 30px;
   border-radius: 10px;
@@ -472,6 +493,7 @@ body {
   padding: 0 20px;
   max-width: 1200px;
   margin: 0 auto 30px;
+  
 }
 .search-input {
   width: 100%;
@@ -497,7 +519,7 @@ body {
 .search-header h2 {
   font-size: 2rem;
   font-weight: bold;
-  color: #000;
+  color: #f7f2f2;
 }
 
 .search-input-inline {
@@ -518,8 +540,8 @@ body {
   width: 100vw;
   height: auto;
   position: relative;
-  background: linear-gradient(135deg,  #de61ae, #760aad);
-  color: white;
+  background: linear-gradient(135deg,  #7c5785, #521172);
+  color: rgb(59, 9, 91);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 
@@ -534,15 +556,17 @@ body {
  
 .background-effect h1 {
   font-size: 3rem;
-  color: #efecf1;
+  color: #340454;
   margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .background-effect p {
-  color: #f7f5f9;
+  color: #cabfd2;
   font-size: 1.1rem;
   max-width: 700px;
   margin: 0 auto;
+  font-weight: bold;
 }
 
 /* Blobby shapes */
@@ -590,7 +614,7 @@ body {
 }
 
 .nav-logo {
-  height: 45px;
+  height: 60px;
   margin-right: 12px;
 }
 
@@ -663,7 +687,8 @@ body {
 .hackathon-page {
   min-height: 100vh;
   width: 100%;
-  padding-top: 100px;
+  padding-top: 0px;
+  margin: 0px; 
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -680,9 +705,7 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-
-  border: 3px solid #a64bf4; /* 👈 Purple border */
-  border-radius: 16px; /* Optional: makes it smooth */
-  margin: 20px; /* Optional spacing from viewport */
+ border-radius: 16px; 
+ 
 }
 
