@@ -203,13 +203,13 @@ Special thanks to:
    
    LinkedIn: https://www.linkedin.com/in/anshul-saxena-899771362/
 
- - Team Member-2
+ - Team Member-3
    Gourika  
    Email- budhirajagourika8@gmail.com
    
    LinkedIn: https://www.linkedin.com/in/gourika-b53280348/
 
--  Team Member 1
+-  Team Member-4 
    Avanya
    Email- avanyasharma299@gmail.com
    

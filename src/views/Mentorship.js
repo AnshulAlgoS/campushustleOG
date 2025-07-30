@@ -6,9 +6,7 @@ const Mentorship = () => {
   const [domain, setDomain] = useState("");
   const [batch, setBatch] = useState("");
   const [selectedMentor, setSelectedMentor] = useState(null);
-
   const [mentors, setMentors] = useState([]);
-
 
   const filteredMentors = mentors.filter(
     (m) => (!domain || m.domain === domain) && (!batch || m.batch === batch)
@@ -56,16 +54,16 @@ const Mentorship = () => {
 
         <div className="mentorship-buttons-center">
           <button
-            className={`btn-toggle ${activeTab === "mentee" ? "active" : ""}`}
+            className={`btn-toggle big-glow-btn ${activeTab === "mentee" ? "active" : ""}`}
             onClick={() => setActiveTab("mentee")}
           >
             Join as a Mentee
           </button>
           <button
-            className={`btn-toggle ${activeTab === "mentor" ? "active" : ""}`}
+            className={`btn-toggle big-glow-btn ${activeTab === "mentor" ? "active" : ""}`}
             onClick={() => setActiveTab("mentor")}
           >
-            Register as a Mentor
+             Register as a Mentor
           </button>
         </div>
       </section>
@@ -98,16 +96,24 @@ const Mentorship = () => {
           <div className="mentor-cards">
             {filteredMentors.length > 0 ? (
               filteredMentors.map((mentor, idx) => (
-                <div className={`mentor-card glass-effect ${selectedMentor?.name === mentor.name ? "selected-mentor" : ""}`}key={idx}>
+                <div
+                  className={`mentor-card ${
+                    selectedMentor?.name === mentor.name ? "selected-mentor" : ""
+                  }`}
+                  key={idx}
+                >
+                  <span className="domain-badge">{mentor.domain}</span>
                   <img
                     src={mentor.picture}
                     alt={mentor.name}
                     className="mentor-square"
                   />
                   <h3>{mentor.name}</h3>
-                  <p><strong>Domain:</strong> {mentor.domain}</p>
+                  <p><strong>Qualification:</strong> {mentor.qualification || "N/A"}</p>
+                  <p><strong>Experience:</strong> {mentor.experience || "N/A"}</p>
                   <p><strong>Batch:</strong> {mentor.batch}</p>
                   <p><strong>Charges:</strong> ₹{mentor.charges || "Free"}</p>
+                  <p><strong>Gender:</strong> {mentor.gender}</p>
                   <button className="btn-book" onClick={() => setSelectedMentor(mentor)}>
                     Book Now
                   </button>
@@ -187,3 +193,4 @@ const Mentorship = () => {
 };
 
 export default Mentorship;
+

@@ -1,5 +1,5 @@
 // src/views/BudgetingPage.js
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef} from 'react';
 import './Budgeting.css';
 import { db, auth } from '../firebase';
 import {
@@ -20,6 +20,7 @@ import {
 import { Doughnut, Bar, Line } from 'react-chartjs-2';
 
 ChartJS.register(
+  
   ArcElement,
   Tooltip,
   Legend,
@@ -29,6 +30,8 @@ ChartJS.register(
   CategoryScale,
   LinearScale
 );
+ChartJS.defaults.color = '#ffffff'; // sets all text to white by default
+
 
 const BudgetingPage = () => {
   const [expenses, setExpenses] = useState([]);
@@ -36,6 +39,10 @@ const BudgetingPage = () => {
   const [income, setIncome] = useState('');
   const [limit, setLimit]   = useState('');
   const [userId, setUserId] = useState(null);
+  const challengesRef = useRef(null);
+  const [completedChallenges, setCompletedChallenges] = useState({});
+ 
+  
   useEffect(() => {
     const unsubAuth = auth.onAuthStateChanged(user => {
       if (user) {
@@ -81,19 +88,54 @@ const BudgetingPage = () => {
     datasets: [{
       label: '₹ Spent',
       data: Object.values(categoryTotals),
-      backgroundColor: ['#8e2de2','#4a00e0','#ff6384','#36a2eb','#ffcd56','#4bc0c0'],
-      borderWidth: 1
+       backgroundColor: ['#B621FE', '#70b4c3ff', '#c5bb86ff', '#75be92ff', '#e17c7cff', '#FAD0C4'],
+      borderColor: '#ffffff',
+      borderWidth: 2,
+      hoverOffset: 12
     }]
+  };
+   const doughnutOptions = {
+    plugins: {
+      legend: {
+        labels: {
+          color: '#ffffff',
+          font: {
+            size: 14,
+            weight: 'bold'
+          },
+          padding: 15
+        }
+      }
+    }
   };
   const barData = {
     labels: ['Limit', 'Spent'],
     datasets: [{
       label: '₹',
       data: [Number(limit || 0), totalSpent],
-      backgroundColor: ['#4a00e0', '#ff6384']
+       backgroundColor: ['#7f3dc6ff', '#e49a65ff'],
+      borderRadius: 8,
+      barThickness: 30
     }]
   };
-  const barOptions = { indexAxis: 'y', responsive: true, plugins: { legend: { display: false } } };
+  const barOptions = { 
+    indexAxis: 'y',
+    responsive: true,
+    plugins: {
+      legend: {
+        display: false
+      }
+    },
+    scales: {
+      x: {
+        ticks: { color: '#ccc' }
+      },
+      y: {
+        ticks: { color: '#ccc' }
+      }
+      
+    }
+  };
   const lineData = useMemo(() => {
     const sorted = [...expenses].sort((a, b) => (a.createdAt?.seconds || 0) - (b.createdAt?.seconds || 0));
     return {
@@ -101,17 +143,60 @@ const BudgetingPage = () => {
       datasets: [{
         label: 'Expense Over Time',
         data: sorted.map(e => Number(e.amount)),
-        borderColor: '#4a00e0',
-        backgroundColor: 'rgba(142,45,226,0.18)',
-        tension: 0.35,
+        borderColor: '#b67aeaff',
+        backgroundColor: 'rgba(142,45,226,0.2)',
+        tension: 0.4,
         fill: true
       }]
     };
   }, [expenses]);
-  return (
-    <div className="budgeting-page">
-      <h1>Budgeting Dashboard</h1>
+  const lineOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        labels: {
+          color: '#cfcfcf',
+          font: { size: 14 }
+        }
+      }
+    },
+     scales: {
+      x: {
+        ticks: { color: '#ccc' }
+      },
+      y: {
+        ticks: { color: '#ccc' }
+      
+      }
+    }
+  };
+  const toggleChallenge = (id) => {
+    setCompletedChallenges(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
 
+ const scrollToChallenges = () => {
+  challengesRef.current?.scrollIntoView({ behavior: 'smooth' });
+};
+
+
+  const challenges = [
+    { id: 1, text: "Spend less than ₹100 on snacks this week" },
+    { id: 2, text: "Track all expenses for 3 days straight" },
+    { id: 3, text: "No shopping for 7 days" },
+    { id: 4, text: "Log 5 expenses in a week" },
+    { id: 5, text: "Limit eating out to twice this week" }
+  ];
+  return (
+     <div className="budgeting-page">
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h1>Budgeting Dashboard</h1>
+        <button className="challenges-btn" onClick={() => challengesRef.current?.scrollIntoView({ behavior: 'smooth' })}>
+          Show Challenges
+        </button>
+      </div>
       {/* Income / Limit */}
       <div className="income-limit-section">
         <div className="input-group">
@@ -172,8 +257,28 @@ const BudgetingPage = () => {
           </div>
         ))}
       </div>
+       <div ref={challengesRef} className="challenges-section">
+        <h2>Budgeting Challenges</h2>
+        <div className="challenge-list">
+          {challenges.map(challenge => (
+            <div
+              key={challenge.id}
+              className={`challenge-card ${completedChallenges[challenge.id] ? 'completed' : ''}`}
+            >
+              <p>{challenge.text}</p>
+              <button onClick={() => toggleChallenge(challenge.id)}>
+                {completedChallenges[challenge.id] ? '✔️ Completed' : '❌ Incomplete'}
+              </button>
+            </div>
+          ))}
+        </div>
+        {Object.values(completedChallenges).filter(Boolean).length === challenges.length && (
+          <div className="badge-earned">🏅 Challenge Master Badge Earned!</div>
+        )}
+      </div>
     </div>
   );
+    
 };
 
 export default BudgetingPage;
