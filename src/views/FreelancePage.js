@@ -54,7 +54,7 @@ const FreelancePage = ({ user, handleLogout, onProfileClick, openAuthModal }) =>
 
         {/* Mobile Nav */}
         <div className="navbar-mobile">
-          <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+          <button className="hamburger1" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
 
           {menuOpen && (
             <ul className={`mobile-nav ${menuOpen ? 'open' : ''}`}>

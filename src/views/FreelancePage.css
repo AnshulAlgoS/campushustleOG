@@ -90,11 +90,21 @@
   transform: translateY(-4px);
   box-shadow: 0 6px 25px rgba(106, 17, 203, 0.6);
 }
-.navbar-mobile {
+
+.hamburger1 {
   display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
+  color: white;
+  font-size: 24px;
 }
-
-
 
 
 
