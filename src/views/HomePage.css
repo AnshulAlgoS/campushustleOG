@@ -59,11 +59,10 @@ html {
   border: none;
   cursor: pointer;
   position: absolute;
-  top: 20px;
+  top: 0px;
   right: 20px;
   z-index: 1001;
   color: white;
-  background: red;
   font-size: 24px;
 }
 
@@ -211,7 +210,6 @@ html {
   }
   .hamburger {
     display: flex;
-    color:#000;
     z-index: 1001;
   }
 }
