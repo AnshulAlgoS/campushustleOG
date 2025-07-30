@@ -45,7 +45,16 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
   const testimonialRef = useRef(null);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const testimonialInterval = useRef(null);
-  
+  const searchKeywords = [
+    { label: 'Freelance', path: '/freelance', keywords: ['freelance', 'gig', 'remote work'] },
+    { label: 'Budgeting', path: '/budgeting', keywords: ['budget', 'expenses', 'planner'] },
+    { label: 'Scholarship', path: 'scholarships', keywords: ['scholarship', 'funding', 'aid'] },
+    { label: 'Hackathon', path: '/hackathon', keywords: ['hackathon', 'tech event', 'coding contest'] },
+    { label: 'Mentorship', path: 'mentorship', keywords: ['mentor', 'guidance', 'mentorship'] },
+    { label: 'Community', path: 'community1', keywords: ['community', 'forum', 'peer'] },
+  ];
+
+
 
 
   useEffect(() => {
@@ -120,6 +129,37 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
     clearInterval(testimonialInterval.current);
     handleTestimonialScroll(dir);
   };
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredSuggestions, setFilteredSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const handleInputChange = (e) => {
+    const input = e.target.value;
+    setSearchQuery(input);
+
+    if (input.length > 0) {
+      const filtered = searchKeywords.filter(({ label, keywords }) => {
+        return (
+          label.toLowerCase().includes(input.toLowerCase()) ||
+          keywords.some(k => k.toLowerCase().includes(input.toLowerCase()))
+        );
+      });
+
+      setFilteredSuggestions(filtered);
+      setShowSuggestions(true);
+    } else {
+      setShowSuggestions(false);
+    }
+  };
+  const handleSuggestionClick = (label, path) => {
+    if (path === 'community') {
+      communityRef.current?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate(path);
+    }
+    setSearchQuery('');
+    setShowSuggestions(false);
+  };
+
 
 
   return (
@@ -239,10 +279,31 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
             </div>
 
             <div className="search-bar-wrapper" data-aos="zoom-in" data-aos-delay="200">
-              <form>
-                <input type="search" placeholder="Search our services ..." />
-                <i className="fa fa-search"></i>
+              <form onSubmit={(e) => {
+                e.preventDefault();
+                if (filteredSuggestions.length > 0) {
+                  handleSuggestionClick(filteredSuggestions[0].label, filteredSuggestions[0].path);
+                }
+              }}>
+                <input
+                  type="search"
+                  placeholder="Search our services ..."
+                  value={searchQuery}
+                  onChange={handleInputChange}
+                  onFocus={() => setShowSuggestions(true)}
+                  onBlur={() => setTimeout(() => setShowSuggestions(false), 150)} // for click to register
+                />
+                <i
+                  className="fa fa-search"
+                  onClick={() => {
+                    if (filteredSuggestions.length > 0) {
+                      handleSuggestionClick(filteredSuggestions[0].label, filteredSuggestions[0].path);
+                    }
+                  }}
+                  style={{ cursor: 'pointer' }}
+                ></i>
               </form>
+
             </div>
             <div className="tag-buttons-below" data-aos="fade-up" data-aos-delay="400">
               <button className="tag-button">Freelance</button>
@@ -343,44 +404,44 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
 
 
         <footer>
-  <div className="home-page-wrapper">
-    <span className="footer-container">
-      <span className="footer-logo">
-        <img src={footerLogo} alt="Campus Hustle Logo" />
-        <h2>CampusHustle</h2>
-      </span>
+          <div className="home-page-wrapper">
+            <span className="footer-container">
+              <span className="footer-logo">
+                <img src={footerLogo} alt="Campus Hustle Logo" />
+                <h2>CampusHustle</h2>
+              </span>
 
-      {/* ✅ Support */}
-      <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
-        <h4>Support</h4>
-        <ul>
-          <li><Link to="/help-center">Help Center</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-        </ul>
-      </span>
+              {/* ✅ Support */}
+              <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
+                <h4>Support</h4>
+                <ul>
+                  <li><Link to="/help-center">Help Center</Link></li>
+                  <li><Link to="/contact">Contact</Link></li>
+                </ul>
+              </span>
 
-      {/* ✅ Company */}
-      <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
-        <h4>Company</h4>
-        <ul>
-          <li><Link to="/about">About Us</Link></li>
-          <li><Link to="/hackathon">Hackathons</Link></li>
-          <li><Link to="/" state={{ scrollTo: 'community' }}>Community</Link></li>
-          <li><Link to="/freelance">Freelance</Link></li>
-        </ul>
-      </span>
+              {/* ✅ Company */}
+              <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
+                <h4>Company</h4>
+                <ul>
+                  <li><Link to="/about">About Us</Link></li>
+                  <li><Link to="/hackathon">Hackathons</Link></li>
+                  <li><Link to="/" state={{ scrollTo: 'community' }}>Community</Link></li>
+                  <li><Link to="/freelance">Freelance</Link></li>
+                </ul>
+              </span>
 
-      {/* ✅ Quick Links */}
-      <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><Link to="/privacy-policy">Privacy Policy</Link></li>
-          <li><Link to="/terms-and-conditions">Terms & Conditions</Link></li>
-        </ul>
-      </span>
-    </span>
-  </div>
-</footer>
+              {/* ✅ Quick Links */}
+              <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
+                <h4>Quick Links</h4>
+                <ul>
+                  <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+                  <li><Link to="/terms-and-conditions">Terms & Conditions</Link></li>
+                </ul>
+              </span>
+            </span>
+          </div>
+        </footer>
 
       </div>
     </>

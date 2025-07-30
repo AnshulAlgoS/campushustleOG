@@ -354,6 +354,28 @@ header::before {
   text-align: center;
   font-size: 1.5em;
 }
+.suggestion-dropdown {
+  position: absolute;
+  background: white;
+  list-style: none;
+  padding: 0;
+  margin-top: 0.25rem;
+  width: 100%;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.suggestion-dropdown li {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.suggestion-dropdown li:hover {
+  background-color: #f0f0f0;
+}
+
 
 
 /*  Tag Buttons */
