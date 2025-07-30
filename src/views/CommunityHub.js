@@ -65,7 +65,7 @@ const viewSubmittedFile = async (challengeId) => {
     .slice(0, 3)
     .some((u) => u.name === currentUser.name);
 
-  const currentUserIsModerator = currentUserIsDeveloper || currentUserIsTop3;
+  const currentUserIsModerator = currentUserIsDeveloper;
 
   // --- Post creation state ---
   const [postText, setPostText] = useState("");
