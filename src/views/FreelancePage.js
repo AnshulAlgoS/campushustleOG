@@ -53,11 +53,11 @@ const FreelancePage = ({ user, handleLogout, onProfileClick, openAuthModal }) =>
         </nav>
 
         {/* Mobile Navbar */}
-        <div className="navbar-mobile">
-          <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+        <div className="navbar-mobile1">
+          <button className="hamburger1" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
 
           {menuOpen && (
-            <ul className={`mobile-nav ${menuOpen ? 'open' : ''}`}>
+            <ul className={`mobile-nav1 ${menuOpen ? 'open' : ''}`}>
               <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
               <li><Link to="/freelance" onClick={() => setMenuOpen(false)}>Freelance</Link></li>
               <li><Link to="/hackathon" onClick={() => setMenuOpen(false)}>Hackathons</Link></li>

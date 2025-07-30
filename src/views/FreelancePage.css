@@ -122,28 +122,14 @@
   transform: translateY(-4px);
   box-shadow: 0 6px 25px rgba(106, 17, 203, 0.6);
 }
-
-/* Mobile navbar */
-.navbar-mobile {
+.navbar-mobile1 {
   display: none;
 }
 
-/* Responsive */
-@media screen and (max-width: 768px) {
-  .freelance-content h1 {
-    font-size: 2.2rem;
-  }
 
-  .freelance-btn {
-    width: 90%;
-    font-size: 1rem;
-  }
 
-  .navbar {
-    padding: 12px 20px;
-  }
 
-  .nav-links a {
-    margin-left: 16px;
-  }
-}
+
+ 
+
+

@@ -59,7 +59,7 @@ html {
   border: none;
   cursor: pointer;
   position: absolute;
-  top: 20px;
+  top: 0px;
   right: 20px;
   z-index: 1001;
   color: white;
@@ -199,6 +199,18 @@ html {
   .strip-nav {
     gap: 7px;
     font-size: 13px;
+  }
+
+  .navbar-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+    z-index: 1000;
+  }
+  .hamburger {
+    display: flex;
+    z-index: 1001;
   }
 }
 
