@@ -1,12 +1,13 @@
-// index.js - Express backend for Mentor Buddy
-
 const express = require("express");
 const fetch = require("node-fetch");
 const admin = require("firebase-admin");
+const cors = require("cors"); 
 require("dotenv").config();
 
 const app = express();
+app.use(cors({ origin: "*" })); // ✅ Allow all origins
 app.use(express.json());
+
 
 // ===== Firebase Admin Initialization =====
 // ===== Firebase Admin Initialization =====
@@ -48,6 +49,10 @@ const db = admin.firestore();
 app.post("/api/chat", async (req, res) => {
   const { message, userId } = req.body;
   console.log("Incoming /api/chat:", { message, userId });
+  app.use(cors({
+  origin: ["https://campushustle-ai.vercel.app/"], // replace with your actual frontend URL
+}));
+
 
   try {
     // Optionally, fetch user dashboard from Firestore
