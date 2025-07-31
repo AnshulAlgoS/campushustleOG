@@ -28,6 +28,7 @@ export default function ChatbotButton() {
        body: JSON.stringify({ message: input }),
       });
 
+
       const data = await res.json();
       setMessages((prev) => [
         ...prev,
