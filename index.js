@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 const express = require("express");
 const fetch = require("node-fetch");
 const admin = require("firebase-admin");
@@ -50,7 +52,7 @@ app.post("/api/chat", async (req, res) => {
   const { message, userId } = req.body;
   console.log("Incoming /api/chat:", { message, userId });
   app.use(cors({
-  origin: ["https://campushustle-ai.vercel.app/"], // replace with your actual frontend URL
+  origin: ["https://campushustle-ai.vercel.app/"], 
 }));
 
 
