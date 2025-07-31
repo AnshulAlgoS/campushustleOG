@@ -9,28 +9,38 @@ const app = express();
 app.use(express.json());
 
 // ===== Firebase Admin Initialization =====
+// ===== Firebase Admin Initialization =====
 let serviceAccountConfig;
 
-// If running on Render (production) and FIREBASE_SERVICE_ACCOUNT_JSON is set
 if (process.env.FIREBASE_SERVICE_ACCOUNT_JSON) {
   try {
     serviceAccountConfig = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON);
-    console.log("🔥 Loaded Firebase credentials from environment");
+    // Fix escaped newlines in Render env
+    if (serviceAccountConfig.private_key.includes('\\n')) {
+      serviceAccountConfig.private_key = serviceAccountConfig.private_key.replace(/\\n/g, '\n');
+    }
+    console.log("✅ Loaded Firebase credentials from environment");
   } catch (err) {
-    console.error("Error parsing FIREBASE_SERVICE_ACCOUNT_JSON:", err);
+    console.error("❌ Error parsing FIREBASE_SERVICE_ACCOUNT_JSON:", err);
+    process.exit(1);
   }
 } else {
-  // Local: fallback to the JSON file
-  console.log("🔥 Using local serviceAccountKey.json");
-  serviceAccountConfig = require("./serviceAccountKey.json");
+  try {
+    console.log("🧪 Using local serviceAccountKey.json");
+    serviceAccountConfig = require("./serviceAccountKey.json");
+  } catch (err) {
+    console.error("❌ Missing local serviceAccountKey.json");
+    process.exit(1);
+  }
 }
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccountConfig),
-  projectId: serviceAccountConfig.project_id, // explicitly set
+  projectId: serviceAccountConfig.project_id,
   databaseURL:
     "https://campushustle91-default-rtdb.asia-southeast1.firebasedatabase.app",
 });
+
 
 const db = admin.firestore();
 
