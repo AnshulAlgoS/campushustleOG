@@ -3,7 +3,6 @@
 const express = require("express");
 const fetch = require("node-fetch");
 const admin = require("firebase-admin");
-const path = require("path");
 require("dotenv").config();
 
 const app = express();
@@ -11,17 +10,18 @@ app.use(express.json());
 
 // ===== Firebase Admin Initialization =====
 let serviceAccountConfig;
-
-// If running on Render (production) and FIREBASE_SERVICE_ACCOUNT_JSON is set
-if (process.env.FIREBASE_SERVICE_ACCOUNT_JSON) {
-  try {
+try {
+  if (process.env.FIREBASE_SERVICE_ACCOUNT_JSON) {
+    // Production (Render): parse from environment variable
     serviceAccountConfig = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON);
-  } catch (err) {
-    console.error("Error parsing FIREBASE_SERVICE_ACCOUNT_JSON:", err);
+    console.log("🔥 Using FIREBASE_SERVICE_ACCOUNT_JSON from env");
+  } else {
+    // Local: use the JSON file
+    serviceAccountConfig = require("./serviceAccountKey.json");
+    console.log("🔥 Using local serviceAccountKey.json");
   }
-} else {
-  // Local: fallback to the JSON file
-  serviceAccountConfig = require("./serviceAccountKey.json");
+} catch (err) {
+  console.error(" Error loading Firebase service account:", err);
 }
 
 admin.initializeApp({
@@ -37,7 +37,6 @@ app.post("/api/chat", async (req, res) => {
   const { message, userId } = req.body;
 
   try {
-    // Optionally, fetch user dashboard from Firestore
     let userContext = "";
     if (userId) {
       try {
@@ -47,11 +46,18 @@ app.post("/api/chat", async (req, res) => {
           userContext = `\nUser Info: ${JSON.stringify(data)}`;
         }
       } catch (err) {
-        console.error("Error fetching user data:", err);
+        console.error(" Error fetching user data from Firestore:", err);
       }
     }
 
-    // Call Fireworks AI
+    // Ensure API key is present
+    if (!process.env.FIREWORKS_API_KEY) {
+      console.error(" Missing FIREWORKS_API_KEY");
+      return res.status(500).json({ reply: "Server configuration error." });
+    }
+
+    console.log("🔗 Calling Fireworks AI API...");
+
     const fwRes = await fetch(
       "https://api.fireworks.ai/inference/v1/chat/completions",
       {
@@ -80,10 +86,17 @@ app.post("/api/chat", async (req, res) => {
     );
 
     const data = await fwRes.json();
+
+    // Log response for debugging if something goes wrong
+    if (!fwRes.ok) {
+      console.error(" Fireworks API Error:", fwRes.status, data);
+      return res.status(500).json({ reply: "AI backend error." });
+    }
+
     const reply = data?.choices?.[0]?.message?.content || "No response.";
     res.json({ reply });
   } catch (err) {
-    console.error(err);
+    console.error("Unexpected error in /api/chat:", err);
     res.status(500).json({ reply: "Error talking to AI." });
   }
 });
@@ -96,5 +109,5 @@ app.get("/", (req, res) => {
 // Start server
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(` Server is running on port ${PORT}`);
 });
