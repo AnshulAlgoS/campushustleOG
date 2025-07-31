@@ -21,7 +21,7 @@ exports.chat = onRequest(async (req, res) => {
           { role: "system", content: "You are Mentor Buddy." },
           { role: "user", content: message },
         ],
-        max_tokens: 200,
+        max_tokens: 1500,
       }),
     });
 
