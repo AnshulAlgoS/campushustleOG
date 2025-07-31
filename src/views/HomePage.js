@@ -48,7 +48,6 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const testimonialInterval = useRef(null);
   const [promotions] = useState([]); 
-  const [promotions] = useState([]); 
   const searchKeywords = [
     { label: 'Freelance', path: '/freelance', keywords: ['freelance', 'gig', 'remote work'] },
     { label: 'Budgeting', path: '/budgeting', keywords: ['budget', 'expenses', 'planner'] },
@@ -185,9 +184,6 @@ const scrollCarousel = (dir) => {
   const scrollAmount = 300;
   container.scrollBy({ left: dir === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
 };
-const [featured, setFeatured] = useState([]);
-const carouselRef = useRef(null);
-
 
 useEffect(() => {
   const fetchPromotions = async () => {
@@ -202,13 +198,6 @@ useEffect(() => {
   };
   fetchPromotions();
 }, []);
-
-const scrollCarousel = (dir) => {
-  const container = carouselRef.current;
-  if (!container) return;
-  const scrollAmount = 300;
-  container.scrollBy({ left: dir === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
-};
 
   return (
     <>
