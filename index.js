@@ -62,7 +62,7 @@ app.post("/api/chat", async (req, res) => {
             },
             { role: "user", content: message + userContext },
           ],
-          max_tokens: 1500,
+          max_tokens: 3500,
         }),
       }
     );
