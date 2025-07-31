@@ -26,7 +26,7 @@ import UserMenu from '../components/UserMenu';
 import CommunitySection from './community';
 import Scholarship from './scholarship';
 import './chatbot.css';
-
+import ChatbotButton from "./chatbot";
 
 
 const slides = [slide1, slide2, slide3, slide4, slide5];
@@ -53,36 +53,6 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
     { label: 'Mentorship', path: 'mentorship', keywords: ['mentor', 'guidance', 'mentorship'] },
     { label: 'Community', path: 'community1', keywords: ['community', 'forum', 'peer'] },
   ];
-  const [isChatOpen, setIsChatOpen] = useState(false);
-
-    const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState("");
-
-  const messagesEndRef = useRef(null);
-
-  useEffect(() => {
-  messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-}, [messages]);
-
-
-const handleSend = async () => {
-  if (!input.trim()) return;
-  const userMessage = { role: "user", content: input };
-  setMessages([...messages, userMessage]);
-  setInput("");
-
-  // Call backend (explicitly point to Express server)
-  const res = await fetch("/api/chat", {
-
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: input }),
-  });
-
-  const data = await res.json();
-  setMessages((prev) => [...prev, { role: "bot", content: data.reply }]);
-};
-
 
 
   useEffect(() => {
@@ -471,57 +441,10 @@ const handleSend = async () => {
           </div>
         </footer>
 
-       {/* Floating Chatbot Button */}
- <button
-   className="chatbot-button"
-   onClick={() => setIsChatOpen(!isChatOpen)}
- >
-   <img
-     src={require('../assets/images/bot.jpeg')}
-     alt="Chatbot"
-   />
- </button>
-
- {/* Chat Drawer */}
- {isChatOpen && (
-   <div className="chatbot-drawer">
-     <div className="chatbot-drawer-header">
-       Mentor Buddy
-       <button
-         onClick={() => setIsChatOpen(false)}
-         className="chatbot-close"
-       >
-         ×
-       </button>
-     </div>
-
-     <div className="chatbot-drawer-body">
-       {messages.map((msg, index) => (
-         <div key={index} className={`chat-message ${msg.role}`}>
-           {msg.content}
-         </div>
-       ))}
-
-       <div ref={messagesEndRef} />
-
-       <div className="chat-input-container">
-         <input
-           type="text"
-           placeholder="Ask Mentor Buddy..."
-           value={input}
-           onChange={(e) => setInput(e.target.value)}
-           onKeyDown={(e) => {
-             if (e.key === 'Enter') handleSend();
-           }}
-         />
-       </div>
-     </div>
-   </div>
- )}
+      <ChatbotButton />
 
 
-
-
+      
       </div>
     </>
   );
