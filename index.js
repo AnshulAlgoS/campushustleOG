@@ -1,7 +1,4 @@
-import fetch from 'node-fetch';
-
 const express = require("express");
-const fetch = require("node-fetch");
 const admin = require("firebase-admin");
 const cors = require("cors"); 
 require("dotenv").config();
