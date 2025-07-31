@@ -1,5 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import "./chatbot.css";
+
 
 export default function ChatbotButton() {
   const [open, setOpen] = useState(false);
