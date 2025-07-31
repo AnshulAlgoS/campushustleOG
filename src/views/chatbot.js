@@ -4,6 +4,8 @@ import "./chatbot.css"; // keep your custom CSS
 import { db } from '../firebase';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { collection, addDoc, serverTimestamp, doc, getDoc } from 'firebase/firestore';
+import botImg from "../assets/images/bot.jpeg";
+
 
 export default function ChatbotButton() {
   const [open, setOpen] = useState(false);

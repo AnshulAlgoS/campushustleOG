@@ -29,6 +29,7 @@ import './chatbot.css';
 import ChatbotButton from "./chatbot";
 import { db } from '../firebase';
 import { collectionGroup, getDocs, query, where } from "firebase/firestore";
+import botImg from "../assets/images/bot.jpeg";
 
 
 const slides = [slide1, slide2, slide3, slide4, slide5];

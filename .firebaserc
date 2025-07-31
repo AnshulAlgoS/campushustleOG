@@ -1,5 +1,7 @@
 {
   "projects": {
     "default": "campushustle91"
-  }
+  },
+  "targets": {},
+  "etags": {}
 }
