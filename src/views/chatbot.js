@@ -1,7 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import "./chatbot.css";
-
+import "./chatbot.css"; // IMPORTANT: This must stay here
 
 export default function ChatbotButton() {
   const [open, setOpen] = useState(false);
@@ -23,11 +22,10 @@ export default function ChatbotButton() {
 
     try {
       const res = await fetch("https://campushustle.onrender.com/api/chat", {
-       method: "POST",
-       headers: { "Content-Type": "application/json" },
-       body: JSON.stringify({ message: input }),
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: input }),
       });
-
 
       const data = await res.json();
       setMessages((prev) => [
@@ -48,48 +46,29 @@ export default function ChatbotButton() {
       {/* Floating Button */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 right-6 w-14 h-14 rounded-full shadow-lg flex items-center justify-center bg-white border z-50"
+        className="chatbot-button"
       >
-        <img
-          src="bot.jpeg"
-          alt="Chatbot"
-          className="w-8 h-8"
-        />
+        <img src="bot.jpeg" alt="Chatbot" />
       </button>
 
       {/* Chat Panel */}
       {open && (
-        <div className="fixed bottom-24 right-6 w-80 h-96 bg-white rounded-xl shadow-lg p-4 flex flex-col z-50">
-          <div className="flex justify-between items-center mb-2">
-            <h2 className="font-semibold">Mentor Buddy</h2>
-            <button onClick={() => setOpen(false)} className="text-gray-500">
-              ×
-            </button>
+        <div className="chatbot-panel">
+          <div className="chatbot-panel-header">
+            Mentor Buddy
+            <button onClick={() => setOpen(false)}>×</button>
           </div>
 
-          <div className="flex-1 overflow-y-auto mb-2">
+          <div className="chatbot-panel-body">
             {messages.map((msg, index) => (
-              <div
-                key={index}
-                className={`mb-2 text-sm ${
-                  msg.role === "user" ? "text-right" : "text-left"
-                }`}
-              >
-                <span
-                  className={`inline-block px-2 py-1 rounded-lg ${
-                    msg.role === "user"
-                      ? "bg-blue-100 text-blue-800"
-                      : "bg-gray-100 text-gray-800"
-                  }`}
-                >
-                  {msg.content}
-                </span>
+              <div key={index} className={`chat-message ${msg.role}`}>
+                {msg.content}
               </div>
             ))}
             <div ref={messagesEndRef} />
           </div>
 
-          <div className="flex">
+          <div className="chatbot-input-area">
             <input
               type="text"
               value={input}
@@ -98,14 +77,8 @@ export default function ChatbotButton() {
                 if (e.key === "Enter") handleSend();
               }}
               placeholder="Ask Mentor Buddy..."
-              className="flex-1 border rounded-l-lg px-2 py-1 text-sm"
             />
-            <button
-              onClick={handleSend}
-              className="bg-blue-500 text-white px-3 rounded-r-lg"
-            >
-              Send
-            </button>
+            <button onClick={handleSend}>Send</button>
           </div>
         </div>
       )}
