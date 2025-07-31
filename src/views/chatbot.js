@@ -1,6 +1,9 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import "./chatbot.css";
+import { db } from '../firebase';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { collection, addDoc, serverTimestamp, doc, getDoc } from 'firebase/firestore';
 
 
 export default function ChatbotButton() {
@@ -8,40 +11,70 @@ export default function ChatbotButton() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef(null);
+  const [user, setUser] = useState(null);
+
+useEffect(() => {
+  const auth = getAuth();
+  const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+    setUser(firebaseUser);
+  });
+
+  return () => unsubscribe(); 
+}, []);
 
   // Scroll to latest message
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+   const saveChatMessage = async (userId, message, sender) => {
+  const messagesRef = collection(db, 'chats', userId, 'messages');
+  await addDoc(messagesRef, {
+    text: message,
+    sender, 
+    timestamp: serverTimestamp()
+  });
+};
 
   // Send message to backend
   const handleSend = async () => {
-    if (!input.trim()) return;
-    const userMessage = { role: "user", content: input };
-    setMessages((prev) => [...prev, userMessage]);
-    setInput("");
+  if (!input.trim()) return;
+if (!user) {
+  alert("Please log in to chat.");
+  return;}
 
-    try {
-      const res = await fetch("https://campushustle.onrender.com/api/chat", {
-       method: "POST",
-       headers: { "Content-Type": "application/json" },
-       body: JSON.stringify({ message: input }),
-      });
+  const userMessage = { role: "user", content: input };
+  setMessages((prev) => [...prev, userMessage]);
+  await saveChatMessage(user.uid, input, 'user'); 
+  setInput("");
 
+  try {
+    const res = await fetch("https://campushustle.onrender.com/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: input }),
+    });
 
-      const data = await res.json();
-      setMessages((prev) => [
-        ...prev,
-        { role: "bot", content: data.reply || "Error fetching reply" },
-      ]);
-    } catch (err) {
-      console.error(err);
-      setMessages((prev) => [
-        ...prev,
-        { role: "bot", content: "Error connecting to server." },
-      ]);
-    }
-  };
+    const data = await res.json();
+    setMessages((prev) => [
+      ...prev,
+      { role: "bot", content: data.reply || "Error fetching reply" },
+    ]);
+    await saveChatMessage(user.uid, data.reply, 'bot'); // <-- Add this line
+  } catch (err) {
+    console.error(err);
+    setMessages((prev) => [
+      ...prev,
+      { role: "bot", content: "Error connecting to server." },
+    ]);
+    await saveChatMessage(user.uid, "Error connecting to server.", 'bot'); // <-- Optional: log errors
+  }
+};
+const fetchUserProfile = async (userId) => {
+  const userRef = doc(db, 'users', userId);
+  const userSnap = await getDoc(userRef);
+  return userSnap.exists() ? userSnap.data() : null;
+};
+
 
   return (
     <>
