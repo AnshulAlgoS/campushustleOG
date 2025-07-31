@@ -9,11 +9,23 @@ require("dotenv").config();
 const app = express();
 app.use(express.json());
 
-// Initialize Firebase Admin SDK using your service account
-const serviceAccount = require("./serviceAccountKey.json");
+// ===== Firebase Admin Initialization =====
+let serviceAccountConfig;
+
+// If running on Render (production) and FIREBASE_SERVICE_ACCOUNT_JSON is set
+if (process.env.FIREBASE_SERVICE_ACCOUNT_JSON) {
+  try {
+    serviceAccountConfig = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON);
+  } catch (err) {
+    console.error("Error parsing FIREBASE_SERVICE_ACCOUNT_JSON:", err);
+  }
+} else {
+  // Local: fallback to the JSON file
+  serviceAccountConfig = require("./serviceAccountKey.json");
+}
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+  credential: admin.credential.cert(serviceAccountConfig),
   databaseURL:
     "https://campushustle91-default-rtdb.asia-southeast1.firebasedatabase.app",
 });
@@ -76,7 +88,7 @@ app.post("/api/chat", async (req, res) => {
   }
 });
 
-// Health check route (optional)
+// Health check route
 app.get("/", (req, res) => {
   res.send("Mentor Buddy API is running");
 });
