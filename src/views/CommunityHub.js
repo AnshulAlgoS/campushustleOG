@@ -10,6 +10,8 @@ import {
   orderBy,
   addDoc,
   getDoc,
+  arrayUnion,
+  arrayRemove,
   updateDoc,
   doc,
   onSnapshot,
@@ -28,20 +30,20 @@ export default function CommunityHub() {
   const [leaderboard, setLeaderboard] = useState([]);
   const [selectedChallengeFiles, setSelectedChallengeFiles] = useState({});
   const [solvedChallenges, setSolvedChallenges] = useState([]);
-const viewSubmittedFile = async (challengeId) => {
-  try {
-    const docRef = doc(db, "leetcodeSubmissions", challengeId);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      const fileUrl = docSnap.data().fileUrl;
-      window.open(fileUrl, "_blank");
-    } else {
-      alert("No submission found!");
+  const viewSubmittedFile = async (challengeId) => {
+    try {
+      const docRef = doc(db, "leetcodeSubmissions", challengeId);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const fileUrl = docSnap.data().fileUrl;
+        window.open(fileUrl, "_blank");
+      } else {
+        alert("No submission found!");
+      }
+    } catch (error) {
+      console.error("Error viewing solution:", error);
     }
-  } catch (error) {
-    console.error("Error viewing solution:", error);
-  }
-};
+  };
 
 
 
@@ -165,6 +167,36 @@ const viewSubmittedFile = async (challengeId) => {
     return () => unsubscribe();
   }, [activeSection]);
 
+  const handleLike = async (postId, post) => {
+    const postRef = doc(db, "communityPosts", postId);
+    const user = currentUser?.name;
+
+    if (!user) return;
+
+    const alreadyLiked = post.likes?.includes(user);
+    const alreadyDisliked = post.dislikes?.includes(user);
+
+    await updateDoc(postRef, {
+      likes: alreadyLiked ? arrayRemove(user) : arrayUnion(user),
+      dislikes: alreadyDisliked ? arrayRemove(user) : post.dislikes || [],
+    });
+  };
+  const handleDislike = async (postId, post) => {
+    const postRef = doc(db, "communityPosts", postId);
+    const user = currentUser?.name;
+
+    if (!user) return;
+
+    const alreadyDisliked = post.dislikes?.includes(user);
+    const alreadyLiked = post.likes?.includes(user);
+
+    await updateDoc(postRef, {
+      dislikes: alreadyDisliked ? arrayRemove(user) : arrayUnion(user),
+      likes: alreadyLiked ? arrayRemove(user) : post.likes || [],
+    });
+  };
+
+
   useEffect(() => {
     const q = query(collection(db, "leaderboard"), orderBy("score", "desc"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -223,20 +255,54 @@ const viewSubmittedFile = async (challengeId) => {
     await setDoc(ref, { name: username, score: increment(points) }, { merge: true });
   };
 
-  const handleNewPost = async (text, imageFile = null) => {
-    if (!activeSection || !text.trim()) return;
+  const handleNewPost = async (text, imageFile) => {
+    if (!currentUser || !currentUser.name) {
+      console.error("User not logged in or name missing.");
+      return;
+    }
 
     const newPost = {
       section: activeSection,
       user: currentUser.name,
+      userId: currentUser.uid,
       text,
       imageUrl: imageFile ? URL.createObjectURL(imageFile) : "",
       time: new Date().toISOString(),
       replies: [],
+      likes: [],
+      dislikes: [],
     };
-    await addDoc(collection(db, "communityPosts"), newPost);
-    await addPoints(currentUser.name, 10);
+    const handleReply = async (postId, replyText) => {
+      if (!replyText.trim()) return;
+
+      const postRef = doc(db, "communityPosts", postId);
+      const post = posts.find((p) => p.id === postId);
+
+      const existingReplies = Array.isArray(post.replies) ? post.replies : [];
+
+      const updatedReplies = [
+        ...existingReplies,
+        {
+          user: currentUser.name,
+          userId: currentUser.uid || "unknown",
+          text: replyText
+        },
+      ];
+
+      await updateDoc(postRef, { replies: updatedReplies });
+      await addPoints(currentUser.name, 5);
+    };
+
+
+
+    try {
+      await addDoc(collection(db, "communityPosts"), newPost);
+      await addPoints(currentUser.name, 10);
+    } catch (error) {
+      console.error("Error adding post:", error);
+    }
   };
+
 
 
   const handleDeletePost = async (postId) => {
@@ -289,6 +355,16 @@ const viewSubmittedFile = async (challengeId) => {
     "Daily LeetCode Tasks",
     "Guidelines",
   ];
+  const renderUserName = (name, uid) => {
+  const isDeveloper = DEVELOPER_UIDS.includes(uid);
+  return (
+    <>
+      {isDeveloper && <span className="developer-tool-icon" title="Developer">🛠️ </span>}
+      {name}
+    </>
+  );
+};
+
 
   const renderDiscussionSection = (placeholderText) => {
     return (
@@ -324,7 +400,7 @@ const viewSubmittedFile = async (challengeId) => {
           {posts.map((post) => (
             <div className="post-card" key={post.id}>
               <div className="post-header">
-                <strong>{post.user}</strong>
+                <strong>{renderUserName(post.user, post.userId)}</strong>
                 {post.time && (
                   <span className="time">
                     {new Date(post.time).toLocaleString()}
@@ -345,10 +421,26 @@ const viewSubmittedFile = async (challengeId) => {
               {post.imageUrl && (
                 <img src={post.imageUrl} alt="post" className="post-image" />
               )}
+              <div className="like-dislike-row" style={{ marginTop: "8px" }}>
+                <button
+                  className={post.likes?.includes(currentUser.name) ? "liked" : ""}
+                  onClick={() => handleLike(post.id, post)}
+                >
+                  👍 {post.likes?.length || 0}
+                </button>
+                <button
+                  className={post.dislikes?.includes(currentUser.name) ? "disliked" : ""}
+                  onClick={() => handleDislike(post.id, post)}
+                >
+                  👎 {post.dislikes?.length || 0}
+                </button>
+              </div>
+
               <div className="replies">
                 {post.replies?.map((rep, index) => (
                   <div className="reply" key={index}>
-                    <strong>{rep.user}:</strong> {rep.text}
+                    <strong>{renderUserName(rep.user, rep.userId)}:</strong>
+                    {rep.text}
                     <button
                       className="reply-btn"
                       onClick={() => addPoints(rep.user, 5)}
@@ -395,12 +487,12 @@ const viewSubmittedFile = async (challengeId) => {
                   <div className="leaderboard-left">
                     <span className="rank">#{index + 1}</span>
                     <span className="name">
-                      {user.name}
+                      {renderUserName(user.name, user.id)}
                       {index === 0 && " 🥇"}
                       {index === 1 && " 🥈"}
                       {index === 2 && " 🥉"}
-                      {DEVELOPER_UIDS.includes(user.id) && " 🛠️"}
                     </span>
+
                   </div>
                   <div className="score">{user.score}</div>
                 </div>

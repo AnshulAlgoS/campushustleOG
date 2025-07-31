@@ -18,7 +18,7 @@ import MentorshipAnim from '../assets/images/Teacher.json';
 import CommunityAnim from '../assets/images/Welcome.json';
 import logo from '../assets/images/CL1.png';
 import footerLogo from '../assets/images/CL2.png';
-import anshulImg from '../assets/images/anshulsaxena.png';
+import anshulImg from '../assets/images/anshulsaxena.jpg';
 import avanyaImg from '../assets/images/avanya.png';
 import mahiraImg from '../assets/images/mahiraa.png';
 import gourikaImg from '../assets/images/gourika1.png';
@@ -27,6 +27,8 @@ import CommunitySection from './community';
 import Scholarship from './scholarship';
 import './chatbot.css';
 import ChatbotButton from "./chatbot";
+import { db } from '../firebase';
+import { collectionGroup, getDocs, query, where } from "firebase/firestore";
 
 
 const slides = [slide1, slide2, slide3, slide4, slide5];
@@ -45,6 +47,7 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
   const testimonialRef = useRef(null);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const testimonialInterval = useRef(null);
+  const [promotions] = useState([]); 
   const searchKeywords = [
     { label: 'Freelance', path: '/freelance', keywords: ['freelance', 'gig', 'remote work'] },
     { label: 'Budgeting', path: '/budgeting', keywords: ['budget', 'expenses', 'planner'] },
@@ -157,8 +160,30 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
     setSearchQuery('');
     setShowSuggestions(false);
   };
+const [featured, setFeatured] = useState([]);
+const carouselRef = useRef(null);
 
 
+useEffect(() => {
+  const fetchPromotions = async () => {
+    const q = query(
+      collectionGroup(db, 'promotions'),
+      where('status', '==', 'active'),
+      where('paymentStatus', '==', 'paid')
+    );
+    const snapshot = await getDocs(q);
+    const results = snapshot.docs.map(doc => doc.data());
+    setFeatured(results);
+  };
+  fetchPromotions();
+}, []);
+
+const scrollCarousel = (dir) => {
+  const container = carouselRef.current;
+  if (!container) return;
+  const scrollAmount = 300;
+  container.scrollBy({ left: dir === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+};
 
   return (
     <>
@@ -353,6 +378,33 @@ const HomePage = ({ navigateTo, openAuthModal, user, handleLogout }) => {
         <div ref={communityRef} data-aos="fade-up">
           <CommunitySection />
         </div>
+        {featured.length > 0 && (
+          <section className="featured-carousel-section" data-aos="fade-up">
+            <h2 className="section-title">
+              <span className="light-text">Promoted </span>
+              <span className="dark-text">By Campus Hustlers</span>
+            </h2>
+            <div className="featured-carousel-container">
+              <button onClick={() => scrollCarousel('left')} className="carousel-arrow left">‹</button>
+
+              <div className="featured-carousel" ref={carouselRef}>
+                {featured.map((item, index) => (
+                  <div key={index} className="featured-card">
+                    <img src={item.featuredImage || '/default.jpg'} alt="promotion" />
+                    <div className="card-content">
+                      <h3>{item.title}</h3>
+                      <p>{item.description?.slice(0, 100)}...</p>
+                      <a href={item.linkTo} target="_blank" rel="noopener noreferrer">View</a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <button onClick={() => scrollCarousel('right')} className="carousel-arrow right">›</button>
+            </div>
+          </section>
+        )}
+
 
         <Scholarship showAll={false} isFullPage={false} />
         {/* Testimonials Section */}

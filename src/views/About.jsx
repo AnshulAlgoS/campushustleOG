@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import "./About.css";
 import TeamCarousel from "../components/teamCarousel";
-import anshulImg from "../assets/images/anshulsaxena.png";
+import anshulImg from "../assets/images/anshulsaxena.jpg";
 import avanyaImg from "../assets/images/avanya.png";
 import gourikaImg from "../assets/images/gourika1.png";
 import mahiraImg from "../assets/images/mahiraa.png";
 
-// SVG Icon components
 const Icons = {
   "bow-arrow": (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path d="M17 3h4v4" /><path d="M18.575 11.082a13 13 0 0 1 1.048 9.027 1.17 1.17 0 0 1-1.914.597L14 17" /><path d="M7 10 3.29 6.29a1.17 1.17 0 0 1 .6-1.91 13 13 0 0 1 9.03 1.05" /><path d="M7 14a1.7 1.7 0 0 0-1.207.5l-2.646 2.646A.5.5 0 0 0 3.5 18H5a1 1 0 0 1 1 1v1.5a.5.5 0 0 0 .854.354L9.5 18.207A1.7 1.7 0 0 0 10 17v-2a1 1 0 0 0-1-1z" /><path d="M9.707 14.293 21 3" /></svg>
@@ -69,6 +68,7 @@ const developers = [
     image: avanyaImg,
     icon: "heart",
     linkedin: "https://www.linkedin.com/in/avanya-sharma-21794b310/",
+    roleTagline:"Designs with purpose, codes with flair",
     github: "https://github.com/avanya06",
     description: "Develops frontend features and crafts visuals",
     glowTagline: "Turning code into vision"

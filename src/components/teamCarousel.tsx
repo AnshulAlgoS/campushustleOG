@@ -4,7 +4,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence, TargetAndTransition, VariantLabels } from 'framer-motion';
 import { cn } from '../lib/utils';
-import anshulImg from '../assets/images/anshulsaxena.png';
+import anshulImg from '../assets/images/anshulsaxena.jpg';
 import avanyaImg from '../assets/images/avanya.png';
 import gourikaImg from '../assets/images/gourika1.png';
 import mahiraImg from '../assets/images/mahiraa.png';

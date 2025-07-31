@@ -174,3 +174,11 @@
   text-align: right;
   display: block;
 }
+.applied-btn {
+  background-color: #ccc;
+  color: #555;
+  cursor: not-allowed;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}

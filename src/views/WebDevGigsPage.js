@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 
 const WebDevGigsPage = () => {
   const [gigs, setGigs] = useState([]);
+  const [appliedGigs, setAppliedGigs] = useState([]);
   const [selectedGig, setSelectedGig] = useState(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -20,18 +21,26 @@ const WebDevGigsPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchGigs = async () => {
+    const fetchGigsAndApplications = async () => {
       try {
-        const q = query(collection(db, 'gigs'), where('category', '==', 'Web Development'));
-        const querySnapshot = await getDocs(q);
-        const gigsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        const gigQuery = query(collection(db, 'gigs'), where('category', '==', 'Web Development'));
+        const gigSnapshot = await getDocs(gigQuery);
+        const gigsData = gigSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         setGigs(gigsData);
+
+        const user = auth.currentUser;
+        if (user) {
+          const appQuery = query(collection(db, 'applications'), where('applicantId', '==', user.uid));
+          const appSnapshot = await getDocs(appQuery);
+          const appliedIds = appSnapshot.docs.map(doc => doc.data().gigId);
+          setAppliedGigs(appliedIds);
+        }
       } catch (error) {
-        console.error('Error fetching gigs:', error);
+        console.error('Error fetching gigs or applications:', error);
       }
     };
 
-    fetchGigs();
+    fetchGigsAndApplications();
   }, []);
 
   const handleSubmit = async () => {
@@ -59,10 +68,14 @@ const WebDevGigsPage = () => {
         submittedAt: serverTimestamp()
       });
 
+      setAppliedGigs(prev => [...prev, selectedGig.id]);
+
+      // Clear modal + form
       setSelectedGig(null);
       setName('');
       setEmail('');
       setReason('');
+
       navigate('/dashboard');
     } catch (error) {
       console.error('Error submitting application:', error);
@@ -81,20 +94,27 @@ const WebDevGigsPage = () => {
 
       <div className="webdev-gigs-container">
         <div className="webdev-cards-wrapper">
-          {gigs.map((gig) => (
-            <div key={gig.id} className="webdev-card">
-              <div className="card-header">
-                <h2>{gig.title}</h2>
-              </div>
-              <div className="card-body">
-                <p>{gig.description}</p>
-                <div className="card-footer">
-                  <span className="gig-price">{gig.payment}</span>
-                  <button className="apply-btn" onClick={() => setSelectedGig(gig)}>Apply Now</button>
+          {gigs.map((gig) => {
+            const alreadyApplied = appliedGigs.includes(gig.id);
+            return (
+              <div key={gig.id} className="webdev-card">
+                <div className="card-header">
+                  <h2>{gig.title}</h2>
+                </div>
+                <div className="card-body">
+                  <p>{gig.description}</p>
+                  <div className="card-footer">
+                    <span className="gig-price">{gig.payment}</span>
+                    {alreadyApplied ? (
+                      <button disabled className="applied-btn">Applied</button>
+                    ) : (
+                      <button className="apply-btn" onClick={() => setSelectedGig(gig)}>Apply Now</button>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

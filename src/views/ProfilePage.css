@@ -62,13 +62,15 @@
 }
 
 /* Dashboard Content */
-.dashboard-content {
+.dashboard-content,
+.profile-content-wrapper {
   flex: 1;
   padding: 2rem 3rem;
   background-color: #f9f9fb;
 }
 
-.dashboard-content h2 {
+.dashboard-content h2,
+.profile-content-wrapper h2 {
   margin-bottom: 1.5rem;
   color: #572e54;
 }
@@ -159,6 +161,34 @@ textarea {
   background-color: #bbb;
 }
 
+/* Role-Based Subprofiles Section */
+.subprofile-section {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.subprofile-section h3 {
+  color: #572e54;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #e6e6e6;
+  padding-bottom: 8px;
+}
+
+.subprofile-section input {
+  width: 100%;
+  padding: 10px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fafafa;
+  margin-bottom: 1rem;
+}
+
 /* Responsive */
 @media screen and (max-width: 768px) {
   .profile-dashboard {
@@ -173,10 +203,11 @@ textarea {
   }
 
   .sidebar ul {
-    display: none; /* hide list on small screens */
+    display: none;
   }
 
-  .dashboard-content {
+  .dashboard-content,
+  .profile-content-wrapper {
     padding: 1rem;
   }
 }

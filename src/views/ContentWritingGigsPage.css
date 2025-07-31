@@ -162,3 +162,11 @@
   margin-left: auto;
   margin-right: auto;
 }
+.applied-btn {
+  background-color: #ccc;
+  color: #444;
+  cursor: not-allowed;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+}
