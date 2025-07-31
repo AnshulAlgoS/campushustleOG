@@ -8,6 +8,34 @@ exports.chat = onRequest(async (req, res) => {
 
   const { message } = req.body;
 
+  // === Add topic filtering here ===
+  const allowedTopics = [
+    "campushustle",
+    "mentor",
+    "mentorship",
+    "guidance",
+    "students",
+    "freelance",
+    "hackathons",
+    "community",
+    "career",
+    "learning",
+    "dsa",
+    "coding",
+    "projects"
+  ];
+
+  const lower = (message || "").toLowerCase();
+  const isRelevant = allowedTopics.some(topic => lower.includes(topic));
+
+  if (!isRelevant) {
+    return res.json({
+      reply:
+        "I am Mentor Buddy, here to assist only with CampusHustle topics like mentorship, hackathons, freelancing, coding, community, and career guidance."
+    });
+  }
+  // === End of filter ===
+
   try {
     const fwRes = await fetch("https://api.fireworks.ai/inference/v1/chat/completions", {
       method: "POST",

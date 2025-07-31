@@ -1,0 +1,63 @@
+[debug] [2025-07-31T18:24:03.573Z] ----------------------------------------------------------------------
+[debug] [2025-07-31T18:24:03.580Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\mahir\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init functions
+[debug] [2025-07-31T18:24:03.581Z] CLI Version:   14.11.1
+[debug] [2025-07-31T18:24:03.581Z] Platform:      win32
+[debug] [2025-07-31T18:24:03.581Z] Node Version:  v22.17.0
+[debug] [2025-07-31T18:24:03.581Z] Time:          Thu Jul 31 2025 23:54:03 GMT+0530 (India Standard Time)
+[debug] [2025-07-31T18:24:03.581Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-07-31T18:24:03.738Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-07-31T18:24:03.738Z] > authorizing via signed-in user (anshulsaxena9c6stc@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\mahir\OneDrive\Desktop\CH1\campushustle
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-07-31T18:24:12.132Z] Using project from CLI flag: campushustle91
+[debug] [2025-07-31T18:24:12.133Z] Checked if tokens are valid: true, expires at: 1753989507136
+[debug] [2025-07-31T18:24:12.133Z] Checked if tokens are valid: true, expires at: 1753989507136
+[debug] [2025-07-31T18:24:12.134Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/campushustle91 [none]
+[debug] [2025-07-31T18:24:12.937Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/campushustle91 200
+[debug] [2025-07-31T18:24:12.937Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/campushustle91 {"projectId":"campushustle91","projectNumber":"711593646304","displayName":"campushustle","name":"projects/campushustle91","resources":{"hostingSite":"campushustle91","realtimeDatabaseInstance":"campushustle91-default-rtdb"},"state":"ACTIVE","etag":"1_717a5bf6-7f48-49a0-9fc3-4172386eeb97"}
+[info] i  Using project campushustle91 (campushustle) 
+[info] 
+=== Functions Setup
+[debug] [2025-07-31T18:24:12.943Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-07-31T18:24:12.943Z] > authorizing via signed-in user (anshulsaxena9c6stc@gmail.com)
+[debug] [2025-07-31T18:24:12.943Z] [iam] checking project campushustle91 for permissions ["firebase.projects.get"]
+[debug] [2025-07-31T18:24:12.944Z] Checked if tokens are valid: true, expires at: 1753989507136
+[debug] [2025-07-31T18:24:12.944Z] Checked if tokens are valid: true, expires at: 1753989507136
+[debug] [2025-07-31T18:24:12.944Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/campushustle91:testIamPermissions [none]
+[debug] [2025-07-31T18:24:12.944Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/campushustle91:testIamPermissions x-goog-quota-user=projects/campushustle91
+[debug] [2025-07-31T18:24:12.944Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/campushustle91:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-07-31T18:24:14.497Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/campushustle91:testIamPermissions 200
+[debug] [2025-07-31T18:24:14.497Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/campushustle91:testIamPermissions {"permissions":["firebase.projects.get"]}
+[info] 
+Detected existing codebase(s): default
+
+[info] Let's create a new codebase for your functions.
+[info] A directory corresponding to the codebase will be created in your project
+[info] with sample code pre-configured.
+
+[info] See https://firebase.google.com/docs/functions/organize-functions for
+[info] more information on organizing your functions using codebases.
+
+[info] Functions can be deployed with firebase deploy.
+
