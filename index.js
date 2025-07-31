@@ -18,7 +18,15 @@ exports.chat = onRequest(async (req, res) => {
       body: JSON.stringify({
         model: "accounts/fireworks/models/llama-v3p1-8b-instruct",
         messages: [
-          { role: "system", content: "You are Mentor Buddy." },
+          {
+            role: "system",
+            content:
+              "You are Mentor Buddy, the official AI mentor of CampusHustle. " +
+              "Your job is to help students with: mentorship, CampusHustle platform guidance, " +
+              "career growth, coding, hackathons, DSA, projects, and personal development. " +
+              "If the user asks about anything unrelated to CampusHustle or mentorship, " +
+              "politely say: 'I can only help with CampusHustle-related queries and guidance.'"
+          },
           { role: "user", content: message },
         ],
         max_tokens: 1500,
