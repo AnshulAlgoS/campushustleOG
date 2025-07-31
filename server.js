@@ -7,10 +7,27 @@ import dotenv from "dotenv";
 
 dotenv.config();
 console.log("FIREWORKS_API_KEY:", process.env.FIREWORKS_API_KEY);
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+const allowedOrigins = [
+  "https://campushustle-ai.vercel.app", // your frontend URL
+  "http://localhost:3000"               // local dev
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
+
 app.use(bodyParser.json());
 
 // Chat endpoint
@@ -18,7 +35,6 @@ app.post("/api/chat", async (req, res) => {
   const { message } = req.body;
 
   try {
-    // Call Fireworks AI
     const fwRes = await fetch(
       "https://api.fireworks.ai/inference/v1/chat/completions",
       {
@@ -43,9 +59,9 @@ app.post("/api/chat", async (req, res) => {
     );
 
     const data = await fwRes.json();
-    const reply =
-  (data?.choices?.[0]?.message?.content || "Hmm...") 
-    .slice(0, 100); // limit length
+    const reply = (data?.choices?.[0]?.message?.content || "Hmm...")
+      .slice(0, 100);
+
     res.json({ reply });
   } catch (err) {
     console.error(err);
