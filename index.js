@@ -10,22 +10,24 @@ app.use(express.json());
 
 // ===== Firebase Admin Initialization =====
 let serviceAccountConfig;
-try {
-  if (process.env.FIREBASE_SERVICE_ACCOUNT_JSON) {
-    // Production (Render): parse from environment variable
+
+// If running on Render (production) and FIREBASE_SERVICE_ACCOUNT_JSON is set
+if (process.env.FIREBASE_SERVICE_ACCOUNT_JSON) {
+  try {
     serviceAccountConfig = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON);
-    console.log("🔥 Using FIREBASE_SERVICE_ACCOUNT_JSON from env");
-  } else {
-    // Local: use the JSON file
-    serviceAccountConfig = require("./serviceAccountKey.json");
-    console.log("🔥 Using local serviceAccountKey.json");
+    console.log("🔥 Loaded Firebase credentials from environment");
+  } catch (err) {
+    console.error("Error parsing FIREBASE_SERVICE_ACCOUNT_JSON:", err);
   }
-} catch (err) {
-  console.error(" Error loading Firebase service account:", err);
+} else {
+  // Local: fallback to the JSON file
+  console.log("🔥 Using local serviceAccountKey.json");
+  serviceAccountConfig = require("./serviceAccountKey.json");
 }
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccountConfig),
+  projectId: serviceAccountConfig.project_id, // explicitly set
   databaseURL:
     "https://campushustle91-default-rtdb.asia-southeast1.firebasedatabase.app",
 });
@@ -35,8 +37,10 @@ const db = admin.firestore();
 // ========== Mentor Buddy Route ==========
 app.post("/api/chat", async (req, res) => {
   const { message, userId } = req.body;
+  console.log("Incoming /api/chat:", { message, userId });
 
   try {
+    // Optionally, fetch user dashboard from Firestore
     let userContext = "";
     if (userId) {
       try {
@@ -44,20 +48,17 @@ app.post("/api/chat", async (req, res) => {
         if (userDoc.exists) {
           const data = userDoc.data();
           userContext = `\nUser Info: ${JSON.stringify(data)}`;
+          console.log("Fetched user context from Firestore.");
+        } else {
+          console.log("No Firestore data found for user:", userId);
         }
       } catch (err) {
-        console.error(" Error fetching user data from Firestore:", err);
+        console.error("🔥 Error fetching user data from Firestore:", err);
       }
     }
 
-    // Ensure API key is present
-    if (!process.env.FIREWORKS_API_KEY) {
-      console.error(" Missing FIREWORKS_API_KEY");
-      return res.status(500).json({ reply: "Server configuration error." });
-    }
-
-    console.log("🔗 Calling Fireworks AI API...");
-
+    // Call Fireworks AI
+    console.log("Sending request to Fireworks AI...");
     const fwRes = await fetch(
       "https://api.fireworks.ai/inference/v1/chat/completions",
       {
@@ -85,18 +86,21 @@ app.post("/api/chat", async (req, res) => {
       }
     );
 
-    const data = await fwRes.json();
-
-    // Log response for debugging if something goes wrong
+    // Check if Fireworks responded OK
     if (!fwRes.ok) {
-      console.error(" Fireworks API Error:", fwRes.status, data);
-      return res.status(500).json({ reply: "AI backend error." });
+      const errText = await fwRes.text();
+      console.error("🔥 Fireworks API Error:", fwRes.status, errText);
+      return res
+        .status(500)
+        .json({ reply: "Error talking to AI (Fireworks API error)." });
     }
 
+    const data = await fwRes.json();
+    console.log("Fireworks API response received:", JSON.stringify(data, null, 2));
     const reply = data?.choices?.[0]?.message?.content || "No response.";
     res.json({ reply });
   } catch (err) {
-    console.error("Unexpected error in /api/chat:", err);
+    console.error("🔥 Server error in /api/chat:", err);
     res.status(500).json({ reply: "Error talking to AI." });
   }
 });
@@ -109,5 +113,5 @@ app.get("/", (req, res) => {
 // Start server
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(` Server is running on port ${PORT}`);
+  console.log(`🚀 Server is running on port ${PORT}`);
 });
