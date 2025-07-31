@@ -23,9 +23,9 @@ export default function ChatbotButton() {
 
     try {
       const res = await fetch("https://campushustle.onrender.com/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userMessage.content }),
+       method: "POST",
+       headers: { "Content-Type": "application/json" },
+       body: JSON.stringify({ message: input }),
       });
 
       const data = await res.json();
