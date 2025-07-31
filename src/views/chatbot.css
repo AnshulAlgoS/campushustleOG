@@ -1,3 +1,4 @@
+/* Chatbot floating button */
 .chatbot-button {
   position: fixed;
   bottom: 20px;
@@ -48,8 +49,14 @@
   position: fixed;
   bottom: 100px;
   right: 20px;
-  width: 320px;
-  height: 400px;
+
+  /* Bigger size */
+  width: 420px;
+  height: 550px;
+
+  /* Responsive max */
+  max-width: 90vw;
+  max-height: 80vh;
 
   /* Gradient background */
   background: linear-gradient(
@@ -76,6 +83,7 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Header */
 .chatbot-panel-header {
   background: linear-gradient(90deg, #9b5cff, #d86bff);
   color: white;
@@ -95,6 +103,7 @@
   cursor: pointer;
 }
 
+/* Messages area */
 .chatbot-panel-body {
   flex: 1;
   padding: 12px;
@@ -104,6 +113,7 @@
   flex-direction: column;
 }
 
+/* Chat messages */
 .chat-message {
   max-width: 75%;
   padding: 8px 12px;
@@ -127,28 +137,39 @@
 
 .chatbot-input-area {
   display: flex;
+  align-items: stretch;  /* ensures same height */
   padding: 8px;
-  border-top: 1px solid #ddd;
   background: #fff;
+  border-top: 1px solid #ddd;
 }
 
 .chatbot-input-area input {
   flex: 1;
-  padding: 8px 12px;
+  padding: 10px 12px;
   border: 1px solid #ccc;
   border-radius: 8px 0 0 8px;
-  outline: none;
   font-size: 14px;
+  outline: none;
+  color: #000;          /* black text */
+  background: #fff;     /* white background */
 }
 
 .chatbot-input-area button {
   background: #9b5cff;
   color: white;
-  padding: 0 12px;
   border: none;
   border-radius: 0 8px 8px 0;
+  padding: 0 16px;
   cursor: pointer;
   font-size: 14px;
+  display: flex;         /* center text vertically */
+  align-items: center;   /* center vertically */
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.chatbot-input-area button:hover {
+  background: #8148d6;
 }
 
 /* Pulsing neon effect */
@@ -161,5 +182,24 @@
   }
   100% {
     box-shadow: 0 0 4px #ba9ce1, 0 0 8px #ba9ce1;
+  }
+}
+
+/* Responsive adjustments for panel */
+@media (max-width: 768px) {
+  .chatbot-panel {
+    width: 90vw;
+    height: 70vh;
+    right: 5%;
+    bottom: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chatbot-panel {
+    width: 95vw;
+    height: 65vh;
+    right: 2.5%;
+    bottom: 80px;
   }
 }
