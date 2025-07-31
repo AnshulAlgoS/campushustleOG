@@ -35,13 +35,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-  "start": "node index.js",
-  "client": "react-scripts start",
-  "build": "react-scripts build",
-  "test": "react-scripts test",
-  "eject": "react-scripts eject"
-},
-
+    "start": "node index.js",
+    "client": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
