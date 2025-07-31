@@ -19,7 +19,6 @@ import CommunityAnim from '../assets/images/Welcome.json';
 import logo from '../assets/images/CL1.png';
 import footerLogo from '../assets/images/CL2.png';
 import anshulImg from '../assets/images/anshulsaxena.jpg';
-import anshulImg from '../assets/images/anshulsaxena.jpg';
 import avanyaImg from '../assets/images/avanya.png';
 import mahiraImg from '../assets/images/mahiraa.png';
 import gourikaImg from '../assets/images/gourika1.png';
