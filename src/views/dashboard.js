@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { auth, db } from '../firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import './dashboard.css';
+import { updateDoc, increment } from 'firebase/firestore';
+import { doc, getDoc, setDoc, addDoc, serverTimestamp, onSnapshot } from 'firebase/firestore';
+
 
 import img1 from '../assets/images/h1.jpeg';
 import img2 from '../assets/images/h2.jpeg';
@@ -20,6 +23,7 @@ import img13 from '../assets/images/w5.jpeg';
 import img14 from '../assets/images/w6.jpeg';
 import img15 from '../assets/images/w7.jpeg';
 import img16 from '../assets/images/w8.jpeg';
+import { deductCoins } from '../walletUtils';
 
 const fallbackImages = [img1, img2, img3, img4, img5, img6, img7, img8];
 const fallbackImages2 = [img9, img10, img11, img12, img13, img14, img15, img16];
@@ -34,15 +38,35 @@ export default function DashboardPage() {
   const [organizedHackathons, setOrganizedHackathons] = useState([]);
   const [mentorshipsActive, setMentorshipsActive] = useState(0);
   const [promotions, setPromotions] = useState([]);
+  const [walletBalance, setWalletBalance] = useState(0);
+  const [selectedPlan, setSelectedPlan] = useState('');
+
 
 
   useEffect(() => {
     const unsub = auth.onAuthStateChanged(u => {
       setUser(u || null);
+
+      if (u) {
+        const userRef = doc(db, 'users', u.uid);
+        const unsubWallet = onSnapshot(userRef, (snap) => {
+          const data = snap.data();
+          setWalletBalance(data?.campusCoins || 0);
+        });
+
+        setUser(u);
+        setLoading(false);
+
+        return () => unsubWallet();
+      }
+
+
       setLoading(false);
     });
+
     return () => unsub();
   }, []);
+
   useEffect(() => {
     const fetchUserPromotions = async () => {
       if (!user) return;
@@ -84,6 +108,32 @@ export default function DashboardPage() {
     };
     fetchAll();
   }, [user]);
+
+  const handleCoinPurchase = async (user, coins = 100) => {
+    try {
+      // 1. Record the purchase
+      const purchaseRef = await addDoc(collection(db, 'coinPurchase'), {
+        uid: user.uid,
+        email: user.email,
+        coinsPurchased: coins,
+        timestamp: serverTimestamp(),
+        status: 'success',
+        method: 'simulated',
+      });
+
+      // 2. Update user's coin balance
+      const userRef = doc(db, 'users', user.uid);
+      await updateDoc(userRef, {
+        campusCoins: increment(coins),
+      });
+
+      console.log('✅ Coins added and fake purchase recorded:', purchaseRef.id);
+      alert(`Fake purchase of ${coins} coins successful!`);
+    } catch (error) {
+      console.error('❌ Error in fake coin purchase:', error);
+      alert('Purchase failed. Try again.');
+    }
+  };
 
   if (loading) return <p style={{ textAlign: 'center' }}>🔄 Loading your dashboard...</p>;
   if (!user) return <p style={{ textAlign: 'center' }}>⚠️ Please login to view dashboard.</p>;
@@ -184,7 +234,7 @@ export default function DashboardPage() {
       {/* promotions created by user */}
       {promotions.length > 0 && (
         <>
-          <h3 className="section-headings">Your Active Promotions</h3>
+          <h3 className="section-heading">Your Active Promotions</h3>
           <div className="registered-hackathons-cards">
             {promotions.map((promo, idx) => (
               <div className="registered-cards" key={promo.id}>
@@ -206,6 +256,34 @@ export default function DashboardPage() {
           </div>
         </>
       )}
+      <h3 className="section-heading">Campus Wallet</h3>
+      <div className="wallet-card">
+        <div className="wallet-balance">
+          <h4>Campus Coins Balance</h4>
+          <p>{walletBalance} 🪙</p>
+        </div>
+        <div className="wallet-actions">
+          <h5>Purchase Campus Coins</h5>
+          <select value={selectedPlan} onChange={e => setSelectedPlan(e.target.value)}>
+            <option value="">Select Plan</option>
+            <option value="100">₹100 for 1000 coins</option>
+            <option value="200">₹200 for 2000 coins</option>
+            <option value="500">₹500 for 5000 coins</option>
+          </select>
+          <button
+            onClick={() => {
+              const coins = parseInt(selectedPlan) * 10; // ₹100 = 1000 coins
+              if (!selectedPlan) return alert('Please select a plan');
+              handleCoinPurchase(user, coins);
+            }}
+          >
+            Simulate Coin Purchase
+          </button>
+
+
+        </div>
+      </div>
+
 
     </div>
   );

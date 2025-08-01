@@ -90,7 +90,7 @@ const About = () => {
       <h1 className="campus-title">Campus Hustle</h1>
       <p className="campus-tagline">Empowering Students to Earn, Learn & Connect</p>
 
-      <h2 className="section-heading">
+      <h2 className="sections-heading">
         Meet The Hustlers With A Repo. <br />
         <span className="section-subline">— Pushing code. Pulling impact.</span>
       </h2>

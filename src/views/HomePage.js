@@ -395,34 +395,7 @@ useEffect(() => {
         </div>
         {featured.length > 0 && (
           <section className="featured-carousel-section" data-aos="fade-up">
-            <h2 className="section-title">
-              <span className="light-text">Promoted </span>
-              <span className="dark-text">By Campus Hustlers</span>
-            </h2>
-            <div className="featured-carousel-container">
-              <button onClick={() => scrollCarousel('left')} className="carousel-arrow left">‹</button>
-
-              <div className="featured-carousel" ref={carouselRef}>
-                {featured.map((item, index) => (
-                  <div key={index} className="featured-card">
-                    <img src={item.featuredImage || '/default.jpg'} alt="promotion" />
-                    <div className="card-content">
-                      <h3>{item.title}</h3>
-                      <p>{item.description?.slice(0, 100)}...</p>
-                      <a href={item.linkTo} target="_blank" rel="noopener noreferrer">View</a>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <button onClick={() => scrollCarousel('right')} className="carousel-arrow right">›</button>
-            </div>
-          </section>
-        )}
-
-        {featured.length > 0 && (
-          <section className="featured-carousel-section" data-aos="fade-up">
-            <h2 className="section-title">
+            <h2 className="section-tittle">
               <span className="light-text">Promoted </span>
               <span className="dark-text">By Campus Hustlers</span>
             </h2>

@@ -53,7 +53,7 @@ export default function PromoteModal({ user, type, closeModal }) {
                 <button type="button" className="save-btn" onClick={handleSubmit}>
                     Submit
                 </button>
-                <button onClick={() => console.log('🧪 Test button clicked')}>Test</button>
+                <button onClick={() => console.log('🧪 Test button clicked')}>Submit</button>
 
 
                 <button className="cancel-btn" onClick={closeModal}>Cancel</button>

@@ -10,7 +10,7 @@
 
 /* Only for homepage */
 .scholarship-container.homepage {
-  background: linear-gradient(to top, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
+  background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
 }
 
 /* For AllScholarshipsPage */

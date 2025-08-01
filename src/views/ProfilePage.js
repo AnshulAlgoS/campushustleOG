@@ -3,6 +3,8 @@ import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import './ProfilePage.css';
 import PromoteModal from 'components/PromoteModal';
+import { deductCoins } from '../walletUtils';
+
 
 export default function ProfilePage({ user, userProfile }) {
     const [formData, setFormData] = useState({
@@ -64,6 +66,28 @@ export default function ProfilePage({ user, userProfile }) {
             }
         }));
     };
+
+    const handlePromoteClick = async (type) => {
+        if (!user?.uid) return alert("You must be logged in.");
+
+        const costMap = {
+            freelancer: 1000,
+            mentorship: 2000,
+            hackathon: 3000
+        };
+
+        const cost = costMap[type];
+        if (!cost) return alert("Invalid promotion type");
+
+        try {
+            await deductCoins(user.uid, cost);
+            openPromoteModal(type);
+        } catch (error) {
+            alert(error.message);
+        }
+    };
+
+
 
     const toggleTag = (tag) => {
         setFormData(prev => ({
@@ -133,7 +157,11 @@ export default function ProfilePage({ user, userProfile }) {
                         value={formData.freelancerProfile.category}
                         onChange={(e) => handleSubProfileChange('freelancerProfile', 'category', e.target.value)}
                     />
-                    <button className="promote-btn" onClick={() => openPromoteModal('freelancer')}> Promote My Services</button>
+                    <button className="promote-btn" onClick={() => handlePromoteClick('freelancer')}>
+                        Promote My Services
+                    </button>
+
+
                 </div>
             )}
 
@@ -155,7 +183,11 @@ export default function ProfilePage({ user, userProfile }) {
                         value={formData.eventOrganizerProfile.pastEvents}
                         onChange={(e) => handleSubProfileChange('eventOrganizerProfile', 'pastEvents', e.target.value)}
                     />
-                    <button className="promote-btn" onClick={() => openPromoteModal('organizer')}>🚀 Promote My Hackathon</button>
+                    <button className="promote-btn" onClick={() => handlePromoteClick('hackathon')}>
+                        Promote My Hackathon
+                    </button>
+
+
                 </div>
             )}
 
@@ -177,7 +209,11 @@ export default function ProfilePage({ user, userProfile }) {
                         value={formData.mentorProfile.availability}
                         onChange={(e) => handleSubProfileChange('mentorProfile', 'availability', e.target.value)}
                     />
-                    <button className="promote-btn" onClick={() => openPromoteModal('mentor')}>🚀 Promote My Mentorship</button>
+                    <button className="promote-btn" onClick={() => handlePromoteClick('mentorship')}>
+                        Promote My Services
+                    </button>
+
+
                 </div>
             )}
 
@@ -190,7 +226,7 @@ export default function ProfilePage({ user, userProfile }) {
                     <PromoteModal user={user} type={promoteType} closeModal={closeModal} />
                 </>
             )}
-            
+
         </div>
     );
 }
