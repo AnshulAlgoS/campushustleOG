@@ -86,7 +86,7 @@ const GraphicDesignGigsPage = () => {
 
   return (
     <>
-      <div className="design-header">
+      <div className="designs-header">
         <h1 className="design-title">Graphic Design Gigs</h1>
         <p className="design-subtitle">
           Discover student-friendly design gigs to grow your skills and build a creative portfolio.

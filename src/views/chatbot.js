@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import "./chatbot.css"; // keep your custom CSS
+import "./chatbot.css"; 
 import { db } from '../firebase';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { collection, addDoc, serverTimestamp, doc, getDoc } from 'firebase/firestore';
@@ -22,7 +22,6 @@ export default function ChatbotButton() {
     return () => unsubscribe();
   }, []);
 
-  // Scroll to latest message
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -85,7 +84,8 @@ export default function ChatbotButton() {
         onClick={() => setOpen(!open)}
         className="chatbot-button"
       >
-        <img src="bot.jpeg" alt="Chatbot" />
+        <img src={botImg} alt="Chatbot" className="bot-icon" />
+
       </button>
 
       {open && (

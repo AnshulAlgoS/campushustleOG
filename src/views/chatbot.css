@@ -108,7 +108,7 @@
   flex: 1;
   padding: 12px;
   overflow-y: auto;
-  background: transparent; /* Panel body is transparent over gradient */
+  background: transparent; 
   display: flex;
   flex-direction: column;
 }
@@ -137,7 +137,7 @@
 
 .chatbot-input-area {
   display: flex;
-  align-items: stretch;  /* ensures same height */
+  align-items: stretch; 
   padding: 8px;
   background: #fff;
   border-top: 1px solid #ddd;
@@ -150,8 +150,8 @@
   border-radius: 8px 0 0 8px;
   font-size: 14px;
   outline: none;
-  color: #000;          /* black text */
-  background: #fff;     /* white background */
+  color: #000;          
+  background: #fff;    
 }
 
 .chatbot-input-area button {
@@ -162,8 +162,8 @@
   padding: 0 16px;
   cursor: pointer;
   font-size: 14px;
-  display: flex;         /* center text vertically */
-  align-items: center;   /* center vertically */
+  display: flex;         
+  align-items: center;   
   justify-content: center;
   transition: background 0.2s ease;
 }
