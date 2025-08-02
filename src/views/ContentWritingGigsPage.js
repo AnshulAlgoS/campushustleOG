@@ -16,7 +16,6 @@ import { Link } from 'react-router-dom';
 import UserMenu from 'components/UserMenu';
 
 const ContentWritingGigsPage = ({ user, handleLogout, onProfileClick, openAuthModal }) => {
-
   const [gigs, setGigs] = useState([]);
   const [appliedGigs, setAppliedGigs] = useState([]);
   const [selectedGig, setSelectedGig] = useState(null);
@@ -24,6 +23,7 @@ const ContentWritingGigsPage = ({ user, handleLogout, onProfileClick, openAuthMo
   const [email, setEmail] = useState('');
   const [reason, setReason] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [expandedGigs, setExpandedGigs] = useState([]);
 
   const navigate = useNavigate();
 
@@ -76,12 +76,10 @@ const ContentWritingGigsPage = ({ user, handleLogout, onProfileClick, openAuthMo
       });
 
       setAppliedGigs(prev => [...prev, selectedGig.id]);
-
       setSelectedGig(null);
       setName('');
       setEmail('');
       setReason('');
-
       navigate('/dashboard');
     } catch (error) {
       console.error('Application submission failed:', error);
@@ -89,97 +87,40 @@ const ContentWritingGigsPage = ({ user, handleLogout, onProfileClick, openAuthMo
     }
   };
 
+  const toggleExpand = (gigId) => {
+    setExpandedGigs((prev) =>
+      prev.includes(gigId)
+        ? prev.filter(id => id !== gigId)
+        : [...prev, gigId]
+    );
+  };
+
   return (
-    <> 
-     <div className="content-header">
-              {/* Top Strip */}
-              <div className="top-strip">
-                <div className="logo-combo">
-                  <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
-                  <span className="logo-text">CampusHustle</span>
-                </div>
-    
-                {/*  Desktop Nav */}
-                <nav className="navbar-desktop">
-                  <ul className="strip-nav">
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/freelance">Freelance</Link></li>
-                    <li><Link to="/hackathon">Hackathons</Link></li>
-                    <li>
-                      <Link
-                        to="/"
-                        state={{ scrollTo: 'community' }}
-                        onClick={() => { }}
-                        className="desktop-link-btn"
-                      >
-                        Community
-                      </Link>
-                    </li>
-    
-                    <li><Link to="/about">About Us</Link></li>
-                    <li>
-                      {user ? (
-                        <UserMenu
-                          user={user}
-                          onLogout={handleLogout}
-                          onProfileClick={onProfileClick}
-                        />
-                      ) : (
-                        <button
-                          className="signup"
-                          onClick={() => openAuthModal()}
-                        >
-                          Get Started
-                        </button>
-                      )}
-                    </li>
-                  </ul>
-                </nav>
-    
-    
-                {/* Mobile Nav */}
-                <div className="navbar-mobile">
-                  <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
-    
-                  {menuOpen && (
-                    <ul className={`mobile-nav ${menuOpen ? 'open' : ''}`}>
-                      <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
-                      <li><Link to="/freelance" onClick={() => setMenuOpen(false)}>Freelance</Link></li>
-                      <li><Link to="/hackathon" onClick={() => setMenuOpen(false)}>Hackathons</Link></li>
-                      <li><Link to="/" state={{ scrollTo: 'community' }} onClick={() => setMenuOpen(false)}>Community</Link></li>
-                      <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
-                      </li>
-                      <li>
-                        {user ? (
-                          <UserMenu
-                            user={user}
-                            onLogout={() => {
-                              setMenuOpen(false);
-                              handleLogout();
-                            }}
-                            onProfileClick={() => {
-                              setMenuOpen(false);
-                              onProfileClick();
-                            }}
-                          />
-                        ) : (
-                          <button
-                            className="signup"
-                            onClick={() => {
-                              setMenuOpen(false);
-                              openAuthModal();
-                            }}
-                          >
-                            Get Started
-                          </button>
-                        )}
-                      </li>
-                    </ul>
-                  )}
-                </div>
-    
-    
-              </div>
+    <>
+      <div className="content-header">
+        <div className="top-strip">
+          <div className="logo-combo">
+            <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
+            <span className="logo-text">CampusHustle</span>
+          </div>
+          <nav className="navbar-desktop">
+            <ul className="strip-nav">
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/freelance">Freelance</Link></li>
+              <li><Link to="/hackathon">Hackathons</Link></li>
+              <li><Link to="/" state={{ scrollTo: 'community' }}>Community</Link></li>
+              <li><Link to="/about">About Us</Link></li>
+              <li>
+                {user ? (
+                  <UserMenu user={user} onLogout={handleLogout} onProfileClick={onProfileClick} />
+                ) : (
+                  <button className="signup" onClick={openAuthModal}>Get Started</button>
+                )}
+              </li>
+            </ul>
+          </nav>
+        </div>
+
         <h1 className="content-title">Content Writing Gigs</h1>
         <p className="content-subtitle">
           Find exciting writing gigs to sharpen your storytelling and build your writing portfolio.
@@ -190,29 +131,32 @@ const ContentWritingGigsPage = ({ user, handleLogout, onProfileClick, openAuthMo
         <div className="gigs-wrapper">
           {gigs.map((gig) => {
             const alreadyApplied = appliedGigs.includes(gig.id);
+            const isExpanded = expandedGigs.includes(gig.id);
+            const descriptionPreview = gig.description.split(' ').slice(0, 10).join(' ') + '...';
+
             return (
-              <div key={gig.id} className="gig-card">
+              <div key={gig.id} className="gig-card glassy-card">
                 <div className="card-header">
                   <h2>{gig.title}</h2>
                 </div>
                 <div className="card-body">
-                  <p>{gig.description}</p>
+                  <p>{isExpanded ? gig.description : descriptionPreview}</p>
+                  <button onClick={() => toggleExpand(gig.id)} className="readmore-btn">
+                    {isExpanded ? "Show Less" : "Read More"}
+                  </button>
+
+                  <p><strong>💰 Payment:</strong> {gig.payment}</p>
+                  <p><strong>🕒 Deadline:</strong> {gig.deadline || "Not specified"}</p>
+
                   <div className="card-footer">
-                    <span className="gig-price">{gig.payment}</span>
                     <div className="btn-group">
-                      <button
-                        className="details-btn"
-                        onClick={() => navigate(`/gig/${gig.id}`)}
-                      >
+                      <button className="details-btn" onClick={() => navigate(`/gig/${gig.id}`)}>
                         Details
                       </button>
                       {alreadyApplied ? (
                         <button disabled className="applied-btn">Applied</button>
                       ) : (
-                        <button
-                          className="apply-btn"
-                          onClick={() => setSelectedGig(gig)}
-                        >
+                        <button className="apply-btn" onClick={() => setSelectedGig(gig)}>
                           Apply Now
                         </button>
                       )}
@@ -222,7 +166,6 @@ const ContentWritingGigsPage = ({ user, handleLogout, onProfileClick, openAuthMo
               </div>
             );
           })}
-
         </div>
 
         {selectedGig && (
@@ -231,18 +174,8 @@ const ContentWritingGigsPage = ({ user, handleLogout, onProfileClick, openAuthMo
               <h2>{selectedGig.title}</h2>
               <p>{selectedGig.description}</p>
               <p><strong>Budget:</strong> {selectedGig.payment}</p>
-              <input
-                type="text"
-                placeholder="Your Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <input
-                type="email"
-                placeholder="Your Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
+              <input type="text" placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)} />
+              <input type="email" placeholder="Your Email" value={email} onChange={(e) => setEmail(e.target.value)} />
               <textarea
                 placeholder="Why are you suitable for this gig?"
                 value={reason}
