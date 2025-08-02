@@ -664,58 +664,58 @@ header::before {
     font-size: 1.75rem;
   }
 }
+/* FOOTER BASE */
 footer {
-  background-color: #000000;
+  background-color: #000;
   color: #fff;
-  padding: 20px;
-  overflow-x: auto;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
 }
+
 
 .footer-container {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: nowrap;
-  min-width: 900px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
 }
 
-
+/* LOGO SECTION */
 .footer-logo {
+  flex: 1 1 200px;
   display: flex;
   align-items: center;
-  margin-right: 50px;
-  min-width: 150px;
+  gap: 1rem;
 }
 
 .footer-logo img {
-  width: 120px;
-  height: 60px;
-  margin-right: 10px;
+  width: 100px;
+  height: auto;
 }
 
 .footer-logo h2 {
-  font-size: 20px;
-  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
 }
 
+/* COLUMN SECTION */
 .footer-column {
-  display: inline-block;
-  margin-right: 50px;
+  flex: 1 1 150px;
   min-width: 150px;
 }
 
 .footer-column h4 {
+  font-size: 1.1rem;
   margin-bottom: 10px;
-  font-size: 16px;
-  border-bottom: 2px solid #555;
-  display: inline-block;
+  border-bottom: 2px solid #444;
   padding-bottom: 5px;
 }
 
 .footer-column ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .footer-column ul li {
@@ -730,6 +730,24 @@ footer {
 
 .footer-column ul li a:hover {
   color: #fff;
+}
+
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-logo {
+    margin-bottom: 2rem;
+    justify-content: flex-start;
+  }
+
+  .footer-column {
+    margin-bottom: 1.5rem;
+    width: 100%;
+  }
 }
 
 /* Target the entire link component */
