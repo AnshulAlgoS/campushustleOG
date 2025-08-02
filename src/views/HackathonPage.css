@@ -1,6 +1,3 @@
-/* =======================
-   Global Styles
-======================= */
 
 body {
   margin: 0;
@@ -21,10 +18,6 @@ a {
   text-decoration: none;
   color: inherit;
 }
-
-/* =======================
-   Navbar
-======================= */
 
 .translucent-strip {
   width: 100%;
@@ -68,10 +61,6 @@ a {
   color: #d48cff;
 }
 
-/* =======================
-   Hackathon Main Page Buttons
-======================= */
-
 .hackathon-buttons {
   margin-top: 150px;
   display: flex;
@@ -96,25 +85,17 @@ a {
   transform: scale(1.05);
 }
 
-/* =======================
-   Hero Section (Explore Page)
-======================= */
-
 .background-effect {
   position: relative;
   padding: 60px 20px;
   text-align: center;
   color: white;
-  background: transparent; /* transparent so the gradient from body shows */
+  background: transparent; 
 }
 
 .hero-shape {
-  display: none; /* remove abstract shapes */
+  display: none; 
 }
-
-/* =======================
-   Search Header
-======================= */
 
 .search-header {
   display: flex;
@@ -135,20 +116,12 @@ a {
   font-size: 16px;
 }
 
-/* =======================
-   Hackathon Grid
-======================= */
-
 .hackathon-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 25px;
   padding: 0 60px 60px 60px;
 }
-
-/* =======================
-   Hackathon Card
-======================= */
 
 .hackathon-card {
   background: #7d5ba6;
@@ -175,10 +148,6 @@ a {
   font-size: 18px;
   margin: 8px 0;
 }
-
-/* =======================
-   Organise Hackathon Form
-======================= */
 
 .organise-hackathon-form {
   max-width: 700px;
@@ -223,10 +192,6 @@ a {
   cursor: pointer;
   width: 100%;
 }
-
-/* =======================
-   Participation Guidelines
-======================= */
 
 .guidelines-page {
   padding: 60px;
