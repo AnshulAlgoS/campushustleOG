@@ -19,28 +19,37 @@
   gap: 30px;
 }
 
+/* === Transparent & Glassy Card === */
 .video-gigs-container .gig-card {
-  background: linear-gradient(135deg, #f37a10, hsl(30, 90%, 77%));
+  background: linear-gradient(135deg, rgba(243, 122, 16, 0.35), rgba(255, 214, 165, 0.2));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   width: 280px;
   border-radius: 16px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
   color: white;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .video-gigs-container .gig-card:hover {
   transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
 }
 
 .video-gigs-container .card-header {
   padding: 20px;
   font-size: 1.4rem;
   font-weight: bold;
+  color: #fff;
 }
 
 .video-gigs-container .card-body {
   padding: 20px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #fdfdfd;
 }
 
 .video-gigs-container .card-footer {
@@ -52,19 +61,35 @@
 
 .gig-price {
   font-weight: bold;
+  color: #fff;
 }
 
+/* === Apply & Details Buttons === */
 .card-footer button {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.9);
   color: #de4924;
   padding: 8px 14px;
   border-radius: 8px;
   border: none;
   font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* Modal styles */
+.card-footer button:hover {
+  background-color: #ffd8c1;
+}
+
+.applied-btn {
+  background-color: #ccc;
+  color: #555;
+  cursor: not-allowed;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+/* === Modal Styles === */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -113,8 +138,10 @@
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
-  font-family: 'Segoe UI',
+  font-family: 'Segoe UI', sans-serif;
 }
+
+/* === Header Section === */
 .video-header {
   background: linear-gradient(135deg, #ffecd2, #fcb69f);
   padding: 0px 0px 60px;
@@ -134,12 +161,4 @@
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
-}
-.applied-btn {
-  background-color: #ccc;
-  color: #555;
-  cursor: not-allowed;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
 }
