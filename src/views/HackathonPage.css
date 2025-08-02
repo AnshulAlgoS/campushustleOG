@@ -5,27 +5,6 @@ html, body {
   background-color: transparent;
 }
 
-.translucent-strip {
- 
-  backdrop-filter: blur(10px);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 10px 20px;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: transparent;
-}
-
-
 .hackathon-page {
   min-height: 100vh;
   width: 100vw;
@@ -36,43 +15,6 @@ body {
   align-items: center;
   box-sizing: border-box;
 }
-
-.strip-logo {
-  height: 70px;
-}
-.logo-text {
-  margin-left: 10px;
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #fff;
-}
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
-
-.strip-nav {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-
-.strip-nav li a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.strip-nav li .signup {
-  border: 2px solid white;
-  padding: 5px 12px;
-  border-radius: 8px;
-}
-
 .hackathon-list-page {
   background-size: cover;
   background-position: center;
@@ -140,39 +82,12 @@ body {
   padding: 0 20px;
 }
 
-.hackathon-card {
-  background-color: rgba(255,255,255,0.2);
-  border: 1px solid #000;
-  border-radius: 12px;
-  padding: 15px;
-  backdrop-filter: blur(8px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  color: #dad4d4;
-  transition: all 0.3s ease;
-  width: 100%; /* ensures it fits within the grid column */
-}
-
-
 .hackathon-btn:hover {
   background-color: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(8px);
   transform: scale(1.06);
   box-shadow: inset 0 0 0 2px black;
 }
-
-/* Hackathon Grid */
-.hackathon-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
-  margin: 60px auto 0 auto;
-  padding: 0 20px;
-}
-
 /* Card */
 .hackathon-card {
   background-color: rgb(162, 127, 171);
@@ -209,16 +124,6 @@ body {
   margin-bottom: 10px;
   background-color: rgba(255, 255, 255, 0.3);
 }
-
-/* Card Image */
-.card-image {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
 /* Text styles */
 .hackathon-card h3 {
   font-size: 1.1rem;
@@ -263,15 +168,6 @@ body {
 .hackathon-card p:nth-child(7) {
   color:#27197e ;
   font-weight: bold;
-}
-
-.hackathon-card p:last-child {
-  font-weight: bold;
-  color: black;
-}
-
-.hackathon-card p:last-child:has(span.red) {
-  color: red;
 }
 
 /* Modal (if needed) */
@@ -349,11 +245,6 @@ body {
     width: 90%;
     font-size: 1rem;
   }
-}
-
-.search-bar-container {
-  width: 100%;
-  z-index: 9999;
 }
 
 .modal-box {
@@ -546,54 +437,6 @@ body {
   top: 40%;
   right: 10%;
 }
-
-.custom-navbar {
-  background: linear-gradient(90deg, #864f9c, #d896ef, #dcafea, #d5b5dd);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 12px 30px;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.nav-left {
-  display: flex;
-  align-items: center;
-}
-
-.nav-logo {
-  height: 60px;
-  margin-right: 12px;
-}
-
-.brand-name {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #fff;
-}
-
-.nav-right {
-  display: flex;
-  gap: 28px;
-}
-
-.nav-right a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-
-.nav-right a:hover {
-  color: #ddd;
-}
-
 .hackathon-gradient-bg {
   min-height: 100vh;
   width: 100%;

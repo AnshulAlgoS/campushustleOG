@@ -1,6 +1,6 @@
 /* src/pages/GigDetailsPage.css */
 
-body {
+.gig-details-container body {
   background: linear-gradient(
     135deg,
     #3b0865 0%,

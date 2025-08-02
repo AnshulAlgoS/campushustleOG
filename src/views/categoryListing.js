@@ -13,7 +13,7 @@ const categoryMap = {
 };
 
 const CategoryListingPage = () => {
-  const {categorySlug} = useParams(); // e.g. "webdev"
+  const {categorySlug} = useParams(); 
   const [gigs, setGigs] = useState([]);
 
   const category = categoryMap[categorySlug];
