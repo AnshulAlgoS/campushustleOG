@@ -22,11 +22,11 @@
 }
 
 .webdev-card {
-  background: rgba(255, 255, 255, 0.05); /* transparent glassy look */
-  border: 1px solid rgba(176, 129, 214, 0.2); /* soft purple border */
+  background: rgba(123, 63, 181, 0.07); /* light purple-transparent */
+  border: 1px solid rgba(123, 63, 181, 0.2); /* soft purple border */
   border-radius: 16px;
-  box-shadow: 0 0 20px rgba(176, 129, 214, 0.1);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px rgba(123, 63, 181, 0.15);
+  backdrop-filter: blur(12px);
   color: #f3e6ff;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
@@ -42,10 +42,25 @@
 }
 
 .webdev-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 25px rgba(176, 129, 214, 0.4);
-  border: 1px solid rgba(176, 129, 214, 0.6);
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px rgba(155, 70, 214, 0.4);
+  border: 1px solid rgba(155, 70, 214, 0.6);
 }
+
+/* Read more link */
+.read-more {
+  color: #e6b3ff;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 6px;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.read-more:hover {
+  color: #ffffff;
+}
+
 
 
 .card-header {
