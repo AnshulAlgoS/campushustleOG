@@ -9,7 +9,6 @@ const ExploreFreelance = () => {
 
   return (
     <div className="explore-container">
-      <FloatingDoodles />
       
       <div className="freelance-navbar">
         <div className="nav-left">

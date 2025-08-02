@@ -1,6 +1,13 @@
 /* ExploreFreelance.css */
 .explore-container {
-  background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
+  background: linear-gradient(
+    135deg,
+    #06000b 0%,
+    rgba(26, 2, 46, 0.99) 40%,
+    rgba(44, 5, 75, 0.97) 50%,
+    rgba(26, 2, 46, 0.99) 60%,
+    #06000b 100%
+  );
   min-height: 100vh;
   text-align: center;
   font-family: 'Segoe UI', sans-serif;
@@ -28,7 +35,18 @@
 .explore-container h1 {
   font-size: 2.8rem;
   font-weight: bold;
-  color: #9d4edd;
+  background: linear-gradient(
+    135deg,
+    #a772d3 0%,
+    rgba(128, 71, 174, 0.99) 40%,
+    rgba(188, 152, 217, 0.97) 50%,
+    rgba(128, 71, 174, 0.99) 60%,
+    #a772d3 100%
+  ); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; 
   margin-bottom: 40px;
 }
 
