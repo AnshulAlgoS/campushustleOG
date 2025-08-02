@@ -86,9 +86,7 @@ const [menuOpen, setMenuOpen] = useState(false);
                 </ul>
               )}
             </div>
-
-
-          </div>
+ </div>
       <div className="freelance-content">
         <h1>Explore Freelancing Opportunities</h1>
         <div className="cards-container">

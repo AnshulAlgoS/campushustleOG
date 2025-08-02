@@ -112,6 +112,7 @@ const WebDevGigsPage = () => {
 
   return (
     <>
+    <div className="webdev-header">
       {/* Top Strip */}
       <div className="top-strip">
         <div className="logo-combo">
@@ -182,8 +183,6 @@ const WebDevGigsPage = () => {
           )}
         </div>
       </div>
-
-      <div className="webdev-header">
         <h1 className="webdev-title">Web Development Gigs</h1>
         <p className="webdev-subtitle">
           Explore freelance gigs tailored for students to build real-world web development experience.

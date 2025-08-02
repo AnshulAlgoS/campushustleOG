@@ -9,12 +9,17 @@ import {
   serverTimestamp
 } from 'firebase/firestore';
 import { db, auth } from '../firebase';
+import UserMenu from '../components/UserMenu';
+import { Link } from 'react-router-dom';
+import logo from '../assets/images/CL1.png';
+import GigDetailsPage from 'components/GigDetailsPage';
 import { useNavigate } from 'react-router-dom';
 
-const GraphicDesignGigsPage = () => {
+const GraphicDesignGigsPage = ({ user, handleLogout, onProfileClick, openAuthModal }) => {
   const [gigs, setGigs] = useState([]);
   const [selectedGig, setSelectedGig] = useState(null);
   const [name, setName] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [reason, setReason] = useState('');
   const [appliedGigs, setAppliedGigs] = useState([]);
@@ -87,6 +92,95 @@ const GraphicDesignGigsPage = () => {
   return (
     <>
       <div className="designs-header">
+        {/* Top Strip */}
+        <div className="top-strip">
+          <div className="logo-combo">
+            <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
+            <span className="logo-text">CampusHustle</span>
+          </div>
+
+          {/*  Desktop Nav */}
+          <nav className="navbar-desktop">
+            <ul className="strip-nav">
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/freelance">Freelance</Link></li>
+              <li><Link to="/hackathon">Hackathons</Link></li>
+              <li>
+                <Link
+                  to="/"
+                  state={{ scrollTo: 'community' }}
+                  onClick={() => { }}
+                  className="desktop-link-btn"
+                >
+                  Community
+                </Link>
+              </li>
+
+              <li><Link to="/about">About Us</Link></li>
+              <li>
+                {user ? (
+                  <UserMenu
+                    user={user}
+                    onLogout={handleLogout}
+                    onProfileClick={onProfileClick}
+                  />
+                ) : (
+                  <button
+                    className="signup"
+                    onClick={() => openAuthModal()}
+                  >
+                    Get Started
+                  </button>
+                )}
+              </li>
+            </ul>
+          </nav>
+
+
+          {/* Mobile Nav */}
+          <div className="navbar-mobile">
+            <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+
+            {menuOpen && (
+              <ul className={`mobile-nav ${menuOpen ? 'open' : ''}`}>
+                <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
+                <li><Link to="/freelance" onClick={() => setMenuOpen(false)}>Freelance</Link></li>
+                <li><Link to="/hackathon" onClick={() => setMenuOpen(false)}>Hackathons</Link></li>
+                <li><Link to="/" state={{ scrollTo: 'community' }} onClick={() => setMenuOpen(false)}>Community</Link></li>
+                <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
+                </li>
+                <li>
+                  {user ? (
+                    <UserMenu
+                      user={user}
+                      onLogout={() => {
+                        setMenuOpen(false);
+                        handleLogout();
+                      }}
+                      onProfileClick={() => {
+                        setMenuOpen(false);
+                        onProfileClick();
+                      }}
+                    />
+                  ) : (
+                    <button
+                      className="signup"
+                      onClick={() => {
+                        setMenuOpen(false);
+                        openAuthModal();
+                      }}
+                    >
+                      Get Started
+                    </button>
+                  )}
+                </li>
+              </ul>
+            )}
+          </div>
+
+
+        </div>
+
         <h1 className="design-title">Graphic Design Gigs</h1>
         <p className="design-subtitle">
           Discover student-friendly design gigs to grow your skills and build a creative portfolio.
@@ -107,6 +201,12 @@ const GraphicDesignGigsPage = () => {
                   <p><strong>Deadline:</strong> {gig.endDate}</p>
                   <div className="card-footer">
                     <span className="gig-price">{gig.payment}</span>
+                    <button
+                      className="details-btn"
+                      onClick={() => navigate(`/gig/${gig.id}`)}
+                    >
+                      Details
+                    </button>
                     {alreadyApplied ? (
                       <button disabled className="applied-btn">Applied</button>
                     ) : (
