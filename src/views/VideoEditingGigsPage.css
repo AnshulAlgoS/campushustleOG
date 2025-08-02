@@ -19,37 +19,50 @@
   gap: 30px;
 }
 
-/* === Transparent & Glassy Card === */
 .video-gigs-container .gig-card {
-  background: linear-gradient(135deg, rgba(243, 122, 16, 0.35), rgba(255, 214, 165, 0.2));
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   width: 280px;
   border-radius: 16px;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
   color: white;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .video-gigs-container .gig-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+.video-gigs-container .gig-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 2px;
+  background: linear-gradient(120deg, #ff9a9e, #fad0c4, #fcb69f);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .video-gigs-container .card-header {
   padding: 20px;
   font-size: 1.4rem;
   font-weight: bold;
-  color: #fff;
 }
 
 .video-gigs-container .card-body {
   padding: 20px;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #fdfdfd;
+}
+
+.video-gigs-container .card-body p {
+  margin-bottom: 0;
 }
 
 .video-gigs-container .card-footer {
@@ -61,23 +74,23 @@
 
 .gig-price {
   font-weight: bold;
-  color: #fff;
 }
 
-/* === Apply & Details Buttons === */
 .card-footer button {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #ffffff;
   color: #de4924;
   padding: 8px 14px;
   border-radius: 8px;
   border: none;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.card-footer button:hover {
-  background-color: #ffd8c1;
+.read-more {
+  color: #fff;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 6px;
 }
 
 .applied-btn {
@@ -89,7 +102,7 @@
   border-radius: 6px;
 }
 
-/* === Modal Styles === */
+/* Modal styles */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -138,27 +151,5 @@
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-/* === Header Section === */
-.video-header {
-  background: linear-gradient(135deg, #ffecd2, #fcb69f);
-  padding: 0px 0px 60px;
-  text-align: center;
-  color: rgb(134, 55, 9);
-}
-
-.video-title {
-  font-size: 3rem;
-  font-weight: 700;
-  margin: 0;
-}
-
-.video-subtitle {
-  font-size: 1.25rem;
-  margin-top: 10px;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  font-family: 'Segoe UI';
 }
