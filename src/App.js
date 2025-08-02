@@ -105,7 +105,7 @@ function InnerApp() {
         <Route path="/community1" element={<CommunityHub />} />
         <Route path="/gig/:id" element={<GigDetailsPage />} />
 
-        
+
 
 
         <Route
@@ -133,11 +133,61 @@ function InnerApp() {
 
         <Route path="/explore-freelance" element={<ExploreFreelance />} />
         <Route path="/offer-work" element={<OfferWorkForm />} />
-        <Route path="/freelance/webdev" element={<WebDevGigsPage />} />
-        <Route path="/freelance/content-writing" element={<ContentWritingGigsPage />} />
-        <Route path="/freelance/graphic-design" element={<GraphicDesignGigsPage />} />
-        <Route path="/freelance/marketing" element={<MarketingGigsPage />} />
-        <Route path="/freelance/video-editing" element={<VideoEditingGigsPage />} />
+        <Route
+          path="/freelance/webdev"
+          element={
+            <WebDevGigsPage
+              user={user}
+              handleLogout={handleLogout}
+              openAuthModal={openAuthModal}
+            />
+          }
+        />
+
+        <Route
+          path="/freelance/content-writing"
+          element={
+            <ContentWritingGigsPage
+              user={user}
+              handleLogout={handleLogout}
+              openAuthModal={openAuthModal}
+            />
+          }
+        />
+
+        <Route
+          path="/freelance/graphic-design"
+          element={
+            <GraphicDesignGigsPage
+              user={user}
+              handleLogout={handleLogout}
+              openAuthModal={openAuthModal}
+            />
+          }
+        />
+
+        <Route
+          path="/freelance/marketing"
+          element={
+            <MarketingGigsPage
+              user={user}
+              handleLogout={handleLogout}
+              openAuthModal={openAuthModal}
+            />
+          }
+        />
+
+        <Route
+          path="/freelance/video-editing"
+          element={
+            <VideoEditingGigsPage
+              user={user}
+              handleLogout={handleLogout}
+              openAuthModal={openAuthModal}
+            />
+          }
+        />
+
 
         {/* ✅ Legal Routes */}
         <Route path="/help-center" element={<HelpCenter />} />
@@ -145,7 +195,7 @@ function InnerApp() {
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/contact" element={<Contact />} />
 
-      
+
 
       </Routes>
 

@@ -144,7 +144,7 @@
 }
 .content-header {
   background: linear-gradient(135deg, #74d3f3, #58c0dd);
-  padding: 80px 20px 60px;
+  padding: 0px 0px 60px;
   text-align: center;
   color: rgb(7, 62, 76);
 }
@@ -169,4 +169,28 @@
   padding: 0.5rem 1rem;
   border-radius: 6px;
   border: none;
+}
+.btn-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.details-btn,
+.apply-btn,
+.applied-btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.details-btn {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.apply-btn {
+  background-color: #6b47dc;
+  color: #fff;
 }

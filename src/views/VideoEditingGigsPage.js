@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './VideoEditingGigsPage.css';
 import {
   collection,
@@ -8,10 +8,15 @@ import {
   addDoc,
   serverTimestamp
 } from 'firebase/firestore';
-import {db, auth} from '../firebase';
-import {useNavigate} from 'react-router-dom';
+import { db, auth } from '../firebase';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import logo from '../assets/images/CL1.png';
+import UserMenu from '../components/UserMenu';
 
-const VideoEditingGigsPage = () => {
+
+const VideoEditingGigsPage = ({ user, handleLogout, onProfileClick, openAuthModal }) => {
+
   const [gigs, setGigs] = useState([]);
   const [appliedGigs, setAppliedGigs] = useState([]);
   const [selectedGig, setSelectedGig] = useState(null);
@@ -25,7 +30,7 @@ const VideoEditingGigsPage = () => {
       try {
         const q = query(collection(db, 'gigs'), where('category', '==', 'Video Editing'));
         const snapshot = await getDocs(q);
-        const data = snapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
+        const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         setGigs(data);
 
         const user = auth.currentUser;
@@ -84,7 +89,41 @@ const VideoEditingGigsPage = () => {
 
   return (
     <>
-      <div className="video-header">
+    <div className="video-header">
+      <div className="top-strip">
+        <div className="logo-combo">
+          <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
+          <span className="logo-text">CampusHustle</span>
+        </div>
+
+        {/* Desktop Nav */}
+        <nav className="navbar-desktop">
+          <ul className="strip-nav">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/freelance">Freelance</Link></li>
+            <li><Link to="/hackathon">Hackathons</Link></li>
+            <li>
+              <Link to="/" state={{ scrollTo: 'community' }} onClick={() => { }}>
+                Community
+              </Link>
+            </li>
+            <li><Link to="/about">About Us</Link></li>
+            <li>
+              {user ? (
+                <UserMenu
+                  user={user}
+                  onLogout={handleLogout}
+                  onProfileClick={onProfileClick}
+                />
+              ) : (
+                <button className="signup" onClick={openAuthModal}>
+                  Get Started
+                </button>
+              )}
+            </li>
+          </ul>
+        </nav>
+      </div>
         <h1 className="video-title">Video Editing Gigs</h1>
         <p className="video-subtitle">
           Cut, trim, animate, and bring stories to life through exciting video projects.
@@ -104,6 +143,12 @@ const VideoEditingGigsPage = () => {
                   <p>{gig.description}</p>
                   <div className="card-footer">
                     <span className="gig-price">{gig.payment}</span>
+                     <button
+                        className="details-btn"
+                        onClick={() => navigate(`/gig/${gig.id}`)}
+                      >
+                        Details
+                      </button>
                     {alreadyApplied ? (
                       <button disabled className="applied-btn">Applied</button>
                     ) : (

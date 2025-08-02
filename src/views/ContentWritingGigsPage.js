@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './ContentWritingGigsPage.css';
 import {
   collection,
@@ -8,16 +8,23 @@ import {
   addDoc,
   serverTimestamp
 } from 'firebase/firestore';
-import {db, auth} from '../firebase';
-import {useNavigate} from 'react-router-dom';
+import { db, auth } from '../firebase';
+import { useNavigate } from 'react-router-dom';
+import logo from '../assets/images/CL1.png';
+import GigDetailsPage from 'components/GigDetailsPage';
+import { Link } from 'react-router-dom';
+import UserMenu from 'components/UserMenu';
 
-const ContentWritingGigsPage = () => {
+const ContentWritingGigsPage = ({ user, handleLogout, onProfileClick, openAuthModal }) => {
+
   const [gigs, setGigs] = useState([]);
   const [appliedGigs, setAppliedGigs] = useState([]);
   const [selectedGig, setSelectedGig] = useState(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [reason, setReason] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,7 +32,7 @@ const ContentWritingGigsPage = () => {
       try {
         const gigQuery = query(collection(db, 'gigs'), where('category', '==', 'Content Writing'));
         const gigSnapshot = await getDocs(gigQuery);
-        const gigData = gigSnapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
+        const gigData = gigSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         setGigs(gigData);
 
         const user = auth.currentUser;
@@ -83,8 +90,96 @@ const ContentWritingGigsPage = () => {
   };
 
   return (
-    <>
-      <div className="content-header">
+    <> 
+     <div className="content-header">
+              {/* Top Strip */}
+              <div className="top-strip">
+                <div className="logo-combo">
+                  <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
+                  <span className="logo-text">CampusHustle</span>
+                </div>
+    
+                {/*  Desktop Nav */}
+                <nav className="navbar-desktop">
+                  <ul className="strip-nav">
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/freelance">Freelance</Link></li>
+                    <li><Link to="/hackathon">Hackathons</Link></li>
+                    <li>
+                      <Link
+                        to="/"
+                        state={{ scrollTo: 'community' }}
+                        onClick={() => { }}
+                        className="desktop-link-btn"
+                      >
+                        Community
+                      </Link>
+                    </li>
+    
+                    <li><Link to="/about">About Us</Link></li>
+                    <li>
+                      {user ? (
+                        <UserMenu
+                          user={user}
+                          onLogout={handleLogout}
+                          onProfileClick={onProfileClick}
+                        />
+                      ) : (
+                        <button
+                          className="signup"
+                          onClick={() => openAuthModal()}
+                        >
+                          Get Started
+                        </button>
+                      )}
+                    </li>
+                  </ul>
+                </nav>
+    
+    
+                {/* Mobile Nav */}
+                <div className="navbar-mobile">
+                  <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+    
+                  {menuOpen && (
+                    <ul className={`mobile-nav ${menuOpen ? 'open' : ''}`}>
+                      <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
+                      <li><Link to="/freelance" onClick={() => setMenuOpen(false)}>Freelance</Link></li>
+                      <li><Link to="/hackathon" onClick={() => setMenuOpen(false)}>Hackathons</Link></li>
+                      <li><Link to="/" state={{ scrollTo: 'community' }} onClick={() => setMenuOpen(false)}>Community</Link></li>
+                      <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
+                      </li>
+                      <li>
+                        {user ? (
+                          <UserMenu
+                            user={user}
+                            onLogout={() => {
+                              setMenuOpen(false);
+                              handleLogout();
+                            }}
+                            onProfileClick={() => {
+                              setMenuOpen(false);
+                              onProfileClick();
+                            }}
+                          />
+                        ) : (
+                          <button
+                            className="signup"
+                            onClick={() => {
+                              setMenuOpen(false);
+                              openAuthModal();
+                            }}
+                          >
+                            Get Started
+                          </button>
+                        )}
+                      </li>
+                    </ul>
+                  )}
+                </div>
+    
+    
+              </div>
         <h1 className="content-title">Content Writing Gigs</h1>
         <p className="content-subtitle">
           Find exciting writing gigs to sharpen your storytelling and build your writing portfolio.
@@ -104,16 +199,30 @@ const ContentWritingGigsPage = () => {
                   <p>{gig.description}</p>
                   <div className="card-footer">
                     <span className="gig-price">{gig.payment}</span>
-                    {alreadyApplied ? (
-                      <button disabled className="applied-btn">Applied</button>
-                    ) : (
-                      <button onClick={() => setSelectedGig(gig)}>Apply Now</button>
-                    )}
+                    <div className="btn-group">
+                      <button
+                        className="details-btn"
+                        onClick={() => navigate(`/gig/${gig.id}`)}
+                      >
+                        Details
+                      </button>
+                      {alreadyApplied ? (
+                        <button disabled className="applied-btn">Applied</button>
+                      ) : (
+                        <button
+                          className="apply-btn"
+                          onClick={() => setSelectedGig(gig)}
+                        >
+                          Apply Now
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
             );
           })}
+
         </div>
 
         {selectedGig && (
