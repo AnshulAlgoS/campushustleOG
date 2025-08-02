@@ -55,13 +55,19 @@
 }
 
 .card-footer button {
-  background-color: #ffffff;
-  color: #de4924;
+  background-color: #fff;
+  color: #B56727;
   padding: 8px 14px;
   border-radius: 8px;
   border: none;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card-footer button:hover {
+  background-color: #B56727;
+  color: #fff;
 }
 
 /* Modal styles */
@@ -146,12 +152,11 @@
 /* === UPDATED GIG CARD STYLING === */
 
 .video-gigs-container .gig-card {
-  background: rgba(255, 255, 255, 0.05); /* Transparent look */
-  border: 1.5px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(14px);
+  background: linear-gradient(135deg, #f37a10, hsl(30, 90%, 77%));
   width: 280px;
   border-radius: 16px;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  border: 2px solid #f37a10;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
   color: white;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -160,9 +165,10 @@
 
 .video-gigs-container .gig-card:hover {
   transform: translateY(-8px);
-  border: 2px solid #b56727; /* darker orange on hover */
-  box-shadow: 0 0 18px rgba(255, 105, 60, 0.5);
+  border: 2px solid #B56727; /* darker on hover */
+  box-shadow: 0 0 20px rgba(181, 103, 39, 0.5);
 }
+
 
 .card-body p.description {
   font-size: 0.95rem;
