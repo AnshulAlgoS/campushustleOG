@@ -11,10 +11,10 @@ import globeImg from '../assets/images/globe.jpeg';
 export default function CommunitySection() {
   return (
     <section className="section" id="community">
-      <h3>OUR COMMUNITY</h3>
-      <h1>
+      <h1>OUR COMMUNITY</h1>
+      <h2>
         Join a <span className="highlight">community</span> with a strong drive to excel
-      </h1>
+      </h2>
 
       <div className="stats">
         <div className="card" style={{ borderTop: '4px solid #bf2247ff' }}>

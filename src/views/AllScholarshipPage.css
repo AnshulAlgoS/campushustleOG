@@ -2,7 +2,15 @@
 .all-scholarships-page {
   min-height: 100vh;
   padding-top: 80px;
-  background: linear-gradient(to top, #864f9c, #d896ef, #dcafea, #d5b5dd);
+  background: linear-gradient(
+    135deg,
+    #06000b 0%,
+    rgba(21, 1, 37, 0.99) 40%,
+    rgba(44, 5, 75, 0.97) 50%,
+    rgba(26,2,46,0.99) 60%,
+    #06000b 100%
+
+  );
 }
 
 /* Scholarship card styling */

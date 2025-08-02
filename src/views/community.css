@@ -4,21 +4,44 @@ background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
   text-align: center;
 }
 
-.section h3 {
-  color: #572e54;
-  font-size: 14px;
+.section h2 {
+  background: linear-gradient(
+    135deg,
+    #3b0865 0%,
+    rgba(81, 27, 125, 0.99) 40%,
+    rgba(98, 21, 161, 0.97) 50%,
+    rgba(81, 27, 125, 0.99) 60%,
+    #3b0865 100%
+  ); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; 
+  font-size: 18px;
   letter-spacing: 2px;
   margin-bottom: 10px;
 }
 
 .section h1 {
   font-size: 28px;
+  background: linear-gradient(
+    135deg,
+    #3b0865 0%,
+    rgba(81, 27, 125, 0.99) 40%,
+    rgba(98, 21, 161, 0.97) 50%,
+    rgba(81, 27, 125, 0.99) 60%,
+    #3b0865 100%
+  ); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; 
   margin-bottom: 30px;
   font-weight: bold;
 }
 
 .highlight {
-  color: #ffcc00;
+  color: #fdf73a;
 }
 
 .stats {
@@ -132,7 +155,14 @@ background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
 .btn {
   display: inline-block;
   padding: 12px 25px;
-  background: #572e54;
+  background: linear-gradient(
+    135deg,
+    #3b0865 0%,
+    rgba(81, 27, 125, 0.99) 40%,
+    rgba(98, 21, 161, 0.97) 50%,
+    rgba(81, 27, 125, 0.99) 60%,
+    #3b0865 100%
+  );
   color: #fff;
   text-decoration: none;
   border-radius: 5px;

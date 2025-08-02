@@ -192,6 +192,7 @@
   font-size: 3rem;
   font-weight: 700;
   margin: 0;
+  color:#fddde6;
 }
 
 .design-subtitle {
@@ -200,7 +201,9 @@
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  color: #fddde6;
 }
+
 .design-header {
   background: linear-gradient(135deg, #ec5edc, #ea74ca);
   padding: 80px 20px 60px;

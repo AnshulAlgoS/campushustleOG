@@ -23,6 +23,7 @@
 }
 .scholarship-filter-section {
   display: flex;
+  color: #3b0865;
   justify-content: center;
   margin-bottom: 1.5rem;
   width:100%;
@@ -35,7 +36,7 @@
   border: 1px solid #ccc;
   border-radius: 8px;
   width: auto;
-  background: #fff;
+  background: transparent;
   cursor: pointer;
   max-width: 90%;
   transition: all 0.2s ease-in-out;
@@ -69,7 +70,17 @@
   letter-spacing: 0.5px;
   margin: 0 0 1.5rem 0;
   padding: 0 1rem;
-  color: #572e54
+  background: linear-gradient(
+    135deg,
+    #3b0865 0%,
+    rgba(81, 27, 125, 0.99) 40%,
+    rgba(98, 21, 161, 0.97) 50%,
+    rgba(81, 27, 125, 0.99) 60%,
+    #3b0865 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
 }
 
 .card-grid {

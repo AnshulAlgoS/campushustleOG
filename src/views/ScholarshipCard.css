@@ -25,8 +25,20 @@
 
 
 .scholarship-title {
-  font-size: 1rem;
-  color: #f3e6ff;
+  font-size: 1.2rem;
+  background: linear-gradient(
+    135deg,
+    #f2c145 0%,
+    rgba(206, 195, 72, 0.99) 30%,
+    rgba(239, 242, 183, 0.97) 50%,
+    rgba(206, 195, 72, 0.99) 70%,
+    #f2c145 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; 
+  color: transparent; 
+  font-weight: bolder;
   margin-bottom: 1rem;
 }
 

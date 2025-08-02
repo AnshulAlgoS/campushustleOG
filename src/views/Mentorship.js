@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "./Mentorship.css";
+import { db } from "../firebase";
+import { collection, addDoc, getDocs } from "firebase/firestore";
+import { useEffect } from "react";
+
 
 const Mentorship = () => {
   const [activeTab, setActiveTab] = useState("");
@@ -12,7 +16,7 @@ const Mentorship = () => {
     (m) => (!domain || m.domain === domain) && (!batch || m.batch === batch)
   );
 
-  const handleMentorRegister = (e) => {
+  const handleMentorRegister = async (e) => {
     e.preventDefault();
     const form = e.target;
 
@@ -41,10 +45,32 @@ const Mentorship = () => {
       picture: imageURL,
     };
 
-    setMentors([...mentors, newMentor]);
-    setActiveTab("mentee");
-    form.reset();
+    try {
+      await addDoc(collection(db, "mentors"), newMentor);
+      setMentors((prev) => [...prev, newMentor]);
+      setActiveTab("mentee");
+      form.reset();
+      alert("Mentor registered successfully!");
+    } catch (error) {
+      console.error("Error adding mentor:", error);
+      alert("Error registering mentor.");
+    }
   };
+  useEffect(() => {
+    const fetchMentors = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "mentors"));
+        const mentorsList = querySnapshot.docs.map(doc => doc.data());
+        setMentors(mentorsList);
+      } catch (error) {
+        console.error("Error fetching mentors:", error);
+      }
+    };
+
+    fetchMentors();
+  }, []);
+
+
 
   return (
     <div className="mentorship-page">
@@ -63,7 +89,7 @@ const Mentorship = () => {
             className={`btn-toggle big-glow-btn ${activeTab === "mentor" ? "active" : ""}`}
             onClick={() => setActiveTab("mentor")}
           >
-             Register as a Mentor
+            Register as a Mentor
           </button>
         </div>
       </section>
@@ -97,9 +123,8 @@ const Mentorship = () => {
             {filteredMentors.length > 0 ? (
               filteredMentors.map((mentor, idx) => (
                 <div
-                  className={`mentor-card ${
-                    selectedMentor?.name === mentor.name ? "selected-mentor" : ""
-                  }`}
+                  className={`mentor-card ${selectedMentor?.name === mentor.name ? "selected-mentor" : ""
+                    }`}
                   key={idx}
                 >
                   <span className="domain-badge">{mentor.domain}</span>
