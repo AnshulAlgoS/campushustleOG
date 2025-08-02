@@ -466,7 +466,7 @@ useEffect(() => {
             ))}
           </div>
         </section>
-                  <footer>
+                  <footer className="footer">
   <div className="home-page-wrapper">
     <div className="footer-container">
       <div className="footer-logo">
@@ -474,8 +474,7 @@ useEffect(() => {
         <h2>CampusHustle</h2>
       </div>
 
-      {/* ✅ Support */}
-      <div className="footer-column" data-aos="fade-up" data-aos-delay="100">
+      <div className="footer-column">
         <h4>Support</h4>
         <ul>
           <li><Link to="/help-center">Help Center</Link></li>
@@ -483,8 +482,7 @@ useEffect(() => {
         </ul>
       </div>
 
-      {/* ✅ Company */}
-      <div className="footer-column" data-aos="fade-up" data-aos-delay="100">
+      <div className="footer-column">
         <h4>Company</h4>
         <ul>
           <li><Link to="/about">About Us</Link></li>
@@ -494,8 +492,7 @@ useEffect(() => {
         </ul>
       </div>
 
-      {/* ✅ Quick Links */}
-      <div className="footer-column" data-aos="fade-up" data-aos-delay="100">
+      <div className="footer-column">
         <h4>Quick Links</h4>
         <ul>
           <li><Link to="/privacy-policy">Privacy Policy</Link></li>
