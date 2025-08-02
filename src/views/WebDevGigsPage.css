@@ -1,3 +1,5 @@
+/* WebDevGigsPage.css */
+
 .webdev-gigs-container {
   padding: 60px 20px;
   background: linear-gradient(to bottom, #dfb8ef, #e9ccf4, #f3f0f4, #f3f0f4);
@@ -79,14 +81,6 @@
   color: #fff5ff;
 }
 
-.read-more {
-  color: #ffe0ff;
-  font-weight: bold;
-  cursor: pointer;
-  text-decoration: underline;
-  margin-left: 6px;
-}
-
 .btn-group {
   display: flex;
   gap: 10px;
@@ -104,6 +98,7 @@
   transition: 0.2s ease;
 }
 
+/* Buttons Styling */
 .details-btn {
   background-color: #3c3f44;
   color: #fff;
@@ -114,21 +109,14 @@
   color: #fff;
 }
 
+.apply-btn:hover {
+  filter: brightness(1.1);
+}
+
 .applied-btn {
   background-color: #888;
   color: #fff;
   cursor: not-allowed;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .webdev-card {
-    width: 90%;
-  }
-
-  .webdev-gigs-container h1 {
-    font-size: 2rem;
-  }
 }
 
 /* Modal styles */
@@ -215,6 +203,7 @@
   display: block;
 }
 
+/* Header */
 .webdev-header {
   background: linear-gradient(135deg, #520678, #cd37ee);
   padding: 0px 0px 60px;
@@ -234,6 +223,17 @@
   margin-top: 10px;
   max-width: 700px;
   margin-left: auto;
-  color: #e0d8ff;
   margin-right: auto;
+  color: #e0d8ff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .webdev-card {
+    width: 90%;
+  }
+
+  .webdev-gigs-container h1 {
+    font-size: 2rem;
+  }
 }
