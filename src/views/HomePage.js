@@ -421,7 +421,10 @@ useEffect(() => {
         )}
 
 
-        <Scholarship showAll={false} isFullPage={false} />
+        <div ref={scholarshipRef}>
+  <Scholarship showAll={false} isFullPage={false} />
+</div>
+
         {/* Testimonials Section */}
         <section className="testimonials-section" data-aos="fade-up">
           <h2>What Our Users Say</h2>
