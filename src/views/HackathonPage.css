@@ -161,13 +161,15 @@
 }
 
 .hackathon-card {
-  background: #8b5cf6;
+  background: rgba(255, 255, 255, 0.08); 
   padding: 15px;
   border-radius: 12px;
   text-align: center;
-  color: black;
+  color: white; 
   transition: transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
+
 
 .hackathon-card:hover {
   transform: translateY(-5px);
