@@ -188,16 +188,13 @@ const WebDevGigsPage = () => {
                   {gig.location && <p className="gig-location">{gig.location}</p>}
                 </div>
                 <div className="card-body">
-                  <p>
-                    {gig.description.length > 100
-                      ? gig.description.slice(0, 100) + '...'
-                      : gig.description}
-                    {gig.description.length > 100 && (
-                      <span className="read-more" onClick={() => navigate(`/gig/${gig.id}`)}>
-                        Read more
-                      </span>
-                    )}
-                  </p>
+                 <p>
+  {gig.description.split(" ").slice(0, 10).join(" ")}...
+  <span className="read-more" onClick={() => navigate(`/gig/${gig.id}`)}>
+    Read more
+  </span>
+</p>
+
                   <div className="card-footer">
                     <span className="gig-price">{gig.payment || 'N/A'}</span>
                     <div className="btn-group">
