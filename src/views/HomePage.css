@@ -665,6 +665,18 @@ header::before {
   }
 }
 
+.footer {
+  background-color: #000000; /* pure black */
+  color: #ffffff;
+  padding: 30px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+
 /* === FOOTER CONTAINER === */
 .footer-container {
   display: flex;
@@ -675,6 +687,7 @@ header::before {
   box-sizing: border-box;
   gap: 1rem; /* default desktop gap */
 }
+
 
 /* === LOGO SECTION === */
 .footer-logo {
