@@ -4,7 +4,7 @@ import { db } from "../firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo1.png"; 
+import logo from "../assets/images/logo1.png";
 import UserMenu from "../components/UserMenu"; 
 import { getAuth } from "firebase/auth";
 
@@ -362,6 +362,7 @@ const Mentorship = () => {
 };
 
 export default Mentorship;
+
 
 
 
