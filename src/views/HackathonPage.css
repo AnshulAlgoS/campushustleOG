@@ -1,15 +1,30 @@
+/* =======================
+   Global Styles
+======================= */
 
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: #06000b;
+  background: linear-gradient(
+    135deg,
+    #06000b 0%,
+    rgba(21, 1, 37, 0.99) 40%,
+    rgba(44, 5, 75, 0.97) 50%,
+    rgba(26, 2, 46, 0.99) 60%,
+    #06000b 100%
+  );
   color: white;
+  background-attachment: fixed;
 }
 
 a {
   text-decoration: none;
   color: inherit;
 }
+
+/* =======================
+   Navbar
+======================= */
 
 .translucent-strip {
   width: 100%;
@@ -53,6 +68,10 @@ a {
   color: #d48cff;
 }
 
+/* =======================
+   Hackathon Main Page Buttons
+======================= */
+
 .hackathon-buttons {
   margin-top: 150px;
   display: flex;
@@ -77,34 +96,25 @@ a {
   transform: scale(1.05);
 }
 
+/* =======================
+   Hero Section (Explore Page)
+======================= */
+
 .background-effect {
   position: relative;
   padding: 60px 20px;
   text-align: center;
   color: white;
-  background: linear-gradient(180deg, rgba(50, 0, 80, 0.7), rgba(0, 0, 0, 0.9));
+  background: transparent; /* transparent so the gradient from body shows */
 }
 
 .hero-shape {
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  opacity: 0.25;
-  filter: blur(100px);
+  display: none; /* remove abstract shapes */
 }
 
-.shape1 {
-  top: 10%;
-  left: 10%;
-  background: #b84dff;
-}
-
-.shape2 {
-  bottom: 10%;
-  right: 10%;
-  background: #5b00cc;
-}
+/* =======================
+   Search Header
+======================= */
 
 .search-header {
   display: flex;
@@ -125,6 +135,10 @@ a {
   font-size: 16px;
 }
 
+/* =======================
+   Hackathon Grid
+======================= */
+
 .hackathon-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -132,22 +146,17 @@ a {
   padding: 0 60px 60px 60px;
 }
 
+/* =======================
+   Hackathon Card
+======================= */
 
 .hackathon-card {
-  background: linear-gradient(
-    135deg,
-    #06000b 0%,
-    rgba(21, 1, 37, 0.99) 40%,
-    rgba(44, 5, 75, 0.97) 50%,
-    rgba(26, 2, 46, 0.99) 60%,
-    #06000b 100%
-  );
+  background: #7d5ba6;
   padding: 15px;
   border-radius: 12px;
   text-align: center;
-  color: white;
+  color: black;
   transition: transform 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .hackathon-card:hover {
@@ -166,6 +175,10 @@ a {
   font-size: 18px;
   margin: 8px 0;
 }
+
+/* =======================
+   Organise Hackathon Form
+======================= */
 
 .organise-hackathon-form {
   max-width: 700px;
@@ -211,6 +224,10 @@ a {
   width: 100%;
 }
 
+/* =======================
+   Participation Guidelines
+======================= */
+
 .guidelines-page {
   padding: 60px;
   display: grid;
@@ -219,23 +236,20 @@ a {
 }
 
 .guidelines-card {
-  background: linear-gradient(
-    135deg,
-    #06000b 0%,
-    rgba(21, 1, 37, 0.99) 40%,
-    rgba(44, 5, 75, 0.97) 50%,
-    rgba(26, 2, 46, 0.99) 60%,
-    #06000b 100%
-  );
-  color: white;
+  background: #7d5ba6;
+  color: black;
   padding: 25px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .guidelines-card h2 {
   margin-bottom: 20px;
 }
+
+.guidelines-card p {
+  margin: 12px 0;
+}
+
 
 .guidelines-card p {
   margin: 12px 0;
