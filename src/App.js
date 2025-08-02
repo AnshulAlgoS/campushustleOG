@@ -100,10 +100,20 @@ function InnerApp() {
         <Route path="/register" element={<RegisterHackathonPage />} />
         <Route path="/mentorship" element={<Mentorship />} />
         <Route path="/freelance/:categorySlug" element={<CategoryListingPage />} />
-        <Route path="/budgeting" element={<Budgeting navigateTo={(page) => navigate(`/${page}`)} />} />
         <Route path="/scholarships" element={<AllScholarshipsPage />} />
         <Route path="/community1" element={<CommunityHub />} />
         <Route path="/gig/:id" element={<GigDetailsPage />} />
+        <Route
+          path="/budgeting"
+          element={
+            <Budgeting
+              user={user}
+              handleLogout={handleLogout}
+              openAuthModal={openAuthModal}
+              navigateTo={(page) => navigate(`/${page}`)}
+            />
+          }
+        />
 
 
 

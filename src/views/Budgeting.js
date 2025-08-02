@@ -18,6 +18,10 @@ import {
   PointElement
 } from 'chart.js';
 import { Doughnut, Bar, Line } from 'react-chartjs-2';
+import logo from '../assets/images/CL1.png';
+import { Link } from 'react-router-dom';
+import UserMenu from '../components/UserMenu';
+
 
 ChartJS.register(
   
@@ -33,13 +37,14 @@ ChartJS.register(
 ChartJS.defaults.color = '#ffffff'; // sets all text to white by default
 
 
-const BudgetingPage = () => {
+const BudgetingPage = ({user, handleLogout, onProfileClick, openAuthModal}) => {
   const [expenses, setExpenses] = useState([]);
   const [formData, setFormData] = useState({ title: '', amount: '', category: '', notes: '' });
   const [income, setIncome] = useState('');
   const [limit, setLimit]   = useState('');
   const [userId, setUserId] = useState(null);
   const challengesRef = useRef(null);
+    const [menuOpen, setMenuOpen] = useState(false);
   const [completedChallenges, setCompletedChallenges] = useState({});
  
   
@@ -191,6 +196,93 @@ const BudgetingPage = () => {
   ];
   return (
      <div className="budgeting-page">
+      <div className="top-strip">
+                  <div className="logo-combo">
+                    <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
+                    <span className="logo-text">CampusHustle</span>
+                  </div>
+      
+                  {/*  Desktop Nav */}
+                  <nav className="navbar-desktop">
+                    <ul className="strip-nav">
+                      <li><Link to="/">Home</Link></li>
+                      <li><Link to="/freelance">Freelance</Link></li>
+                      <li><Link to="/hackathon">Hackathons</Link></li>
+                      <li>
+                        <Link
+                          to="/"
+                          state={{ scrollTo: 'community' }}
+                          onClick={() => { }}
+                          className="desktop-link-btn"
+                        >
+                          Community
+                        </Link>
+                      </li>
+      
+                      <li><Link to="/about">About Us</Link></li>
+                      <li>
+                        {user ? (
+                          <UserMenu
+                            user={user}
+                            onLogout={handleLogout}
+                            onProfileClick={onProfileClick}
+                          />
+                        ) : (
+                          <button
+                            className="signup"
+                            onClick={() => openAuthModal()}
+                          >
+                            Get Started
+                          </button>
+                        )}
+                      </li>
+                    </ul>
+                  </nav>
+      
+      
+                  {/* Mobile Nav */}
+                  <div className="navbar-mobile">
+                    <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+      
+                    {menuOpen && (
+                      <ul className={`mobile-nav ${menuOpen ? 'open' : ''}`}>
+                        <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
+                        <li><Link to="/freelance" onClick={() => setMenuOpen(false)}>Freelance</Link></li>
+                        <li><Link to="/hackathon" onClick={() => setMenuOpen(false)}>Hackathons</Link></li>
+                        <li><Link to="/" state={{ scrollTo: 'community' }} onClick={() => setMenuOpen(false)}>Community</Link></li>
+                        <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
+                        </li>
+                        <li>
+                          {user ? (
+                            <UserMenu
+                              user={user}
+                              onLogout={() => {
+                                setMenuOpen(false);
+                                handleLogout();
+                              }}
+                              onProfileClick={() => {
+                                setMenuOpen(false);
+                                onProfileClick();
+                              }}
+                            />
+                          ) : (
+                            <button
+                              className="signup"
+                              onClick={() => {
+                                setMenuOpen(false);
+                                openAuthModal();
+                              }}
+                            >
+                              Get Started
+                            </button>
+                          )}
+                        </li>
+                      </ul>
+                    )}
+                  </div>
+      
+      
+                </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h1>Budgeting Dashboard</h1>
         <button className="challenges-btn" onClick={() => challengesRef.current?.scrollIntoView({ behavior: 'smooth' })}>
