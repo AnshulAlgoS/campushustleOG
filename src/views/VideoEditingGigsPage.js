@@ -125,9 +125,6 @@ const VideoEditingGigsPage = ({ user, handleLogout, onProfileClick, openAuthModa
         </nav>
       </div>
         <h1 className="video-title">Video Editing Gigs</h1>
-        <p className="video-subtitle">
-          Cut, trim, animate, and bring stories to life through exciting video projects.
-        </p>
       </div>
 
       <div className="video-gigs-container">
