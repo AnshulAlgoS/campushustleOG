@@ -121,7 +121,7 @@ export default function GigDetailsPage({ user, handleLogout, openAuthModal, onPr
       <div className="gig-details-container">
         <h1>{gig.title}</h1>
         <p><User size={18} /> <strong>Posted By:</strong> {posterName}</p>
-        <p><DollarSign size={18} /> <strong>Budget:</strong> {gig.payment}</p>
+        <p><DollarSign size={18} /> <strong>Budget:</strong> ₹{gig.payment}</p>
         <p><CalendarDays size={18} /> <strong>Deadline:</strong> {gig.deadline || 'Not specified'}</p>
         <p><Tag size={18} /> <strong>Category:</strong> {gig.category}</p>
         <p><MapPin size={18} /> <strong>Location:</strong> {gig.location || 'Remote'}</p>
