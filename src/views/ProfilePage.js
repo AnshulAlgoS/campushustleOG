@@ -5,7 +5,6 @@ import './ProfilePage.css';
 import PromoteModal from 'components/PromoteModal';
 import { deductCoins } from '../walletUtils';
 
-
 export default function ProfilePage({ user, userProfile }) {
     const [formData, setFormData] = useState({
         firstName: userProfile?.firstName || '',
@@ -17,7 +16,11 @@ export default function ProfilePage({ user, userProfile }) {
         tags: userProfile?.tags || [],
         email: user?.email || '',
         freelancerProfile: userProfile?.freelancerProfile || {
-            portfolio: '', experience: '', category: ''
+            name: '',
+            photo: '',
+            portfolio: '',
+            experience: '',
+            category: ''
         },
         eventOrganizerProfile: userProfile?.eventOrganizerProfile || {
             organizationName: '', website: '', pastEvents: ''
@@ -53,6 +56,7 @@ export default function ProfilePage({ user, userProfile }) {
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
+
     const [promoteType, setPromoteType] = useState(null);
     const openPromoteModal = (type) => setPromoteType(type);
     const closeModal = () => setPromoteType(null);
@@ -86,8 +90,6 @@ export default function ProfilePage({ user, userProfile }) {
             alert(error.message);
         }
     };
-
-
 
     const toggleTag = (tag) => {
         setFormData(prev => ({
@@ -138,10 +140,52 @@ export default function ProfilePage({ user, userProfile }) {
                 </div>
             </div>
 
-            {/* Sub Profiles */}
+            {/* Freelancer Section */}
             {formData.tags.includes('Freelancer') && (
                 <div className="subprofile-section">
                     <h3>Freelancer Profile</h3>
+
+                    {/* Freelancer Name */}
+                    <input
+                        placeholder="Your Name"
+                        value={formData.freelancerProfile.name}
+                        onChange={(e) => handleSubProfileChange('freelancerProfile', 'name', e.target.value)}
+                    />
+
+                    {/* Upload Photo */}
+                    <div className="form-group">
+                        <label>Upload Your Photo</label>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => {
+                                const file = e.target.files[0];
+                                if (file) {
+                                    const reader = new FileReader();
+                                    reader.onloadend = () => {
+                                        handleSubProfileChange('freelancerProfile', 'photo', reader.result);
+                                    };
+                                    reader.readAsDataURL(file);
+                                }
+                            }}
+                        />
+                    </div>
+
+                    {/* Photo Preview */}
+                    {formData.freelancerProfile.photo && (
+                        <img
+                            src={formData.freelancerProfile.photo}
+                            alt="Freelancer Preview"
+                            style={{
+                                width: '100px',
+                                height: '100px',
+                                objectFit: 'cover',
+                                borderRadius: '8px',
+                                marginBottom: '10px',
+                            }}
+                        />
+                    )}
+
                     <input
                         placeholder="Portfolio Link"
                         value={formData.freelancerProfile.portfolio}
@@ -160,11 +204,10 @@ export default function ProfilePage({ user, userProfile }) {
                     <button className="promote-btn" onClick={() => handlePromoteClick('freelancer')}>
                         Promote My Services
                     </button>
-
-
                 </div>
             )}
 
+            {/* Hackathon Organizer */}
             {formData.tags.includes('Hackathon Organizer') && (
                 <div className="subprofile-section">
                     <h3>Hackathon Organizer Profile</h3>
@@ -186,11 +229,10 @@ export default function ProfilePage({ user, userProfile }) {
                     <button className="promote-btn" onClick={() => handlePromoteClick('hackathon')}>
                         Promote My Hackathon
                     </button>
-
-
                 </div>
             )}
 
+            {/* Mentor Section */}
             {formData.tags.includes('Mentor') && (
                 <div className="subprofile-section">
                     <h3>Mentor Profile</h3>
@@ -212,21 +254,17 @@ export default function ProfilePage({ user, userProfile }) {
                     <button className="promote-btn" onClick={() => handlePromoteClick('mentorship')}>
                         Promote My Services
                     </button>
-
-
                 </div>
             )}
 
+            {/* Save Button */}
             <div className="form-actions">
                 <button onClick={saveProfile} className="save-btn">💾 Save Profile</button>
             </div>
-            {promoteType && (
-                <>
-                    {console.log('ProfilePage user:', user)}
-                    <PromoteModal user={user} type={promoteType} closeModal={closeModal} />
-                </>
-            )}
 
+            {promoteType && (
+                <PromoteModal user={user} type={promoteType} closeModal={closeModal} />
+            )}
         </div>
     );
 }
