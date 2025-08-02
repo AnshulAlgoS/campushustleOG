@@ -3,6 +3,7 @@ import "./Mentorship.css";
 import { db } from "../firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { useEffect } from "react";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 
 const Mentorship = () => {
@@ -16,22 +17,31 @@ const Mentorship = () => {
     (m) => (!domain || m.domain === domain) && (!batch || m.batch === batch)
   );
 
-  const handleMentorRegister = async (e) => {
-    e.preventDefault();
-    const form = e.target;
+const handleMentorRegister = async (e) => {
+  e.preventDefault();
+  const form = e.target;
 
-    const name = form.name.value.trim();
-    const age = form.age.value;
-    const domain = form.domain.value;
-    const batch = form.batch.value;
-    const pictureFile = form.picture.files[0];
+  const name = form.name.value.trim();
+  const age = form.age.value;
+  const domain = form.domain.value;
+  const batch = form.batch.value;
+  const pictureFile = form.picture.files[0];
 
-    if (!name || !age || !domain || !batch || !pictureFile) {
-      alert("Please fill all required fields and upload a picture!");
-      return;
-    }
+  if (!name || !age || !domain || !batch || !pictureFile) {
+    alert("Please fill all required fields and upload a picture!");
+    return;
+  }
 
-    const imageURL = URL.createObjectURL(pictureFile);
+  try {
+    const storage = getStorage(); // From your firebase.js
+    const fileName = `${Date.now()}_${pictureFile.name}`;
+    const storageRef = ref(storage, `mentors/${fileName}`);
+
+    // Upload to Firebase Storage
+    await uploadBytes(storageRef, pictureFile);
+
+    // Get the real URL
+    const downloadURL = await getDownloadURL(storageRef);
 
     const newMentor = {
       name,
@@ -42,20 +52,21 @@ const Mentorship = () => {
       batch,
       charges: form.charges.value,
       gender: form.gender.value,
-      picture: imageURL,
+      picture: downloadURL, 
     };
 
-    try {
-      await addDoc(collection(db, "mentors"), newMentor);
-      setMentors((prev) => [...prev, newMentor]);
-      setActiveTab("mentee");
-      form.reset();
-      alert("Mentor registered successfully!");
-    } catch (error) {
-      console.error("Error adding mentor:", error);
-      alert("Error registering mentor.");
-    }
-  };
+    // Save to Firestore
+    await addDoc(collection(db, "mentors"), newMentor);
+    setMentors((prev) => [...prev, newMentor]);
+    setActiveTab("mentee");
+    form.reset();
+    alert("Mentor registered successfully!");
+  } catch (error) {
+    console.error("Error uploading mentor:", error);
+    alert("Error registering mentor.");
+  }
+};
+
   useEffect(() => {
     const fetchMentors = async () => {
       try {
