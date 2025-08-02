@@ -12,7 +12,7 @@ const Mentorship = () => {
   const auth = getAuth();
   const user = auth.currentUser;
 
-  // Dummy implementations to avoid build errors
+  
   const handleLogout = () => {};
   const openAuthModal = () => {};
   const onProfileClick = () => {};
@@ -362,6 +362,7 @@ const Mentorship = () => {
 };
 
 export default Mentorship;
+
 
 
 
