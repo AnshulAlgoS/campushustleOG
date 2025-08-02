@@ -442,10 +442,10 @@ header::before {
     rgba(98, 21, 161, 0.97) 50%,
     rgba(81, 27, 125, 0.99) 60%,
     #3b0865 100%
-  );
+  ); 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text; 
+  background-clip: text;
   color: transparent; 
 }
 

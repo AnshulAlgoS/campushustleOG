@@ -85,75 +85,6 @@
   line-height: 1.5;
   color: #f0f0f0;
 }
-
-/* Navbar */
-.freelance-navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 30px;
-  position: sticky;
-  margin-top: 0;
-  z-index: 1000;
-  flex-wrap: wrap;
-}
-
-.nav-left {
-  display: flex;
-  align-items: center;
-}
-
-.nav-logo {
-  height: 40px;
-  margin-right: 12px;
-}
-
-.brand-name {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: white;
-}
-
-/* Nav Right */
-.nav-right {
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.nav-right a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-
-.nav-right a:hover {
-  color: #ddd;
-}
-
-.signup-btn {
-  background-color: rgb(176, 110, 192);
-  color: #5d3b76;
-  font-weight: 700;
-  padding: 8px 16px;
-  border: 2px solid #5d3b76;
-  border-radius: 10px;
-  transition: 0.3s;
-}
-
-.signup-btn:hover {
-  background-color: #744a98;
-}
-
-.signup-btn:active {
-  background-color: #5d3b76;
-  color: white;
-  border-color: white;
-}
-
 /* Responsive Design */
 @media (max-width: 1024px) {
   .explore-container h1 {
@@ -185,22 +116,6 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 12px 20px;
-  }
-
-  .nav-left {
-    margin-bottom: 10px;
-  }
-
-  .nav-right {
-    width: 100%;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 12px;
-  }
-
-  .nav-right a {
-    white-space: nowrap;
-    font-size: 0.9rem;
   }
 }
 

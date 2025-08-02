@@ -32,7 +32,7 @@ import VideoEditingGigsPage from './views/VideoEditingGigsPage';
 import CategoryListingPage from './views/categoryListing';
 import Budgeting from './views/Budgeting';
 import CommunityHub from './views/CommunityHub';
-
+import GigDetailsPage from 'components/GigDetailsPage';
 import HelpCenter from './views/HelpCenter';
 import PrivacyPolicy from './views/PrivacyPolicy';
 import TermsAndConditions from './views/TermsAndConditions';
@@ -103,6 +103,8 @@ function InnerApp() {
         <Route path="/budgeting" element={<Budgeting navigateTo={(page) => navigate(`/${page}`)} />} />
         <Route path="/scholarships" element={<AllScholarshipsPage />} />
         <Route path="/community1" element={<CommunityHub />} />
+        <Route path="/gig/:id" element={<GigDetailsPage />} />
+
         
 
 

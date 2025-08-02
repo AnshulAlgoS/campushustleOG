@@ -1,29 +1,103 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ExploreFreelance.css';
 import { useNavigate, Link } from 'react-router-dom';
 import FloatingDoodles from './FloatingDoodle';
 import logo from '../assets/images/CL1.png';
-
-const ExploreFreelance = () => {
-  const navigate = useNavigate();
+import UserMenu from '../components/UserMenu';
+const ExploreFreelance = ({ user, handleLogout, onProfileClick, openAuthModal }) => {
+const navigate = useNavigate();
+const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div className="explore-container">
-      
-      <div className="freelance-navbar">
-        <div className="nav-left">
-          <img src={logo} alt="Campus Hustle Logo" className="nav-logo" />
-          <span className="brand-name">CampusHustle</span>
-        </div>
-        <div className="nav-right">
-          <Link to="/">Home</Link>
-          <Link to="/freelance">Freelance</Link>
-          <Link to="/mentorship">Mentorship</Link>
-          <Link to="/hackathon">Hackathons</Link>
-          <Link to="/dashboard">Dashboard</Link>
-        </div>
-      </div>
+      {/* Top Strip */}
+          <div className="top-strip">
+            <div className="logo-combo">
+              <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
+              <span className="logo-text">CampusHustle</span>
+            </div>
 
+            {/*  Desktop Nav */}
+            <nav className="navbar-desktop">
+              <ul className="strip-nav">
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/freelance">Freelance</Link></li>
+                <li><Link to="/hackathon">Hackathons</Link></li>
+                <li>
+                  <Link
+                    to="/"
+                    state={{ scrollTo: 'community' }}
+                    onClick={() => { }}
+                    className="desktop-link-btn"
+                  >
+                    Community
+                  </Link>
+                </li>
+
+                <li><Link to="/about">About Us</Link></li>
+                <li>
+                  {user ? (
+                    <UserMenu
+                      user={user}
+                      onLogout={handleLogout}
+                      onProfileClick={onProfileClick}
+                    />
+                  ) : (
+                    <button
+                      className="signup"
+                      onClick={() => openAuthModal()}
+                    >
+                      Get Started
+                    </button>
+                  )}
+                </li>
+              </ul>
+            </nav>
+
+
+            {/* Mobile Nav */}
+            <div className="navbar-mobile">
+              <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+
+              {menuOpen && (
+                <ul className={`mobile-nav ${menuOpen ? 'open' : ''}`}>
+                  <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
+                  <li><Link to="/freelance" onClick={() => setMenuOpen(false)}>Freelance</Link></li>
+                  <li><Link to="/hackathon" onClick={() => setMenuOpen(false)}>Hackathons</Link></li>
+                  <li><Link to="/" state={{ scrollTo: 'community' }} onClick={() => setMenuOpen(false)}>Community</Link></li>
+                  <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
+                  </li>
+                  <li>
+                    {user ? (
+                      <UserMenu
+                        user={user}
+                        onLogout={() => {
+                          setMenuOpen(false);
+                          handleLogout();
+                        }}
+                        onProfileClick={() => {
+                          setMenuOpen(false);
+                          onProfileClick();
+                        }}
+                      />
+                    ) : (
+                      <button
+                        className="signup"
+                        onClick={() => {
+                          setMenuOpen(false);
+                          openAuthModal();
+                        }}
+                      >
+                        Get Started
+                      </button>
+                    )}
+                  </li>
+                </ul>
+              )}
+            </div>
+
+
+          </div>
       <div className="freelance-content">
         <h1>Explore Freelancing Opportunities</h1>
         <div className="cards-container">

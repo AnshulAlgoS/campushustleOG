@@ -69,9 +69,6 @@ const Mentorship = () => {
 
     fetchMentors();
   }, []);
-
-
-
   return (
     <div className="mentorship-page">
       <section className="mentorship-hero">

@@ -11,91 +11,94 @@ const FreelancePage = ({ user, handleLogout, onProfileClick, openAuthModal }) =>
 
   return (
     <div className="freelance-container">
-
-      {/* Top Navigation Strip */}
-      <div className="top-strip">
-        <div className="logo-combo">
-          <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
-          <span className="logo-text">CampusHustle</span>
-        </div>
-
-        {/* Desktop Navbar */}
-        <nav className="navbar-desktop">
-          <ul className="strip-nav">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/freelance">Freelance</Link></li>
-            <li><Link to="/hackathon">Hackathons</Link></li>
-            <li>
-              <Link
-                to="/"
-                state={{ scrollTo: 'community' }}
-                className="desktop-link-btn"
-              >
-                Community
-              </Link>
-            </li>
-            <li><Link to="/about">About Us</Link></li>
-            <li>
-              {user ? (
-                <UserMenu
-                  user={user}
-                  onLogout={handleLogout}
-                  onProfileClick={onProfileClick}
-                />
-              ) : (
-                <button className="signup" onClick={openAuthModal}>
-                  Get Started
-                </button>
-              )}
-            </li>
-          </ul>
-        </nav>
-
-        {/* Mobile Navbar */}
-        <div className="navbar-mobile1">
-          <button className="hamburger1" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
-
-          {menuOpen && (
-            <ul className={`mobile-nav1 ${menuOpen ? 'open' : ''}`}>
-              <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
-              <li><Link to="/freelance" onClick={() => setMenuOpen(false)}>Freelance</Link></li>
-              <li><Link to="/hackathon" onClick={() => setMenuOpen(false)}>Hackathons</Link></li>
-              <li>
-                <Link to="/" state={{ scrollTo: 'community' }} onClick={() => setMenuOpen(false)}>
-                  Community
-                </Link>
-              </li>
-              <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link></li>
-              <li>
-                {user ? (
-                  <UserMenu
-                    user={user}
-                    onLogout={() => {
-                      setMenuOpen(false);
-                      handleLogout();
-                    }}
-                    onProfileClick={() => {
-                      setMenuOpen(false);
-                      onProfileClick();
-                    }}
-                  />
-                ) : (
-                  <button
-                    className="signup"
-                    onClick={() => {
-                      setMenuOpen(false);
-                      openAuthModal();
-                    }}
-                  >
-                    Get Started
-                  </button>
-                )}
-              </li>
-            </ul>
-          )}
-        </div>
-      </div>
-
+      {/* Top Strip */}
+                <div className="top-strip">
+                  <div className="logo-combo">
+                    <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
+                    <span className="logo-text">CampusHustle</span>
+                  </div>
+      
+                  {/*  Desktop Nav */}
+                  <nav className="navbar-desktop">
+                    <ul className="strip-nav">
+                      <li><Link to="/">Home</Link></li>
+                      <li><Link to="/freelance">Freelance</Link></li>
+                      <li><Link to="/hackathon">Hackathons</Link></li>
+                      <li>
+                        <Link
+                          to="/"
+                          state={{ scrollTo: 'community' }}
+                          onClick={() => { }}
+                          className="desktop-link-btn"
+                        >
+                          Community
+                        </Link>
+                      </li>
+      
+                      <li><Link to="/about">About Us</Link></li>
+                      <li>
+                        {user ? (
+                          <UserMenu
+                            user={user}
+                            onLogout={handleLogout}
+                            onProfileClick={onProfileClick}
+                          />
+                        ) : (
+                          <button
+                            className="signup"
+                            onClick={() => openAuthModal()}
+                          >
+                            Get Started
+                          </button>
+                        )}
+                      </li>
+                    </ul>
+                  </nav>
+      
+      
+                  {/* Mobile Nav */}
+                  <div className="navbar-mobile">
+                    <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+      
+                    {menuOpen && (
+                      <ul className={`mobile-nav ${menuOpen ? 'open' : ''}`}>
+                        <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
+                        <li><Link to="/freelance" onClick={() => setMenuOpen(false)}>Freelance</Link></li>
+                        <li><Link to="/hackathon" onClick={() => setMenuOpen(false)}>Hackathons</Link></li>
+                        <li><Link to="/" state={{ scrollTo: 'community' }} onClick={() => setMenuOpen(false)}>Community</Link></li>
+                        <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
+                        </li>
+                        <li>
+                          {user ? (
+                            <UserMenu
+                              user={user}
+                              onLogout={() => {
+                                setMenuOpen(false);
+                                handleLogout();
+                              }}
+                              onProfileClick={() => {
+                                setMenuOpen(false);
+                                onProfileClick();
+                              }}
+                            />
+                          ) : (
+                            <button
+                              className="signup"
+                              onClick={() => {
+                                setMenuOpen(false);
+                                openAuthModal();
+                              }}
+                            >
+                              Get Started
+                            </button>
+                          )}
+                        </li>
+                      </ul>
+                    )}
+                  </div>
+      
+      
+                </div>
       {/* Freelance Page CTA */}
       <div className="freelancer-content">
         <h1>Unleash Your Talent</h1>

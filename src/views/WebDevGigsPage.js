@@ -10,6 +10,10 @@ import {
 } from 'firebase/firestore';
 import { db, auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import logo from '../assets/images/CL1.png';
+import UserMenu from '../components/UserMenu';
+
 
 const WebDevGigsPage = () => {
   const [gigs, setGigs] = useState([]);
@@ -18,6 +22,8 @@ const WebDevGigsPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [reason, setReason] = useState('');
+  const [user, setUser] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,7 +31,27 @@ const WebDevGigsPage = () => {
       try {
         const gigQuery = query(collection(db, 'gigs'), where('category', '==', 'Web Development'));
         const gigSnapshot = await getDocs(gigQuery);
-        const gigsData = gigSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+        const gigsData = gigSnapshot.docs.map(doc => {
+          const gig = { id: doc.id, ...doc.data() };
+
+          // 💡 Extract platforms from the gig description or title
+          const text = `${gig.title} ${gig.description}`.toLowerCase();
+
+          const platforms = [];
+          if (text.includes('figma')) platforms.push('figma');
+          if (text.includes('github')) platforms.push('github');
+          if (text.includes('firebase')) platforms.push('firebase');
+          if (text.includes('react')) platforms.push('react');
+          if (text.includes('nextjs')) platforms.push('nextjs');
+          if (text.includes('nodejs')) platforms.push('nodejs');
+          if (text.includes('python')) platforms.push('python');
+
+          gig.platforms = platforms;
+
+          return gig;
+        });
+
         setGigs(gigsData);
 
         const user = auth.currentUser;
@@ -42,6 +68,7 @@ const WebDevGigsPage = () => {
 
     fetchGigsAndApplications();
   }, []);
+
 
   const handleSubmit = async () => {
     const user = auth.currentUser;
@@ -85,6 +112,77 @@ const WebDevGigsPage = () => {
 
   return (
     <>
+      {/* Top Strip */}
+      <div className="top-strip">
+        <div className="logo-combo">
+          <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
+          <span className="logo-text">CampusHustle</span>
+        </div>
+
+        {/* Desktop Nav */}
+        <nav className="navbar-desktop">
+          <ul className="strip-nav">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/freelance">Freelance</Link></li>
+            <li><Link to="/hackathon">Hackathons</Link></li>
+            <li>
+              <Link to="/" state={{ scrollTo: 'community' }} className="desktop-link-btn">Community</Link>
+            </li>
+            <li><Link to="/about">About Us</Link></li>
+            <li>
+              {user ? (
+                <UserMenu
+                  user={user}
+                  onLogout={() => auth.signOut()}
+                  onProfileClick={() => navigate('/profile')}
+                />
+              ) : (
+                <button className="signup" onClick={() => navigate('/auth')}>Get Started</button>
+              )}
+            </li>
+          </ul>
+        </nav>
+
+        {/* Mobile Nav */}
+        <div className="navbar-mobile">
+          <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+          {menuOpen && (
+            <ul className={`mobile-nav ${menuOpen ? 'open' : ''}`}>
+              <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
+              <li><Link to="/freelance" onClick={() => setMenuOpen(false)}>Freelance</Link></li>
+              <li><Link to="/hackathon" onClick={() => setMenuOpen(false)}>Hackathons</Link></li>
+              <li><Link to="/" state={{ scrollTo: 'community' }} onClick={() => setMenuOpen(false)}>Community</Link></li>
+              <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link></li>
+              <li>
+                {user ? (
+                  <UserMenu
+                    user={user}
+                    onLogout={() => {
+                      setMenuOpen(false);
+                      auth.signOut();
+                    }}
+                    onProfileClick={() => {
+                      setMenuOpen(false);
+                      navigate('/profile');
+                    }}
+                  />
+                ) : (
+                  <button
+                    className="signup"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      navigate('/auth');
+                    }}
+                  >
+                    Get Started
+                  </button>
+                )}
+              </li>
+            </ul>
+          )}
+        </div>
+      </div>
+
       <div className="webdev-header">
         <h1 className="webdev-title">Web Development Gigs</h1>
         <p className="webdev-subtitle">
@@ -100,16 +198,30 @@ const WebDevGigsPage = () => {
               <div key={gig.id} className="webdev-card">
                 <div className="card-header">
                   <h2>{gig.title}</h2>
+                  {gig.location && <p className="gig-location">{gig.location}</p>}
                 </div>
                 <div className="card-body">
-                  <p>{gig.description}</p>
+                  <p>{gig.description.length > 100 ? gig.description.slice(0, 100) + '...' : gig.description}</p>
                   <div className="card-footer">
                     <span className="gig-price">{gig.payment}</span>
-                    {alreadyApplied ? (
-                      <button disabled className="applied-btn">Applied</button>
-                    ) : (
-                      <button className="apply-btn" onClick={() => setSelectedGig(gig)}>Apply Now</button>
-                    )}
+                    <div className="btn-group">
+                      <button
+                        className="details-btn"
+                        onClick={() => navigate(`/gig/${gig.id}`)}
+                      >
+                        Details
+                      </button>
+                      {alreadyApplied ? (
+                        <button disabled className="applied-btn">Applied</button>
+                      ) : (
+                        <button
+                          className="apply-btn"
+                          onClick={() => setSelectedGig(gig)}
+                        >
+                          Apply Now
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -117,6 +229,7 @@ const WebDevGigsPage = () => {
           })}
         </div>
       </div>
+
 
       {selectedGig && (
         <div className="modal-overlay" onClick={() => setSelectedGig(null)}>

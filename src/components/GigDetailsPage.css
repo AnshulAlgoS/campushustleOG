@@ -1,0 +1,114 @@
+/* src/pages/GigDetailsPage.css */
+
+body {
+  background: linear-gradient(
+    135deg,
+    #3b0865 0%,
+    rgba(81, 27, 125, 0.99) 40%,
+    rgba(98, 21, 161, 0.97) 50%,
+    rgba(81, 27, 125, 0.99) 60%,
+    #3b0865 100%
+  );
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: #fff;
+}
+.gig-details-container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+.gig-details-container h1 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: #f9f6ff;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 10px rgba(159, 96, 255, 0.6);
+}
+
+.gig-details-container p {
+  display: flex;
+  align-items: flex-start; 
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  gap: 10px;
+  line-height: 1.7;
+  color: #e9e4f0;
+  flex-wrap: wrap; /* Allow wrapping */
+  word-break: break-word; /* Prevent overflow */
+}
+
+.gig-details-container p svg {
+  color: #b381fc;
+  min-width: 20px; 
+  margin-top: 4px; 
+  filter: drop-shadow(0 0 4px #c08bfa);
+  transition: transform 0.3s ease;
+}
+
+.gig-details-container p:hover svg {
+  transform: scale(1.1);
+}
+
+.gig-details-container p strong {
+  color: #d0b3ff;
+}
+
+
+/* Optional glowing button */
+.glow-button {
+  padding: 10px 20px;
+  border: none;
+  background: linear-gradient(135deg, #6f2dbd, #b185f2);
+  color: white;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(190, 144, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.glow-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(190, 144, 255, 1);
+}
+
+.gig-details-meta {
+  margin-top: 2rem;
+  font-size: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+.gig-details-meta span {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 14px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(185, 150, 255, 0.2);
+  color: #fdfcff;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .gig-details-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .gig-details-container h1 {
+    font-size: 2rem;
+  }
+
+  .gig-details-container p {
+    font-size: 1rem;
+  }
+}
