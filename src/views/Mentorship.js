@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Mentorship.css";
+import { Link } from "react-router-dom";
 import { db } from "../firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
-import { useEffect } from "react";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import logo from "../assets/images/logo1.png"; // updated path
+import UserMenu from "../components/UserMenu"; // adjust path as per your project
+import { getAuth } from "firebase/auth";
 
-const Mentorship = () => {
+const Mentorship = ({ onProfileClick, openAuthModal }) => {
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  const [menuOpen, setMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("");
   const [domain, setDomain] = useState("");
   const [batch, setBatch] = useState("");
@@ -16,6 +23,10 @@ const Mentorship = () => {
   const filteredMentors = mentors.filter(
     (m) => (!domain || m.domain === domain) && (!batch || m.batch === batch)
   );
+
+  const handleLogout = () => {
+    auth.signOut();
+  };
 
   const handleMentorRegister = async (e) => {
     e.preventDefault();
@@ -80,6 +91,100 @@ const Mentorship = () => {
 
   return (
     <div className="mentorship-page">
+
+      {/* Top Navigation Bar */}
+      <div className="top-strip">
+        <div className="logo-combo">
+          <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
+          <span className="logo-text">CampusHustle</span>
+        </div>
+
+        {/* Desktop Nav */}
+        <nav className="navbar-desktop">
+          <ul className="strip-nav">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/freelance">Freelance</Link></li>
+            <li><Link to="/hackathon">Hackathons</Link></li>
+            <li>
+              <Link
+                to="/"
+                state={{ scrollTo: 'community' }}
+                onClick={() => { }}
+                className="desktop-link-btn"
+              >
+                Community
+              </Link>
+            </li>
+
+            <li><Link to="/about">About Us</Link></li>
+            <li>
+              {user ? (
+                <UserMenu
+                  user={user}
+                  onLogout={handleLogout}
+                  onProfileClick={onProfileClick}
+                />
+              ) : (
+                <button
+                  className="signup"
+                  onClick={() => openAuthModal()}
+                >
+                  Get Started
+                </button>
+              )}
+            </li>
+          </ul>
+        </nav>
+
+        {/* Mobile Nav */}
+        <div className="navbar-mobile">
+          <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+
+          {menuOpen && (
+            <ul className={`mobile-nav ${menuOpen ? 'open' : ''}`}>
+              <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
+              <li><Link to="/freelance" onClick={() => setMenuOpen(false)}>Freelance</Link></li>
+              <li><Link to="/hackathon" onClick={() => setMenuOpen(false)}>Hackathons</Link></li>
+              <li>
+                <Link
+                  to="/"
+                  state={{ scrollTo: 'community' }}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Community
+                </Link>
+              </li>
+              <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link></li>
+              <li>
+                {user ? (
+                  <UserMenu
+                    user={user}
+                    onLogout={() => {
+                      setMenuOpen(false);
+                      handleLogout();
+                    }}
+                    onProfileClick={() => {
+                      setMenuOpen(false);
+                      onProfileClick();
+                    }}
+                  />
+                ) : (
+                  <button
+                    className="signup"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      openAuthModal();
+                    }}
+                  >
+                    Get Started
+                  </button>
+                )}
+              </li>
+            </ul>
+          )}
+        </div>
+      </div>
+
       <section className="mentorship-hero">
         <h1>Mentorship Platform</h1>
         <p>Choose your path – Learn or Guide</p>
@@ -267,6 +372,7 @@ const Mentorship = () => {
 };
 
 export default Mentorship;
+
 
 
 
