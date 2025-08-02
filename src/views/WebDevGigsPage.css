@@ -233,4 +233,14 @@
   .webdev-gigs-container h1 {
     font-size: 2rem;
   }
+  .read-more {
+  color: #d4a6ff;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 6px;
+  text-decoration: underline;
+}
+.read-more:hover {
+  color: #ffffff;
+}
 }
