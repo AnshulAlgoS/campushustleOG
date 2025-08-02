@@ -741,23 +741,25 @@ footer {
 }
 
 /* === RESPONSIVE FIX (ALL MOBILE) === */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
     align-items: flex-start;
+    gap: 0.5rem; /* ⬅️ reduce section gap */
+  }
+
+  .footer-column {
+    width: 100%;
+    margin-bottom: 0.5rem; /* ⬅️ reduce bottom spacing */
   }
 
   .footer-logo {
     flex-direction: row;
     justify-content: flex-start;
-    margin-bottom: 20px;
-  }
-
-  .footer-column {
-    width: 100%;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem; /* ⬅️ smaller margin for logo */
   }
 }
+
 
 
 
