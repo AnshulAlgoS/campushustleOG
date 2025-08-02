@@ -22,34 +22,31 @@
 }
 
 .webdev-card {
-  background: linear-gradient(
-    135deg,
-    #714992 0%,
-    #af85d1fc 40%,
-    rgba(176, 129, 214, 0.97) 50%,
-    rgba(166, 118, 206, 0.99) 60%,
-    #8e63b1 100%
-  );
-  border: 1px solid #3d0d58;
-  width: 280px;
+  background: rgba(255, 255, 255, 0.05); /* transparent glassy look */
+  border: 1px solid rgba(176, 129, 214, 0.2); /* soft purple border */
   border-radius: 16px;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 20px rgba(176, 129, 214, 0.1);
+  backdrop-filter: blur(10px);
   color: #f3e6ff;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 16px;
+  padding: 20px;
   margin: 12px 0;
   min-height: 400px;
-  z-index: 2;
+  width: 280px;
+  position: relative;
+  z-index: 1;
 }
 
 .webdev-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 25px rgba(176, 129, 214, 0.4);
+  border: 1px solid rgba(176, 129, 214, 0.6);
 }
+
 
 .card-header {
   padding: 10px 0;
