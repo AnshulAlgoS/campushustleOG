@@ -204,7 +204,7 @@
 /* Header */
 .webdev-header {
   background: linear-gradient(135deg, #520678, #cd37ee);
-  padding: 80px 20px 60px;
+  padding: 0px 0px 60px;
   text-align: center;
   color: #4b0082;
 }
@@ -232,4 +232,14 @@
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 6px;
+}
+.applyie-btn {
+  background: linear-gradient(to right, #be6dea, #d49bdf);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
 }

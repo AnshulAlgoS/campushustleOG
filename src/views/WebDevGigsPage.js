@@ -202,7 +202,7 @@ const WebDevGigsPage = () => {
                       {alreadyApplied ? (
                         <button disabled className="applied-btn">Applied</button>
                       ) : (
-                        <button className="apply-btn" onClick={() => setSelectedGig(gig)}>Apply Now</button>
+                        <button className="applyie-btn" onClick={() => setSelectedGig(gig)}>Apply Now</button>
                       )}
                     </div>
                   </div>

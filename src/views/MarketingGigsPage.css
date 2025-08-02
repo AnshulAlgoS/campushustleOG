@@ -169,3 +169,73 @@
   padding: 0.5rem 1rem;
   border-radius: 6px;
 }
+.cards-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  gap: 10px;
+}
+
+.cards-footer .gig-price {
+  font-weight: bold;
+  flex: 1;
+  text-align: left;
+  color: #ffffff;
+}
+
+.cards-footer .btn-groups {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.cards-footer .detail-btn,
+.cards-footer .applys-btn,
+.cards-footer .applieds-btn {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.cards-footer .detail-btn {
+  background-color: #ffffff;
+  color: #00796b;
+  border: 1.5px solid #00796b;
+}
+
+.cards-footer .applys-btn {
+  background: linear-gradient(to right, #00796b, #26a69a);
+  color: white;
+}
+
+.cards-footer .applieds-btn {
+  background-color: #ccc;
+  color: #555;
+  cursor: not-allowed;
+}
+.gig-description {
+  font-size: 0.95rem;
+  color: #f0f0f0;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+}
+
+.read-toggle {
+  color: #00e6b8;
+  cursor: pointer;
+  font-weight: 600;
+  margin-left: 6px;
+}
+
+.read-toggle:hover {
+  text-decoration: underline;
+}
+

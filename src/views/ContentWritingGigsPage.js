@@ -130,42 +130,45 @@ const ContentWritingGigsPage = ({ user, handleLogout, onProfileClick, openAuthMo
       <div className="contentwriting-gigs-container">
         <div className="gigs-wrapper">
           {gigs.map((gig) => {
-            const alreadyApplied = appliedGigs.includes(gig.id);
-            const isExpanded = expandedGigs.includes(gig.id);
-            const descriptionPreview = gig.description.split(' ').slice(0, 10).join(' ') + '...';
+  const alreadyApplied = appliedGigs.includes(gig.id);
+  const isExpanded = expandedGigs.includes(gig.id);
+  const descriptionPreview = gig.description.split(' ').slice(0, 20).join(' ') + '...';
 
-            return (
-              <div key={gig.id} className="gig-card glassy-card">
-                <div className="card-header">
-                  <h2>{gig.title}</h2>
-                </div>
-                <div className="card-body">
-                  <p>{isExpanded ? gig.description : descriptionPreview}</p>
-                  <button onClick={() => toggleExpand(gig.id)} className="readmore-btn">
-                    {isExpanded ? "Show Less" : "Read More"}
-                  </button>
+  return (
+    <div key={gig.id} className="gig-card glassy-card">
+      <div className="card-header">
+        <h2>{gig.title}</h2>
+      </div>
+      <div className="card-body">
+        <p>{isExpanded ? gig.description : descriptionPreview}</p>
+        {gig.description.split(' ').length > 20 && (
+          <button onClick={() => toggleExpand(gig.id)} className="readmore-btn">
+            {isExpanded ? "Show Less" : "Read More"}
+          </button>
+        )}
 
-                  <p><strong>💰 Payment:</strong> {gig.payment}</p>
-                  <p><strong>🕒 Deadline:</strong> {gig.deadline || "Not specified"}</p>
+        <p><strong>💰 Payment:</strong> {gig.payment}</p>
+        <p><strong>🕒 Deadline:</strong> {gig.deadline || "Not specified"}</p>
 
-                  <div className="card-footer">
-                    <div className="btn-group">
-                      <button className="details-btn" onClick={() => navigate(`/gig/${gig.id}`)}>
-                        Details
-                      </button>
-                      {alreadyApplied ? (
-                        <button disabled className="applied-btn">Applied</button>
-                      ) : (
-                        <button className="apply-btn" onClick={() => setSelectedGig(gig)}>
-                          Apply Now
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+        <div className="card-footer">
+          <div className="btn-group">
+            <button className="details-btn" onClick={() => navigate(`/gig/${gig.id}`)}>
+              Details
+            </button>
+            {alreadyApplied ? (
+              <button disabled className="applied-btn">Applied</button>
+            ) : (
+              <button className="apply-btn" onClick={() => setSelectedGig(gig)}>
+                Apply Now
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+})}
+
         </div>
 
         {selectedGig && (

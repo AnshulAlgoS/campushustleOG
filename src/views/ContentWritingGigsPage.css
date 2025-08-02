@@ -8,104 +8,109 @@
 
 .contentwriting-gigs-container h1 {
   font-size: 2.6rem;
-  color: #5bb9ef;
+  color: #6f2dbd;
   margin-bottom: 40px;
 }
 
-.gigs-wrapper {
+.contentwriting-gigs-container .gigs-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
 }
 
-/* === Transparent Glassy Glowy Card === */
-.gig-card {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  border-radius: 18px;
-  width: 300px;
-  padding: 20px;
-  border: 2px solid;
-  border-image: linear-gradient(135deg, #60c9d9, #0ae2ea);
-  border-image-slice: 1;
-  box-shadow: 0 0 15px rgba(102, 231, 255, 0.7);
+.contentwriting-gigs-container .gig-card {
+  background: linear-gradient(135deg, #25abc2, #84c6d7);
+  width: 280px;
+  border-radius: 16px;
+  border: 2px solid #0c7170;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
   color: white;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.gig-card:hover {
+.contentwriting-gigs-container .gig-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 0 25px rgba(102, 231, 255, 1);
+  border: 2px solid #a259d1; /* darker on hover */
+  box-shadow: 0 0 20px rgba(192, 132, 252, 0.5);
 }
 
-.card-header {
+.contentwriting-gigs-container .card-header {
+  padding: 20px;
   font-size: 1.4rem;
   font-weight: bold;
-  margin-bottom: 10px;
 }
 
-/* === Short Desc + Read More === */
-.desc-short {
-  font-size: 1rem;
-  color: #fff;
-  margin-bottom: 10px;
+.contentwriting-gigs-container .card-body {
+  padding: 20px;
+}
+
+.card-body p.description {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
 }
 
 .read-more {
-  color: #fff;
-  font-weight: bold;
+  display: inline-block;
+  font-size: 0.85rem;
+  color: #fcdfff;
+  margin-top: 4px;
   cursor: pointer;
-  margin-left: 5px;
   text-decoration: underline;
 }
 
-/* === Payment and Deadline Info === */
-.info-extra {
-  margin-top: 8px;
-  font-size: 0.95rem;
-  color: #ffffff;
+.card-body .meta-info {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #fceaff;
   text-align: left;
 }
 
-/* === Buttons Group === */
-.btn-group {
+.card-body .meta-info p {
+  margin: 2px 0;
+}
+
+.card-buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: 15px;
+  margin-top: 16px;
   gap: 10px;
 }
 
-.details-btn,
-.apply-btn,
-.applied-btn {
+.card-buttons button {
   flex: 1;
-  padding: 0.6rem 1.2rem;
+  padding: 8px 12px;
+  border: none;
   border-radius: 8px;
+  background-color: #fff;
+  color: #7b2cbf;
   font-weight: 600;
   cursor: pointer;
-  font-size: 0.95rem;
-  border: none;
+  transition: 0.3s ease;
 }
 
-.details-btn {
-  background-color: #f0f0f0;
-  color: #333;
+.card-buttons button:hover {
+  background-color: #7b2cbf;
+  color: white;
+  transform: scale(1.05);
 }
 
-.apply-btn {
-  background-color: #6b47dc;
-  color: #fff;
+.gig-price {
+  font-weight: bold;
 }
 
 .applied-btn {
   background-color: #ccc;
-  color: #444;
+  color: #555;
   cursor: not-allowed;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
 }
 
-/* === Modal Styles === */
+/* Modal Styles */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -142,7 +147,7 @@
 }
 
 .modal-box h2 {
-  color: #5bb9ef;
+  color: #8e24aa;
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
@@ -185,10 +190,10 @@
 
 /* === Header Section === */
 .content-header {
-  background: linear-gradient(135deg, #74d3f3, #58c0dd);
+  background: linear-gradient(135deg, #2eacc5, #8ed1e7);
   padding: 0px 0px 60px;
   text-align: center;
-  color: rgb(7, 62, 76);
+  color: #065a65;
 }
 
 .content-title {
@@ -204,3 +209,21 @@
   margin-left: auto;
   margin-right: auto;
 }
+.apply-btn {
+  background: linear-gradient(to right, #1b8297, #63d6e7);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px; 
+  margin-top: 14px;
+}
+
+

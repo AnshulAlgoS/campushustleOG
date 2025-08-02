@@ -22,6 +22,8 @@ const MarketingGigsPage = ({ user, handleLogout, onProfileClick, openAuthModal }
   const [email, setEmail] = useState('');
   const [reason, setReason] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [expandedGigs, setExpandedGigs] = useState({});
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -193,21 +195,32 @@ const MarketingGigsPage = ({ user, handleLogout, onProfileClick, openAuthModal }
                     <h2>{gig.title}</h2>
                   </div>
                   <div className="card-body">
-                    <p>{gig.description}</p>
-                    <div className="card-footer">
+                    <p className="gig-description">
+  {expandedGigs[gig.id] ? gig.description : `${gig.description.slice(0, 100)}...`}
+  {gig.description.length > 100 && (
+    <span
+      className="read-toggle"
+      onClick={() =>
+        setExpandedGigs(prev => ({ ...prev, [gig.id]: !prev[gig.id] }))
+      }
+    >
+      {expandedGigs[gig.id] ? ' Read Less' : ' Read More'}
+    </span>
+  )}
+</p>
+
+                    <div className="cards-footer">
                       <span className="gig-price">{gig.payment}</span>
-                      <button
-                        className="details-btn"
-                        onClick={() => navigate(`/gig/${gig.id}`)}
-                      >
-                        Details
-                      </button>
-                      {alreadyApplied ? (
-                        <button disabled className="applied-btn">Applied</button>
-                      ) : (
-                        <button onClick={() => setSelectedGig(gig)}>Apply Now</button>
-                      )}
+                      <div className="btn-groups">
+                        <button className="detail-btn" onClick={() => navigate(`/gig/${gig.id}`)}>Details</button>
+                        {alreadyApplied ? (
+                          <button disabled className="applieds-btn">Applied</button>
+                        ) : (
+                          <button className="applys-btn" onClick={() => setSelectedGig(gig)}>Apply</button>
+                        )}
+                      </div>
                     </div>
+
                   </div>
                 </div>
               );
