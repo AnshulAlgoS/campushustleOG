@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { db } from "../firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import logo from "../assets/images/logo1.png"; // updated path
-import UserMenu from "../components/UserMenu"; // adjust path as per your project
+import logo from "../assets/images/logo1.png"; 
+import UserMenu from "../components/UserMenu"; 
 import { getAuth } from "firebase/auth";
 
 const Mentorship = ({ onProfileClick, openAuthModal }) => {
@@ -372,6 +372,7 @@ const Mentorship = ({ onProfileClick, openAuthModal }) => {
 };
 
 export default Mentorship;
+
 
 
 
