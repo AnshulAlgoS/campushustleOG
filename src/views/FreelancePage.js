@@ -11,7 +11,6 @@ const FreelancePage = ({ user, handleLogout, onProfileClick, openAuthModal }) =>
 
   return (
     <div className="freelance-container">
-      <FloatingDoodles />
 
       {/* Top Navigation Strip */}
       <div className="top-strip">
@@ -98,14 +97,14 @@ const FreelancePage = ({ user, handleLogout, onProfileClick, openAuthModal }) =>
       </div>
 
       {/* Freelance Page CTA */}
-      <div className="freelance-content">
+      <div className="freelancer-content">
         <h1>Unleash Your Talent</h1>
         <p>Join Campus Hustle’s freelance network – either work or hire students with amazing skills.</p>
 
-        <Link to="/explore-freelance" className="freelance-btn">
+        <Link to="/explore-freelance" className="freelancer-btn">
           Explore Freelancing Opportunities
         </Link>
-        <Link to="/offer-work" className="freelance-btn">
+        <Link to="/offer-work" className="freelancer-btn">
           Offer Work to Freelancers
         </Link>
       </div>

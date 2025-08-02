@@ -76,55 +76,121 @@
 }
 
 /* Hero section content */
-.freelance-content {
+.freelancer-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 100px;
   gap: 30px;
+  margin-top: 13%;
+  box-sizing: border-box;
   text-align: center;
-  padding: 0 20px;
 }
 
-.freelance-content h1 {
+.freelancer-content h1 {
   font-size: 3.2rem;
   color: #fff;
+  font-weight: bolder;
   background: linear-gradient(to right, #a259ff, #ff66c4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.freelance-content p {
-  font-size: 1.3rem;
+.freelancer-content p {
+  font-size: 1.5rem;
   color: #ddd;
   max-width: 700px;
 }
 
 /* Call to action button */
-.freelance-btn {
-  background: linear-gradient(135deg, #943cf1 0%, #d877f0 100%);
-  color: #fff;
-  padding: 18px 32px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 12px;
-  text-decoration: none;
-  box-shadow: 0 4px 20px rgba(106, 17, 203, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  backdrop-filter: blur(10px);
-  width: 380px;
-  text-align: center;
-}
 
-.freelance-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 25px rgba(106, 17, 203, 0.6);
-}
+
 .navbar-mobile1 {
   display: none;
 }
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .get-started-btn {
+    margin-left: 0;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .freelancer-content h1 {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+
+  .freelancer-content p {
+    font-size: 1.1rem;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .freelancer-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 14px 24px;
+  }
+}
+
+.freelancer-content .freelancer-btn {
+  align-items: center;
+  justify-content: center;
+  color: #f8e6ff;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #943cf1 0%, #d877f0 100%);
+  padding: 0.9rem 2rem;
+  width: 20vw;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.freelancer-content .freelancer-btn:hover {
+  background-color: #303f9f;
+}
+
+@media (max-width: 468px) {
+  .freelancer-content {
+    padding: 2rem 1rem;
+    margin-top: 33%;
+  }
+
+  .freelancer-content h1 {
+    font-size: 2rem;
+    font-weight: bolder;
+  }
+
+  .freelancer-content p {
+    font-size: 1rem;
+  }
+
+  .freelancer-content .freelancer-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:50vw;
+    height: 10vh;
+    margin: 0.5rem auto;
+  }
+}
+
 
 
 
