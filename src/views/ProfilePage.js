@@ -208,54 +208,131 @@ export default function ProfilePage({ user, userProfile }) {
             )}
 
             {/* Hackathon Organizer */}
-            {formData.tags.includes('Hackathon Organizer') && (
-                <div className="subprofile-section">
-                    <h3>Hackathon Organizer Profile</h3>
-                    <input
-                        placeholder="Organization Name"
-                        value={formData.eventOrganizerProfile.organizationName}
-                        onChange={(e) => handleSubProfileChange('eventOrganizerProfile', 'organizationName', e.target.value)}
-                    />
-                    <input
-                        placeholder="Website"
-                        value={formData.eventOrganizerProfile.website}
-                        onChange={(e) => handleSubProfileChange('eventOrganizerProfile', 'website', e.target.value)}
-                    />
-                    <input
-                        placeholder="Past Events"
-                        value={formData.eventOrganizerProfile.pastEvents}
-                        onChange={(e) => handleSubProfileChange('eventOrganizerProfile', 'pastEvents', e.target.value)}
-                    />
-                    <button className="promote-btn" onClick={() => handlePromoteClick('hackathon')}>
-                        Promote My Hackathon
-                    </button>
-                </div>
-            )}
+{formData.tags.includes('Hackathon Organizer') && (
+    <div className="subprofile-section">
+        <h3>Hackathon Organizer Profile</h3>
+        <input
+            placeholder="Your Name"
+            value={formData.eventOrganizerProfile.name}
+            onChange={(e) => handleSubProfileChange('eventOrganizerProfile', 'name', e.target.value)}
+        />
+
+        <div className="form-group">
+            <label>Upload Photo</label>
+            <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onloadend = () => {
+                            handleSubProfileChange('eventOrganizerProfile', 'photo', reader.result);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                }}
+            />
+        </div>
+
+        {formData.eventOrganizerProfile.photo && (
+            <img
+                src={formData.eventOrganizerProfile.photo}
+                alt="Organizer"
+                style={{
+                    width: '100px',
+                    height: '100px',
+                    objectFit: 'cover',
+                    borderRadius: '8px',
+                    marginBottom: '10px'
+                }}
+            />
+        )}
+
+        <input
+            placeholder="Organization Name"
+            value={formData.eventOrganizerProfile.organizationName}
+            onChange={(e) => handleSubProfileChange('eventOrganizerProfile', 'organizationName', e.target.value)}
+        />
+        <input
+            placeholder="Website"
+            value={formData.eventOrganizerProfile.website}
+            onChange={(e) => handleSubProfileChange('eventOrganizerProfile', 'website', e.target.value)}
+        />
+        <input
+            placeholder="Past Events"
+            value={formData.eventOrganizerProfile.pastEvents}
+            onChange={(e) => handleSubProfileChange('eventOrganizerProfile', 'pastEvents', e.target.value)}
+        />
+        <button className="promote-btn" onClick={() => handlePromoteClick('hackathon')}>
+            Promote My Hackathon
+        </button>
+    </div>
+)}
 
             {/* Mentor Section */}
-            {formData.tags.includes('Mentor') && (
-                <div className="subprofile-section">
-                    <h3>Mentor Profile</h3>
-                    <input
-                        placeholder="Area of Expertise"
-                        value={formData.mentorProfile.expertise}
-                        onChange={(e) => handleSubProfileChange('mentorProfile', 'expertise', e.target.value)}
-                    />
-                    <input
-                        placeholder="Years of Mentoring"
-                        value={formData.mentorProfile.years}
-                        onChange={(e) => handleSubProfileChange('mentorProfile', 'years', e.target.value)}
-                    />
-                    <input
-                        placeholder="Availability (e.g., weekends, evenings)"
-                        value={formData.mentorProfile.availability}
-                        onChange={(e) => handleSubProfileChange('mentorProfile', 'availability', e.target.value)}
-                    />
-                    <button className="promote-btn" onClick={() => handlePromoteClick('mentorship')}>
-                        Promote My Services
-                    </button>
-                </div>
-            )}
+{formData.tags.includes('Mentor') && (
+    <div className="subprofile-section">
+        <h3>Mentor Profile</h3>
+        <input
+            placeholder="Your Name"
+            value={formData.mentorProfile.name}
+            onChange={(e) => handleSubProfileChange('mentorProfile', 'name', e.target.value)}
+        />
+
+        <div className="form-group">
+            <label>Upload Photo</label>
+            <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onloadend = () => {
+                            handleSubProfileChange('mentorProfile', 'photo', reader.result);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                }}
+            />
+        </div>
+
+        {formData.mentorProfile.photo && (
+            <img
+                src={formData.mentorProfile.photo}
+                alt="Mentor"
+                style={{
+                    width: '100px',
+                    height: '100px',
+                    objectFit: 'cover',
+                    borderRadius: '8px',
+                    marginBottom: '10px'
+                }}
+            />
+        )}
+
+        <input
+            placeholder="Area of Expertise"
+            value={formData.mentorProfile.expertise}
+            onChange={(e) => handleSubProfileChange('mentorProfile', 'expertise', e.target.value)}
+        />
+        <input
+            placeholder="Years of Mentoring"
+            value={formData.mentorProfile.years}
+            onChange={(e) => handleSubProfileChange('mentorProfile', 'years', e.target.value)}
+        />
+        <input
+            placeholder="Availability (e.g., weekends, evenings)"
+            value={formData.mentorProfile.availability}
+            onChange={(e) => handleSubProfileChange('mentorProfile', 'availability', e.target.value)}
+        />
+        <button className="promote-btn" onClick={() => handlePromoteClick('mentorship')}>
+            Promote My Services
+        </button>
+    </div>
+)}
+
 
             {/* Save Button */}
             <div className="form-actions">
@@ -268,3 +345,4 @@ export default function ProfilePage({ user, userProfile }) {
         </div>
     );
 }
+
