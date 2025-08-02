@@ -7,7 +7,6 @@ import './HackathonPage.css';
 const HackathonPage = () => {
   return (
     <>
-      <FloatingDoodles /> {/* Animated doodles background */}
 
       <div className="hackathon-page">
         {/* Top Navigation Bar */}
@@ -22,7 +21,6 @@ const HackathonPage = () => {
             <li><Link to="/mentorship">Mentorship</Link></li>
             <li><Link to="/community">Community</Link></li>
             <li><Link to="/about">About Us</Link></li>
-            {/* Hackathons link removed because you're already on this page */}
           </ul>
         </div>
 

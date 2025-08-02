@@ -6,36 +6,6 @@ html, body {
 }
 
 .translucent-strip {
-
-  backdrop-filter: blur(10px);
-  position: fixed;
-  top: 0;
-  width: 100%;
-   padding: 0px 16px;
-   height: 48px;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  
-}
-
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: transparent;
-}
-
-
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: transparent;
-}
-
-.translucent-strip {
  
   backdrop-filter: blur(10px);
   position: fixed;
@@ -64,24 +34,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 100px;
   box-sizing: border-box;
-  
-}
-
-
-/* Nav Bar */
-.translucent-strip {
- 
-  backdrop-filter: blur(10px);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 10px 20px;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .strip-logo {
@@ -144,30 +97,29 @@ body {
 /* Hero Buttons */
 .hackathon-buttons {
   display: flex;
+  margin-top: 20vh;
   flex-direction: column;
   gap: 30px;
   align-items: center;
   justify-content: center;
   padding: 60px 0;
-  margin-top: 50px;
-  gap: 30px;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 0;
-  margin-top: 50px;
 }
 
 .hack-btn {
   padding: 22px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
   font-size: 1.2rem;
   font-weight: bold;
   border: 2px solid white;
   border-radius: 12px;
-  background-color:#5c3c6e;
-  color: white;
+  background: linear-gradient(135deg, #943cf1 0%, #d877f0 100%);
+  color: rgb(241, 219, 243);
   cursor: pointer;
   transition: all 0.3s ease;
-  width: 340px;
   text-align: center;
   text-decoration: none;
 }
@@ -666,20 +618,6 @@ body {
   padding: 60px 0;
 }
 
-.hack-btn {
-  padding: 22px 60px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border: 2px solid rgb(90, 24, 109);
-  border-radius: 12px;
-  background-color: #ac73cd;
-  color: rgb(33, 4, 37);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 340px;
-  text-align: center;
-  text-decoration: none;
-}
 
 .hack-btn:hover {
   background-color: rgba(189, 137, 201, 0.89);
