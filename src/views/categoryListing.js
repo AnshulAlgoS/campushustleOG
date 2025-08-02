@@ -46,7 +46,7 @@ const CategoryListingPage = () => {
           {gigs.map(gig => (
             <div key={gig.id} className="gig-card">
               <h3>{gig.title}</h3>
-              <p>{gig.description}</p>
+              <p>{gig.description.length > 100 ? gig.description.slice(0, 100) + '...' : gig.description}</p>
               <p><strong>Payment:</strong> {gig.payment}</p>
               <p><strong>Timeline:</strong> {gig.startDate} - {gig.endDate}</p>
             </div>
