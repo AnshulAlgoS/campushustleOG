@@ -466,49 +466,48 @@ useEffect(() => {
             ))}
           </div>
         </section>
+                  <footer>
+  <div className="home-page-wrapper">
+    <div className="footer-container">
+      <div className="footer-logo">
+        <img src={footerLogo} alt="Campus Hustle Logo" />
+        <h2>CampusHustle</h2>
+      </div>
 
+      {/* ✅ Support */}
+      <div className="footer-column" data-aos="fade-up" data-aos-delay="100">
+        <h4>Support</h4>
+        <ul>
+          <li><Link to="/help-center">Help Center</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
+        </ul>
+      </div>
 
-        <footer>
-          <div className="home-page-wrapper">
-            <span className="footer-container">
-              <span className="footer-logo">
-                <img src={footerLogo} alt="Campus Hustle Logo" />
-                <h2>CampusHustle</h2>
-              </span>
+      {/* ✅ Company */}
+      <div className="footer-column" data-aos="fade-up" data-aos-delay="100">
+        <h4>Company</h4>
+        <ul>
+          <li><Link to="/about">About Us</Link></li>
+          <li><Link to="/hackathon">Hackathons</Link></li>
+          <li><Link to="/" state={{ scrollTo: 'community' }}>Community</Link></li>
+          <li><Link to="/freelance">Freelance</Link></li>
+        </ul>
+      </div>
 
-              {/* ✅ Support */}
-              <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
-                <h4>Support</h4>
-                <ul>
-                  <li><Link to="/help-center">Help Center</Link></li>
-                  <li><Link to="/contact">Contact</Link></li>
-                </ul>
-              </span>
+      {/* ✅ Quick Links */}
+      <div className="footer-column" data-aos="fade-up" data-aos-delay="100">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+          <li><Link to="/terms-and-conditions">Terms & Conditions</Link></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
 
-              {/* ✅ Company */}
-              <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
-                <h4>Company</h4>
-                <ul>
-                  <li><Link to="/about">About Us</Link></li>
-                  <li><Link to="/hackathon">Hackathons</Link></li>
-                  <li><Link to="/" state={{ scrollTo: 'community' }}>Community</Link></li>
-                  <li><Link to="/freelance">Freelance</Link></li>
-                </ul>
-              </span>
+<ChatbotButton />
 
-              {/* ✅ Quick Links */}
-              <span className="footer-column" data-aos="fade-up" data-aos-delay="100">
-                <h4>Quick Links</h4>
-                <ul>
-                  <li><Link to="/privacy-policy">Privacy Policy</Link></li>
-                  <li><Link to="/terms-and-conditions">Terms & Conditions</Link></li>
-                </ul>
-              </span>
-            </span>
-          </div>
-        </footer>
-
-      <ChatbotButton />
 
 
       
