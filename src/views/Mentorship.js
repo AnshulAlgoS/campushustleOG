@@ -1,38 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Mentorship.css";
 import { db } from "../firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
+import { useEffect } from "react";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { Link } from "react-router-dom";
-import logo from "../assets/images/CL1.png";
-import UserMenu from "../components/UserMenu"; 
-import { getAuth } from "firebase/auth";
 
 const Mentorship = () => {
-  const auth = getAuth();
-  const user = auth.currentUser;
-
-  
-  const handleLogout = () => {};
-  const openAuthModal = () => {};
-  const onProfileClick = () => {};
-
-  const [menuOpen, setMenuOpen] = useState(false);
-
   const [activeTab, setActiveTab] = useState("");
   const [domain, setDomain] = useState("");
   const [batch, setBatch] = useState("");
   const [selectedMentor, setSelectedMentor] = useState(null);
   const [mentors, setMentors] = useState([]);
-
-  const [selectedImage, setSelectedImage] = useState(null);
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setSelectedImage(file);
-    }
-  };
+  const [selectedFileName, setSelectedFileName] = useState("");
 
   const filteredMentors = mentors.filter(
     (m) => (!domain || m.domain === domain) && (!batch || m.batch === batch)
@@ -46,18 +25,19 @@ const Mentorship = () => {
     const age = form.age.value;
     const domain = form.domain.value;
     const batch = form.batch.value;
+    const pictureFile = form.picture.files[0];
 
-    if (!name || !age || !domain || !batch || !selectedImage) {
+    if (!name || !age || !domain || !batch || !pictureFile) {
       alert("Please fill all required fields and upload a picture!");
       return;
     }
 
     try {
       const storage = getStorage();
-      const fileName = `${Date.now()}_${selectedImage.name}`;
+      const fileName = `${Date.now()}_${pictureFile.name}`;
       const storageRef = ref(storage, `mentors/${fileName}`);
 
-      await uploadBytes(storageRef, selectedImage);
+      await uploadBytes(storageRef, pictureFile);
       const downloadURL = await getDownloadURL(storageRef);
 
       const newMentor = {
@@ -76,7 +56,7 @@ const Mentorship = () => {
       setMentors((prev) => [...prev, newMentor]);
       setActiveTab("mentee");
       form.reset();
-      setSelectedImage(null);
+      setSelectedFileName("");
       alert("Mentor registered successfully!");
     } catch (error) {
       console.error("Error uploading mentor:", error);
@@ -100,93 +80,6 @@ const Mentorship = () => {
 
   return (
     <div className="mentorship-page">
-
-      {/* Navbar */}
-      <div className="top-strip">
-        <div className="logo-combo">
-          <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
-          <span className="logo-text">CampusHustle</span>
-        </div>
-
-        {/* Desktop Nav */}
-        <nav className="navbar-desktop">
-          <ul className="strip-nav">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/freelance">Freelance</Link></li>
-            <li><Link to="/hackathon">Hackathons</Link></li>
-            <li>
-              <Link
-                to="/"
-                state={{ scrollTo: 'community' }}
-                onClick={() => { }}
-                className="desktop-link-btn"
-              >
-                Community
-              </Link>
-            </li>
-
-            <li><Link to="/about">About Us</Link></li>
-            <li>
-              {user ? (
-                <UserMenu
-                  user={user}
-                  onLogout={handleLogout}
-                  onProfileClick={onProfileClick}
-                />
-              ) : (
-                <button
-                  className="signup"
-                  onClick={() => openAuthModal()}
-                >
-                  Get Started
-                </button>
-              )}
-            </li>
-          </ul>
-        </nav>
-
-        {/* Mobile Nav */}
-        <div className="navbar-mobile">
-          <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
-
-          {menuOpen && (
-            <ul className={`mobile-nav ${menuOpen ? 'open' : ''}`}>
-              <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
-              <li><Link to="/freelance" onClick={() => setMenuOpen(false)}>Freelance</Link></li>
-              <li><Link to="/hackathon" onClick={() => setMenuOpen(false)}>Hackathons</Link></li>
-              <li><Link to="/" state={{ scrollTo: 'community' }} onClick={() => setMenuOpen(false)}>Community</Link></li>
-              <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link></li>
-              <li>
-                {user ? (
-                  <UserMenu
-                    user={user}
-                    onLogout={() => {
-                      setMenuOpen(false);
-                      handleLogout();
-                    }}
-                    onProfileClick={() => {
-                      setMenuOpen(false);
-                      onProfileClick();
-                    }}
-                  />
-                ) : (
-                  <button
-                    className="signup"
-                    onClick={() => {
-                      setMenuOpen(false);
-                      openAuthModal();
-                    }}
-                  >
-                    Get Started
-                  </button>
-                )}
-              </li>
-            </ul>
-          )}
-        </div>
-      </div>
-
-      {/* Page Sections */}
       <section className="mentorship-hero">
         <h1>Mentorship Platform</h1>
         <p>Choose your path – Learn or Guide</p>
@@ -293,36 +186,44 @@ const Mentorship = () => {
               <option>Advanced</option>
             </select>
 
-            {/* Hidden file input */}
+            {/* Custom image upload box */}
+            <div
+              className="image-upload-box"
+              onClick={() =>
+                document.getElementById("mentor-image-input").click()
+              }
+              style={{
+                width: "60px",
+                height: "60px",
+                border: "2px dashed #aaa",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                marginTop: "10px",
+                fontSize: "20px",
+              }}
+            >
+              +
+            </div>
+            {selectedFileName && (
+              <p style={{ fontSize: "12px", color: "#ccc" }}>
+                {selectedFileName}
+              </p>
+            )}
             <input
               id="mentor-image-input"
               name="picture"
               type="file"
               accept="image/*"
-              style={{ display: "none" }}
-              onChange={handleFileChange}
               required
-            />
-
-            {/* Plus button */}
-            <div
-              onClick={() => document.getElementById("mentor-image-input").click()}
-              style={{
-                width: "80px",
-                height: "80px",
-                border: "2px dashed #aaa",
-                borderRadius: "8px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                marginBottom: "10px",
-                fontSize: "2rem",
-                color: "#666"
+              style={{ display: "none" }}
+              onChange={(e) => {
+                if (e.target.files[0]) {
+                  setSelectedFileName(e.target.files[0].name);
+                }
               }}
-            >
-              +
-            </div>
+            />
 
             <button className="btn-submit">Submit</button>
           </form>
@@ -350,7 +251,11 @@ const Mentorship = () => {
                 <option>Late Evening (7–9 PM)</option>
               </select>
               <button className="btn-submit">Confirm Booking</button>
-              <button type="button" className="btn-cancel" onClick={() => setSelectedMentor(null)}>
+              <button
+                type="button"
+                className="btn-cancel"
+                onClick={() => setSelectedMentor(null)}
+              >
                 Cancel
               </button>
             </form>
@@ -362,9 +267,6 @@ const Mentorship = () => {
 };
 
 export default Mentorship;
-
-
-
 
 
 
