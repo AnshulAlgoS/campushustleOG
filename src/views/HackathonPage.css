@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(
+ background: linear-gradient(
     135deg,
     #06000b 0%,
     rgba(21, 1, 37, 0.99) 40%,
@@ -70,20 +70,24 @@ a {
 }
 
 .hack-btn {
-  background: linear-gradient(135deg, #c36bff, #b84dff);
-  border: 1px solid #fff;
+  background: linear-gradient(135deg, #943cf1 0%, #d877f0 100%);
   color: white;
-  font-size: 18px;
-  padding: 18px 50px;
-  border-radius: 12px;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 25px;
+  font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  max-width: 500px;
 }
 
 .hack-btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(148, 60, 241, 0.5);
 }
+
 
 .background-effect {
   position: relative;
