@@ -5,7 +5,6 @@ import { collection, addDoc, getDocs } from "firebase/firestore";
 import { useEffect } from "react";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
-
 const Mentorship = () => {
   const [activeTab, setActiveTab] = useState("");
   const [domain, setDomain] = useState("");
@@ -17,61 +16,61 @@ const Mentorship = () => {
     (m) => (!domain || m.domain === domain) && (!batch || m.batch === batch)
   );
 
-const handleMentorRegister = async (e) => {
-  e.preventDefault();
-  const form = e.target;
+  const handleMentorRegister = async (e) => {
+    e.preventDefault();
+    const form = e.target;
 
-  const name = form.name.value.trim();
-  const age = form.age.value;
-  const domain = form.domain.value;
-  const batch = form.batch.value;
-  const pictureFile = form.picture.files[0];
+    const name = form.name.value.trim();
+    const age = form.age.value;
+    const domain = form.domain.value;
+    const batch = form.batch.value;
+    const pictureFile = form.picture.files[0];
 
-  if (!name || !age || !domain || !batch || !pictureFile) {
-    alert("Please fill all required fields and upload a picture!");
-    return;
-  }
+    if (!name || !age || !domain || !batch || !pictureFile) {
+      alert("Please fill all required fields and upload a picture!");
+      return;
+    }
 
-  try {
-    const storage = getStorage(); // From your firebase.js
-    const fileName = `${Date.now()}_${pictureFile.name}`;
-    const storageRef = ref(storage, `mentors/${fileName}`);
+    try {
+      const storage = getStorage(); // From your firebase.js
+      const fileName = `${Date.now()}_${pictureFile.name}`;
+      const storageRef = ref(storage, `mentors/${fileName}`);
 
-    // Upload to Firebase Storage
-    await uploadBytes(storageRef, pictureFile);
+      // Upload to Firebase Storage
+      await uploadBytes(storageRef, pictureFile);
 
-    // Get the real URL
-    const downloadURL = await getDownloadURL(storageRef);
+      // Get the permanent download URL
+      const downloadURL = await getDownloadURL(storageRef);
 
-    const newMentor = {
-      name,
-      age,
-      qualification: form.qualification.value,
-      experience: form.experience.value,
-      domain,
-      batch,
-      charges: form.charges.value,
-      gender: form.gender.value,
-      picture: downloadURL, 
-    };
+      const newMentor = {
+        name,
+        age,
+        qualification: form.qualification.value,
+        experience: form.experience.value,
+        domain,
+        batch,
+        charges: form.charges.value,
+        gender: form.gender.value,
+        picture: downloadURL, // Always save permanent URL here
+      };
 
-    // Save to Firestore
-    await addDoc(collection(db, "mentors"), newMentor);
-    setMentors((prev) => [...prev, newMentor]);
-    setActiveTab("mentee");
-    form.reset();
-    alert("Mentor registered successfully!");
-  } catch (error) {
-    console.error("Error uploading mentor:", error);
-    alert("Error registering mentor.");
-  }
-};
+      // Save to Firestore
+      await addDoc(collection(db, "mentors"), newMentor);
+      setMentors((prev) => [...prev, newMentor]);
+      setActiveTab("mentee");
+      form.reset();
+      alert("Mentor registered successfully!");
+    } catch (error) {
+      console.error("Error uploading mentor:", error);
+      alert("Error registering mentor.");
+    }
+  };
 
   useEffect(() => {
     const fetchMentors = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "mentors"));
-        const mentorsList = querySnapshot.docs.map(doc => doc.data());
+        const mentorsList = querySnapshot.docs.map((doc) => doc.data());
         setMentors(mentorsList);
       } catch (error) {
         console.error("Error fetching mentors:", error);
@@ -80,6 +79,7 @@ const handleMentorRegister = async (e) => {
 
     fetchMentors();
   }, []);
+
   return (
     <div className="mentorship-page">
       <section className="mentorship-hero">
@@ -88,13 +88,17 @@ const handleMentorRegister = async (e) => {
 
         <div className="mentorship-buttons-center">
           <button
-            className={`btn-toggle big-glow-btn ${activeTab === "mentee" ? "active" : ""}`}
+            className={`btn-toggle big-glow-btn ${
+              activeTab === "mentee" ? "active" : ""
+            }`}
             onClick={() => setActiveTab("mentee")}
           >
             Join as a Mentee
           </button>
           <button
-            className={`btn-toggle big-glow-btn ${activeTab === "mentor" ? "active" : ""}`}
+            className={`btn-toggle big-glow-btn ${
+              activeTab === "mentor" ? "active" : ""
+            }`}
             onClick={() => setActiveTab("mentor")}
           >
             Register as a Mentor
@@ -108,7 +112,10 @@ const handleMentorRegister = async (e) => {
           <form className="dropdown-form">
             <label>
               Domain:
-              <select value={domain} onChange={(e) => setDomain(e.target.value)}>
+              <select
+                value={domain}
+                onChange={(e) => setDomain(e.target.value)}
+              >
                 <option value="">-- Select --</option>
                 <option>Web Development</option>
                 <option>DSA / CP</option>
@@ -131,23 +138,58 @@ const handleMentorRegister = async (e) => {
             {filteredMentors.length > 0 ? (
               filteredMentors.map((mentor, idx) => (
                 <div
-                  className={`mentor-card ${selectedMentor?.name === mentor.name ? "selected-mentor" : ""
-                    }`}
+                  className={`mentor-card ${
+                    selectedMentor?.name === mentor.name
+                      ? "selected-mentor"
+                      : ""
+                  }`}
                   key={idx}
                 >
                   <span className="domain-badge">{mentor.domain}</span>
-                  <img
-                    src={mentor.picture}
-                    alt={mentor.name}
-                    className="mentor-square"
-                  />
+
+                  {/* Show warning if old blob link is present */}
+                  {mentor.picture?.startsWith("blob:") ? (
+                    <div
+                      style={{
+                        background: "#fdd",
+                        padding: "10px",
+                        borderRadius: "8px",
+                        color: "#900",
+                        textAlign: "center",
+                      }}
+                    >
+                      Image missing (old upload). Please re-register mentor.
+                    </div>
+                  ) : (
+                    <img
+                      src={mentor.picture}
+                      alt={mentor.name}
+                      className="mentor-square"
+                    />
+                  )}
+
                   <h3>{mentor.name}</h3>
-                  <p><strong>Qualification:</strong> {mentor.qualification || "N/A"}</p>
-                  <p><strong>Experience:</strong> {mentor.experience || "N/A"}</p>
-                  <p><strong>Batch:</strong> {mentor.batch}</p>
-                  <p><strong>Charges:</strong> ₹{mentor.charges || "Free"}</p>
-                  <p><strong>Gender:</strong> {mentor.gender}</p>
-                  <button className="btn-book" onClick={() => setSelectedMentor(mentor)}>
+                  <p>
+                    <strong>Qualification:</strong>{" "}
+                    {mentor.qualification || "N/A"}
+                  </p>
+                  <p>
+                    <strong>Experience:</strong>{" "}
+                    {mentor.experience || "N/A"}
+                  </p>
+                  <p>
+                    <strong>Batch:</strong> {mentor.batch}
+                  </p>
+                  <p>
+                    <strong>Charges:</strong> ₹{mentor.charges || "Free"}
+                  </p>
+                  <p>
+                    <strong>Gender:</strong> {mentor.gender}
+                  </p>
+                  <button
+                    className="btn-book"
+                    onClick={() => setSelectedMentor(mentor)}
+                  >
                     Book Now
                   </button>
                 </div>
@@ -165,9 +207,21 @@ const handleMentorRegister = async (e) => {
           <form className="mentor-form" onSubmit={handleMentorRegister}>
             <input name="name" type="text" placeholder="Full Name" required />
             <input name="age" type="number" placeholder="Age" required />
-            <input name="qualification" type="text" placeholder="Qualification" />
-            <input name="experience" type="text" placeholder="Experience" />
-            <input name="charges" type="number" placeholder="Charges (₹)" />
+            <input
+              name="qualification"
+              type="text"
+              placeholder="Qualification"
+            />
+            <input
+              name="experience"
+              type="text"
+              placeholder="Experience"
+            />
+            <input
+              name="charges"
+              type="number"
+              placeholder="Charges (₹)"
+            />
             <select name="gender" required>
               <option value="">Select Gender</option>
               <option>Male</option>
@@ -214,7 +268,11 @@ const handleMentorRegister = async (e) => {
                 <option>Late Evening (7–9 PM)</option>
               </select>
               <button className="btn-submit">Confirm Booking</button>
-              <button type="button" className="btn-cancel" onClick={() => setSelectedMentor(null)}>
+              <button
+                type="button"
+                className="btn-cancel"
+                onClick={() => setSelectedMentor(null)}
+              >
                 Cancel
               </button>
             </form>
