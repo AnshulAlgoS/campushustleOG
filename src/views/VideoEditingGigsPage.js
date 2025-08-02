@@ -10,13 +10,8 @@ import {
 } from 'firebase/firestore';
 import { db, auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import logo from '../assets/images/CL1.png';
-import UserMenu from '../components/UserMenu';
 
-
-const VideoEditingGigsPage = ({ user, handleLogout, onProfileClick, openAuthModal }) => {
-
+const VideoEditingGigsPage = () => {
   const [gigs, setGigs] = useState([]);
   const [appliedGigs, setAppliedGigs] = useState([]);
   const [selectedGig, setSelectedGig] = useState(null);
@@ -89,42 +84,11 @@ const VideoEditingGigsPage = ({ user, handleLogout, onProfileClick, openAuthModa
 
   return (
     <>
-    <div className="video-header">
-      <div className="top-strip">
-        <div className="logo-combo">
-          <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
-          <span className="logo-text">CampusHustle</span>
-        </div>
-
-        {/* Desktop Nav */}
-        <nav className="navbar-desktop">
-          <ul className="strip-nav">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/freelance">Freelance</Link></li>
-            <li><Link to="/hackathon">Hackathons</Link></li>
-            <li>
-              <Link to="/" state={{ scrollTo: 'community' }} onClick={() => { }}>
-                Community
-              </Link>
-            </li>
-            <li><Link to="/about">About Us</Link></li>
-            <li>
-              {user ? (
-                <UserMenu
-                  user={user}
-                  onLogout={handleLogout}
-                  onProfileClick={onProfileClick}
-                />
-              ) : (
-                <button className="signup" onClick={openAuthModal}>
-                  Get Started
-                </button>
-              )}
-            </li>
-          </ul>
-        </nav>
-      </div>
+      <div className="video-header">
         <h1 className="video-title">Video Editing Gigs</h1>
+        <p className="video-subtitle">
+          Cut, trim, animate, and bring stories to life through exciting video projects.
+        </p>
       </div>
 
       <div className="video-gigs-container">
@@ -137,15 +101,16 @@ const VideoEditingGigsPage = ({ user, handleLogout, onProfileClick, openAuthModa
                   <h2>{gig.title}</h2>
                 </div>
                 <div className="card-body">
-                  <p>{gig.description}</p>
-                  <div className="card-footer">
-                    <span className="gig-price">{gig.payment}</span>
-                     <button
-                        className="details-btn"
-                        onClick={() => navigate(`/gig/${gig.id}`)}
-                      >
-                        Details
-                      </button>
+                  <p className="description">
+                    {gig.description?.split(' ').slice(0, 15).join(' ')}...
+                    <span className="read-more" onClick={() => navigate(`/gig/${gig.id}`)}> Read more</span>
+                  </p>
+                  <div className="meta-info">
+                    <p><strong>Payment:</strong> {gig.payment}</p>
+                    <p><strong>Deadline:</strong> {gig.deadline || 'Not mentioned'}</p>
+                  </div>
+                  <div className="card-buttons">
+                    <button onClick={() => navigate(`/gig/${gig.id}`)}>Details</button>
                     {alreadyApplied ? (
                       <button disabled className="applied-btn">Applied</button>
                     ) : (
