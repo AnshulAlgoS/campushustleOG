@@ -664,7 +664,7 @@ header::before {
     font-size: 1.75rem;
   }
 }
-/* MAIN FOOTER STYLING */
+/* === MAIN FOOTER STYLING === */
 footer {
   background-color: #000;
   color: #fff;
@@ -672,9 +672,11 @@ footer {
   font-family: 'Segoe UI', sans-serif;
   width: 100%;
   overflow-x: hidden;
+  position: relative;
+  z-index: 2; /* To stay above space elements */
 }
 
-/* FLEX WRAPPER */
+/* === FLEX WRAPPER === */
 .footer-container {
   display: flex;
   flex-wrap: wrap;
@@ -685,7 +687,7 @@ footer {
   box-sizing: border-box;
 }
 
-/* LOGO SECTION */
+/* === LOGO SECTION === */
 .footer-logo {
   flex: 1 1 100%;
   display: flex;
@@ -705,7 +707,7 @@ footer {
   margin: 0;
 }
 
-/* EACH COLUMN */
+/* === EACH COLUMN === */
 .footer-column {
   flex: 1 1 200px;
   min-width: 150px;
@@ -738,78 +740,28 @@ footer {
   color: #fff;
 }
 
-/* ✅ RESPONSIVE FIX */
-@media (max-width: 768px) {
+/* === RESPONSIVE FIX (ALL MOBILE) === */
+@media (max-width: 1024px) {
   .footer-container {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .footer-column {
-    width: 100%;
-    margin-bottom: 1.5rem;
   }
 
   .footer-logo {
     flex-direction: row;
     justify-content: flex-start;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .footer-logo {
-    margin-bottom: 2rem;
-    justify-content: flex-start;
+    margin-bottom: 20px;
   }
 
   .footer-column {
-    margin-bottom: 1.5rem;
     width: 100%;
+    margin-bottom: 1.5rem;
   }
 }
 
-/* Target the entire link component */
-a.category-box,
-a.category-box:link,
-a.category-box:visited,
-a.category-box:hover,
-a.category-box:active {
-  text-decoration: none;
-  border-bottom: none;
-  color: inherit;
-}
 
-a.category-box .category-title {
-  text-decoration: none;
-  border-bottom: none;
-}
 
-@media (max-width: 1024px) {
-  .footer-container {
-    min-width: 100%;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .footer-column,
-  .footer-logo {
-    margin-bottom: 20px;
-    margin-right: 0;
-    min-width: 100px;
-  }
-
-  .team-boxes {
-    justify-content: center;
-    gap: 20px;
-  }
-}
+  
 
 /* Tablets & Small Screens (≤ 768px) */
 @media (max-width: 768px) {
