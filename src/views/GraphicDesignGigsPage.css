@@ -1,3 +1,5 @@
+/* Updated GraphicDesign Gigs CSS */
+
 .graphicdesign-gigs-container {
   padding: 60px 20px;
   background: linear-gradient(to bottom right, #fff0f5, #fddde6);
@@ -14,7 +16,6 @@
   margin-bottom: 40px;
 }
 
-
 .graphicdesign-gigs-container .gigs-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -23,10 +24,12 @@
 }
 
 .graphicdesign-gigs-container .gig-card {
-  background: linear-gradient(135deg, #ec407a, #f48fb1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 105, 135, 0.6);
+  box-shadow: 0 0 16px rgba(255, 105, 135, 0.4);
   width: 300px;
   border-radius: 20px;
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
   color: white;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -34,7 +37,7 @@
 
 .graphicdesign-gigs-container .gig-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 30px rgba(255, 105, 135, 0.6);
 }
 
 .graphicdesign-gigs-container .card-header {
@@ -44,11 +47,32 @@
 }
 
 .graphicdesign-gigs-container .card-body {
-  padding: 0 20px 20px;
-  font-size: 0.98rem;
+  padding: 0 20px;
+  font-size: 0.95rem;
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.6;
   color: #fffafc;
+  max-height: 65px;
+  overflow: hidden;
+  position: relative;
+}
+
+.graphicdesign-gigs-container .card-body::after {
+  content: "... Read more";
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffd1dc;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.graphicdesign-gigs-container .card-extra {
+  padding: 10px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+  color: #ffeaf0;
 }
 
 .graphicdesign-gigs-container .card-footer {
@@ -57,16 +81,18 @@
   align-items: center;
   padding: 0 20px 20px;
   font-size: 0.95rem;
+  gap: 10px;
 }
 
 .graphicdesign-gigs-container .gig-price {
   font-weight: 600;
   font-size: 1.05rem;
+  color: #ffebee;
 }
 
 .graphicdesign-gigs-container .gig-deadline {
   font-size: 0.9rem;
-  color: #fff5f8;
+  color: #ffd6e2;
   margin-top: 6px;
 }
 
@@ -80,14 +106,14 @@
   font-size: 0.95rem;
   cursor: pointer;
   transition: background-color 0.2s;
+  flex: 1;
 }
 
 .card-footer button:hover {
   background-color: #fce4ec;
 }
 
-/* Modal styles */
-
+/* Modal styles (unchanged) */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -174,6 +200,7 @@
   text-align: right;
   display: block;
 }
+
 .applied-btn {
   background-color: #ccc;
   color: #555;
@@ -182,17 +209,19 @@
   padding: 0.5rem 1rem;
   border-radius: 6px;
 }
+
 .designs-header {
   background: linear-gradient(135deg, #e91e63, #f27ba9);
+  padding: 80px 20px 60px;
   text-align: center;
-  padding: 0px 0px 60px;
   color: rgb(110, 11, 85);
 }
+
 .design-title {
   font-size: 3rem;
   font-weight: 700;
   margin: 0;
-  color:#fddde6;
+  color: #fddde6;
 }
 
 .design-subtitle {
