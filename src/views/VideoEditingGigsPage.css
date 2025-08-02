@@ -143,3 +143,74 @@
   padding: 0.5rem 1rem;
   border-radius: 6px;
 }
+/* === UPDATED GIG CARD STYLING === */
+
+.video-gigs-container .gig-card {
+  background: rgba(255, 255, 255, 0.05); /* Transparent look */
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(14px);
+  width: 280px;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  color: white;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.video-gigs-container .gig-card:hover {
+  transform: translateY(-8px);
+  border: 2px solid #b56727; /* darker orange on hover */
+  box-shadow: 0 0 18px rgba(255, 105, 60, 0.5);
+}
+
+.card-body p.description {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+
+.read-more {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: #ffd7bd;
+  margin-top: 4px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.card-body .meta-info {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #f5e0d5;
+  text-align: left;
+}
+
+.card-body .meta-info p {
+  margin: 2px 0;
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  gap: 10px;
+}
+
+.card-buttons button {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #de4924;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.card-buttons button:hover {
+  background-color: #de4924;
+  color: white;
+  transform: scale(1.05);
+}
+
