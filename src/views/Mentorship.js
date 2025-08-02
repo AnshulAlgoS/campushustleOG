@@ -4,25 +4,18 @@ import { db } from "../firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png"; // adjust path
-import UserMenu from "../components/UserMenu"; // adjust path
+import logo from "../assets/logo.png"; 
+import UserMenu from "../components/UserMenu"; 
 import { getAuth } from "firebase/auth";
 
 const Mentorship = () => {
   const auth = getAuth();
   const user = auth.currentUser;
 
-  const handleLogout = () => {
-    // Your logout logic here
-  };
-
-  const openAuthModal = () => {
-    // Your auth modal logic here
-  };
-
-  const onProfileClick = () => {
-    // Profile click logic here
-  };
+  // Dummy implementations to avoid build errors
+  const handleLogout = () => {};
+  const openAuthModal = () => {};
+  const onProfileClick = () => {};
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -32,7 +25,6 @@ const Mentorship = () => {
   const [selectedMentor, setSelectedMentor] = useState(null);
   const [mentors, setMentors] = useState([]);
 
-  // Added: selectedImage state (like community.js)
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleFileChange = (e) => {
@@ -244,13 +236,16 @@ const Mentorship = () => {
             {filteredMentors.length > 0 ? (
               filteredMentors.map((mentor, idx) => (
                 <div
-                  className={`mentor-card ${
-                    selectedMentor?.name === mentor.name ? "selected-mentor" : ""
-                  }`}
+                  className={`mentor-card ${selectedMentor?.name === mentor.name ? "selected-mentor" : ""
+                    }`}
                   key={idx}
                 >
                   <span className="domain-badge">{mentor.domain}</span>
-                  <img src={mentor.picture} alt={mentor.name} className="mentor-square" />
+                  <img
+                    src={mentor.picture}
+                    alt={mentor.name}
+                    className="mentor-square"
+                  />
                   <h3>{mentor.name}</h3>
                   <p><strong>Qualification:</strong> {mentor.qualification || "N/A"}</p>
                   <p><strong>Experience:</strong> {mentor.experience || "N/A"}</p>
@@ -368,8 +363,6 @@ const Mentorship = () => {
 
 export default Mentorship;
 
-
-export default Mentorship;
 
 
 
