@@ -27,7 +27,7 @@
   border-radius: 16px;
   box-shadow: 0 0 15px rgba(123, 63, 181, 0.15);
   backdrop-filter: blur(12px);
-  color: #f3e6ff;
+  color: #651FFF;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
   display: flex;
