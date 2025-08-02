@@ -4,12 +4,16 @@ import { db } from "../firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { useEffect } from "react";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import logo from '../assets/images/CL1.png';
+import { Link } from 'react-router-dom';
+import UserMenu from '../components/UserMenu';
 
-const Mentorship = () => {
+const Mentorship = ({user, handleLogout, onProfileClick, openAuthModal}) => {
   const [activeTab, setActiveTab] = useState("");
   const [domain, setDomain] = useState("");
   const [batch, setBatch] = useState("");
   const [selectedMentor, setSelectedMentor] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [mentors, setMentors] = useState([]);
 
   const filteredMentors = mentors.filter(
@@ -51,7 +55,7 @@ const Mentorship = () => {
         batch,
         charges: form.charges.value,
         gender: form.gender.value,
-        picture: downloadURL, // Always save permanent URL here
+        picture: downloadURL, 
       };
 
       // Save to Firestore
@@ -82,6 +86,94 @@ const Mentorship = () => {
 
   return (
     <div className="mentorship-page">
+      <div className="top-strip">
+                  <div className="logo-combo">
+                    <img src={logo} alt="Campus Hustle Logo" className="strip-logo" />
+                    <span className="logo-text">CampusHustle</span>
+                  </div>
+      
+                  {/*  Desktop Nav */}
+                  <nav className="navbar-desktop">
+                    <ul className="strip-nav">
+                      <li><Link to="/">Home</Link></li>
+                      <li><Link to="/freelance">Freelance</Link></li>
+                      <li><Link to="/hackathon">Hackathons</Link></li>
+                      <li>
+                        <Link
+                          to="/"
+                          state={{ scrollTo: 'community' }}
+                          onClick={() => { }}
+                          className="desktop-link-btn"
+                        >
+                          Community
+                        </Link>
+                      </li>
+      
+                      <li><Link to="/about">About Us</Link></li>
+                      <li>
+                        {user ? (
+                          <UserMenu
+                            user={user}
+                            onLogout={handleLogout}
+                            onProfileClick={onProfileClick}
+                          />
+                        ) : (
+                          <button
+                            className="signup"
+                            onClick={() => openAuthModal()}
+                          >
+                            Get Started
+                          </button>
+                        )}
+                      </li>
+                    </ul>
+                  </nav>
+      
+      
+                  {/* Mobile Nav */}
+                  <div className="navbar-mobile">
+                    <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+      
+                    {menuOpen && (
+                      <ul className={`mobile-nav ${menuOpen ? 'open' : ''}`}>
+                        <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
+                        <li><Link to="/freelance" onClick={() => setMenuOpen(false)}>Freelance</Link></li>
+                        <li><Link to="/hackathon" onClick={() => setMenuOpen(false)}>Hackathons</Link></li>
+                        <li><Link to="/" state={{ scrollTo: 'community' }} onClick={() => setMenuOpen(false)}>Community</Link></li>
+                        <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
+                        </li>
+                        <li>
+                          {user ? (
+                            <UserMenu
+                              user={user}
+                              onLogout={() => {
+                                setMenuOpen(false);
+                                handleLogout();
+                              }}
+                              onProfileClick={() => {
+                                setMenuOpen(false);
+                                onProfileClick();
+                              }}
+                            />
+                          ) : (
+                            <button
+                              className="signup"
+                              onClick={() => {
+                                setMenuOpen(false);
+                                openAuthModal();
+                              }}
+                            >
+                              Get Started
+                            </button>
+                          )}
+                        </li>
+                      </ul>
+                    )}
+                  </div>
+      
+      
+                </div>
+      
       <section className="mentorship-hero">
         <h1>Mentorship Platform</h1>
         <p>Choose your path – Learn or Guide</p>
