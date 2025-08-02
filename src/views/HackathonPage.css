@@ -1,23 +1,17 @@
-/* ===================== */
-/* General Page Styling  */
-/* ===================== */
 
 .hackathon-page {
   min-height: 100vh;
   background: linear-gradient(135deg, #0b0013, #1b0033);
-  padding-top: 80px; /* space for fixed navbar */
+  padding-top: 80px; 
 }
 
-/* ===================== */
-/* Navbar                */
-/* ===================== */
 
 .simple-navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 15px 40px;
-  background-color: #0b0013; /* solid background */
+  background-color: #0b0013; 
   position: fixed;
   top: 0;
   left: 0;
@@ -60,10 +54,6 @@
   color: #d0a6ff;
 }
 
-/* ===================== */
-/* Hackathon Menu Buttons*/
-/* ===================== */
-
 .hackathon-buttons {
   display: flex;
   flex-direction: column;
@@ -89,18 +79,13 @@
   transform: scale(1.05);
 }
 
-/* ===================== */
-/* Explore Hackathons Page*/
-/* ===================== */
-
 .hackathon-list-page {
   background: linear-gradient(135deg, #0b0013, #1b0033);
   min-height: 100vh;
-  padding-top: 80px; /* for fixed navbar */
+  padding-top: 80px;
   color: white;
 }
 
-/* Hero Section */
 .background-effect {
   text-align: center;
   padding: 60px 20px;
@@ -144,10 +129,6 @@
   margin-top: 10px;
 }
 
-/* ===================== */
-/* Search + Heading       */
-/* ===================== */
-
 .search-header {
   display: flex;
   align-items: center;
@@ -169,10 +150,6 @@
   font-size: 16px;
   outline: none;
 }
-
-/* ===================== */
-/* Hackathon Grid & Cards */
-/* ===================== */
 
 .hackathon-grid {
   display: grid;
@@ -210,10 +187,6 @@
   margin-bottom: 8px;
 }
 
-/* ===================== */
-/* Form Page (Organise)   */
-/* ===================== */
-
 .organise-form-page {
   background: #f5f7ff;
   min-height: 100vh;
@@ -249,10 +222,6 @@
   border-radius: 6px;
   font-size: 16px;
 }
-
-/* ===================== */
-/* Participation Guidelines */
-/* ===================== */
 
 .guidelines-page {
   background: linear-gradient(135deg, #0b0013, #1b0033);
