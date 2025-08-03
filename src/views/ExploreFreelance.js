@@ -121,7 +121,7 @@ const [menuOpen, setMenuOpen] = useState(false);
           <div
             className="service-card"
             onClick={() => navigate('/freelance/marketing')}
-            style={{ background: 'linear-gradient(135deg, #D4D4Dc, #b967d9)' }}
+            style={{ background: 'linear-gradient(135deg, #D4C4EC, #b9A5e2)' }}
           >
             <h2>Marketing</h2>
             <p>Support digital marketing and social media campaigns.</p>
@@ -130,7 +130,7 @@ const [menuOpen, setMenuOpen] = useState(false);
           <div
             className="service-card"
             onClick={() => navigate('/freelance/video-editing')}
-            style={{ background: 'linear-gradient(135deg, #E7DDFF, #9f4ECE)' }}
+            style={{ background: 'linear-gradient(135deg, #b9A5E2, #8A2BE2)' }}
           >
             <h2>Video Editing</h2>
             <p>Edit short videos, reels, and YouTube content for creators.</p>
