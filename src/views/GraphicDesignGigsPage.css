@@ -22,18 +22,19 @@
   justify-content: center;
   gap: 40px;
 }
-
 .graphicdesign-gigs-container .gig-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(113, 6, 117, 0.05);
   backdrop-filter: blur(12px);
   border: 2px solid rgba(255, 105, 135, 0.6);
   box-shadow: 0 0 16px rgba(255, 105, 135, 0.4);
-  width: 300px;
+  width: 22vw;            
+  min-height: 50vh;      
   border-radius: 20px;
-  color: white;
+  color: rgb(230, 4, 4);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 .graphicdesign-gigs-container .gig-card:hover {
   transform: translateY(-10px);
@@ -43,6 +44,7 @@
 .graphicdesign-gigs-container .card-header {
   padding: 24px 20px 10px;
   font-size: 1rem;
+  color: #ec5690;
   font-weight: 600;
 }
 
@@ -50,29 +52,18 @@
   padding: 0 20px;
   font-size: 0.95rem;
   font-weight: 400;
-  line-height: 1.6;
-  color: #fffafc;
-  max-height: 65px;
+  color: #e75082;
+  max-height: 80px;
   overflow: hidden;
   position: relative;
-}
-
-.graphicdesign-gigs-container .card-body::after {
-  content: "... Read more";
-  position: absolute;
-  bottom: 0;
-  right: 20px;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #ffd1dc;
-  font-size: 0.85rem;
-  cursor: pointer;
+  transition: max-height 0.3s ease;
 }
 
 .graphicdesign-gigs-container .card-extra {
   padding: 10px 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.9rem;
-  color: #ffeaf0;
+  color: #f2a1b8;
 }
 
 .graphicdesign-gigs-container .card-footer {
@@ -92,7 +83,7 @@
 
 .graphicdesign-gigs-container .gig-deadline {
   font-size: 0.9rem;
-  color: #ffd6e2;
+  color: #893e55;
   margin-top: 6px;
 }
 
@@ -212,7 +203,7 @@
 
 .designs-header {
   background: linear-gradient(135deg, #e91e63, #f27ba9);
-  padding: 80px 20px 60px;
+  padding: 0px 0px 60px;
   text-align: center;
   color: rgb(110, 11, 85);
 }
@@ -239,3 +230,93 @@
   text-align: center;
   color: rgb(110, 11, 85);
 }
+.gig-description.expanded {
+  max-height: none;
+  overflow: visible;
+}
+
+.read-more-toggle {
+  display: block;
+  margin: 8px 0 0;
+  font-size: 0.85rem;
+  color: #f27c98;
+  cursor: pointer;
+  text-align: right;
+  padding-right: 20px;
+}
+.gig-description {
+  max-height: 10vh;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre-line;
+  transition: max-height 0.3s ease;
+  margin-bottom: 0.5vh;
+}
+
+.gig-description.expanded {
+  max-height: 100vh;
+}
+
+.read-more-toggle {
+  color: #ff6987;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 1vh;
+  font-size: 0.9rem;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1vw;
+  margin-top: 2vh;
+}
+
+.gig-price {
+  font-weight: bold;
+  color: #ffffff;
+  background: rgba(255, 105, 135, 0.2);
+  padding: 0.4vh 1vw;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.details-btn,
+.applied-btn,
+.card-footer button {
+  padding: 0.5vh 1vw;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.details-btn {
+  background-color: transparent;
+  color: #ff6987;
+  border: 1px solid #ff6987;
+}
+
+.details-btn:hover {
+  background-color: #ff6987;
+  color: white;
+}
+
+.card-footer button:not(.details-btn):not(.applied-btn) {
+  background-color: #ff6987;
+  color: white;
+}
+
+.card-footer button:not(.details-btn):not(.applied-btn):hover {
+  background-color: #ff4e75;
+}
+
+.applied-btn {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ccc;
+  cursor: not-allowed;
+}
+

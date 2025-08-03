@@ -94,7 +94,7 @@ const [menuOpen, setMenuOpen] = useState(false);
           <div
             className="service-card"
             onClick={() => navigate('/freelance/WebDev')}
-            style={{ background: 'linear-gradient(135deg, #6A0DAD, #8A2BE2)' }}
+            style={{ background: 'linear-gradient(135deg, #b9A5E2, #8A2BE2)' }}
           >
             <h2>Web Development</h2>
             <p>Take on freelance web dev projects and grow your skills.</p>
@@ -103,7 +103,7 @@ const [menuOpen, setMenuOpen] = useState(false);
           <div
             className="service-card"
             onClick={() => navigate('/freelance/graphic-design')}
-            style={{ background: 'linear-gradient(135deg, #FF69B4, #FF85C1)' }}
+            style={{ background: 'linear-gradient(135deg, #D4C4EC, #b9A5e2)' }}
           >
             <h2>Graphic Design</h2>
             <p>Work on creative gigs and build your portfolio.</p>
@@ -112,7 +112,7 @@ const [menuOpen, setMenuOpen] = useState(false);
           <div
             className="service-card"
             onClick={() => navigate('/freelance/content-writing')}
-            style={{ background: 'linear-gradient(135deg, #00BFFF, #87CEFA)' }}
+            style={{ background: 'linear-gradient(135deg, #745e96, #9279ba)' }}
           >
             <h2>Content Writing</h2>
             <p>Write blogs, articles, and web content for clients.</p>
@@ -121,7 +121,7 @@ const [menuOpen, setMenuOpen] = useState(false);
           <div
             className="service-card"
             onClick={() => navigate('/freelance/marketing')}
-            style={{ background: 'linear-gradient(135deg, #32CD32, #7CFC00)' }}
+            style={{ background: 'linear-gradient(135deg, #D4D4Dc, #b967d9)' }}
           >
             <h2>Marketing</h2>
             <p>Support digital marketing and social media campaigns.</p>
@@ -130,7 +130,7 @@ const [menuOpen, setMenuOpen] = useState(false);
           <div
             className="service-card"
             onClick={() => navigate('/freelance/video-editing')}
-            style={{ background: 'linear-gradient(135deg, #FF8C00, #FFA500)' }}
+            style={{ background: 'linear-gradient(135deg, #E7DDFF, #9f4ECE)' }}
           >
             <h2>Video Editing</h2>
             <p>Edit short videos, reels, and YouTube content for creators.</p>

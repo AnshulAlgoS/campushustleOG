@@ -23,6 +23,8 @@ const GraphicDesignGigsPage = ({ user, handleLogout, onProfileClick, openAuthMod
   const [email, setEmail] = useState('');
   const [reason, setReason] = useState('');
   const [appliedGigs, setAppliedGigs] = useState([]);
+  const [expandedGigIds, setExpandedGigIds] = useState([]);
+
 
   const navigate = useNavigate();
 
@@ -197,7 +199,22 @@ const GraphicDesignGigsPage = ({ user, handleLogout, onProfileClick, openAuthMod
                   <h2>{gig.title}</h2>
                 </div>
                 <div className="card-body">
-                  <p>{gig.description}</p>
+                  <p className={`gig-description ${expandedGigIds.includes(gig.id) ? 'expanded' : ''}`}>
+  {gig.description}
+</p>
+<span
+  className="read-more-toggle"
+  onClick={() => {
+    if (expandedGigIds.includes(gig.id)) {
+      setExpandedGigIds(expandedGigIds.filter(id => id !== gig.id));
+    } else {
+      setExpandedGigIds([...expandedGigIds, gig.id]);
+    }
+  }}
+>
+  {expandedGigIds.includes(gig.id) ? 'Read less' : '... Read more'}
+</span>
+
                   <p><strong>Deadline:</strong> {gig.endDate}</p>
                   <div className="card-footer">
                     <span className="gig-price">{gig.payment}</span>
