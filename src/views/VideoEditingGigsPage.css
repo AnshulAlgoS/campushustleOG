@@ -8,7 +8,7 @@
 
 .video-gigs-container h1 {
   font-size: 2.6rem;
-  color: #de4924;
+  color: #e775eb;
   margin-bottom: 40px;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .video-gigs-container .gig-card {
-  background: linear-gradient(135deg, #f37a10, hsl(30, 90%, 77%));
+  background: linear-gradient(135deg, #cb4ecb, hsl(300, 69%, 77%));
   width: 280px;
   border-radius: 16px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
@@ -56,7 +56,7 @@
 
 .card-footer button {
   background-color: #fff;
-  color: #B56727;
+  color: #b327b5;
   padding: 8px 14px;
   border-radius: 8px;
   border: none;
@@ -66,7 +66,7 @@
 }
 
 .card-footer button:hover {
-  background-color: #B56727;
+  background-color: #e456ee;
   color: #fff;
 }
 
@@ -107,7 +107,7 @@
 }
 
 .modal-box h2 {
-  color: #de4924;
+  color: #b024de;
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
@@ -122,10 +122,10 @@
   font-family: 'Segoe UI',
 }
 .video-header {
-  background: linear-gradient(135deg, #ffecd2, #fcb69f);
+  background: linear-gradient(135deg, #ffecd2,  #bb84d6);
   padding: 80px 20px 60px;
   text-align: center;
-  color: rgb(134, 55, 9);
+  color: rgb(127, 26, 147);
 }
 
 .video-title {
@@ -152,10 +152,10 @@
 /* === UPDATED GIG CARD STYLING === */
 
 .video-gigs-container .gig-card {
-  background: linear-gradient(135deg, #f37a10, hsl(30, 90%, 77%));
+  background: linear-gradient(135deg, #bc58ea, hsl(292, 90%, 73%);
   width: 280px;
   border-radius: 16px;
-  border: 2px solid #f37a10;
+  border: 2px solid #c013c0;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
   color: white;
   overflow: hidden;
@@ -165,8 +165,8 @@
 
 .video-gigs-container .gig-card:hover {
   transform: translateY(-8px);
-  border: 2px solid #B56727; /* darker on hover */
-  box-shadow: 0 0 20px rgba(181, 103, 39, 0.5);
+  border: 2px solid ##700c79; /* darker on hover */
+  box-shadow: 0 0 20px rgbargba(154, 53, 176, 0.5);
 }
 
 
@@ -187,7 +187,7 @@
 .card-body .meta-info {
   margin-top: 10px;
   font-size: 0.85rem;
-  color: #f5e0d5;
+  color: #ecbdff;
   text-align: left;
 }
 
