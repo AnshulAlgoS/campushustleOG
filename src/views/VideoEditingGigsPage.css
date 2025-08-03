@@ -152,7 +152,7 @@
 /* === UPDATED GIG CARD STYLING === */
 
 .video-gigs-container .gig-card {
-  background: linear-gradient(135deg, #bc58ea, hsl(292, 90%, 73%);
+  background: linear-gradient(135deg, #bc58ea, hsl(292, 90%, 73%));
   width: 280px;
   border-radius: 16px;
   border: 2px solid #c013c0;
@@ -165,7 +165,7 @@
 
 .video-gigs-container .gig-card:hover {
   transform: translateY(-8px);
-  border: 2px solid ##700c79; /* darker on hover */
+  border: 2px solid #700c79; /* darker on hover */
   box-shadow: 0 0 20px rgbargba(154, 53, 176, 0.5);
 }
 
