@@ -20,7 +20,7 @@
 }
 
 .contentwriting-gigs-container .gig-card {
-  background: linear-gradient(135deg, #25abc2, #84c6d7);
+  background: linear-gradient(135deg, #c259d7, #d9adea);
   width: 280px;
   border-radius: 16px;
   border: 2px solid #0c7170;
@@ -190,7 +190,7 @@
 
 /* === Header Section === */
 .content-header {
-  background: linear-gradient(135deg, #2eacc5, #8ed1e7);
+  background: linear-gradient(135deg, #c685d0, #e0afdf);
   padding: 0px 0px 60px;
   text-align: center;
   color: #065a65;
@@ -210,7 +210,7 @@
   margin-right: auto;
 }
 .apply-btn {
-  background: linear-gradient(to right, #1b8297, #63d6e7);
+  background: linear-gradient(to right, #c46ec7, #cd9fd5);
   color: white;
   padding: 8px 14px;
   border-radius: 8px;
