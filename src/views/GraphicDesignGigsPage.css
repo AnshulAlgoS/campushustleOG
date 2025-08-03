@@ -44,7 +44,7 @@
 .graphicdesign-gigs-container .card-header {
   padding: 24px 20px 10px;
   font-size: 1rem;
-  color: #ec5690;
+  color: #b03dcd;
   font-weight: 600;
 }
 
@@ -202,7 +202,7 @@
 }
 
 .designs-header {
-  background: linear-gradient(135deg, #e91e63, #f27ba9);
+  background: linear-gradient(135deg, #ad59c4, #e4a6e3);
   padding: 0px 0px 60px;
   text-align: center;
   color: rgb(110, 11, 85);
