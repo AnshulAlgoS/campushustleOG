@@ -8,7 +8,7 @@
 
 .marketing-gigs-container h1 {
   font-size: 2.6rem;
-  color: #00796b;
+  color:  #bf82f1;
   margin-bottom: 40px;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .marketing-gigs-container .gig-card {
-  background: linear-gradient(135deg, #009688, #4db6ac);
+  background: linear-gradient(135deg,  #c176e4, #412969);
   width: 280px;
   border-radius: 16px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
@@ -101,7 +101,7 @@
 }
 
 .modal-box h2 {
-  color: #00796b;
+  color: #c6a3ec;
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
@@ -122,7 +122,7 @@
 }
 
 .submit-btn {
-  background-color: #00796b;
+  background-color: #50026e;
   color: white;
   padding: 10px 18px;
   border: none;
@@ -142,10 +142,10 @@
   display: block;
 }
 .marketing-header {
-  background: linear-gradient(135deg, #8bf7e5, #79edd6);
+  background: linear-gradient(135deg,#bc8bf7, #9c79ed);
   padding: 0px 0px 80px;
   text-align: center;
-  color: rgb(9, 131, 121);
+  color: rgb(80, 9, 131);
 }
 
 .marketing-title {
