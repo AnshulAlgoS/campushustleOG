@@ -7,18 +7,18 @@ const app = express();
 app.use(cors({ origin: "*" })); // ✅ Allow all origins
 app.use(express.json());
 
-
-// ===== Firebase Admin Initialization =====
 // ===== Firebase Admin Initialization =====
 let serviceAccountConfig;
 
 if (process.env.FIREBASE_SERVICE_ACCOUNT_JSON) {
   try {
     serviceAccountConfig = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON);
-    // Fix escaped newlines in Render env
+
+    // Fix escaped newlines if present
     if (serviceAccountConfig.private_key.includes('\\n')) {
       serviceAccountConfig.private_key = serviceAccountConfig.private_key.replace(/\\n/g, '\n');
     }
+
     console.log("✅ Loaded Firebase credentials from environment");
   } catch (err) {
     console.error("❌ Error parsing FIREBASE_SERVICE_ACCOUNT_JSON:", err);
@@ -28,6 +28,12 @@ if (process.env.FIREBASE_SERVICE_ACCOUNT_JSON) {
   try {
     console.log("🧪 Using local serviceAccountKey.json");
     serviceAccountConfig = require("./serviceAccountKey.json");
+
+    // Fix escaped newlines if present
+    if (serviceAccountConfig.private_key.includes('\\n')) {
+      serviceAccountConfig.private_key = serviceAccountConfig.private_key.replace(/\\n/g, '\n');
+    }
+
   } catch (err) {
     console.error("❌ Missing local serviceAccountKey.json");
     process.exit(1);
@@ -41,17 +47,17 @@ admin.initializeApp({
     "https://campushustle91-default-rtdb.asia-southeast1.firebasedatabase.app",
 });
 
-
 const db = admin.firestore();
 
 // ========== Mentor Buddy Route ==========
 app.post("/api/chat", async (req, res) => {
   const { message, userId } = req.body;
   console.log("Incoming /api/chat:", { message, userId });
-  app.use(cors({
-  origin: ["https://campushustle-ai.vercel.app/"], 
-}));
 
+  // CORS (restrict to frontend domain if needed)
+  app.use(cors({
+    origin: ["https://campushustle-og.vercel.app/"], 
+  }));
 
   try {
     // Optionally, fetch user dashboard from Firestore
