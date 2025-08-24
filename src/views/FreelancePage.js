@@ -267,4 +267,3 @@ const FreelancePage = () => {
 };
 
 export default FreelancePage;
-
